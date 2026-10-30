@@ -1,0 +1,77 @@
+[
+  {
+    "cat": "Ahuai",
+    "gesture": "Sit",
+    "duration": 1.4666666984558105
+  },
+  {
+    "cat": "Ahuai",
+    "gesture": "Charge",
+    "duration": 0.6333333253860474
+  },
+  {
+    "cat": "Ahuai",
+    "gesture": "Swipe",
+    "duration": 0.36666667461395264
+  },
+  {
+    "cat": "Ahuai",
+    "gesture": "Push",
+    "duration": 0.9666666388511658
+  },
+  {
+    "cat": "Ahuai",
+    "gesture": "Pounce",
+    "duration": 0.4333333373069763
+  },
+  {
+    "cat": "Jutuan",
+    "gesture": "Sit",
+    "duration": 1.4666666984558105
+  },
+  {
+    "cat": "Jutuan",
+    "gesture": "Charge",
+    "duration": 0.6333333253860474
+  },
+  {
+    "cat": "Jutuan",
+    "gesture": "Swipe",
+    "duration": 0.36666667461395264
+  },
+  {
+    "cat": "Jutuan",
+    "gesture": "Push",
+    "duration": 0.9666666388511658
+  },
+  {
+    "cat": "Jutuan",
+    "gesture": "Pounce",
+    "duration": 0.4333333373069763
+  },
+  {
+    "cat": "Wumei",
+    "gesture": "Sit",
+    "duration": 1.4666666984558105
+  },
+  {
+    "cat": "Wumei",
+    "gesture": "Charge",
+    "duration": 0.6333333253860474
+  },
+  {
+    "cat": "Wumei",
+    "gesture": "Swipe",
+    "duration": 0.36666667461395264
+  },
+  {
+    "cat": "Wumei",
+    "gesture": "Push",
+    "duration": 0.9666666388511658
+  },
+  {
+    "cat": "Wumei",
+    "gesture": "Pounce",
+    "duration": 0.4333333373069763
+  }
+]

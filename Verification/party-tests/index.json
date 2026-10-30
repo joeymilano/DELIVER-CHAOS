@@ -1,0 +1,149 @@
+﻿{
+	"devices": [
+		{
+			"deviceName": "MacBook-Pro.local",
+			"instance": "80431E20FA4E805A11317BAE2D616C02",
+			"instanceName": "MacBook-Pro.local-81960",
+			"platform": "MacEditor",
+			"oSVersion": "macOS 26.7.1 25G241",
+			"model": "Default",
+			"gPU": "Apple M5 Max",
+			"cPUModel": "Apple M5 Max",
+			"rAMInGB": 48,
+			"renderMode": "SM6",
+			"rHI": "",
+			"appInstanceLog": ""
+		}
+	],
+	"reportCreatedOn": "2026.10.30-17.11.34",
+	"succeeded": 8,
+	"succeededWithWarnings": 0,
+	"failed": 0,
+	"notRun": 0,
+	"inProcess": 0,
+	"totalDuration": 0.20185263454914093,
+	"comparisonExported": false,
+	"comparisonExportDirectory": "",
+	"tests": [
+		{
+			"testDisplayName": "BoundedResonance",
+			"fullTestPath": "BadCatLab.Party.BoundedResonance",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"80431E20FA4E805A11317BAE2D616C02"
+			],
+			"duration": 0.0061982087790966034,
+			"dateTime": "2026.10.30-17.11.34",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "CameraConsequences",
+			"fullTestPath": "BadCatLab.Party.CameraConsequences",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"80431E20FA4E805A11317BAE2D616C02"
+			],
+			"duration": 0.017717543989419937,
+			"dateTime": "2026.10.30-17.11.34",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "CollectionAndRecipes",
+			"fullTestPath": "BadCatLab.Party.CollectionAndRecipes",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"80431E20FA4E805A11317BAE2D616C02"
+			],
+			"duration": 0.01756204292178154,
+			"dateTime": "2026.10.30-17.11.34",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "LocalProgress",
+			"fullTestPath": "BadCatLab.Party.LocalProgress",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"80431E20FA4E805A11317BAE2D616C02"
+			],
+			"duration": 0.01711629331111908,
+			"dateTime": "2026.10.30-17.11.34",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "SlowPushDelaysBill",
+			"fullTestPath": "BadCatLab.Party.SlowPushDelaysBill",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"80431E20FA4E805A11317BAE2D616C02"
+			],
+			"duration": 0.016861706972122192,
+			"dateTime": "2026.10.30-17.11.34",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "TwentyRoundReset",
+			"fullTestPath": "BadCatLab.Party.TwentyRoundReset",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"80431E20FA4E805A11317BAE2D616C02"
+			],
+			"duration": 0.093009412288665771,
+			"dateTime": "2026.10.30-17.11.34",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "UniqueBill",
+			"fullTestPath": "BadCatLab.Party.UniqueBill",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"80431E20FA4E805A11317BAE2D616C02"
+			],
+			"duration": 0.017694916576147079,
+			"dateTime": "2026.10.30-17.11.34",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "UnlimitedPounce",
+			"fullTestPath": "BadCatLab.Party.UnlimitedPounce",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"80431E20FA4E805A11317BAE2D616C02"
+			],
+			"duration": 0.015692498534917831,
+			"dateTime": "2026.10.30-17.11.34",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		}
+	]
+}

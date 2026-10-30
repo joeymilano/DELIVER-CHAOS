@@ -3,6 +3,7 @@
 #include "GameFramework/Character.h"
 #include "GameFramework/GameModeBase.h"
 #include "GameFramework/HUD.h"
+#include "GameFramework/SaveGame.h"
 #include "LabGame.generated.h"
 class UStaticMeshComponent;
 class USpringArmComponent;
@@ -12,6 +13,22 @@ class UFont;
 class UTexture2D;
 class UAnimSequence;
 class AStaticMeshActor;
+USTRUCT()
+struct FLabScoreRow {
+ GENERATED_BODY()
+ UPROPERTY() int32 Money=0;
+ UPROPERTY() FString Cat;
+ UPROPERTY() bool Perfect=false;
+};
+UCLASS()
+class BADCATLAB_API ULabProgress : public USaveGame {
+ GENERATED_BODY()
+public:
+ UPROPERTY() int32 Version=1;
+ UPROPERTY() int32 UnlockedMask=1;
+ UPROPERTY() int32 RecipesMask=0;
+ UPROPERTY() TArray<FLabScoreRow> Board;
+};
 USTRUCT()
 struct FLabChain {
  GENERATED_BODY()
@@ -26,6 +43,7 @@ public:
  UPROPERTY() UPhysicalMaterial* Physics;
  int32 PropId=0, ChainId=0, BaseScore=100, Bounces=0;
  bool Scored=false, Heavy=false, Mutated=false;
+ FString ItemName=TEXT("摆件"); FVector InitialPosition;
  void Configure(int32 Id,FVector Scale,FLinearColor Color,bool Ball,bool IsHeavy,bool Bounce);
  void Strike(int32 Chain,FVector Velocity);
  UFUNCTION() void Hit(UPrimitiveComponent* HitComp,AActor* Other,UPrimitiveComponent* OtherComp,FVector Impulse,const FHitResult& Result);
@@ -36,6 +54,7 @@ class BADCATLAB_API ALabCat : public ACharacter {
 public:
  ALabCat(); virtual void BeginPlay() override; virtual void Tick(float Dt) override;
  virtual void SetupPlayerInputComponent(UInputComponent* Input) override;
+ virtual void Landed(const FHitResult& Hit) override;
  UPROPERTY() USpringArmComponent* Arm;
  UPROPERTY() UCameraComponent* Camera;
  UPROPERTY() USceneComponent* Visual;
@@ -50,7 +69,12 @@ public:
  void Press(); void Release(); void Hop(); void Retry(); void Pause(); void ToggleHUD(); void ToggleCamera(); void Tutorial();
  void ResetCat(); void SetMutation(bool On);
  void ApplyIdentity(int32 CatIndex,bool Fused);
- void PickOne(); void PickTwo(); void PickThree(); void ConfirmSelection(); void OpenSelection();
+ void PickOne(); void PickTwo(); void PickThree(); void PickFour();
+ void PushStart(); void PushStop(); void ZoomStart(); void ZoomStop(); void Meow(); void ToggleShake(); void TogglePractice();
+ uint8 Traits=0; float BodyScale=1,MeshScale=1,MeshFloor=-30,ZoomTime=0,ZoomCooldown=0,MeowCooldown=0,AutoMeowCooldown=0,PushClock=0,FallSpeed=0,ImpactTime=0;
+ bool Pushing=false,Shake=true,ActionPounce=false; FVector ZoomDirection; TSet<int32> ZoomHit;
+ FVector AttackDirection() const; ALabProp* FindTarget(float Range,float Cone) const;
+ void Impact(bool Heavy); void TickInstincts(float Dt); void NoisePulse(bool Automatic=false); void ConfirmSelection(); void OpenSelection();
 };
 UCLASS()
 class BADCATLAB_API ALabGameMode : public AGameModeBase {
@@ -60,10 +84,24 @@ public:
  UPROPERTY() TArray<ALabProp*> Props;
  TMap<int32,FLabChain> Chains;
  int32 NextChain=1,Stage=0,Score=0,Best=0,Current=0,Pounces=3,Swipes=0,UsedPounces=0;
- float Remaining=45; bool Learned=false,Challenge=false,HideHUD=false;
+ float Remaining=60; bool Learned=false,Challenge=false,HideHUD=false;
  int32 SelectedCat=0,PartnerCat=1,RecipeId=INDEX_NONE;
  UPROPERTY() TArray<AStaticMeshActor*> PresentationCats;
  FString Quip; double QuipUntil=0;
+ UPROPERTY() ULabProgress* Progress;
+ UPROPERTY() ALabProp* PetCamera;
+ UPROPERTY() UStaticMeshComponent* CameraVision;
+ UPROPERTY() TMap<int32,AStaticMeshActor*> Discoveries;
+ int32 Suspicion=0,GoodCat=0; bool CameraBroken=false,PerfectCrime=false,CandySpilled=false,Recorded=false,Practice=false,NoSave=false;
+ float CameraClock=0,Exposure=0,CaughtCooldown=0,GoodCooldown=0,CameraFlash=0;
+ double SlowUntil=0; FVector WatchDirection; FString CameraCaption; FString PopText; FVector PopLocation; double PopUntil=0;
+ void LoadProgress(); void SaveProgress(); bool Unlocked(int32 Id) const; bool RecipeUnlocked(int32 Id) const;
+ void Discover(int32 Id,FVector Position); void CollectDiscoveries(); void ResetParty(); void TickCamera(float Dt);
+ bool CameraSees(FVector Position,const AActor* Target=nullptr) const; void CameraObservation(bool Bad,bool Innocent);
+ void DisableCamera(); void SpillCandy(FVector Origin,int32 Chain); void SpawnPartyProps(); void RadialSmash(FVector Origin,float Strength,float Radius);
+ void RecordRun(); void SetPractice(); void Speak(const TCHAR* Clip); void Lab(); void ClearDiscoveries();
+ uint8 CurrentTraits() const;
+
  bool BounceRule() const; bool ResonanceRule() const;
  void SelectCat(int32 Index); void ConfirmSelection(); void OpenSelection();
  void BeginFusionChoice(); void UpdatePresentation(); void SetMenuInput(bool Enabled);

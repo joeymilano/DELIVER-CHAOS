@@ -26,7 +26,7 @@ git push -u origin feature/short-description
 
 - `.uasset`、`.umap`、`.fbx`、`.glb` 是二进制文件，不适合逐行合并。同一个关卡或角色资产同一时间由一人修改；开始前在团队中确认负责人。
 - `.gitattributes` 已将这些资源标记为 binary，但这不是自动锁。遇到二进制冲突，保留两个分支，交由负责人在编辑器中重新整合；不要盲目覆盖。
-- 角色分别位于 `Content/Characters/Ahuai`、`Jutuan`、`Wumei`；道具位于 `Content/Art/Props`；代码位于 `Source/BadCatLab`。
+- 角色分别位于 `Content/Characters/Ahuai`、`Jutuan`、`Wumei`；基础道具位于 `Content/Art/Props`，派对道具位于 `Content/Art/Party`，音效位于 `Content/Audio`；代码位于 `Source/BadCatLab`。
 - 模型源文件保存在 `ArtSource`，已确认参考在 `ArtSource/References/Approved`。不要重新引入被否决的圆脸比例。
 - 不提交 `Binaries`、`Intermediate`、`Saved`、`DerivedDataCache`、`Builds`、个人 IDE 文件或账号密钥。
 - 当前使用普通 Git 保存素材，没有 LFS 指针。未来迁移 LFS 应全队协调，不能单方面重写共享历史。
