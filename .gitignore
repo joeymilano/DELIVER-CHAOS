@@ -9,3 +9,8 @@ Builds/
 
 Build/Mac/FileOpenOrder/
 Build/Mac/*.PackageVersionCounter
+
+# Rebuildable local Blender working files (sources and exporters remain tracked).
+ArtSource/**/*.blend
+ArtSource/**/*.blend1
+ArtSource/**/base_basic_shaded.glb

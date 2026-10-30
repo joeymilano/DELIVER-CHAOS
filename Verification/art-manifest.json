@@ -1,0 +1,143 @@
+[
+  {
+    "cat": "Ahuai",
+    "assets": {
+      "SM_Ahuai": {
+        "class": "StaticMesh",
+        "path": "/Game/Characters/Ahuai/SM_Ahuai.SM_Ahuai"
+      },
+      "SK_Ahuai": {
+        "class": "SkeletalMesh",
+        "path": "/Game/Characters/Ahuai/SK_Ahuai.SK_Ahuai"
+      },
+      "SK_Ahuai_Skeleton": {
+        "class": "Skeleton",
+        "path": "/Game/Characters/Ahuai/SK_Ahuai_Skeleton.SK_Ahuai_Skeleton"
+      },
+      "model": {
+        "class": "Material",
+        "path": "/Game/Characters/Ahuai/model.model"
+      },
+      "texture_diffuse": {
+        "class": "Texture2D",
+        "path": "/Game/Characters/Ahuai/texture_diffuse.texture_diffuse"
+      },
+      "texture_normal": {
+        "class": "Texture2D",
+        "path": "/Game/Characters/Ahuai/texture_normal.texture_normal"
+      },
+      "A_Idle": {
+        "class": "AnimSequence",
+        "path": "/Game/Characters/Ahuai/A_Idle.A_Idle",
+        "duration_seconds": 3.5833332538604736,
+        "skeleton": "/Game/Characters/Ahuai/SK_Ahuai_Skeleton.SK_Ahuai_Skeleton"
+      },
+      "A_Run": {
+        "class": "AnimSequence",
+        "path": "/Game/Characters/Ahuai/A_Run.A_Run",
+        "duration_seconds": 0.75,
+        "skeleton": "/Game/Characters/Ahuai/SK_Ahuai_Skeleton.SK_Ahuai_Skeleton"
+      },
+      "A_Walk": {
+        "class": "AnimSequence",
+        "path": "/Game/Characters/Ahuai/A_Walk.A_Walk",
+        "duration_seconds": 1.25,
+        "skeleton": "/Game/Characters/Ahuai/SK_Ahuai_Skeleton.SK_Ahuai_Skeleton"
+      }
+    }
+  },
+  {
+    "cat": "Jutuan",
+    "assets": {
+      "SM_Jutuan": {
+        "class": "StaticMesh",
+        "path": "/Game/Characters/Jutuan/SM_Jutuan.SM_Jutuan"
+      },
+      "SK_Jutuan": {
+        "class": "SkeletalMesh",
+        "path": "/Game/Characters/Jutuan/SK_Jutuan.SK_Jutuan"
+      },
+      "SK_Jutuan_Skeleton": {
+        "class": "Skeleton",
+        "path": "/Game/Characters/Jutuan/SK_Jutuan_Skeleton.SK_Jutuan_Skeleton"
+      },
+      "model": {
+        "class": "Material",
+        "path": "/Game/Characters/Jutuan/model.model"
+      },
+      "texture_diffuse": {
+        "class": "Texture2D",
+        "path": "/Game/Characters/Jutuan/texture_diffuse.texture_diffuse"
+      },
+      "texture_normal": {
+        "class": "Texture2D",
+        "path": "/Game/Characters/Jutuan/texture_normal.texture_normal"
+      },
+      "A_Idle": {
+        "class": "AnimSequence",
+        "path": "/Game/Characters/Jutuan/A_Idle.A_Idle",
+        "duration_seconds": 3.5833332538604736,
+        "skeleton": "/Game/Characters/Jutuan/SK_Jutuan_Skeleton.SK_Jutuan_Skeleton"
+      },
+      "A_Run": {
+        "class": "AnimSequence",
+        "path": "/Game/Characters/Jutuan/A_Run.A_Run",
+        "duration_seconds": 0.75,
+        "skeleton": "/Game/Characters/Jutuan/SK_Jutuan_Skeleton.SK_Jutuan_Skeleton"
+      },
+      "A_Walk": {
+        "class": "AnimSequence",
+        "path": "/Game/Characters/Jutuan/A_Walk.A_Walk",
+        "duration_seconds": 1.25,
+        "skeleton": "/Game/Characters/Jutuan/SK_Jutuan_Skeleton.SK_Jutuan_Skeleton"
+      }
+    }
+  },
+  {
+    "cat": "Wumei",
+    "assets": {
+      "SM_Wumei": {
+        "class": "StaticMesh",
+        "path": "/Game/Characters/Wumei/SM_Wumei.SM_Wumei"
+      },
+      "SK_Wumei": {
+        "class": "SkeletalMesh",
+        "path": "/Game/Characters/Wumei/SK_Wumei.SK_Wumei"
+      },
+      "SK_Wumei_Skeleton": {
+        "class": "Skeleton",
+        "path": "/Game/Characters/Wumei/SK_Wumei_Skeleton.SK_Wumei_Skeleton"
+      },
+      "model": {
+        "class": "Material",
+        "path": "/Game/Characters/Wumei/model.model"
+      },
+      "texture_diffuse": {
+        "class": "Texture2D",
+        "path": "/Game/Characters/Wumei/texture_diffuse.texture_diffuse"
+      },
+      "texture_normal": {
+        "class": "Texture2D",
+        "path": "/Game/Characters/Wumei/texture_normal.texture_normal"
+      },
+      "A_Idle": {
+        "class": "AnimSequence",
+        "path": "/Game/Characters/Wumei/A_Idle.A_Idle",
+        "duration_seconds": 3.5833332538604736,
+        "skeleton": "/Game/Characters/Wumei/SK_Wumei_Skeleton.SK_Wumei_Skeleton"
+      },
+      "A_Run": {
+        "class": "AnimSequence",
+        "path": "/Game/Characters/Wumei/A_Run.A_Run",
+        "duration_seconds": 0.75,
+        "skeleton": "/Game/Characters/Wumei/SK_Wumei_Skeleton.SK_Wumei_Skeleton"
+      },
+      "A_Walk": {
+        "class": "AnimSequence",
+        "path": "/Game/Characters/Wumei/A_Walk.A_Walk",
+        "duration_seconds": 1.25,
+        "skeleton": "/Game/Characters/Wumei/SK_Wumei_Skeleton.SK_Wumei_Skeleton"
+      }
+    }
+  }
+]

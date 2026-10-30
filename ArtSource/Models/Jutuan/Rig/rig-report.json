@@ -1,0 +1,61 @@
+{
+  "bones": [
+    "Hips",
+    "Spine",
+    "Spine1",
+    "Spine2",
+    "Spine3",
+    "Neck",
+    "Neck1",
+    "Head",
+    "Jaw",
+    "LeftShoulder",
+    "LeftArm",
+    "LeftForeArm",
+    "LeftFrontFoot",
+    "LeftFrontToeBase",
+    "RightShoulder",
+    "RightArm",
+    "RightForeArm",
+    "RightFrontFoot",
+    "RightFrontToeBase",
+    "Tail1",
+    "Tail2",
+    "Tail3",
+    "Tail4",
+    "Tail5",
+    "Tail6",
+    "LeftUpLeg",
+    "LeftLeg",
+    "LeftHindFoot",
+    "LeftHindToeBase",
+    "RightUpLeg",
+    "RightLeg",
+    "RightHindFoot",
+    "RightHindToeBase"
+  ],
+  "actions": [
+    [
+      "CanineIdle",
+      [
+        0.0,
+        85.5999984741211
+      ]
+    ],
+    [
+      "CanineRun",
+      [
+        0.0,
+        18.399999618530273
+      ]
+    ],
+    [
+      "CanineWalk",
+      [
+        0.0,
+        30.399999618530273
+      ]
+    ]
+  ],
+  "vertices": 54627
+}

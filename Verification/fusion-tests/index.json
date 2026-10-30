@@ -1,0 +1,74 @@
+﻿{
+	"devices": [
+		{
+			"deviceName": "MacBook-Pro.local",
+			"instance": "1C63AA05E848D8743B5CBD9ADE0A026B",
+			"instanceName": "MacBook-Pro.local-63247",
+			"platform": "MacEditor",
+			"oSVersion": "macOS 26.7.1 25G241",
+			"model": "Default",
+			"gPU": "Apple M5 Max",
+			"cPUModel": "Apple M5 Max",
+			"rAMInGB": 48,
+			"renderMode": "SM6",
+			"rHI": "",
+			"appInstanceLog": ""
+		}
+	],
+	"reportCreatedOn": "2026.10.30-14.56.14",
+	"succeeded": 3,
+	"succeededWithWarnings": 0,
+	"failed": 0,
+	"notRun": 0,
+	"inProcess": 0,
+	"totalDuration": 0.06527574360370636,
+	"comparisonExported": false,
+	"comparisonExportDirectory": "",
+	"tests": [
+		{
+			"testDisplayName": "ResonanceBudgetAndReset",
+			"fullTestPath": "BadCatLab.Fusion.ResonanceBudgetAndReset",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"1C63AA05E848D8743B5CBD9ADE0A026B"
+			],
+			"duration": 0.025729082524776459,
+			"dateTime": "2026.10.30-14.56.14",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "SelectionAndRules",
+			"fullTestPath": "BadCatLab.Fusion.SelectionAndRules",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"1C63AA05E848D8743B5CBD9ADE0A026B"
+			],
+			"duration": 0.017535373568534851,
+			"dateTime": "2026.10.30-14.56.14",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "UniqueAndCausal",
+			"fullTestPath": "BadCatLab.Scoring.UniqueAndCausal",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"1C63AA05E848D8743B5CBD9ADE0A026B"
+			],
+			"duration": 0.022011291235685349,
+			"dateTime": "2026.10.30-14.56.14",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		}
+	]
+}

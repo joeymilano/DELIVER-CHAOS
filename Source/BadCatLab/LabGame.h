@@ -9,10 +9,13 @@ class USpringArmComponent;
 class UCameraComponent;
 class UPhysicalMaterial;
 class UFont;
+class UTexture2D;
+class UAnimSequence;
+class AStaticMeshActor;
 USTRUCT()
 struct FLabChain {
  GENERATED_BODY()
- int32 Id=0; bool Pounce=false; double Last=0; TSet<int32> Members;
+ int32 Id=0; bool Pounce=false, Resonated=false; double Last=0; TSet<int32> Members;
 };
 UCLASS()
 class BADCATLAB_API ALabProp : public AActor {
@@ -38,10 +41,16 @@ public:
  UPROPERTY() USceneComponent* Visual;
  UPROPERTY() TArray<UStaticMeshComponent*> Paws;
  UPROPERTY() UStaticMeshComponent* Tail;
+ UPROPERTY() UStaticMeshComponent* HeroMesh;
+ UPROPERTY() TArray<UStaticMeshComponent*> FusionParts;
+ UPROPERTY() TArray<UAnimSequence*> Locomotion;
+ int32 ActiveAnimation=INDEX_NONE;
  float Charge=0, ActionTime=0, Idle=0; bool Charging=false, Innocent=false, FixedCamera=false;
  void Forward(float V); void Right(float V); void Turn(float V); void Look(float V);
  void Press(); void Release(); void Hop(); void Retry(); void Pause(); void ToggleHUD(); void ToggleCamera(); void Tutorial();
  void ResetCat(); void SetMutation(bool On);
+ void ApplyIdentity(int32 CatIndex,bool Fused);
+ void PickOne(); void PickTwo(); void PickThree(); void ConfirmSelection(); void OpenSelection();
 };
 UCLASS()
 class BADCATLAB_API ALabGameMode : public AGameModeBase {
@@ -52,7 +61,13 @@ public:
  TMap<int32,FLabChain> Chains;
  int32 NextChain=1,Stage=0,Score=0,Best=0,Current=0,Pounces=3,Swipes=0,UsedPounces=0;
  float Remaining=45; bool Learned=false,Challenge=false,HideHUD=false;
+ int32 SelectedCat=0,PartnerCat=1,RecipeId=INDEX_NONE;
+ UPROPERTY() TArray<AStaticMeshActor*> PresentationCats;
  FString Quip; double QuipUntil=0;
+ bool BounceRule() const; bool ResonanceRule() const;
+ void SelectCat(int32 Index); void ConfirmSelection(); void OpenSelection();
+ void BeginFusionChoice(); void UpdatePresentation(); void SetMenuInput(bool Enabled);
+ void TryResonate(ALabProp* Source,int32 Chain,FVector Direction);
  bool Playing() const {return Stage==0 || Stage==2;}
  int32 NewChain(bool Pounce); bool Active(int32 Id) const; void Affect(ALabProp* Prop,int32 Id);
  void StartRound(bool Bounce); void FinishRound(); void Retry(bool Full=false);
@@ -63,5 +78,7 @@ class BADCATLAB_API ALabHUD : public AHUD {
  GENERATED_BODY()
 public:
  UPROPERTY() UFont* ChineseFont = nullptr;
+ UPROPERTY() TArray<UTexture2D*> Portraits;
  virtual void DrawHUD() override;
+ virtual void NotifyHitBoxClick(FName BoxName) override;
 };

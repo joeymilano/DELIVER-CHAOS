@@ -1,0 +1,16 @@
+[
+  {
+    "cat": "Wumei",
+    "skeletal": false,
+    "assets": [
+      "/Game/Characters/Wumei/SM_Wumei.SM_Wumei"
+    ]
+  },
+  {
+    "cat": "Wumei",
+    "skeletal": true,
+    "assets": [
+      "/Game/Characters/Wumei/SK_Wumei.SK_Wumei"
+    ]
+  }
+]
