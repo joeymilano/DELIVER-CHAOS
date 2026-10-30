@@ -32,7 +32,7 @@ void ALabCat::NoisePulse(bool Automatic){
  auto G=Party(GetWorld());if(!G||!G->Playing()||!(Traits&CatTrait::Loud)||(Automatic?AutoMeowCooldown>0:MeowCooldown>0))return;MeowCooldown=1.4f;AutoMeowCooldown=.2f;Innocent=false;Idle=0;ActionTime=.2f;
  const int Chain=G->NewChain(false);const FVector Origin=GetActorLocation(),Dir=Automatic?ZoomDirection:AttackDirection();auto Copy=G->Props;int Count=0;
  for(auto P:Copy){if(!IsValid(P)||(P->Heavy&&!(Traits&CatTrait::Giant)))continue;FVector D=P->GetActorLocation()-Origin;if(D.Size()>230*BodyScale||FVector::DotProduct(D.GetSafeNormal2D(),Dir)<.45f)continue;P->Strike(Chain,D.GetSafeNormal()*650+FVector(0,0,160));if(++Count>=8)break;}
- DrawDebugCone(GetWorld(),Origin,Dir,230*BodyScale,.8f,.5f,20,FColor(90,210,230),false,.35f,0,3);G->Quip=TEXT("喵——！这屋需要一点低音。");G->QuipUntil=GetWorld()->GetTimeSeconds()+1.5;G->Speak(TEXT("Meow"));
+ DrawDebugCone(GetWorld(),Origin,Dir,230*BodyScale,.8f,.5f,20,FColor(90,210,230),false,.35f,0,3);G->Quip=TEXT("听见了吧。");G->QuipUntil=GetWorld()->GetTimeSeconds()+1.5;G->Speak(TEXT("Meow"));
 }
 void ALabCat::Landed(const FHitResult& Hit){Super::Landed(Hit);auto G=Party(GetWorld());if(G&&G->Playing()&&(Traits&CatTrait::Heavy)&&FallSpeed>230){G->RadialSmash(GetActorLocation(),FMath::Clamp(FallSpeed,350.f,1000.f)*BodyScale,160*BodyScale);Impact(true);}FallSpeed=0;}
 void ALabCat::Impact(bool Heavy){auto G=Party(GetWorld());if(!G)return;ImpactTime=.13f;G->Speak(Heavy?TEXT("Thud"):TEXT("Clink"));G->SlowUntil=FPlatformTime::Seconds()+(Heavy?.18:.05);UGameplayStatics::SetGlobalTimeDilation(GetWorld(),Heavy?.35f:.08f);}
@@ -61,14 +61,14 @@ bool ALabGameMode::RecipeUnlocked(int32 Id) const{if(Id<0||Id>=6)return false;if
 uint8 ALabGameMode::CurrentTraits() const{return RecipeId>=0?LabCatalog::Recipe(RecipeId).Traits:LabCatalog::Cat(SelectedCat).Traits;}
 void ALabGameMode::ClearDiscoveries(){for(auto& Pair:Discoveries)if(IsValid(Pair.Value))Pair.Value->Destroy();Discoveries.Empty();}
 void ALabGameMode::Discover(int32 Id,FVector Pos){
- if(Unlocked(Id)||Discoveries.Contains(Id))return;auto M=LoadObject<UStaticMesh>(nullptr,LabCatalog::Cat(Id).Mesh);if(!M)return;auto A=GetWorld()->SpawnActor<AStaticMeshActor>(Pos,FRotator(0,-90,0));auto C=A->GetStaticMeshComponent();C->SetMobility(EComponentMobility::Movable);C->SetStaticMesh(M);C->SetCollisionEnabled(ECollisionEnabled::NoCollision);C->SetWorldScale3D(FVector(35.f/FMath::Max(1.f,M->GetBoundingBox().GetSize().Z)));Discoveries.Add(Id,A);Quip=TEXT("藏着一只猫！走近把它带回实验室。");QuipUntil=GetWorld()->GetTimeSeconds()+4;
+ if(Unlocked(Id)||Discoveries.Contains(Id))return;auto M=LoadObject<UStaticMesh>(nullptr,LabCatalog::Cat(Id).Mesh);if(!M)return;auto A=GetWorld()->SpawnActor<AStaticMeshActor>(Pos,FRotator(0,-90,0));auto C=A->GetStaticMeshComponent();C->SetMobility(EComponentMobility::Movable);C->SetStaticMesh(M);C->SetCollisionEnabled(ECollisionEnabled::NoCollision);C->SetWorldScale3D(FVector(35.f/FMath::Max(1.f,M->GetBoundingBox().GetSize().Z)));Discoveries.Add(Id,A);Quip=TEXT("这里还藏了一只！靠近它，就能带回去。");QuipUntil=GetWorld()->GetTimeSeconds()+4;
 }
 void ALabGameMode::CollectDiscoveries(){auto Cat=UGameplayStatics::GetPlayerPawn(GetWorld(),0);if(!Cat||!Progress)return;TArray<int32> Done;
  for(auto& Pair:Discoveries){auto A=Pair.Value;if(!IsValid(A))continue;A->AddActorWorldRotation(FRotator(0,60*GetWorld()->GetDeltaSeconds(),0));DrawDebugCircle(GetWorld(),A->GetActorLocation(),32,20,FColor::Orange,false,0,0,2,FVector::ForwardVector,FVector::RightVector,false);
- if(FVector::Dist(A->GetActorLocation(),Cat->GetActorLocation())<125){Progress->UnlockedMask|=1<<Pair.Key;Quip=FString::Printf(TEXT("发现 %s！本机图鉴已解锁。"),LabCatalog::Cat(Pair.Key).Name);QuipUntil=GetWorld()->GetTimeSeconds()+4;A->Destroy();Done.Add(Pair.Key);}}
+ if(FVector::Dist(A->GetActorLocation(),Cat->GetActorLocation())<125){Progress->UnlockedMask|=1<<Pair.Key;Quip=FString::Printf(TEXT("%s 跟你走了。下次可以选它，也可以合成。"),LabCatalog::Cat(Pair.Key).Name);QuipUntil=GetWorld()->GetTimeSeconds()+4;A->Destroy();Done.Add(Pair.Key);}}
  if(Done.Num()){for(int I:Done)Discoveries.Remove(I);SaveProgress();}
 }
-void ALabGameMode::ResetParty(){Suspicion=GoodCat=0;CameraBroken=PerfectCrime=CandySpilled=false;Exposure=CaughtCooldown=GoodCooldown=CameraFlash=CameraClock=0;CameraCaption=TEXT("宠物摄像头在线 / 躲开红色视野");PetCamera=nullptr;CameraVision=nullptr;}
+void ALabGameMode::ResetParty(){Suspicion=GoodCat=0;CameraBroken=PerfectCrime=CandySpilled=false;Exposure=CaughtCooldown=GoodCooldown=CameraFlash=CameraClock=0;CameraCaption=TEXT("");PetCamera=nullptr;CameraVision=nullptr;}
 void ALabGameMode::SpawnPartyProps(){
  auto Spawn=[&](int Id,FVector Pos,FVector Scale,FLinearColor Color,const TCHAR* Name,int Price,bool Ball=false){auto P=GetWorld()->SpawnActor<ALabProp>(Pos,FRotator::ZeroRotator);P->Configure(Id,Scale,Color,Ball,false,false);P->ItemName=Name;P->BaseScore=Price;Props.Add(P);return P;};
  auto Box=Spawn(18,FVector(-140,150,23),FVector(.6,.55,.45),FLinearColor(.48,.28,.1),TEXT("快递纸箱"),12);Box->Body->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Game/Art/Party/SM_Parcel")));
@@ -91,19 +91,19 @@ void ALabGameMode::SpawnPartyProps(){
  auto Stand=GetWorld()->SpawnActor<AStaticMeshActor>(FVector(310,-245,80),FRotator::ZeroRotator);auto C=Stand->GetStaticMeshComponent();C->SetMobility(EComponentMobility::Movable);C->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Cylinder")));C->SetWorldScale3D(FVector(.10,.10,.45));C->SetCollisionProfileName(TEXT("NoCollision"));Colorize(C,FLinearColor(.05,.05,.05));PresentationCats.Add(Stand);
 }
 void ALabGameMode::SpillCandy(FVector Origin,int32 Chain){
- if(CandySpilled)return;CandySpilled=true;for(auto P:Props)if(IsValid(P)&&P->PropId==19){TArray<AActor*> Attached;P->GetAttachedActors(Attached);for(auto A:Attached)if(IsValid(A))A->SetActorHiddenInGame(true);}Quip=TEXT("弹弹糖洒了！轻物件暂时不讲物理。");QuipUntil=GetWorld()->GetTimeSeconds()+3;
+ if(CandySpilled)return;CandySpilled=true;for(auto P:Props)if(IsValid(P)&&P->PropId==19){TArray<AActor*> Attached;P->GetAttachedActors(Attached);for(auto A:Attached)if(IsValid(A))A->SetActorHiddenInGame(true);}Quip=TEXT("糖果撒了。小东西开始满屋乱弹！");QuipUntil=GetWorld()->GetTimeSeconds()+3;
  for(auto P:Props)if(IsValid(P)&&!P->Heavy&&P!=PetCamera){P->Mutated=true;P->Physics->Restitution=.82f;P->Body->SetPhysMaterialOverride(P->Physics);}
  for(int I=0;I<24;I++){FVector D=FVector(FMath::Cos(I*2.4f),FMath::Sin(I*2.4f),.8f);auto P=GetWorld()->SpawnActor<ALabProp>(Origin+D*(20+I%3*7),FRotator::ZeroRotator);P->Configure(100+I,FVector(.07,.05,.05),I%2?FLinearColor(1,.2,.02):FLinearColor(.5,.05,.7),true,false,true);P->Body->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Game/Art/Party/SM_Candy")));P->ItemName=TEXT("糖果");P->BaseScore=2;P->ChainId=Chain;P->Body->SetMassOverrideInKg(NAME_None,.08f);P->Body->AddImpulse(D*260,NAME_None,true);Props.Add(P);}
 }
-void ALabGameMode::RadialSmash(FVector Origin,float Strength,float Radius){int Id=NewChain(false);auto Copy=Props;for(auto P:Copy)if(IsValid(P)&&FVector::Dist(P->GetActorLocation(),Origin)<Radius){FVector D=(P->GetActorLocation()-Origin).GetSafeNormal2D();P->Strike(Id,D*Strength+FVector(0,0,Strength*.5f));}DrawDebugCircle(GetWorld(),Origin,Radius,40,FColor::Orange,false,.4f,0,5,FVector::ForwardVector,FVector::RightVector,false);Quip=TEXT("橘座落地，家具退场。");QuipUntil=GetWorld()->GetTimeSeconds()+2;}
+void ALabGameMode::RadialSmash(FVector Origin,float Strength,float Radius){int Id=NewChain(false);auto Copy=Props;for(auto P:Copy)if(IsValid(P)&&FVector::Dist(P->GetActorLocation(),Origin)<Radius){FVector D=(P->GetActorLocation()-Origin).GetSafeNormal2D();P->Strike(Id,D*Strength+FVector(0,0,Strength*.5f));}DrawDebugCircle(GetWorld(),Origin,Radius,40,FColor::Orange,false,.4f,0,5,FVector::ForwardVector,FVector::RightVector,false);Quip=TEXT("我就坐一下。");QuipUntil=GetWorld()->GetTimeSeconds()+2;}
 bool ALabGameMode::CameraSees(FVector Position,const AActor* Target) const{
  if(CameraBroken||!IsValid(PetCamera))return false;const FVector Origin=PetCamera->GetActorLocation()+WatchDirection*20,D=Position-Origin;if(D.Size()>700||FVector::DotProduct(D.GetSafeNormal(),WatchDirection)<FMath::Cos(FMath::DegreesToRadians(38.f)))return false;
  FHitResult H;FCollisionQueryParams Q;Q.AddIgnoredActor(PetCamera);bool Blocked=GetWorld()->LineTraceSingleByChannel(H,Origin,Position,ECC_Visibility,Q);return !Blocked||H.GetActor()==Target;
 }
 void ALabGameMode::CameraObservation(bool Bad,bool IsInnocent){
  if(CameraBroken)return;
- if(IsInnocent&&GoodCooldown<=0&&GoodCat<3){GoodCat++;Suspicion=FMath::Max(0,Suspicion-1);GoodCooldown=8;CameraCaption=TEXT("主人：还是我家咪咪最乖。 / 乖猫认证 +1");Speak(TEXT("OwnerGood"));}
- else if(Bad&&!IsInnocent&&CaughtCooldown<=0){Suspicion=FMath::Min(5,Suspicion+1);CaughtCooldown=3;CameraFlash=.8f;if(!Practice)Remaining=FMath::Max(0.f,Remaining-3);CameraCaption=TEXT("咪咪！你在干嘛！ / 嫌疑 +1，主人提前 3 秒到家");Speak(TEXT("OwnerCaught"));}
+ if(IsInnocent&&GoodCooldown<=0&&GoodCat<3){GoodCat++;Suspicion=FMath::Max(0,Suspicion-1);GoodCooldown=8;CameraCaption=TEXT("“还是我家咪咪最乖。”  装乖成功。");Speak(TEXT("OwnerGood"));}
+ else if(Bad&&!IsInnocent&&CaughtCooldown<=0){Suspicion=FMath::Min(5,Suspicion+1);CaughtCooldown=3;CameraFlash=.8f;if(!Practice)Remaining=FMath::Max(0.f,Remaining-3);CameraCaption=Practice?TEXT("“咪咪！你在干嘛！”  嫌疑加一。"):TEXT("“咪咪！你在干嘛！”  主人提前 3 秒回家。");Speak(TEXT("OwnerCaught"));}
 }
 void ALabGameMode::TickCamera(float Dt){
  CaughtCooldown=FMath::Max(0.f,CaughtCooldown-Dt);GoodCooldown=FMath::Max(0.f,GoodCooldown-Dt);CameraFlash=FMath::Max(0.f,CameraFlash-Dt);if(CameraBroken||!IsValid(PetCamera))return;CameraClock+=Dt;
@@ -114,7 +114,7 @@ void ALabGameMode::TickCamera(float Dt){
  if(CatSeen&&(Cat->Charging||Cat->Pushing||Cat->ZoomTime>0||Cat->ActionTime>0))Bad=true;
  Exposure=(CatSeen||Bad)?Exposure+Dt:0;if(Exposure>.3f)CameraObservation(Bad,CatSeen&&Cat->Innocent);
 }
-void ALabGameMode::DisableCamera(){if(CameraBroken)return;CameraBroken=true;PerfectCrime=true;if(IsValid(CameraVision))CameraVision->SetVisibility(false);Speak(TEXT("CameraOff"));if(IsValid(PetCamera)){PetCamera->Body->SetSimulatePhysics(true);PetCamera->Body->AddImpulse(FVector(-300,150,80),NAME_None,true);}CameraCaption=TEXT("监控信号丢失 / 完美犯罪");Quip=TEXT("摄像头：已下线。现在，随便拆。");QuipUntil=GetWorld()->GetTimeSeconds()+4;}
+void ALabGameMode::DisableCamera(){if(CameraBroken)return;CameraBroken=true;PerfectCrime=true;if(IsValid(CameraVision))CameraVision->SetVisibility(false);Speak(TEXT("CameraOff"));if(IsValid(PetCamera)){PetCamera->Body->SetSimulatePhysics(true);PetCamera->Body->AddImpulse(FVector(-300,150,80),NAME_None,true);}CameraCaption=TEXT("监控断了。刚才那段，应该没存下来。");Quip=TEXT("它看不见了。继续。");QuipUntil=GetWorld()->GetTimeSeconds()+4;}
 void ALabGameMode::RecordRun(){if(Recorded||Practice||!Progress)return;Recorded=true;FLabScoreRow R;R.Money=Score;R.Cat=RecipeId>=0?LabCatalog::Recipe(RecipeId).Name:LabCatalog::Cat(SelectedCat).Name;R.Perfect=PerfectCrime;Progress->Board.Add(R);Progress->Board.StableSort([](const FLabScoreRow& A,const FLabScoreRow& B){return A.Money>B.Money;});if(Progress->Board.Num()>5)Progress->Board.SetNum(5);SaveProgress();}
 void ALabGameMode::Speak(const TCHAR* Clip){if(auto Sound=LoadObject<USoundBase>(nullptr,*FString::Printf(TEXT("/Game/Audio/%s"),Clip)))UGameplayStatics::PlaySound2D(GetWorld(),Sound,.8f);}
 void ALabGameMode::SetPractice(){if(Stage==4)Practice=!Practice;}

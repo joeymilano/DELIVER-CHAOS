@@ -116,7 +116,9 @@ class BADCATLAB_API ALabHUD : public AHUD {
  GENERATED_BODY()
 public:
  UPROPERTY() UFont* ChineseFont = nullptr;
+ UPROPERTY() UFont* ChineseBoldFont = nullptr;
  UPROPERTY() TArray<UTexture2D*> Portraits;
  virtual void DrawHUD() override;
  virtual void NotifyHitBoxClick(FName BoxName) override;
+ int32 LastStage=INDEX_NONE; double StageEnteredAt=0, CaptionVisibleUntil=0; FString LastCaption;
 };

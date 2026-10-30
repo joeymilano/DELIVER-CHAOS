@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 namespace CatTrait { constexpr uint8 Wild=1, Heavy=2, Loud=4, Giant=8; }
 struct FLabCatDefinition {
- const TCHAR* Name; const TCHAR* Breed; const TCHAR* Motto; const TCHAR* Portrait; const TCHAR* Mesh;
+ const TCHAR* Name; const TCHAR* Breed; const TCHAR* Motto; const TCHAR* Ability; const TCHAR* Portrait; const TCHAR* Mesh;
  FLinearColor Color; float Speed; float Jump; float Swipe; uint8 Traits;
 };
 struct FLabRecipe {

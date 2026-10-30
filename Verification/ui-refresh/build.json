@@ -1,0 +1,35 @@
+{
+  "recorded_at": "2026-10-31T02:36:47.587085+08:00",
+  "package": "Builds/Mac/BadCatLab.app",
+  "build_seconds": 90.27,
+  "build_exit_code": 0,
+  "executable_sha256": "ba8019aeb0216fef752c277d6e3ec4d9a41066e65b2fdf6e4a5025e2385591b8",
+  "tests": {
+    "succeeded": 8,
+    "failed": 0,
+    "succeededWithWarnings": 0,
+    "reportCreatedOn": "2026.10.30-18.35.19"
+  },
+  "font_assets_packaged": true,
+  "human_writing": "SKILL.md + formats.md + fiction.md + revision.md; UI prose checker has zero hard violations. Prose-length warnings reviewed as inapplicable to short interface labels.",
+  "visual_checks": [
+    "1280x720 selection, fusion choice, hidden recipe, fusion transition, HUD, pause",
+    "1024x768 itemized receipt: 399 + 329 + 89 = 817",
+    "1440x600 zero-damage receipt, no overlap observed"
+  ],
+  "keyboard_checks": [
+    "1-4 select cats and partners",
+    "Enter advances selection and starts valid fusion",
+    "Enter on locked combination does not start fusion",
+    "Space in lab enters solo round",
+    "Esc pauses and resumes",
+    "V toggles shake while paused",
+    "Tab returns to selection"
+  ],
+  "preview_data": "Development UIReview + NoSave only. Four-cat collection and generated receipts are test fixtures, not player progress.",
+  "limits": [
+    "Real mouse interaction remains unverified; native automation previously reports stale pointer coordinates.",
+    "No new first-time-player comprehension study.",
+    "Art/animation/lighting quality outside this UI change remains unfinished."
+  ]
+}
