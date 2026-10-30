@@ -4,7 +4,7 @@ const FLabCatDefinition& LabCatalog::Cat(int32 I){
  {TEXT("阿坏"),TEXT("奶牛 / 疯"),TEXT("暴冲撞上东西，会弹开。"),TEXT("/Game/UI/Cats/T_Ahuai"),TEXT("/Game/Characters/Ahuai/SM_Ahuai"),FLinearColor(.9,.83,.72),340,440,480,CatTrait::Wild},
  {TEXT("橘团"),TEXT("橘猫 / 重"),TEXT("跳得越高，落地越有分量。"),TEXT("/Game/UI/Cats/T_Jutuan"),TEXT("/Game/Characters/Jutuan/SM_Jutuan"),FLinearColor(1,.32,.07),310,560,520,CatTrait::Heavy},
  {TEXT("乌梅"),TEXT("黑猫 / 吵"),TEXT("按 Q 喵一声，前方一起遭殃。"),TEXT("/Game/UI/Cats/T_Wumei"),TEXT("/Game/Characters/Wumei/SM_Wumei"),FLinearColor(.045,.055,.075),350,440,460,CatTrait::Loud},
- {TEXT("大福"),TEXT("缅因 / 大"),TEXT("体型 1.8 倍，连电视也能推。"),TEXT("/Game/UI/Cats/T_Ahuai"),TEXT("/Game/Characters/Ahuai/SM_Ahuai"),FLinearColor(.5,.43,.36),300,440,850,CatTrait::Giant}
+ {TEXT("大福"),TEXT("缅因 / 大"),TEXT("体型 1.8 倍，连电视也能推。"),TEXT("/Game/UI/Cats/T_Dafu"),TEXT("/Game/Characters/Dafu/SM_Dafu"),FLinearColor(.5,.43,.36),300,440,850,CatTrait::Giant}
  };return C[FMath::Clamp(I,0,CatCount-1)];
 }
 int32 LabCatalog::RecipeFor(int32 A,int32 B){if(A<0||B<0||A>=CatCount||B>=CatCount||A==B)return INDEX_NONE;const int M=(1<<A)|(1<<B);return M==3?0:M==5?1:M==6?2:M==10?3:M==12?4:5;}

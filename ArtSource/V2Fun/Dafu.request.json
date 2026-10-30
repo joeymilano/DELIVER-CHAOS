@@ -1,0 +1,14 @@
+{
+  "asset": "Dafu",
+  "expected_credits": 42,
+  "request": {
+    "model": "pro",
+    "with_texture": true,
+    "hd_texture": false,
+    "pbr_texture": true,
+    "options": {
+      "block": false
+    }
+  },
+  "reference_file": "ArtSource/References/Generated/dafu-v1.png"
+}

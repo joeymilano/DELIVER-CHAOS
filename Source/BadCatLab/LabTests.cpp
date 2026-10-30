@@ -72,9 +72,9 @@ IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabResetTest,"BadCatLab.Party.TwentyRoundReset
 bool FLabResetTest::RunTest(const FString&){
  FPartyWorld F;auto G=F.G;
  for(int Round=0;Round<20;Round++){
-  G->RecipeId=Round%2?2:1;G->StartRound(true);TestEqual(TEXT("Each round starts with 24 props"),G->Props.Num(),24);
+  G->RecipeId=Round%2?2:1;G->StartRound(true);TestEqual(TEXT("Each round starts with 25 props"),G->Props.Num(),25);
   ALabProp* Bowl=nullptr;for(auto P:G->Props)if(P->PropId==19)Bowl=P;
-  TestNotNull(TEXT("Candy bowl exists"),Bowl);if(!Bowl)return false;int C=G->NewChain(true);G->Affect(Bowl,C);TestEqual(TEXT("Bowl releases exactly 24 candies"),G->Props.Num(),48);G->Affect(Bowl,G->NewChain(false));TestEqual(TEXT("Bowl cannot duplicate candies"),G->Props.Num(),48);
+  TestNotNull(TEXT("Candy bowl exists"),Bowl);if(!Bowl)return false;int C=G->NewChain(true);G->Affect(Bowl,C);TestEqual(TEXT("Bowl releases exactly 24 candies"),G->Props.Num(),49);G->Affect(Bowl,G->NewChain(false));TestEqual(TEXT("Bowl cannot duplicate candies"),G->Props.Num(),49);
   G->DisableCamera();G->Suspicion=4;G->OpenSelection();TestEqual(TEXT("Reset clears all props"),G->Props.Num(),0);TestEqual(TEXT("Reset clears all presentation actors"),G->PresentationCats.Num(),0);TestEqual(TEXT("Reset clears money"),G->Score,0);TestEqual(TEXT("Reset clears chains"),G->Chains.Num(),0);TestEqual(TEXT("Reset clears suspicion"),G->Suspicion,0);TestFalse(TEXT("Reset restores camera"),G->CameraBroken);TestFalse(TEXT("Reset clears candy rule"),G->CandySpilled);TestEqual(TEXT("Reset restores time scale"),UGameplayStatics::GetGlobalTimeDilation(F.W),1.f);
  }
  return true;

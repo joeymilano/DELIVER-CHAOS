@@ -1,0 +1,18 @@
+[
+  {
+    "asset": "/Game/Characters/Dafu/SM_Dafu.SM_Dafu",
+    "class": "StaticMesh"
+  },
+  {
+    "asset": "/Game/Characters/Dafu/SK_Dafu.SK_Dafu",
+    "class": "SkeletalMesh"
+  },
+  {
+    "asset": "/Game/Art/V2Fun/PetCamera/SM_PetCamera.SM_PetCamera",
+    "class": "StaticMesh"
+  },
+  {
+    "asset": "/Game/Art/V2Fun/HalloweenCakeV2/SM_HalloweenCakeV2.SM_HalloweenCakeV2",
+    "class": "StaticMesh"
+  }
+]

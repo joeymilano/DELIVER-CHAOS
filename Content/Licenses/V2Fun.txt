@@ -1,0 +1,5 @@
+DELIVER CHAOS / 合成大坏猫 — V2Fun asset attribution
+
+PetCamera, HalloweenCakeV2 and Dafu material assets generated using V2Fun (https://v2fun.art/), 2026-10-31. Prompts, original reference art, optimization, material adaptation and game integration by the DELIVER CHAOS project.
+
+Conservative attribution retained under CC BY 4.0: https://creativecommons.org/licenses/by/4.0/ . Provider terms: https://v2fun.art/agreement/terms-of-use section 6.3. Paid-plan ownership has not been inferred from gifted API credits. Existing Hyper3D mesh and animation sources retain their separate applicable terms.

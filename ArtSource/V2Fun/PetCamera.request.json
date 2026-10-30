@@ -1,0 +1,14 @@
+{
+  "asset": "PetCamera",
+  "expected_credits": 42,
+  "request": {
+    "model": "pro",
+    "with_texture": true,
+    "hd_texture": false,
+    "pbr_texture": true,
+    "options": {
+      "block": false
+    },
+    "prompt": "One premium stylized home pet surveillance camera, entire freestanding object. A rounded warm ivory ceramic-like plastic oval robot head on a small swivel neck and stable circular sand beige base. Large glossy black circular camera lens facing forward, concentric dark glass lens details, one tiny orange recording LED, discreet speaker perforations beneath lens. Subtle cat-ear silhouette at top, sleek friendly Japanese home product design. Cream #F3EBDD body, charcoal #222323 glass, tiny safety orange #FF6A2B accent ring. Clean functional recognizable form, physically plausible manufactured bevels and seams, gently used matte surface, polished stylized game prop, no lettering no logos no ground no extra objects. Separate readable head and pedestal in one unified asset."
+  }
+}

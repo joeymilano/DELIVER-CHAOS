@@ -14,3 +14,8 @@ Build/Mac/*.PackageVersionCounter
 ArtSource/**/*.blend
 ArtSource/**/*.blend1
 ArtSource/**/base_basic_shaded.glb
+
+# Raw AI downloads and duplicated FBX texture folders stay local.
+ArtSource/V2Fun/**/Raw/
+ArtSource/V2Fun/**/*.fbm/
+__pycache__/

@@ -1,0 +1,45 @@
+{
+  "asset": "Dafu",
+  "source_triangles": 498522,
+  "game_triangles": 32000,
+  "materials": [
+    "M_Dafu_0"
+  ],
+  "textures": [
+    {
+      "file": "T_Dafu_0.png",
+      "original_size": [
+        3072,
+        3072
+      ],
+      "game_size": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "file": "T_Dafu_1.png",
+      "original_size": [
+        3072,
+        3072
+      ],
+      "game_size": [
+        2048,
+        2048
+      ]
+    }
+  ],
+  "source_bounds": [
+    [
+      -0.3164644241333008,
+      -0.9000000357627869,
+      -0.6464380621910095
+    ],
+    [
+      0.3164644241333008,
+      0.9000000357627869,
+      0.6464380621910095
+    ]
+  ],
+  "armatures": 0
+}
