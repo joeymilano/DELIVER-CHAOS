@@ -101,7 +101,7 @@ void ALabGameMode::CameraObservation(bool Bad,bool IsInnocent){
 void ALabGameMode::TickCamera(float Dt){
  CaughtCooldown=FMath::Max(0.f,CaughtCooldown-Dt);GoodCooldown=FMath::Max(0.f,GoodCooldown-Dt);CameraFlash=FMath::Max(0.f,CameraFlash-Dt);if(CameraBroken||!IsValid(PetCamera))return;CameraClock+=Dt;
  const FRotator Aim(-15,145+FMath::Sin(CameraClock*.65f)*58,0);WatchDirection=Aim.Vector();PetCamera->SetActorRotation(Aim);const FVector O=PetCamera->GetActorLocation()+WatchDirection*20;
- 
+
  auto Cat=Cast<ALabCat>(UGameplayStatics::GetPlayerPawn(GetWorld(),0));if(!Cat)return;bool CatSeen=CameraSees(Cat->GetActorLocation(),Cat);bool Bad=false;
  for(auto P:Props)if(IsValid(P)&&P!=PetCamera&&P->Scored&&P->Body->GetPhysicsLinearVelocity().Size()>35&&CameraSees(P->GetActorLocation(),P)){Bad=true;break;}
  if(CatSeen&&(Cat->Charging||Cat->Pushing||Cat->ZoomTime>0||Cat->ActionTime>0))Bad=true;
