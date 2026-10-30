@@ -1,4 +1,4 @@
-# BAD CAT LAB — 坏猫不讲物理
+# 合成大坏猫
 
 2026-10-30 开赛后创建的 Unreal 5.8.4 原型工程。第一提交为真实本机提交时间，无倒签。此前概念与文档在相邻 Preproduction 目录，未作为参赛代码提交。
 
@@ -29,4 +29,6 @@
 3. 打开 BadCatLab.uproject，在 LivingRoom 中 Play。
 4. Automation 测试名：BadCatLab.Scoring.UniqueAndCausal。
 
-来源：当前只有 Unreal Engine 内置基础形状与自编程序；没有使用来源不明素材。Python 仅用于编辑器生成资产，不参与打包后玩法。
+来源：模型使用 Unreal Engine 内置基础形状；程序自行编写。中文字体使用引擎附带的 DroidSansFallback，许可副本保存在 Content/UI/Fonts/LICENSE.txt。Python 仅用于编辑器生成资产，不参与打包后玩法。
+
+界面以简体中文为主；内置中文字体随应用打包。BadCatLab 为工程内部标识。

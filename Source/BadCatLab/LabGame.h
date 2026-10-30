@@ -8,6 +8,7 @@ class UStaticMeshComponent;
 class USpringArmComponent;
 class UCameraComponent;
 class UPhysicalMaterial;
+class UFont;
 USTRUCT()
 struct FLabChain {
  GENERATED_BODY()
@@ -61,5 +62,6 @@ UCLASS()
 class BADCATLAB_API ALabHUD : public AHUD {
  GENERATED_BODY()
 public:
+ UPROPERTY() UFont* ChineseFont = nullptr;
  virtual void DrawHUD() override;
 };

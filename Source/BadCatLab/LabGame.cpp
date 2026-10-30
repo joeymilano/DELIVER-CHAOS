@@ -14,6 +14,8 @@
 #include "Components/LightComponent.h"
 #include "Components/SkyLightComponent.h"
 #include "Engine/Canvas.h"
+#include "Engine/Font.h"
+#include "Misc/Paths.h"
 #include "Engine/Engine.h"
 #include "Kismet/GameplayStatics.h"
 #include "DrawDebugHelpers.h"
@@ -106,21 +108,21 @@ void ALabGameMode::StartRound(bool Bounce){for(auto P:Props)if(IsValid(P))P->Des
 void ALabGameMode::Retry(bool Full){Score=Best=Swipes=UsedPounces=0;Quip.Empty();if(Full)Learned=false;StartRound(Learned);}
 int32 ALabGameMode::NewChain(bool Big){FLabChain C;C.Id=NextChain++;C.Pounce=Big;C.Last=GetWorld()->GetTimeSeconds();Chains.Add(C.Id,C);return C.Id;}
 bool ALabGameMode::Active(int32 Id) const {const auto C=Chains.Find(Id);return C&&GetWorld()->GetTimeSeconds()-C->Last<=2.5;}
-void ALabGameMode::Affect(ALabProp* P,int32 Id){auto C=Chains.Find(Id);if(!Playing()||!C||!Active(Id)||C->Members.Contains(P->PropId))return;C->Members.Add(P->PropId);C->Last=GetWorld()->GetTimeSeconds();int32 N=C->Members.Num();Current=N;Best=FMath::Max(Best,N);if(!P->Scored){P->Scored=true;Score+=P->BaseScore*FMath::Min(N,5);}if(Stage==2&&C->Pounce&&N>=5&&!Challenge){Challenge=true;Score+=500;Quip=TEXT("ONE POUNCE. FIVE VICTIMS.");QuipUntil=C->Last+3;}if(P->PropId==15){Paint(P->Body,Orange);Quip=TEXT("SIGNAL HIJACKED BY CAT.");QuipUntil=C->Last+3;}}
+void ALabGameMode::Affect(ALabProp* P,int32 Id){auto C=Chains.Find(Id);if(!Playing()||!C||!Active(Id)||C->Members.Contains(P->PropId))return;C->Members.Add(P->PropId);C->Last=GetWorld()->GetTimeSeconds();int32 N=C->Members.Num();Current=N;Best=FMath::Max(Best,N);if(!P->Scored){P->Scored=true;Score+=P->BaseScore*FMath::Min(N,5);}if(Stage==2&&C->Pounce&&N>=5&&!Challenge){Challenge=true;Score+=500;Quip=TEXT("一扑五件！这爪有点东西。");QuipUntil=C->Last+3;}if(P->PropId==15){Paint(P->Body,Orange);Quip=TEXT("信号已被猫接管。");QuipUntil=C->Last+3;}}
 void ALabGameMode::FinishRound(){Score+=Pounces*150;Chains.Empty();Current=0;for(auto P:Props)P->Body->SetSimulatePhysics(false);if(Stage==0){Stage=1;Remaining=8;Learned=true;}else{Stage=3;Remaining=0;}}
 void ALabGameMode::Tick(float Dt){Super::Tick(Dt);if(Playing()){Remaining=FMath::Max(0.f,Remaining-Dt);Current=0;for(auto& Pair:Chains)if(Active(Pair.Key))Current=FMath::Max(Current,Pair.Value.Members.Num());if(Remaining<=0)FinishRound();}else if(Stage==1){Remaining-=Dt;if(Remaining<=0)StartRound(true);}}
-void ALabHUD::DrawHUD(){Super::DrawHUD();auto G=GM(GetWorld());if(!G||!Canvas)return;float W=Canvas->SizeX,H=Canvas->SizeY;float S=W/1280.f;auto Text=[&](const FString& T,float X,float Y,float Size,FLinearColor Color){DrawText(T,Color,X*S,Y*S,GEngine->GetLargeFont(),Size*S*1.5f);};
+void ALabHUD::DrawHUD(){Super::DrawHUD();auto G=GM(GetWorld());if(!G||!Canvas)return;float W=Canvas->SizeX,H=Canvas->SizeY;float S=W/1280.f;if(!ChineseFont){ChineseFont=NewObject<UFont>(this);ChineseFont->FontCacheType=EFontCacheType::Runtime;ChineseFont->LegacyFontSize=18;ChineseFont->GetMutableInternalCompositeFont()=FCompositeFont(FName("Regular"),FPaths::ProjectContentDir()/TEXT("UI/Fonts/DroidSansFallback.ttf"),EFontHinting::Default,EFontLoadingPolicy::LazyLoad);}auto Text=[&](const FString& T,float X,float Y,float Size,FLinearColor Color){DrawText(T,Color,X*S,Y*S,ChineseFont,Size*S);};
  bool Paused=UGameplayStatics::IsGamePaused(GetWorld());if(G->HideHUD&&!Paused)return;
- DrawRect(FLinearColor(.013,.015,.015,.9),28*S,24*S,1224*S,80*S);Text(TEXT("BAD CAT LAB"),48,40,1.1,Cream);Text(G->Stage==2?TEXT("02 / BOUNCE ROOM"):TEXT("01 / HOUSE RULES"),48,73,.5,Orange);Text(FString::Printf(TEXT("%02d SEC"),FMath::CeilToInt(G->Remaining)),560,45,1.2,Cream);Text(FString::Printf(TEXT("%05d"),G->Score),1080,42,1.3,Orange);
+ DrawRect(FLinearColor(.013,.015,.015,.9),28*S,24*S,1224*S,80*S);Text(TEXT("合成大坏猫"),48,40,1.1,Cream);Text(G->Stage==2?TEXT("02 / 弹弹客厅"):TEXT("01 / 普通客厅"),48,73,.5,Orange);Text(FString::Printf(TEXT("%02d 秒"),FMath::CeilToInt(G->Remaining)),560,45,1.2,Cream);Text(FString::Printf(TEXT("%05d"),G->Score),1080,42,1.3,Orange);Text(TEXT("拆家得分"),1080,78,.5,Cream);
  DrawRect(FLinearColor(.90,.83,.72,.95),38*S,116*S,420*S,68*S);
- Text(FString::Printf(TEXT("POUNCE  %s %s %s"),G->Pounces>=1?TEXT("O"):TEXT("-"),G->Pounces>=2?TEXT("O"):TEXT("-"),G->Pounces>=3?TEXT("O"):TEXT("-")),50,124,.7,Ink);
- Text(G->Stage==2?(G->Challenge?TEXT("CHALLENGE COMPLETE +500"):TEXT("ONE POUNCE > FIVE OBJECTS")):TEXT("A CUP. AN ANGLE. A PERFECT ACCIDENT."),50,156,.65,Ink);
- if(G->Current>1)Text(FString::Printf(TEXT("CHAIN %02d  x%d"),G->Current,FMath::Min(G->Current,5)),510,130,1.1,Orange);
- DrawRect(FLinearColor(.013,.015,.015,.85),28*S,H-60*S,1224*S,38*S);Text(TEXT("WASD MOVE   MOUSE LOOK   CLICK SWIPE   HOLD POUNCE   SPACE JUMP   R RETRY   ESC PAUSE"),45,H/S-50,.5,Cream);
- if(auto Cat=Cast<ALabCat>(UGameplayStatics::GetPlayerPawn(GetWorld(),0))){if(Cat->Charging){DrawRect(Ink,W/2-80*S,H*.7,160*S,8*S);DrawRect(Orange,W/2-80*S,H*.7,160*S*Cat->Charge/.8f,8*S);}if(Cat->Innocent)Text(TEXT("It was like this when I got here."),430,H/S-100,.75,Ink);}
+ Text(FString::Printf(TEXT("剩余扑击  %s %s %s"),G->Pounces>=1?TEXT("O"):TEXT("-"),G->Pounces>=2?TEXT("O"):TEXT("-"),G->Pounces>=3?TEXT("O"):TEXT("-")),50,124,.7,Ink);
+ Text(G->Stage==2?(G->Challenge?TEXT("挑战完成！奖励 500 分"):TEXT("挑战：一次扑击碰到 5 件物品")):TEXT("找好角度，一爪制造事故。"),50,156,.65,Ink);
+ if(G->Current>1)Text(FString::Printf(TEXT("%02d 连锁  ×%d"),G->Current,FMath::Min(G->Current,5)),510,130,1.1,Orange);
+ DrawRect(FLinearColor(.013,.015,.015,.85),28*S,H-60*S,1224*S,38*S);Text(TEXT("WASD 移动   鼠标 视角   左键 挥爪 / 长按扑击   空格 跳跃   R 重试   Esc 暂停"),45,H/S-50,.5,Cream);
+ if(auto Cat=Cast<ALabCat>(UGameplayStatics::GetPlayerPawn(GetWorld(),0))){if(Cat->Charging){DrawRect(Ink,W/2-80*S,H*.7,160*S,8*S);DrawRect(Orange,W/2-80*S,H*.7,160*S*Cat->Charge/.8f,8*S);}if(Cat->Innocent)Text(TEXT("我来的时候就这样了。"),430,H/S-100,.75,Ink);}
  if(GetWorld()->GetTimeSeconds()<G->QuipUntil)Text(G->Quip,410,190,.8,Orange);
  if(G->Stage==1||G->Stage==3||Paused){DrawRect(FLinearColor(.013,.015,.015,.93),W*.18,H*.29,W*.64,H*.42);
- if(Paused){Text(TEXT("CAT NAP"),460,H/S*.35,2,Cream);Text(TEXT("ESC RESUME   /   R RETRY"),440,H/S*.52,.8,Orange);}
- else if(G->Stage==1){Text(TEXT("FUSION / FIXED RESULT"),385,H/S*.34,1.2,Orange);Text(TEXT("CAT + BOUNCE CAT"),395,H/S*.43,1.3,Cream);Text(TEXT("THE ROOM NOW BREAKS PHYSICS."),365,H/S*.55,.9,Cream);}
- else{Text(TEXT("DAMAGE REPORT"),420,H/S*.34,1.6,Orange);Text(FString::Printf(TEXT("BEST CHAIN %d    PAWS USED %d    SCORE %d"),G->Best,G->Swipes,G->Score),330,H/S*.46,.85,Cream);Text(TEXT("R BOUNCE AGAIN    /    T FULL EXPERIMENT"),355,H/S*.57,.8,Cream);}}
+ if(Paused){Text(TEXT("坏猫打个盹"),460,H/S*.35,2,Cream);Text(TEXT("Esc 继续拆家   /   R 重新开始"),440,H/S*.52,.8,Orange);}
+ else if(G->Stage==1){Text(TEXT("合成实验 / 固定结果"),385,H/S*.34,1.2,Orange);Text(TEXT("坏猫 + 弹弹猫 = 反物理惯犯"),395,H/S*.43,1.3,Cream);Text(TEXT("客厅弹性失控！试试同一个杯子。"),365,H/S*.55,.9,Cream);}
+ else{Text(TEXT("今日拆家账单"),420,H/S*.34,1.6,Orange);Text(FString::Printf(TEXT("最高连锁 %d    出爪 %d 次    得分 %d"),G->Best,G->Swipes,G->Score),330,H/S*.46,.85,Cream);Text(TEXT("R 再拆一次   /   T 从普通客厅开始"),355,H/S*.57,.8,Cream);}}
 }
