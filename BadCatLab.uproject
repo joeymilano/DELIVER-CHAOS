@@ -1,0 +1,1 @@
+{"FileVersion":3,"EngineAssociation":"5.8","Category":"Games","Description":"BAD CAT LAB: One paw breaks physics","Modules":[{"Name":"BadCatLab","Type":"Runtime","LoadingPhase":"Default"}],"Plugins":[{"Name":"PythonScriptPlugin","Enabled":true},{"Name":"EditorScriptingUtilities","Enabled":true}]}

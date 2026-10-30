@@ -1,0 +1,8 @@
+Binaries/
+Intermediate/
+Saved/
+DerivedDataCache/
+.vscode/
+.DS_Store
+*.xcworkspace/
+Builds/
