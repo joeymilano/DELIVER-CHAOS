@@ -102,6 +102,11 @@ public:
  bool CameraSees(FVector Position,const AActor* Target=nullptr) const; void CameraObservation(bool Bad,bool Innocent);
  void DisableCamera(); void SpillCandy(FVector Origin,int32 Chain); void SpawnPartyProps(); void RadialSmash(FVector Origin,float Strength,float Radius);
  void RecordRun(); void SetPractice(); void Speak(const TCHAR* Clip); void Lab(); void ClearDiscoveries();
+ UPROPERTY() UAudioComponent* OwnerVoice = nullptr;
+ UPROPERTY() UAudioComponent* CatVoice = nullptr;
+ double OwnerVoiceUntil=0,CatVoiceUntil=0,SoftMeowUntil=0;
+ bool ReceiptGreetingPending=false;
+ void ClearVoices(); void PauseVoices(bool Paused);
  uint8 CurrentTraits() const;
 
  bool BounceRule() const; bool ResonanceRule() const;

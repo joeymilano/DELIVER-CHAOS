@@ -23,3 +23,7 @@ __pycache__/
 # User-supplied meme audio remains in the local demo until redistribution rights are recorded.
 ArtSource/Audio/LocalReference/
 Content/Audio/LocalReference/
+
+# ElevenLabs Free generation is local audition material, not commercial source media.
+ArtSource/Audio/ElevenLabsLocal/
+Content/Audio/ElevenLabsLocal/

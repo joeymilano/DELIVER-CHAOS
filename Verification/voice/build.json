@@ -1,0 +1,24 @@
+{
+  "recorded_at": "2026-10-31T03:12:41.147791+08:00",
+  "package": "Builds/Mac/BadCatLab.app",
+  "build_seconds": 92.16,
+  "build_exit_code": 0,
+  "executable_sha256": "c4196034d177d231e02b3ee85dba8c3471227d42f51f680c6e00f5260bebdde2",
+  "tests": {
+    "succeeded": 10,
+    "failed": 0,
+    "succeededWithWarnings": 0,
+    "reportCreatedOn": "2026.10.30-19.05.36"
+  },
+  "runtime_checks": [
+    "Packaged MVP ends with OwnerHome active in audio debug display.",
+    "Packaged Q skill activates /Game/Audio/Meow.Meow; paused screenshot retained locally.",
+    "Normal launch restored, no debug or NoSave flags; collection 1/4 and recipes 0/6."
+  ],
+  "audio_checks": "Five WAV files have no clipped PCM samples; see media-check.json. Subjective voice performance still awaits user listening.",
+  "licensing": "Two CC0 cat recordings committed with attribution and source URLs. Three ElevenLabs Free generations cost 104 credits and remain local audition only; excluded from public Git. Paid-plan regeneration is required for commercial use.",
+  "limits": [
+    "Not a real-player acceptance or 60fps benchmark.",
+    "Other collision effects remain synthetic placeholders."
+  ]
+}

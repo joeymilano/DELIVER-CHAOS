@@ -109,4 +109,15 @@ bool FLabMemeTest::RunTest(const FString&){
  G->StartMeme();G->OpenSelection();TestFalse(TEXT("Selection stops meme"),G->MemeShowing);TestEqual(TEXT("Selection clears stage actors"),G->MemeSet.Num(),0);TestNull(TEXT("Selection clears camera"),G->MemeCamera);
  G->Stage=3;G->StartMeme();G->StartRound(false);TestFalse(TEXT("Retry stops meme"),G->MemeShowing);TestEqual(TEXT("Retry clears stage"),G->MemeSet.Num(),0);return true;
 }
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabVoiceTest,"BadCatLab.Party.VocalCooldownAndReset",Flags)
+bool FLabVoiceTest::RunTest(const FString&){
+ FPartyWorld F;auto G=F.G;
+ G->Speak(TEXT("Meow"));TestTrue(TEXT("Real meow establishes duration gate"),G->CatVoiceUntil>1);
+ const double Until=G->CatVoiceUntil;G->Speak(TEXT("MeowSoft"));TestEqual(TEXT("Soft and strong meows cannot overlap"),G->CatVoiceUntil,Until);
+ G->CatVoiceUntil=0;G->SoftMeowUntil=0;G->Speak(TEXT("MeowSoft"));TestTrue(TEXT("Soft cat recording loads"),G->CatVoiceUntil>0);TestTrue(TEXT("Idle meow has ten-second spacing"),G->SoftMeowUntil>=10);
+ G->ReceiptGreetingPending=true;G->ResetParty();TestEqual(TEXT("Reset clears cat gate"),G->CatVoiceUntil,0.0);TestEqual(TEXT("Reset clears owner gate"),G->OwnerVoiceUntil,0.0);TestFalse(TEXT("Reset cannot play deferred owner greeting"),G->ReceiptGreetingPending);
+ G->Stage=3;G->StartMeme();G->ReceiptGreetingPending=true;G->StopMeme();TestFalse(TEXT("Receipt greeting consumed once"),G->ReceiptGreetingPending);
+ const double HomeUntil=G->OwnerVoiceUntil;G->StopMeme();TestEqual(TEXT("Repeated stop cannot repeat greeting"),G->OwnerVoiceUntil,HomeUntil);
+ G->ClearMeme();G->ClearVoices();return true;
+}
 #endif

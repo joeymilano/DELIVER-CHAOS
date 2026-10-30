@@ -27,18 +27,20 @@ FRotator ALabGameMode::MemePose(float Time) {
 }
 
 void ALabGameMode::StopMeme() {
+ const bool Greet=MemeShowing&&ReceiptGreetingPending&&Stage==3;ReceiptGreetingPending=false;
  MemeShowing=false;
  if(IsValid(MemeAudio)){MemeAudio->Stop();MemeAudio->DestroyComponent();}MemeAudio=nullptr;
  if(auto PC=GetWorld()->GetFirstPlayerController())if(auto Pawn=PC->GetPawn())PC->SetViewTarget(Pawn);
+ if(Greet)Speak(TEXT("OwnerHome"));
 }
 void ALabGameMode::ClearMeme() {
- StopMeme();
+ ReceiptGreetingPending=false;StopMeme();
  for(auto A:MemeSet)if(IsValid(A))A->Destroy();MemeSet.Empty();MemeCat=nullptr;MemeCamera=nullptr;MemeElapsed=0;
 }
 
 void ALabGameMode::StartMeme() {
  if(Stage!=3)return;
- ClearMeme();
+ ClearVoices();ClearMeme();
  UStaticMesh* Mesh=LoadObject<UStaticMesh>(nullptr,LabCatalog::Cat(SelectedCat).Mesh);if(!Mesh)return;
  const FVector Origin(0,0,1200);
  MemeCat=GetWorld()->SpawnActor<AActor>();MemeSet.Add(MemeCat);

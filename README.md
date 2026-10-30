@@ -74,10 +74,12 @@ bash Tools/build_mac.sh
 - `Tools/build_mac.sh`：固定工具链、编译、打包。用 `UNREAL_ENGINE_ROOT` / `BAD_CAT_DEVELOPER_DIR` 可覆盖本机路径。
 - `Source/BadCatLab/LabTests.cpp`：Unreal Automation 测试组 `BadCatLab.Party`。
 
-当前仍是参赛开发版。动作需要继续调关节过渡；配音是可替换的合成占位音，场景和第四只猫需要美术精修。自动测试不等于真人趣味性或商业发行质量验收。Python 只参与制作，运行游戏不依赖网络、生成平台或密钥。
+当前仍是参赛开发版。动作需要继续调关节过渡；主人对白已在本地替换为 ElevenLabs 配音，免费套餐版本仅供试听，场景和第四只猫需要美术精修。自动测试不等于真人趣味性或商业发行质量验收。Python 只参与制作，运行游戏不依赖网络、生成平台或密钥。
 
 选猫页按 **F** 切换 60 秒挑战 / 自由拆家；数字 1–4 选猫，Enter 确认。完整菜单可使用键盘操作。
 
 界面已改为主角展示、双猫合成预览、轻量 HUD 与实际物品账单。文案和页面规则见 [UI_COPY.md](Docs/UI_COPY.md)。暂停页支持鼠标按钮与 V 震动开关。
 
 每局结算前，本局的猫会表演约 4.8 秒的 OIIA 转圈。镜头固定，三阵旋转之间停下来装无辜；Space 随时看账单，也可再次重播。详情与本地参考音频边界见 [OIIA.md](Docs/OIIA.md)。
+
+声音更新：两段 CC0 真实猫叫替代机器念“喵”，使用短叫和技能叫声；主人改用 ElevenLabs 中文自然对话音色。当前 ElevenLabs 免费套餐素材仅在本机，公开源码无旧机械人声回退。商用前需付费套餐重新生成，详情见 [声音说明](ArtSource/Audio/README.md)。
