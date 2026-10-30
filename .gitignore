@@ -6,3 +6,6 @@ DerivedDataCache/
 .DS_Store
 *.xcworkspace/
 Builds/
+
+Build/Mac/FileOpenOrder/
+Build/Mac/*.PackageVersionCounter

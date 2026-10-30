@@ -1,0 +1,44 @@
+﻿{
+	"devices": [
+		{
+			"deviceName": "MacBook-Pro.local",
+			"instance": "9D4A3A30B848DBD575B919A69C98604A",
+			"instanceName": "MacBook-Pro.local-19087",
+			"platform": "MacEditor",
+			"oSVersion": "macOS 26.7.1 25G241",
+			"model": "Default",
+			"gPU": "Apple M5 Max",
+			"cPUModel": "Apple M5 Max",
+			"rAMInGB": 48,
+			"renderMode": "SM6",
+			"rHI": "",
+			"appInstanceLog": ""
+		}
+	],
+	"reportCreatedOn": "2026.10.30-11.01.26",
+	"succeeded": 1,
+	"succeededWithWarnings": 0,
+	"failed": 0,
+	"notRun": 0,
+	"inProcess": 0,
+	"totalDuration": 0.018717747181653976,
+	"comparisonExported": false,
+	"comparisonExportDirectory": "",
+	"tests": [
+		{
+			"testDisplayName": "UniqueAndCausal",
+			"fullTestPath": "BadCatLab.Scoring.UniqueAndCausal",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"9D4A3A30B848DBD575B919A69C98604A"
+			],
+			"duration": 0.018717747181653976,
+			"dateTime": "2026.10.30-11.01.26",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		}
+	]
+}

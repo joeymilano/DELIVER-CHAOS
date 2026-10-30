@@ -1,0 +1,1326 @@
+
+Running AutomationTool...
+
+Setting up bundled DotNet SDK
+/Users/Shared/Epic Games/UE_5.8/Engine/Binaries/ThirdParty/DotNet/10.0/mac-arm64
+Start UAT Interactively: dotnet AutomationTool.dll BuildCookRun -project=/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/BadCatLab.uproject -noP4 -platform=Mac -clientconfig=Development -build -cook -stage -pak -package -archive -archivedirectory=/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Builds -unattended
+/Users/Shared/Epic Games/UE_5.8/Engine/Binaries/ThirdParty/DotNet/10.0/mac-arm64/dotnet
+Starting AutomationTool...
+Parsing command line: BuildCookRun -project=/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/BadCatLab.uproject -noP4 -platform=Mac -clientconfig=Development -build -cook -stage -pak -package -archive -archivedirectory=/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Builds -unattended
+Initializing script modules...
+Total script module initialization time: 0.20 s.
+Using /Users/Shared/Epic Games/UE_5.8/Engine/Binaries/ThirdParty/DotNet/10.0/mac-arm64/dotnet
+Executing commands...
+Setting up ProjectParams for /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/BadCatLab.uproject
+********** BUILD COMMAND STARTED **********
+Running: /Users/Shared/Epic Games/UE_5.8/Engine/Binaries/ThirdParty/DotNet/10.0/mac-arm64/dotnet "/Users/Shared/Epic Games/UE_5.8/Engine/Binaries/DotNET/UnrealBuildTool/UnrealBuildTool.dll" -Target="BadCatLabEditor Mac Development -Project=/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/BadCatLab.uproject" -Target="BadCatLab Mac Development -Project=/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/BadCatLab.uproject  -remoteini=\"/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB\"  -skipdeploy " -log="/Users/joeyzhao/Library/Logs/Unreal Engine/LocalBuildLogs/UBA-BadCatLabEditor-Mac-Development.txt"
+Log file: /Users/joeyzhao/Library/Logs/Unreal Engine/LocalBuildLogs/UBA-BadCatLabEditor-Mac-Development.txt
+Determining max actions to execute in parallel (18 physical cores, 18 logical cores)
+  Executing up to 18 processes, one per physical core
+Using 'git status' to determine working set for adaptive non-unity build (/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB).
+UbaServer - Listening on 0.0.0.0:1345
+Creating makefile for BadCatLab (command line arguments changed)
+Invalidating makefile for BadCatLabEditor (ispc deleted)
+/Users/Shared/Epic Games/UE_5.8/Engine/Source/ThirdParty/Apple/MetalShaderConverter/MetalShaderConverter.build.cs: warning: Referenced directory '/Users/Shared/Epic Games/UE_5.8/Engine/Source/ThirdParty/Apple/MetalShaderConverter/include/metal_irconverter_ext' does not exist.
+Compiling with Mac SDK 26.1, minimum Target OS version 14.00
+Building BadCatLab and BadCatLabEditor...
+===== Toolchain Information =====
+BadCatLab Mac Development:
+  Using Clang compiler 19.1.5 (/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++)
+    Apple clang version 17.0.0 (clang-1700.4.4.1) Target: arm64-apple-darwin25.6.0 Thread model: posix InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+  Using Clang archiver (/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool)
+    Apple clang version 17.0.0 (clang-1700.4.4.1) Target: arm64-apple-darwin25.6.0 Thread model: posix InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+  [Adaptive Build] Excluded from BadCatLab unity file: LabTests.cpp, LabGame.cpp
+BadCatLabEditor Mac Development:
+  Using Clang compiler 19.1.5 (/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++)
+    Apple clang version 17.0.0 (clang-1700.4.4.1) Target: arm64-apple-darwin25.6.0 Thread model: posix InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+  Using Clang archiver (/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool)
+    Apple clang version 17.0.0 (clang-1700.4.4.1) Target: arm64-apple-darwin25.6.0 Thread model: posix InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+  [Adaptive Build] Excluded from BadCatLab unity file: LabTests.cpp, LabGame.cpp
+===== End Toolchain Information =====
+Using Unreal Build Accelerator local executor to run 11 action(s)
+  CPU 18 physical cores, 18 logical cores
+  Memory 48 GB physical, 46.07 GB/48 GB committed
+  UBA Storage capacity 40 GB
+** For BadCatLabEditor-Mac-Development **
+[1/11] Compile [Apple] LabGame.cpp
+[2/11] Link [Apple] libUnrealEditor-BadCatLab.dylib
+** For BadCatLab-Mac-Development **
+[3/11] Compile [Apple] SharedPCH.Engine.Project.ValApi.ValExpApi.Cpp20.h
+[4/11] Compile [Apple] BadCatLab.cpp
+[5/11] Compile [Apple] LabTests.cpp
+[6/11] Compile [Apple] Module.BadCatLab.gen.cpp
+[7/11] Compile [Apple] LabGame.cpp
+[8/11] Link [Apple] BadCatLab
+[9/11] Updating version file: /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/Build/Versions.xcconfig [NoUba]
+[10/11] ApplePostBuildSync Executing PostBuildSync [/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab] [NoUba]
+Discovering modules, targets and source code for project...
+Adding projects for all targets...
+Adding projects for all targets took 0.16s
+Adding projects for all game projects took 0.00s
+Adding projects for all modules took 0.53s
+/Users/Shared/Epic Games/UE_5.8/Engine/Source/ThirdParty/Apple/MetalShaderConverter/MetalShaderConverter.build.cs: warning: Referenced directory '/Users/Shared/Epic Games/UE_5.8/Engine/Source/ThirdParty/Apple/MetalShaderConverter/include/metal_irconverter_ext' does not exist.
+Compiling with Mac SDK 26.1, minimum Target OS version 14.00
+Adding additional Xcode project info took 0.49s
+Writing project files...
+Writing xcode workspace /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFiles/BadCatLab_Mac_BadCatLab.xcworkspace
+Writing project files... 100%
+Writing project files took 0.12s
+params: UBT_NO_POST_DEPLOY=true /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild build -workspace "/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFiles/BadCatLab_Mac_BadCatLab.xcworkspace" -scheme "BadCatLab" -configuration "Development" -destination generic/platform="macOS" CODE_SIGN_ALLOW_ENTITLEMENTS_MODIFICATION=YES  -allowProvisioningUpdates UE_XCODE_BUILD_MODE=PostBuildSync -hideShellScriptEnvironment
+No certs of truth reported, skipping certificate verification...
+Known Apple certificate for this team is installed!
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild build -workspace /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFiles/BadCatLab_Mac_BadCatLab.xcworkspace -scheme BadCatLab -configuration Development -destination generic/platform=macOS CODE_SIGN_ALLOW_ENTITLEMENTS_MODIFICATION=YES -allowProvisioningUpdates UE_XCODE_BUILD_MODE=PostBuildSync -hideShellScriptEnvironment
+
+Build settings from command line:
+    CODE_SIGN_ALLOW_ENTITLEMENTS_MODIFICATION = YES
+    UE_XCODE_BUILD_MODE = PostBuildSync
+
+Run pre-actions
+
+SchemeAction Touch\ UBT\ generated\ tiles /var/folders/hb/y5jt_sv54tl502h9b4b4rcg00000gn/T/SchemeScriptAction-VZiezd.sh
+    cd /var/folders/hb/y5jt_sv54tl502h9b4b4rcg00000gn/T/
+    /bin/sh -c /var/folders/hb/y5jt_sv54tl502h9b4b4rcg00000gn/T/SchemeScriptAction-VZiezd.sh
+
+ComputePackagePrebuildTargetDependencyGraph
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (1 target)
+    Target 'BadCatLab' in project 'BadCatLab (Mac)' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --version --output-format xml1
+
+Build description signature: 9c3375f5a26dba249b0fffb5efd1e04f
+Build description path: /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac/build/XCBuildData/9c3375f5a26dba249b0fffb5efd1e04f.xcbuilddata
+ProcessProductPackaging /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Build/Mac/Resources/Sandbox.Server.entitlements /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ (Mac).build/Mac/BadCatLab.build/BadCatLab.app.xcent (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+
+    Entitlements:
+
+    {
+    "com.apple.security.app-sandbox" = 1;
+    "com.apple.security.get-task-allow" = 1;
+    "com.apple.security.network.client" = 1;
+    "com.apple.security.network.server" = 1;
+}
+
+    builtin-productPackagingUtility /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Build/Mac/Resources/Sandbox.Server.entitlements -entitlements -format xml -o /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/BadCatLab.app.xcent
+
+ProcessProductPackaging /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Build/Mac/Resources/Sandbox.Server.entitlements /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ (Mac).build/Mac/BadCatLab.build/BadCatLab.app-Simulated.xcent (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+
+    Entitlements:
+
+    {
+}
+
+    builtin-productPackagingUtility /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Build/Mac/Resources/Sandbox.Server.entitlements -entitlements -format xml -o /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/BadCatLab.app-Simulated.xcent
+
+ProcessProductPackagingDER /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ (Mac).build/Mac/BadCatLab.build/BadCatLab.app-Simulated.xcent /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ (Mac).build/Mac/BadCatLab.build/BadCatLab.app-Simulated.xcent.der (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    /usr/bin/derq query -f xml -i /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/BadCatLab.app-Simulated.xcent -o /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/BadCatLab.app-Simulated.xcent.der --raw
+
+ProcessProductPackagingDER /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ (Mac).build/Mac/BadCatLab.build/BadCatLab.app.xcent /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ (Mac).build/Mac/BadCatLab.build/BadCatLab.app.xcent.der (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    /usr/bin/derq query -f xml -i /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/BadCatLab.app.xcent -o /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/BadCatLab.app.xcent.der --raw
+
+CompileAssetCatalogVariant thinned /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app/Contents/Resources /Users/Shared/Epic\ Games/UE_5.8/Engine/Build/Mac/Resources/Assets.xcassets (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    /Applications/Xcode.app/Contents/Developer/usr/bin/actool /Users/Shared/Epic\ Games/UE_5.8/Engine/Build/Mac/Resources/Assets.xcassets --compile /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_output/thinned --output-format human-readable-text --notices --warnings --export-dependency-info /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_dependencies_thinned --output-partial-info-plist /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_generated_info.plist_thinned --app-icon AppIcon --enable-on-demand-resources NO --development-region English --target-device mac --minimum-deployment-target 14.00 --platform macosx
+/* com.apple.actool.compilation-results */
+/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab (Mac).build/Mac/BadCatLab.build/assetcatalog_generated_info.plist_thinned
+/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab (Mac).build/Mac/BadCatLab.build/assetcatalog_output/thinned/AppIcon.icns
+/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab (Mac).build/Mac/BadCatLab.build/assetcatalog_output/thinned/Assets.car
+
+
+LinkAssetCatalog /Users/Shared/Epic\ Games/UE_5.8/Engine/Build/Mac/Resources/Assets.xcassets (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    builtin-linkAssetCatalog --thinned /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_output/thinned --thinned-dependencies /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_dependencies_thinned --thinned-info-plist-content /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_generated_info.plist_thinned --unthinned /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_output/unthinned --unthinned-dependencies /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_dependencies_unthinned --unthinned-info-plist-content /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_generated_info.plist_unthinned --output /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app/Contents/Resources --plist-output /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_generated_info.plist
+note: Emplaced /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app/Contents/Resources/AppIcon.icns (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+note: Emplaced /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app/Contents/Resources/Assets.car (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+
+CpResource /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app/Contents/Resources/UEMetadata /Users/Shared/Epic\ Games/UE_5.8/Engine/Build/Mac/Resources/UEMetadata (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-unsigned-binaries -strip-deterministic -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks /Users/Shared/Epic\ Games/UE_5.8/Engine/Build/Mac/Resources/UEMetadata /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app/Contents/Resources
+
+ProcessInfoPlistFile /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app/Contents/Info.plist /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Build/Mac/Resources/Info.Template.plist (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    builtin-infoPlistUtility /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Build/Mac/Resources/Info.Template.plist -producttype com.apple.product-type.application -genpkginfo /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app/Contents/PkgInfo -expandbuildsettings -format xml -platform macosx -additionalcontentfile /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_generated_info.plist -o /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app/Contents/Info.plist
+
+PhaseScriptExecution Copy\ Executable\ and\ Staged\ Data\ into\ .app /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ (Mac).build/Mac/BadCatLab.build/Script-D980D23E6DB1DFE81310F1AD.sh (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    /bin/sh -c /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\\\ \\\(Mac\\\).build/Mac/BadCatLab.build/Script-D980D23E6DB1DFE81310F1AD.sh
+Copying executable and any standalone dylibs into /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app/Contents/MacOS but do not overwrite unless src is newer
+
+CodeSign /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+
+    Signing Identity:     "Sign to Run Locally"
+
+    /usr/bin/codesign --force --sign - --entitlements /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/BadCatLab.app.xcent --timestamp\=none --generate-entitlement-der /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app
+/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app: replacing existing signature
+
+RegisterExecutionPolicyException /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    builtin-RegisterExecutionPolicyException /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app
+
+Validate /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    builtin-validationUtility /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app -no-validate-extension -infoplist-subpath Contents/Info.plist
+
+Touch /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    /usr/bin/touch -c /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app
+
+RegisterWithLaunchServices /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    /System/Library/Frameworks/CoreServices.framework/Versions/Current/Frameworks/LaunchServices.framework/Versions/Current/Support/lsregister -f -R -trusted /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app
+
+** BUILD SUCCEEDED **
+
+[11/11] WriteMetadata BadCatLab.target [NoUba]
+
+Total time in Unreal Build Accelerator local executor: 21.48 seconds
+Output binary: /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab
+Output binary: /Users/Shared/Epic Games/UE_5.8/Engine/Binaries/Mac/UnrealEditor
+Deploying BadCatLab Mac Development...
+Deploying now!
+Deploying BadCatLabEditor Mac Development...
+Deploying now!
+
+Result: Succeeded
+Total execution time: 23.50 seconds
+Trace written to file /Users/joeyzhao/Library/Application Support/Epic/UnrealBuildTool/Trace.uba with size 7.7kb
+Took 23.78s to run dotnet, ExitCode=0
+No build products were made
+Build command time: 23.79 s
+********** BUILD COMMAND COMPLETED **********
+********** COOK COMMAND STARTED **********
+Running UnrealEditor Cook for project /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/BadCatLab.uproject
+Commandlet log file is /Users/Shared/Epic Games/UE_5.8/Engine/Programs/AutomationTool/Saved/Cook-2026.10.30-19.09.11.txt
+Running: /Users/Shared/Epic Games/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd "/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/BadCatLab.uproject" -run=Cook  -TargetPlatform=Mac  -unversioned -fileopenlog -abslog="/Users/Shared/Epic Games/UE_5.8/Engine/Programs/AutomationTool/Saved/Cook-2026.10.30-19.09.11.txt" -stdout -CrashForUAT -unattended -NoLogTimes
+Opening shared memory
+Shared memory doesn't exist, checking legacy lock file
+Checking for a '/tmp/UnrealTraceServer.pid' lock file
+Forking process
+Wait until we know the daemon has started.
+Parent received signal 30
+Daemon signalled successful start
+Forked complete (ret=0)
+LogInit: Display: Running engine for game: BadCatLab
+LogCore: Display: Requested channels: 'cpu,gpu,frame,log,bookmark,screenshot,region'
+LogTrace: Display: Control listening on port 36875
+LogCsvProfiler: Display: Metadata set : platform="Mac"
+LogCsvProfiler: Display: Metadata set : config="Development"
+LogCsvProfiler: Display: Metadata set : buildversion="++UE5+Release-5.8-CL-58902052"
+LogCsvProfiler: Display: Metadata set : engineversion="5.8.4-58902052+++UE5+Release-5.8"
+LogCsvProfiler: Display: Metadata set : enginereleaseversion="5.8.4"
+LogCsvProfiler: Display: Metadata set : os="macOS 26.7.1 25G241"
+LogCsvProfiler: Display: Metadata set : cpu="Apple|Apple M5 Max"
+LogCsvProfiler: Display: Metadata set : pgoenabled="0"
+LogCsvProfiler: Display: Metadata set : pgoprofilingenabled="0"
+LogCsvProfiler: Display: Metadata set : ltoenabled="0"
+LogCsvProfiler: Display: Metadata set : asan="0"
+LogCsvProfiler: Display: Metadata set : mergedmodules="0"
+LogCsvProfiler: Display: Metadata set : compacttset="0"
+LogCsvProfiler: Display: Metadata set : commandline="" /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/BadCatLab.uproject -run=Cook -TargetPlatform=Mac -unversioned -fileopenlog -abslog="/Users/Shared/Epic Games/UE_5.8/Engine/Programs/AutomationTool/Saved/Cook-2026.10.30-19.09.11.txt" -stdout -CrashForUAT -unattended -NoLogTimes""
+LogCsvProfiler: Display: Metadata set : loginid="9df50ad02240cd7d3a98d59e6174af8f"
+LogCsvProfiler: Display: Metadata set : llm="0"
+LogCsvProfiler: Display: Metadata set : zenstreaming="0"
+Running dotnet Engine/Binaries/DotNET/UnrealBuildTool/UnrealBuildTool.dll -Mode=ValidatePlatforms -OutputSDKs -AllPlatforms -project=/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/BadCatLab.uproject -log=/Users/joeyzhao/Library/Logs/Unreal Engine/BadCatLabEditor/AutoSDKInfo.txt -verbose -timestamps
+LogCsvProfiler: Display: Metadata set : systemresolution.resx="1280"
+LogCsvProfiler: Display: Metadata set : systemresolution.resy="720"
+LogAudio: Display: Audio Device Manager not initializing due to all audio being disabled. If this is not intentional, please check command line arguments for "-nosound".
+LogAssetRegistry: Display: FindShardedCacheFiles: 1 via .ref, 0 via migration fallback, 1 total
+LogAssetRegistry: Display: CleanupOrphanedCacheFiles (PreLoad): 1 .ref files found, 1 referenced binaries
+LogAssetRegistry: Display: CleanupOrphanedCacheFiles: 1 total binaries, 1 referenced (kept), 0 old-style pre-migration (kept), 0 orphans deleted, 0 orphans locked (kept)
+LogAssetRegistry: Display: LoadCacheFiles: loading 1 cache files, memory-mapping=enabled
+Log file: /Users/joeyzhao/Library/Logs/Unreal Engine/BadCatLabEditor/AutoSDKInfo.txt
+LogConfig: Display: Loading VulkanPC ini files took 0.07 seconds
+LogConfig: Display: Loading Mac ini files took 0.08 seconds
+LogConfig: Display: Loading Unix ini files took 0.08 seconds
+LogConfig: Display: Loading Android ini files took 0.08 seconds
+LogConfig: Display: Loading LinuxArm64 ini files took 0.08 seconds
+LogConfig: Display: Loading IOS ini files took 0.08 seconds
+LogConfig: Display: Loading Linux ini files took 0.08 seconds
+LogConfig: Display: Loading VisionOS ini files took 0.08 seconds
+LogConfig: Display: Loading TVOS ini files took 0.08 seconds
+LogConfig: Display: Loading Windows ini files took 0.08 seconds
+LogAssetRegistry: Display: Asset registry cache read as 118.5 MiB from ../../../../../../joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/CachedAssetRegistry/CachedAssetRegistry_0_B4FE041E9E45F0F31A3FD08888FE1FFD.bin (memory-mapped=no, platform unsupported)
+##PlatformValidate: Win64 INVALID <UNKNOWN>
+##PlatformValidate: Mac VALID 26.1.1
+##PlatformValidate: IOS VALID 26.1.1
+##PlatformValidate: Android INVALID r27c
+##PlatformValidate: Linux INVALID <UNKNOWN>
+##PlatformValidate: LinuxArm64 INVALID <UNKNOWN>
+##PlatformValidate: TVOS VALID 26.1.1
+##PlatformValidate: VisionOS VALID 26.1.1
+Unable to find required SDK version 'MainVersion' for platform Win64. Check your SDK.json files
+Unable to find required SDK version 'MainVersion' for platform Linux. Check your SDK.json files
+Unable to find required SDK version 'MainVersion' for platform LinuxArm64. Check your SDK.json files
+Trace written to file /Users/joeyzhao/Library/Application Support/Epic/UnrealBuildTool/Trace.uba with size 321b
+LogAsyncCompilation: Display: MemorySharingInfo: UsedMemory=429079MiB, MaxMemoryAvailable=51200MiB
+2026-10-30 19:09:13.159 UnrealEditor-Cmd[22277:13529620] [UE4] Shutdown handler: initialize.
+LogAnalytics: Display: Provider StudioTelemetry.Provider.Log is disabled for this application
+LogAnalytics: Display: Provider StudioTelemetry.Provider.CSV is disabled for this application
+LogAnalytics: Display: Provider StudioTelemetry.Provider.Horde is disabled for this application
+LogAnalytics: Display: Provider StudioTelemetry.Provider.Log is disabled for this application
+LogAnalytics: Display: Provider StudioTelemetry.Provider.CSV is disabled for this application
+LogAnalytics: Display: Provider StudioTelemetry.Provider.Horde is disabled for this application
+LogStreaming: Display: AsyncLoading2 - Created: Async Loading Thread: false, Async Post Load: false, Multithreaded: false
+LogHAL: Display: Platform has ~ 48 GB [51539607552 / 68719476736 / 48], which maps to Largest [LargestMinGB=32, LargerMinGB=12, DefaultMinGB=8, SmallerMinGB=6, SmallestMinGB=0)
+LogCsvProfiler: Display: Metadata set : extradevelopmentmemorymb="0"
+LogObj: Display: Attempting to load config data for Default__DownlinkBandwidthManagerConfig before the Class has been constructed/registered/linked (likely during module loading or early startup). This will result in the load silently failing and should be fixed.
+LogTextureFormatASTC: Display: ASTCEnc version 5.0.1 library loaded
+LogTextureFormatManager: Display: Loaded Base TextureFormat: TextureFormatASTC
+LogTextureFormatManager: Display: Loaded Base TextureFormat: TextureFormatDXT
+LogTextureFormatManager: Display: Loaded Base TextureFormat: TextureFormatETC2
+LogTextureFormatManager: Display: Loaded Base TextureFormat: TextureFormatIntelISPCTexComp
+LogTextureFormatOodle: Display: Oodle Texture TFO init; latest sdk version = 2.9.16
+LogTextureFormatOodle: Display: Oodle Texture loading DLL: liboo2texmac64.2.9.16.dylib
+LogTextureFormatManager: Display: Loaded Base TextureFormat: TextureFormatOodle
+LogTextureFormatManager: Display: Loaded Base TextureFormat: TextureFormatUncompressed
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'IOS'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'IOSClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Mac'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'MacEditor'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'MacServer'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'MacClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'TVOS'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'TVOSClient'
+LogTargetPlatformManager: Display: Failed to SetupSDK for platform 'Android'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'VisionOS'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'VisionOSClient'
+LogTargetPlatformManager: Display: Building Assets For Mac
+LogObj: Display: Attempting to load config data for Default__SlateThemeManager before the Class has been constructed/registered/linked (likely during module loading or early startup). This will result in the load silently failing and should be fixed.
+LogTemp: Display: /Applications/Xcode.app/Contents/Developer
+
+LogCsvProfiler: Display: Metadata set : verbatimrhiname="Null"
+LogCsvProfiler: Display: Metadata set : rhiname="Null"
+LogCsvProfiler: Display: Metadata set : rhifeaturelevel="SM6"
+LogCsvProfiler: Display: Metadata set : shaderplatform="METAL_SM6"
+LogCsvProfiler: Display: Metadata set : gpu=""
+LogCsvProfiler: Display: Metadata set : gpudriver=""
+LogDerivedDataCache: Display: ../../../Engine/DerivedDataCache/Compressed.ddp: Opened pak cache for reading. (2911 MiB)
+LogZenServiceInstance: Display: Launching zen utility '/Users/Shared/Epic Games/UE_5.8/Engine/Binaries/Mac/zen service status'.
+LogZenServiceInstance: Display: Writing plugin version info to '/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/Common/Zen/Install/zen_plugin_versions.json'
+LogZenServiceInstance: Display: Read zen version cache file from '/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/5.8/Saved/Zen/zen.version', version: '5.8.13-202605190511-macosx-arm64-release-094f62c'
+LogZenServiceInstance: Display: Read zen version cache file from '/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/Common/Zen/Install/zen.version', version: '5.8.13-202605190511-macosx-arm64-release-094f62c'
+LogZenServiceInstance: Display: Installed service at '/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/Common/Zen/Install/zenserver' is up to date
+LogZenServiceInstance: Display: Launching executable '/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/Common/Zen/Install/zenserver', working dir '/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/Common/Zen/Install', data dir '/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/Common/Zen/Data', args '--port 8558 --data-dir "/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/Common/Zen/Data" --http asio --gc-cache-duration-seconds 1209600 --gc-interval-seconds 21600 --gc-low-diskspace-threshold 2147483648 --cache-bucket-limit-overwrites --quiet --restrict-content-types --allow-external-oidctoken-exe=false --plugins-config "/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/Common/Zen/Install/zen_plugins_v1.json" --security-config-path "/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/Common/Zen/Install/security-config.json" --owner-pid 22277  --child-id Zen_22277_Startup --detach'
+LogZenServiceInstance: Display: Unreal Zen Storage Server HTTP service at http://[::1]:8558 status: OK!.
+LogDerivedDataCache: Display: ZenLocal: Using ZenServer HTTP service at [::1] with namespace ue.ddc. Status: OK!.
+LogDerivedDataCache: Display: /Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/Common/DerivedDataCache: Performance: Latency=0.03ms. RandomReadSpeed=443.03MBs, RandomWriteSpeed=519.43MBs. Assigned SpeedClass 'Local'
+LogUbaHorde: Display: UBA/Horde Configuration [Uba.Provider.Horde]: Not Enabled
+LogShaderCompilers: Display: No distributed shader compiler controller found
+LogShaderCompilers: Display: Using 15 local workers for shader compilation
+LogShaderCompilers: Display: Compiling shader autogen file: ../../../../../../joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ShaderAutogen/METAL_SM6/AutogenShaderHeaders.ush
+LogShaderCompilers: Display: Autogen file is unchanged, skipping write.
+LogAssetRegistry: Display: AssetDataGatherer spent 0.000s loading caches from ../../../../../../joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/CachedAssetRegistry.
+LogEditorDomain: Display: EditorDomain is Disabled
+LogDeviceProfileManager: Display: Deviceprofile LinuxArm64Editor not found.
+LogDeviceProfileManager: Display: Deviceprofile LinuxArm64 not found.
+LogCsvProfiler: Display: Metadata set : deviceprofile="MacEditor"
+LogStreaming: Display: FlushAsyncLoading(1): 1 QueuedPackages, 0 AsyncPackages
+LogTextureEncodingSettings: Display: Texture Encode Speed: Final (cook).
+LogTextureEncodingSettings: Display: Oodle Texture Encode Speed settings: Fast: RDO Off Lambda=0, Effort=Normal Final: RDO Off Lambda=0, Effort=Normal
+LogTextureEncodingSettings: Display: Shared linear texture encoding: Disabled
+LogMeshReduction: Display: HLOD mesh reduction module (r.ProxyLODMeshReductionModule) set to "ProxyLODMeshReduction" which doesn't exist.
+LogMeshReduction: Display: Using QuadricMeshReduction for automatic static mesh reduction
+LogMeshReduction: Display: Using SkeletalMeshReduction for automatic skeletal mesh reduction
+LogMeshReduction: Display: No automatic mesh merging module available
+LogMeshReduction: Display: No distributed automatic mesh merging module available
+LogShaderCompilers: Display: Compiling shader autogen file: ../../../../../../joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ShaderAutogen/METAL_SM5/AutogenShaderHeaders.ush
+LogShaderCompilers: Display: Autogen file is unchanged, skipping write.
+LogVirtualization: Display: VirtualizationSystem name found in ini file: None
+LogVirtualization: Display: FNullVirtualizationSystem mounted, virtualization will be disabled
+LogWorldPartition: Display: FWorldPartitionClassDescRegistry::Initialize started...
+LogWorldPartition: Display: FWorldPartitionClassDescRegistry::Initialize took 2.402 ms
+LogMetaSound: Display: MetaSound Page Target Initialized to 'Default'
+LogAudio: Display: Registering Engine Module Parameter Interfaces...
+LogAudioCaptureCore: Display: No Audio Capture implementations found. Audio input will be silent.
+LogAudioCaptureCore: Display: No Audio Capture implementations found. Audio input will be silent.
+LogCsvProfiler: Display: Metadata set : largeworldcoordinates="1"
+LogCsvProfiler: Display: Metadata set : raytracing="0"
+LogCook: Display: CookProcessCount=1. CookMultiprocess is disabled and the cooker is running as a single process.
+LogCook: Display: CookSettings for Memory:
+	MemoryMaxUsedVirtual 0MiB
+	MemoryMaxUsedPhysical 0MiB
+	MemoryMinFreeVirtual 2048MiB
+	MemoryMinFreePhysical 2048MiB
+	MemoryTriggerGCAtPressureLevel None
+	SoftGCMemoryUseTrigger disabled
+	SoftGCTimeBudgetTrigger enabled (0.05 budget, 30s min period)
+LogCook: Display: SkipOnlyEditorOnly is enabled, unsolicited packages will not be cooked unless they are referenced from the cooked version of the instigator package.
+LogCook: Display: ---- Pre Content Initialisation: End ----
+LogCook: Display: ---- Post Content Initialisation: Start ----
+LogEditorDomain: Display: Cycle detected in parents of class /Script/RigVMDeveloper.RigVMUnitNode. Allow flags for editordomain and incremental cooking will be invalid.
+LogZenStore: Display: Establishing oplog 'BadCatLab.fe04fa95/EditorDomain'
+LogZenStore: Display: Zen project 'BadCatLab.fe04fa95' already exists
+LogZenStore: Display: Zen oplog 'BadCatLab.fe04fa95/EditorDomain' already exists
+LogCook: Display: Waiting for Asset Registry
+LogAssetRegistry: Display: Starting OnFilesLoaded.Broadcast
+LogAssetRegistry: Display: Completed OnFilesLoaded.Broadcast: 0.008s
+LogAssetRegistry: Display: Asset registry cache written as 118.5 MiB to ../../../../../../joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/CachedAssetRegistry/CachedAssetRegistry_*.ref
+LogAssetRegistry: Display: CleanupOrphanedCacheFiles (PostWrite): 1 .ref files found, 1 referenced binaries
+LogAssetRegistry: Display:   CachedAssetRegistry_0_B4FE041E9E45F0F31A3FD08888FE1FFD.bin: deleted (orphaned, unreferenced by any .ref)
+LogAssetRegistry: Display: CleanupOrphanedCacheFiles: 2 total binaries, 1 referenced (kept), 0 old-style pre-migration (kept), 1 orphans deleted, 0 orphans locked (kept)
+LogAssetRegistry: Display: CleanupOrphanedCacheFiles (PostWrite): 1 .ref files found, 1 referenced binaries
+LogAssetRegistry: Display: CleanupOrphanedCacheFiles: 1 total binaries, 1 referenced (kept), 0 old-style pre-migration (kept), 0 orphans deleted, 0 orphans locked (kept)
+LogCook: Display: INCREMENTAL COOK DEPENDENCIES: Enabled. Incremental Cook Dependencies are enabled in Editor.ini:[CookSettings]:LegacyIterative=false.
+LogZenStore: Display: Establishing oplog 'BadCatLab.fe04fa95/Mac'
+LogZenStore: Display: Zen project 'BadCatLab.fe04fa95' already exists
+LogStorageServerPlatformFile: Display: Found '/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Cooked/Mac/ue.projectstore'
+LogStorageServerPlatformFile: Display: Using connection settings from ue.projectstore: HostAddrs='[::1]+172.20.10.2' and HostPort='8558'
+LogStorageServerPlatformFile: Display: Found '/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Cooked/Mac/ue.projectstore'
+LogStorageServerPlatformFile: Display: Using password authentication from ue.projectstore
+LogStorageServerPlatformFile: Display: Using settings from ue.projectstore: ServerProject='BadCatLab.fe04fa95' and ServerPlatform='Mac'
+LogStorageServerConnection: Display: Creating zen store connection to [::1]:8558 ("::1").
+LogStorageServerConnection: Display: Zen store connection established to [::1]:8558.
+LogCook: Display: CalculateGlobalDependenciesHash(Mac):
+LogCook: Display: 	FGuid CookIncrementalVersion = ffa12fdc-c822-1fe2-7757-627a12f1d3a7
+LogCook: Display: 	[Editor]:CookSettings.ProjectCookIncrementalVersion = 00000000-0000-0000-0000-000000000000
+LogCook: Display: 	[Engine]:Core.System.CanStripEditorOnlyExportsAndImports = True
+LogCook: Display: 	[Engine]:Core.System.CanSkipEditorReferencedPackagesWhenCooking = False
+LogCook: Display: 	CanUseUnversionedPropertySerialization = True
+LogCook: Display: 	[Editor]:CookSettings.AutomaticOptionalInclusionAssetType = /Script/Niagara.NiagaraScript, /Script/Niagara.NiagaraEmitter, /Script/Niagara.NiagaraSystem, /Script/NiagaraEditor.NiagaraParameterDefinitions, /Script/Niagara.NiagaraEffectType, /Script/Niagara.NiagaraValidationRuleSet, /Script/OptimusCore.OptimusDeformer
+LogCook: Display: 	IsCookFlagSet(ECookInitializationFlags::Unversioned) = True
+LogCook: Display: 	FCoreRedirects::AppendHashOfGlobalRedirects = 02c9fd35aac3c00095df0219fc925d7070b41f449d3b97578d818a4016ee6805
+LogCook: Display: 	GlobalDependenciesHash(Mac) = 2de5b37f143f8e25d634acd39f60ca4c07ed1761ed763f60105e89ce30e27192
+LogCook: Display: FULL COOK: Incremental Cooks are disabled by default in Editor.ini:[CookSettings]:CookIncrementalDefaultIncremental=false, and commandline did not specify -forcerecook=false. Deleting previously cooked packages for platform Mac and recooking all packages discovered in the current cook.
+LogZenStore: Display: Deleting oplog 'BadCatLab.fe04fa95/Mac' if it exists
+LogZenStoreWriter: Display: Deleting /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Cooked/Mac/...
+LogZenStore: Display: Zen oplog 'BadCatLab.fe04fa95/Mac' created
+LogCook: Display: Sandbox cleanup took 0.011 seconds for platforms Mac
+LogCook: Display: Compiling global changed shaders for platform 'Mac'
+LogShaderLibrary: Display:
+LogShaderLibrary: Display: Shader Library 'Global' (SF_METAL_SM5-METAL_SM5) Stats:
+LogShaderLibrary: Display: =================
+LogShaderLibrary: Display: Assets: 1, Unique Shadermaps: 354 (35400.00%)
+LogShaderLibrary: Display: Total Shaders: 5115, Unique Shaders: 5112 (99.94%)
+LogShaderLibrary: Display: Total Shader Size: 54.22mb, Unique Shaders Size: 54.21mb (99.98%)
+LogShaderLibrary: Display: === Extended info:
+LogShaderLibrary: Display: Minimum number of shaders in shadermap: 1
+LogShaderLibrary: Display: Median number of shaders in shadermap: 3
+LogShaderLibrary: Display: Maximum number of shaders in shadermap: 528
+LogShaderLibrary: Display: Number of shadermaps referencing top 10 most shared shaders:
+LogShaderLibrary: Display:     2, 2, 2, 1, 1, 1, 1, 1, 1, 1
+LogShaderLibrary: Display: Unique shaders itemization (sorted by compressed size):
+LogShaderLibrary: Display: SF_Compute: 3284 shaders (64.24%), compressed size: 34.70 MB (10.82 KB avg per shader), uncompressed size: 46.00 MB (14.34 KB avg per shader)
+LogShaderLibrary: Display: SF_Pixel: 1707 shaders (33.39%), compressed size: 19.04 MB (11.42 KB avg per shader), uncompressed size: 25.46 MB (15.27 KB avg per shader)
+LogShaderLibrary: Display: SF_Vertex: 121 shaders (2.37%), compressed size: 0.47 MB (3.94 KB avg per shader), uncompressed size: 0.56 MB (4.76 KB avg per shader)
+LogShaderLibrary: Display: Textual dump saved to '../../../../../../joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Shaders/SF_METAL_SM5-METAL_SM5/ShaderDebug-Global-SF_METAL_SM5-METAL_SM5/Dump.txt'
+LogShaderLibrary: Display: =================
+LogShaderLibrary: Display:
+LogShaderLibrary: Display: Shader Library 'Global' (SF_METAL_SM6-METAL_SM6) Stats:
+LogShaderLibrary: Display: =================
+LogShaderLibrary: Display: Assets: 1, Unique Shadermaps: 469 (46900.00%)
+LogShaderLibrary: Display: Total Shaders: 9285, Unique Shaders: 9285 (100.00%)
+LogShaderLibrary: Display: Total Shader Size: 148.15mb, Unique Shaders Size: 148.15mb (100.00%)
+LogShaderLibrary: Display: === Extended info:
+LogShaderLibrary: Display: Minimum number of shaders in shadermap: 1
+LogShaderLibrary: Display: Median number of shaders in shadermap: 3
+LogShaderLibrary: Display: Maximum number of shaders in shadermap: 544
+LogShaderLibrary: Display: Number of shadermaps referencing top 10 most shared shaders:
+LogShaderLibrary: Display:     1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+LogShaderLibrary: Display: Unique shaders itemization (sorted by compressed size):
+LogShaderLibrary: Display: SF_Compute: 7138 shaders (76.88%), compressed size: 117.73 MB (16.89 KB avg per shader), uncompressed size: 166.13 MB (23.83 KB avg per shader)
+LogShaderLibrary: Display: SF_Pixel: 2011 shaders (21.66%), compressed size: 29.61 MB (15.08 KB avg per shader), uncompressed size: 41.79 MB (21.28 KB avg per shader)
+LogShaderLibrary: Display: SF_Vertex: 136 shaders (1.46%), compressed size: 0.82 MB (6.14 KB avg per shader), uncompressed size: 1.18 MB (8.87 KB avg per shader)
+LogShaderLibrary: Display: Textual dump saved to '../../../../../../joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Shaders/SF_METAL_SM6-METAL_SM6/ShaderDebug-Global-SF_METAL_SM6-METAL_SM6/Dump.txt'
+LogShaderLibrary: Display: =================
+LogCook: Display: Discovering localized assets for cultures: en
+LogCook: Display: Found 0 localized assets
+LogCook: Display: ---- Post Content Initialisation: End ----
+LogCook: Display: Cooked packages 0 Packages Remain 448 Total 448
+LogCook: Display: Cook Diagnostics: OpenFileHandles=192, VirtualMemory=431555MiB, VirtualMemoryAvailable=12781MiB
+LogCook: Display: Garbage collection triggered (Soft). Triggered by conditions:
+  CookSettings.SoftGCTimeTrigger: Periodic triggering of SoftGC: No duration data.
+LogCookCommandlet: Display: GarbageCollection... (Periodic GC)
+LogCook: Display: PreloadableFile was created for /InterchangeAssets/gltf/MaterialInstances/MI_Sheen_Mask but never used. This is wasteful and bad for cook performance.
+LogCook: Display: PreloadableFile was created for /InterchangeAssets/gltf/MaterialInstances/MI_Sheen_Blend but never used. This is wasteful and bad for cook performance.
+LogCook: Display: PreloadableFile was created for /InterchangeAssets/gltf/MaterialInstances/MI_Transmission but never used. This is wasteful and bad for cook performance.
+LogCook: Display: PreloadableFile was created for /InterchangeAssets/gltf/MaterialInstances/MI_SpecularGlossiness_Opaque but never used. This is wasteful and bad for cook performance.
+LogCook: Display: PreloadableFile was created for /InterchangeAssets/gltf/MaterialInstances/MI_SpecularGlossiness_Mask but never used. This is wasteful and bad for cook performance.
+LogCook: Display: PreloadableFile was created for /InterchangeAssets/gltf/MaterialInstances/MI_SpecularGlossiness_Blend but never used. This is wasteful and bad for cook performance.
+LogCook: Display: PreloadableFile was created for /InterchangeAssets/gltf/MaterialInstances/MI_Sheen_Opaque_DS but never used. This is wasteful and bad for cook performance.
+LogCook: Display: PreloadableFile was created for /InterchangeAssets/gltf/MaterialInstances/MI_Sheen_Mask_DS but never used. This is wasteful and bad for cook performance.
+LogCook: Display: PreloadableFile was created for /InterchangeAssets/gltf/MaterialInstances/MI_Sheen_Blend_DS but never used. This is wasteful and bad for cook performance.
+LogCook: Display: PreloadableFile was created for /InterchangeAssets/gltf/MaterialInstances/MI_Transmission_DS but never used. This is wasteful and bad for cook performance.
+LogCook: Display: PreloadableFile was created for /InterchangeAssets/gltf/MaterialInstances/MI_SpecularGlossiness_Opaque_DS but never used. This is wasteful and bad for cook performance.
+LogCook: Display: PreloadableFile was created for /InterchangeAssets/gltf/MaterialInstances/MI_SpecularGlossiness_Mask_DS but never used. This is wasteful and bad for cook performance.
+LogCook: Display: PreloadableFile was created for /InterchangeAssets/gltf/MaterialInstances/MI_SpecularGlossiness_Blend_DS but never used. This is wasteful and bad for cook performance.
+2026-10-30 19:09:28.196 UnrealEditor-Cmd[22277:13529620] 2026-10-30 19:09:28.196076 [W:onnxruntime:, cpuid_info.cc:95 LogEarlyWarning] Unknown CPU vendor. cpuinfo_vendor value: 0
+LogTextureFormatOodle: Display: Oodle Texture loading DLL: liboo2texmac64.2.9.11.dylib
+LogTextureFormatOodle: Display: Oodle Texture loading DLL: liboo2texmac64.2.9.12.dylib
+LogTextureFormatOodle: Display: Oodle Texture loading DLL: liboo2texmac64.2.9.15.dylib
+LogCook: Display: Cooked packages 432 Packages Remain 70 Total 502
+LogTextureFormatOodle: Display: Oodle Texture loading DLL: liboo2texmac64.2.9.13.dylib
+LogCook: Display: Cooked packages 502 Packages Remain 0 Total 502
+LogCook: Display: Cook Diagnostics: OpenFileHandles=193, VirtualMemory=432261MiB, VirtualMemoryAvailable=13238MiB
+LogCook: Display: ---- Finalisation: Start ----
+LogCook: Display: CookArtifact '/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Cooked/Mac/BadCatLab/Metadata/ValidationCookArtifact.json' saved.
+LogAssetRegistryGenerator: Display: Saving asset registry v24.
+LogAssetRegistryGenerator: Display: Generated development asset registry /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Cooked/Mac/BadCatLab/Metadata/DevelopmentAssetRegistry.bin num assets 504, size is 403.26kb, XxHash64[LE] = 0xD3A917A7007EB990, waited on hash 0.00 seconds
+LogAssetRegistryGenerator: Display: Generated asset registry num assets 497, size is 140.96kb
+LogShaderLibrary: Display:
+LogShaderLibrary: Display: Shader Library 'BadCatLab' (SF_METAL_SM5-METAL_SM5) Stats:
+LogShaderLibrary: Display: =================
+LogShaderLibrary: Display: Assets: 103, Unique Shadermaps: 102 (99.03%)
+LogShaderLibrary: Display: Total Shaders: 1948, Unique Shaders: 1268 (65.09%)
+LogShaderLibrary: Display: Total Shader Size: 17.96mb, Unique Shaders Size: 12.70mb (70.71%)
+LogShaderLibrary: Display: === Extended info:
+LogShaderLibrary: Display: Minimum number of shaders in shadermap: 1
+LogShaderLibrary: Display: Median number of shaders in shadermap: 13
+LogShaderLibrary: Display: Maximum number of shaders in shadermap: 411
+LogShaderLibrary: Display: Number of shadermaps referencing top 10 most shared shaders:
+LogShaderLibrary: Display:     35, 26, 23, 18, 17, 17, 16, 16, 15, 14
+LogShaderLibrary: Display: Unique shaders itemization (sorted by compressed size):
+LogShaderLibrary: Display: SF_Pixel: 693 shaders (54.65%), compressed size: 7.61 MB (11.24 KB avg per shader), uncompressed size: 10.34 MB (15.28 KB avg per shader)
+LogShaderLibrary: Display: SF_Vertex: 482 shaders (38.01%), compressed size: 4.24 MB (9.00 KB avg per shader), uncompressed size: 5.45 MB (11.57 KB avg per shader)
+LogShaderLibrary: Display: SF_Compute: 93 shaders (7.33%), compressed size: 0.85 MB (9.41 KB avg per shader), uncompressed size: 1.15 MB (12.70 KB avg per shader)
+LogShaderLibrary: Display: Textual dump saved to '../../../../../../joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Shaders/SF_METAL_SM5-METAL_SM5/ShaderDebug-BadCatLab-SF_METAL_SM5-METAL_SM5/Dump.txt'
+LogShaderLibrary: Display: =================
+LogShaderLibrary: Display:
+LogShaderLibrary: Display: Shader Library 'BadCatLab' (SF_METAL_SM6-METAL_SM6) Stats:
+LogShaderLibrary: Display: =================
+LogShaderLibrary: Display: Assets: 103, Unique Shadermaps: 102 (99.03%)
+LogShaderLibrary: Display: Total Shaders: 2746, Unique Shaders: 1923 (70.03%)
+LogShaderLibrary: Display: Total Shader Size: 32.18mb, Unique Shaders Size: 24.41mb (75.84%)
+LogShaderLibrary: Display: === Extended info:
+LogShaderLibrary: Display: Minimum number of shaders in shadermap: 1
+LogShaderLibrary: Display: Median number of shaders in shadermap: 15
+LogShaderLibrary: Display: Maximum number of shaders in shadermap: 839
+LogShaderLibrary: Display: Number of shadermaps referencing top 10 most shared shaders:
+LogShaderLibrary: Display:     90, 26, 26, 18, 17, 17, 16, 16, 16, 14
+LogShaderLibrary: Display: Unique shaders itemization (sorted by compressed size):
+LogShaderLibrary: Display: SF_Pixel: 927 shaders (48.21%), compressed size: 10.91 MB (12.06 KB avg per shader), uncompressed size: 15.33 MB (16.93 KB avg per shader)
+LogShaderLibrary: Display: SF_Compute: 423 shaders (22.00%), compressed size: 7.30 MB (17.67 KB avg per shader), uncompressed size: 10.34 MB (25.03 KB avg per shader)
+LogShaderLibrary: Display: SF_Vertex: 573 shaders (29.80%), compressed size: 6.19 MB (11.07 KB avg per shader), uncompressed size: 9.16 MB (16.37 KB avg per shader)
+LogShaderLibrary: Display: Textual dump saved to '../../../../../../joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Shaders/SF_METAL_SM6-METAL_SM6/ShaderDebug-BadCatLab-SF_METAL_SM6-METAL_SM6/Dump.txt'
+LogShaderLibrary: Display: =================
+LogCook: Display: Dependent plugin "SteamShared" referenced by "EOS Shared" wasn't found in enabled plugins list when creating cook metadata file... skipping
+LogCook: Display: Dependent plugin "UAF" referenced by "IK Rig" wasn't found in enabled plugins list when creating cook metadata file... skipping
+LogCook: Display: Dependent plugin "UAFAnimGraph" referenced by "IK Rig" wasn't found in enabled plugins list when creating cook metadata file... skipping
+LogCook: Display: Finalize package store(s)...
+LogZenStoreWriter: Display: Flushing...
+LogZenStoreWriter: Display: Saving Zen filesystem manifest '/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Cooked/Mac/BadCatLab/Metadata/zenfs.manifest'
+LogZenStoreWriter: Display: Output:	48788 Public runtime script objects
+LogCook: Display: Cook by the book total time in tick 2.170775s total time 6.261688
+LogCook: Display: Peak Used virtual 432314 MiB Peak Used physical 2186 MiB
+LogCook: Display: Packages Cooked: 495, Packages Incrementally Skipped: 0, Packages Skipped by Platform: 7, Total Packages: 502
+LogCookStats: Display: Hierarchy Timer Information:
+LogCookStats: Display:   Root: 0.000s (0)
+LogCookStats: Display:     CleanSandbox: 0.011s (1)
+LogCookStats: Display:     CollectFilesToCook: 0.002s (1)
+LogCookStats: Display:       CookModificationDelegate: 0.000s (1)
+LogCookStats: Display:     GenerateLongPackageName: 0.000s (1)
+LogCookStats: Display:     TickMainCookLoop: 2.171s (2)
+LogCookStats: Display:       PumpPollables: 0.001s (2)
+LogCookStats: Display:       PumpRequests: 0.017s (16)
+LogCookStats: Display:       LoadPackageForCooking: 0.674s (502)
+LogCookStats: Display:       ValidateSourcePackage: 0.000s (502)
+LogCookStats: Display:       SavingPackages: 1.374s (65)
+LogCookStats: Display:         PollPendingCookedPlatformDatas: 0.099s (2186)
+LogCookStats: Display:         PrepareSave: 0.280s (1737)
+LogCookStats: Display:         PrecachePlatformDataForNextPackage: 0.314s (500)
+LogCookStats: Display:           PrepareSave: 0.314s (608)
+LogCookStats: Display:         SaveCookedPackage: 0.675s (502)
+LogCookStats: Display:           GEditorSavePackage: 0.611s (502)
+LogCookStats: Display:             VerifyCanCookPackage: 0.001s (495)
+LogCookStats: Display:           TargetDomainDependencies: 0.043s (502)
+LogCookStats: Display:         ClearAllCachedCookedPlatformData: 0.004s (502)
+LogCookStats: Display:       PostLoadPackageFixup: 0.000s (2)
+LogCookStats: Display:       WaitForAsync: 0.076s (7)
+LogCookStats: Display:     CookByTheBookFinished: 0.148s (1)
+LogCookStats: Display:       SavingCurrentIniSettings: 0.017s (1)
+LogCookStats: Display:         ProcessingAccessedStrings: 0.002s (1)
+LogCookStats: Display:       ChunkGeneration: 0.005s (1)
+LogCookStats: Display:       FinishPopulateShaderLibrary: 0.000s (1)
+LogCookStats: Display:       CalculateReferencedSet: 0.000s (1)
+LogCookStats: Display:       CookArtifacts.UpdateOplogPackages: 0.002s (1)
+LogCookStats: Display:       PruneShaderLibrary: 0.000s (1)
+LogCookStats: Display:       GeneratorPreSave: 0.000s (1)
+LogCookStats: Display:       BuildChunkManifest: 0.005s (1)
+LogCookStats: Display:         FixupPackageDependenciesForChunks: 0.003s (1)
+LogCookStats: Display:       SaveManifests: 0.000s (1)
+LogCookStats: Display:       SaveAssetRegistry: 0.011s (1)
+LogCookStats: Display:       WriteCookerOpenOrder: 0.001s (1)
+LogCookStats: Display:       WriteCookMetadata: 0.000s (1)
+LogCookStats: Display:       WriteReferencedSet: 0.000s (1)
+LogCookStats: Display:       FinalizePackageStore: 0.055s (1)
+LogCookStats: Display: Misc Cook Stats
+LogCookStats: Display: ===============
+LogCookStats: Display: Validation
+LogCookStats: Display:     Stats=[]
+LogCookStats: Display: Niagara
+LogCookStats: Display:     NiagaraScriptTranslationCount=0
+LogCookStats: Display:     NiagaraCpuScriptCompileCount=0
+LogCookStats: Display:     NiagaraCpuScriptDdcCacheHitCount=0
+LogCookStats: Display:     NiagaraCpuScriptDdcCacheMissCount=0
+LogCookStats: Display:     NiagaraGpuScriptCompileCount=0
+LogCookStats: Display:     NiagaraGpuScriptDdcCacheHitCount=0
+LogCookStats: Display:     NiagaraGpuScriptDdcCacheMissCount=0
+LogCookStats: Display:     NiagaraSystemWaitForCompilationCompleteTime=0.000000
+LogCookStats: Display: ComputeKernelShader.Misc
+LogCookStats: Display:     ShadersCompiled=0
+LogCookStats: Display: NiagaraShader.Misc
+LogCookStats: Display:     ShadersCompiled=0
+LogCookStats: Display: ShaderCompiler
+LogCookStats: Display:     BlockingTimeSec=0.000077
+LogCookStats: Display:     AsyncCompileTimeSec=0.000000
+LogCookStats: Display:     GlobalBeginCompileShaderTimeSec=0.000000
+LogCookStats: Display:     GlobalBeginCompileShaderCalls=0
+LogCookStats: Display:     ProcessAsyncResultsTimeSec=0.000083
+LogCookStats: Display: GlobalShader.Misc
+LogCookStats: Display:     ShadersCompiled=0
+LogCookStats: Display: Material
+LogCookStats: Display:     FinishCacheShadersSec=0.131399
+LogCookStats: Display: Cook.Profile.Params
+LogCookStats: Display:     CookProject=BadCatLab
+LogCookStats: Display:     CookCultures=
+LogCookStats: Display:     CookLabel=
+LogCookStats: Display:     TargetPlatforms=Mac
+LogCookStats: Display:     IsCookAll=false
+LogCookStats: Display:     IsCookOnTheFly=false
+LogCookStats: Display:     IsIncrementalCook=false
+LogCookStats: Display:     IsIterativeCook=false
+LogCookStats: Display:     IsFastCook=false
+LogCookStats: Display:     IsUnversioned=true
+LogCookStats: Display: CookOnTheFlyServer.Package.Load
+LogCookStats: Display:     NumRequestedLoads=173
+LogCookStats: Display:     NumPackagesLoaded=3315
+LogCookStats: Display:     NumInlineLoads=3142
+LogCookStats: Display: CookOnTheFlyServer.Package.Save
+LogCookStats: Display:     NumPackagesIncrementallySkipped=0
+LogCookStats: Display: CookOnTheFlyServer.QueueSize
+LogCookStats: Display:     PeakRequest=501
+LogCookStats: Display:     PeakLoad=56
+LogCookStats: Display:     PeakSave=101
+LogCookStats: Display: Package.Load
+LogCookStats: Display:     LoadPackageTimeSec=0.809239
+LogCookStats: Display: Package.Save
+LogCookStats: Display:     NumPackagesSaved=502
+LogCookStats: Display:     SavePackageTimeSec=0.597256
+LogCookStats: Display:     TagPackageExportsPresaveTimeSec=0.000000
+LogCookStats: Display:     TagPackageExportsTimeSec=0.000000
+LogCookStats: Display:     FullyLoadLoadersTimeSec=0.000000
+LogCookStats: Display:     ResetLoadersTimeSec=0.000000
+LogCookStats: Display:     TagPackageExportsGetObjectsWithOuter=0.000000
+LogCookStats: Display:     TagPackageExportsGetObjectsWithMarks=0.000000
+LogCookStats: Display:     SerializeImportsTimeSec=0.000000
+LogCookStats: Display:     SortExportsSeekfreeInnerTimeSec=0.000000
+LogCookStats: Display:     SerializeExportsTimeSec=0.000000
+LogCookStats: Display:     SerializeBulkDataTimeSec=0.001166
+LogCookStats: Display:     AsyncWriteTimeSec=0.000000
+LogCookStats: Display:     MBWritten=0.000000
+LogCookStats: Display: Package.DifferentPackagesSizeMBPerAsset
+LogCookStats: Display: Package.NumberOfDifferencesInPackagesPerAsset
+LogCookStats: Display: Package.PackageDifferencesSizeMBPerAsset
+LogCookStats: Display: Package.DiffTotal
+LogCookStats: Display:     NumberOfDifferentPackages=0
+LogCookStats: Display:     DifferentPackagesSizeMB=0.000000
+LogCookStats: Display:     NumberOfDifferencesInPackages=0
+LogCookStats: Display:     PackageDifferencesSizeMB=0.000000
+LogCookStats: Display: UnversionedProperties
+LogCookStats: Display:     SavedStructs=0
+LogCookStats: Display:     SavedMB=0
+LogCookStats: Display:     EquivalentTaggedMB=0
+LogCookStats: Display:     CompressionRatio=nan
+LogCookStats: Display:     BitfieldWasteKB=0
+LogCookStats: Display:
+LogCookStats: Display: Cook Profile
+LogCookStats: Display: ============
+LogCookStats: Display:  0.CookWallTimeSec=17.074898
+LogCookStats: Display:  0. 0.StartupWallTimeSec=10.616323
+LogCookStats: Display:  0. 1.CookProcessingTime=6.458576
+LogCookStats: Display:  0. 1. 1.StartCookByTheBookTimeSec=4.118935
+LogCookStats: Display:  0. 1. 1. 0.BlockOnAssetRegistryTimeSec=0.774317
+LogCookStats: Display:  0. 1. 1. 1.GameCookModificationDelegateTimeSec=0.000036
+LogCookStats: Display:  0. 1. 2.TickCookOnTheSideTimeSec=0.208796
+LogCookStats: Display:  0. 1. 2. 0.TickCookOnTheSideLoadPackagesTimeSec=0.673944
+LogCookStats: Display:  0. 1. 2. 1.TickCookOnTheSideSaveCookedPackageTimeSec=0.674596
+LogCookStats: Display:  0. 1. 2. 1. 0.TickCookOnTheSideResolveRedirectorsTimeSec=0.000000
+LogCookStats: Display:  0. 1. 2. 2.TickCookOnTheSidePrepareSaveTimeSec=0.594072
+LogCookStats: Display:  0. 1. 3.TickLoopGCTimeSec=0.016955
+LogCookStats: Display:  0. 1. 4.TickLoopRecompileShaderRequestsTimeSec=0.000000
+LogCookStats: Display:  0. 1. 5.TickLoopShaderProcessAsyncResultsTimeSec=0.000004
+LogCookStats: Display:  0. 1. 6.TickLoopProcessDeferredCommandsTimeSec=0.000006
+LogCookStats: Display:  0. 1. 7.TickLoopTickCommandletStatsTimeSec=0.000001
+LogCookStats: Display:  0. 1. 8.TickLoopFlushRenderingCommandsTimeSec=0.000070
+LogCookStats: Display:  0. 1. 9.ShaderFlushTimeSec=0.000000
+LogCookStats: Display:  0. 1. 10.ValidationTimeSec=0.000029
+LogCookStats: Display:
+LogCookStats: Display: DDC Summary Stats
+LogCookStats: Display: =================
+LogCookStats: Display: BackEnd         = Installed
+LogCookStats: Display: HasLocalCache   =      true
+LogCookStats: Display: HasSharedCache  =     false
+LogCookStats: Display: HasCloudCache   =     false
+LogCookStats: Display: HasZenCache     =      true
+LogCookStats: Display: TotalGetHits    =      4587
+LogCookStats: Display: TotalGetMisses  =         0
+LogCookStats: Display: TotalGets       =      4587
+LogCookStats: Display: TotalGetHitPct  =  1.000000
+LogCookStats: Display: GetMissPct      =  0.000000
+LogCookStats: Display: TotalPutHits    =         0
+LogCookStats: Display: TotalPutMisses  =         0
+LogCookStats: Display: TotalPuts       =         0
+LogCookStats: Display: TotalPutHitPct  =  0.000000
+LogCookStats: Display: PutMissPct      =  0.000000
+LogCookStats: Display: LocalGetHits    =      3743
+LogCookStats: Display: LocalGetMisses  =         0
+LogCookStats: Display: LocalGetTotal   =      3743
+LogCookStats: Display: LocalGetHitPct  =  1.000000
+LogCookStats: Display: SharedGetHits   =         0
+LogCookStats: Display: SharedGetTotal  =         0
+LogCookStats: Display: SharedGetHitPct =  0.000000
+LogCookStats: Display: ZenLocalGetHits =      3743
+LogCookStats: Display: ZenLocalGetTotal=      3743
+LogCookStats: Display: ZenLocalGetHitPct=  1.000000
+LogCookStats: Display: ZenRemoteGetHits=         0
+LogCookStats: Display: ZenRemoteGetTotal=         0
+LogCookStats: Display: ZenRemoteGetHitPct=  0.000000
+LogCookStats: Display: ZenRemoteReadSpeed=  0.000000
+LogCookStats: Display: ZenRemoteWriteSpeed=  0.000000
+LogCookStats: Display: ZenRemoteLatency=  0.000000
+LogCookStats: Display: CloudGetHits    =         0
+LogCookStats: Display: CloudGetTotal   =         0
+LogCookStats: Display: CloudGetHitPct  =  0.000000
+LogCookStats: Display: LocalLatency    =  1.247096
+LogCookStats: Display: LocalReadSpeed  =127.094673
+LogCookStats: Display: LocalWriteSpeed =  0.000000
+LogCookStats: Display: SharedLatency   =  0.000000
+LogCookStats: Display: SharedReadSpeed =  0.000000
+LogCookStats: Display: SharedWriteSpeed=  0.000000
+LogCookStats: Display: CloudLatency    =  0.000000
+LogCookStats: Display: CloudReadSpeed  =  0.000000
+LogCookStats: Display: CloudWriteSpeed =  0.000000
+LogCookStats: Display:
+LogCookStats: Display: DDC Resource Stats
+LogCookStats: Display: =======================================================================================================
+LogCookStats: Display: Asset Type                          Total Time (Sec)  GameThread Time (Sec)  Assets Built  MB Processed
+LogCookStats: Display: ----------------------------------  ----------------  ---------------------  ------------  ------------
+LogCookStats: Display: GlobalShader                                    1.63                   1.63             0        198.44
+LogCookStats: Display: BulkDataList                                    0.54                   0.00             0          0.57
+LogCookStats: Display: MaterialShader                                  0.40                   0.12             0         52.31
+LogCookStats: Display: Texture                                         0.05                   0.00             0         10.67
+LogCookStats: Display: StaticMesh                                      0.02                   0.00             0          1.28
+LogCookStats: Display: CardRepresentation                              0.02                   0.00             0          0.02
+LogCookStats: Display: NavCollision                                    0.01                   0.00             0          0.04
+LogCookStats: Display: STREAMEDAUDIO                                   0.01                   0.00             0          0.09
+LogCookStats: Display: Audio                                           0.00                   0.00             0          0.08
+LogCookStats: Display: CKERSM                                          0.00                   0.00             0          0.25
+LogCookStats: Display: BodySetup                                       0.00                   0.00             0          0.42
+LogCookStats: Display:
+LogCookStats: Display: Accumulated DDC Resource Stats Per Asset Type
+LogCookStats: Display: =======================================================================================================
+LogCookStats: Display: AnimationSequence                               0.00                   0.00             0          0.00
+LogCookStats: Display: Audio                                           0.00                   0.00             0          0.08
+LogCookStats: Display: CardRepresentation                              0.02                   0.00             0          0.02
+LogCookStats: Display: DistanceField                                   0.00                   0.00             0          0.00
+LogCookStats: Display: MaterialShader                                  0.40                   0.12             0         52.31
+LogCookStats: Display: MaterialTranslation                             0.00                   0.00             0          0.00
+LogCookStats: Display: NiagaraScript                                   0.00                   0.00             0          0.00
+LogCookStats: Display: SkeletalMesh                                    0.00                   0.00             0          0.00
+LogCookStats: Display: StaticMesh                                      0.02                   0.00             0          1.28
+LogCookStats: Display: Texture                                         0.05                   0.00             0         10.67
+LogCookStats: Display: Other                                           2.19                   1.63             0        199.80
+LogPackageBuildDependencyTracker: Display: Package Accesses (224 referencing packages with a total of 1698 unique accesses)
+LogConfigBuildDependencyTracker: Display: Config Accesses (307 referencing packages with a total of 1409 unique accesses). 1761 unique accesses that were not associated with a package.
+LogCook: Display: ---- Finalisation: End ----
+LogCook: Display: Done!
+LogSavePackage: Display: Took 0.000176s to verify the EDL loading graph.
+LogInit: Display:
+LogInit: Display: Success - 0 error(s), 0 warning(s)
+LogInit: Display:
+Execution of commandlet took:  6.46 seconds, PeakPhysMemoryMB=2186 MB, PeakVirtMemoryMB=432314 MB
+LogAssetRegistry: Display: CleanupOrphanedCacheFiles (PostWrite): 1 .ref files found, 1 referenced binaries
+LogAssetRegistry: Display: CleanupOrphanedCacheFiles: 1 total binaries, 1 referenced (kept), 0 old-style pre-migration (kept), 0 orphans deleted, 0 orphans locked (kept)
+LogStreaming: Display: ============ Loader Stats ============
+LogStreaming: Display: Unique Partial Flushes: 0
+LogStreaming: Display: ============ Loader Stats End ============
+LogShaderCompilers: Display: Exiting ShaderCompilingThread
+2026-10-30 19:09:29.789 UnrealEditor-Cmd[22277:13529567] [UE4] Shutdown handler: cleanup.
+Opening shared memory
+Shared memory doesn't exist, checking legacy lock file
+Checking for a '/tmp/UnrealTraceServer.pid' lock file
+Forking process
+Opening shared memory
+Starting the store
+Reading settings from '/Users/joeyzhao/UnrealEngine/UnrealTrace/Settings.ini'
+
+Unable to open settings file /Users/joeyzhao/UnrealEngine/UnrealTrace/Settings.ini.
+
+Store settings (/Users/joeyzhao/UnrealEngine/UnrealTrace/Settings.ini):
+ - Store port: 1989
+ - Recorder port: 1981
+ - Thread count: 0
+ - Sponsored mode: 1
+ - Directory: '/Users/joeyzhao/UnrealEngine/UnrealTrace/Store/001'
+Watcher enabled on /Users/joeyzhao/UnrealEngine/UnrealTrace/Store/001
+Signalling parent 22280
+Terminating server, no sponsors or connections active.
+Received signal 15
+Daemon is exiting without errors.
+Listening cancelled, closing port...
+Listening cancelled, closing port...
+Took 21.12s to run UnrealEditor-Cmd, ExitCode=0
+Cook command time: 21.15 s
+********** COOK COMMAND COMPLETED **********
+********** STAGE COMMAND STARTED **********
+Creating UECommandLine.txt
+Creating Staging Manifest...
+Excluding config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/Localization/Keywords.ini
+Excluding config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/Localization/Engine.ini
+Excluding config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/Localization/PortableObjectExport.ini
+Excluding config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/BaseEditorSettings.ini
+Excluding config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/Mac/MacEditorPerProjectUserSettings.ini
+Excluding config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/BaseEditor.ini
+Excluding config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/Localization/WordCount.ini
+Excluding config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/Localization/PropertyNames.ini
+Excluding config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/Localization/RepairData.ini
+Excluding config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/Localization/Editor.ini
+Excluding config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/Localization/PortableObjectImport.ini
+Excluding config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/Localization/Category.ini
+Excluding config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/Localization/ToolTips.ini
+Excluding config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/BaseLightmass.ini
+Excluding config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/BaseUnrealInsightsSettings.ini
+Excluding config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/BaseEditorKeyBindings.ini
+Excluding config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/BasePakFileRules.ini
+Excluding config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/BaseEditorPerProjectUserSettings.ini
+Excluding config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/BaseSourceControlSettings.ini
+Including config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/BaseCompat.ini
+Including config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/PluginBase.ini
+Including config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/ConsoleVariables.ini
+Including config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/Mac/MacGame.ini
+Including config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/Mac/BaseMacEngine.ini
+Including config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/Mac/BaseMacInput.ini
+Including config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/BaseGameUserSettings.ini
+Including config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/BaseGame.ini
+Including config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/BaseScalability.ini
+Including config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/BaseRuntimeOptions.ini
+Including config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/BaseHardware.ini
+Including config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/BaseInstallBundle.ini
+Including config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/BaseInput.ini
+Including config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/BaseDeviceProfiles.ini
+Including config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/BaseMaterialExpressions.ini
+Including config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/Base.ini
+Including config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/BaseEngine.ini
+Including config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/ConfigRedirects.ini
+Including config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/Layouts/UE4ClassicLayout.ini
+Including config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/Layouts/DefaultLayout.ini
+Including config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/Mac/DataDrivenPlatformInfo.ini
+Including config file /Users/Shared/Epic Games/UE_5.8/Engine/Config/VulkanPC/DataDrivenPlatformInfo.ini
+Including config file /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Config/DefaultGameUserSettings.ini
+Including config file /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Config/DefaultEngine.ini
+Including config file /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Config/DefaultInput.ini
+Including config file /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Config/DefaultGame.ini
+Reading oplog from Zen...
+Running UnrealPak with arguments: "/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/BadCatLab.uproject" IoStore -StartZenServerForStage -SponsorProcessID=21855 -ProjectStore="/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Cooked/Mac/ue.projectstore" -unattended
+Running: /Users/Shared/Epic Games/UE_5.8/Engine/Binaries/Mac/UnrealPak "/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/BadCatLab.uproject" IoStore -StartZenServerForStage -SponsorProcessID=21855 -ProjectStore="/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Cooked/Mac/ue.projectstore" -unattended
+LogStreaming: Display: AsyncLoading2 - Created: Async Loading Thread: false, Async Post Load: false, Multithreaded: false
+LogPakFile: Display: ProjectDir: ../../../../../../joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/
+LogIoStore: Display: ==================== IoStore Utils ====================
+LogIoStore: Display: Using command line for crypto configuration
+LogZenServiceInstance: Display: Launching zen utility '/Users/Shared/Epic Games/UE_5.8/Engine/Binaries/Mac/zen service status'.
+LogZenServiceInstance: Display: Writing plugin version info to '/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/Common/Zen/Install/zen_plugin_versions.json'
+LogZenServiceInstance: Display: Read zen version cache file from '/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/5.8/Saved/Zen/zen.version', version: '5.8.13-202605190511-macosx-arm64-release-094f62c'
+LogZenServiceInstance: Display: Read zen version cache file from '/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/Common/Zen/Install/zen.version', version: '5.8.13-202605190511-macosx-arm64-release-094f62c'
+LogZenServiceInstance: Display: Installed service at '/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/Common/Zen/Install/zenserver' is up to date
+LogZenServiceInstance: Display: Launching executable '/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/Common/Zen/Install/zenserver', working dir '/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/Common/Zen/Install', data dir '/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/Common/Zen/Data', args '--port 8558 --data-dir "/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/Common/Zen/Data" --http asio --gc-cache-duration-seconds 1209600 --gc-interval-seconds 21600 --gc-low-diskspace-threshold 2147483648 --cache-bucket-limit-overwrites --quiet --restrict-content-types --allow-external-oidctoken-exe=false --plugins-config "/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/Common/Zen/Install/zen_plugins_v1.json" --security-config-path "/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/Common/Zen/Install/security-config.json" --owner-pid 22552  --child-id Zen_22552_Startup --detach'
+LogZenServiceInstance: Display: Unreal Zen Storage Server HTTP service at http://[::1]:8558 status: OK!.
+LogZenServiceInstance: Display: Unreal Zen Storage Server HTTP service at http://[::1]:8558 status: OK!.
+LogPakFile: Display: UnrealPak executed in 1.875154 seconds
+Took 2.23s to run UnrealPak, ExitCode=0
+Reading oplog from http://[::1]:8558/prj/BadCatLab.fe04fa95/oplog/Mac/entries?trim_by_referencedset=true
+Parsed 497 package entries from oplog.
+Cleaning Stage Directory: /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac
+Creating pak using staging manifest.
+DumpManifest: /Users/joeyzhao/Library/Logs/Unreal Engine/LocalBuildLogs/PrePak_Mac_NonUFSFiles.txt, NumItems: 23
+DumpManifest: /Users/joeyzhao/Library/Logs/Unreal Engine/LocalBuildLogs/PrePak_Mac_NonUFSFilesDebug.txt, NumItems: 5
+DumpManifest: /Users/joeyzhao/Library/Logs/Unreal Engine/LocalBuildLogs/PrePak_Mac_UFSFiles.txt, NumItems: 2349
+No matching platform for PakFileRules for Section ExcludeContentForMobile : Mac
+Using 0 pak order files:
+Running UnrealPak with arguments: "/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/BadCatLab.uproject"  -cryptokeys="/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Cooked/Mac/BadCatLab/Metadata/Crypto.json" -unattended -compressionformats=Oodle -compresslevel=4 -compressmethod=Kraken  -ProjectStore="/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Cooked/Mac/ue.projectstore" -platform=Mac  -CreateMultiple="/Users/joeyzhao/Library/Logs/Unreal Engine/LocalBuildLogs/PakCommands.txt"
+Running: /Users/Shared/Epic Games/UE_5.8/Engine/Binaries/Mac/UnrealPak "/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/BadCatLab.uproject"  -cryptokeys="/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Cooked/Mac/BadCatLab/Metadata/Crypto.json" -unattended -compressionformats=Oodle -compresslevel=4 -compressmethod=Kraken  -ProjectStore="/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Cooked/Mac/ue.projectstore" -platform=Mac  -CreateMultiple="/Users/joeyzhao/Library/Logs/Unreal Engine/LocalBuildLogs/PakCommands.txt"
+LogTrace: Display: Control listening on port 1985
+OodleDataCompression: Display: Oodle v2.9.16 format for pak/iostore with method=Kraken, level=4=Normal
+LogStreaming: Display: AsyncLoading2 - Created: Async Loading Thread: false, Async Post Load: false, Multithreaded: false
+LogPakFile: Display: ProjectDir: ../../../../../../joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/
+LogPakFile: Display: Parsing crypto keys from a crypto key cache file
+LogPakFile: Display: CompressionFormats in priority order: Oodle, Zlib
+LogZenServiceInstance: Display: Launching zen utility '/Users/Shared/Epic Games/UE_5.8/Engine/Binaries/Mac/zen service status'.
+LogZenServiceInstance: Display: Writing plugin version info to '/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/Common/Zen/Install/zen_plugin_versions.json'
+LogZenServiceInstance: Display: Read zen version cache file from '/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/5.8/Saved/Zen/zen.version', version: '5.8.13-202605190511-macosx-arm64-release-094f62c'
+LogZenServiceInstance: Display: Read zen version cache file from '/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/Common/Zen/Install/zen.version', version: '5.8.13-202605190511-macosx-arm64-release-094f62c'
+LogZenServiceInstance: Display: Installed service at '/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/Common/Zen/Install/zenserver' is up to date
+LogZenServiceInstance: Display: Unreal Zen Storage Server HTTP service at http://[::1]:8558 status: OK!.
+LogZenStore: Display: Opening oplog BadCatLab.fe04fa95 / Mac
+LogIoStore: Display: Fetched 498 oplog items from Zen in 1.57 seconds
+LogIoStore: Display: Parsed 498 oplog items 0.00 seconds, 3405 chunks
+LogIoStore: Display: Loaded 613 chunk hashes from Zen in 0.00 seconds, 613 hashes updated in 0.00 seconds
+LogPakFile: Display: Oodle enabled on 'NoPluginCompression' files
+LogPakFile: Display: Loading response file /Users/Shared/Epic Games/UE_5.8/Engine/Programs/AutomationTool/Saved/ResponseFiles/PakList_BadCatLab-Mac.txt
+LogPakFile: Display: Added 1732 entries to add to pak file.
+LogPakFile: Display: Collecting files to add to pak file...
+LogPakFile: Display: Collected 1732 files in 0.00s.
+LogPakFile: Display: Creating pak /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac/BadCatLab/Content/Paks/BadCatLab-Mac.pak.
+LogPakFile: Display: Created pak file: /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac/BadCatLab/Content/Paks/BadCatLab-Mac.pak
+LogPakFile: Display: CompressionFormat 0 [Oodle] : 387 files, 28346753 -> 9835220 bytes
+LogPakFile: Display: CompressionFormat 2 [None] : 1345 files, 789198 -> 789198 bytes
+LogPakFile: Display: Added 1732 files, 10865265 bytes total
+LogPakFile: Display: PrimaryIndex size: 24082 bytes
+LogPakFile: Display: PathHashIndex size: 53854 bytes
+LogPakFile: Display: FullDirectoryIndex size: 57186 bytes
+LogPakFile: Display: Compression summary: 34.70% of original size. Compressed Size 9835220 bytes, Original Size 28346753 bytes.
+LogPakFile: Display: Encryption - DISABLED
+LogPakFile: Display:
+LogPakFile: Display: Writer and Compression Threads exited.
+LogPakFile: Display: UnrealPak executed in 1.667014 seconds
+Took 1.87s to run UnrealPak, ExitCode=0
+Running UnrealPak with arguments: "/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/BadCatLab.uproject" /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/BadCatLab.uproject -CreateGlobalContainer="/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac/BadCatLab/Content/Paks/global.utoc" -ProjectStore="/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Cooked/Mac/ue.projectstore" -CookedDirectory="/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Cooked/Mac" -Commands="/Users/joeyzhao/Library/Logs/Unreal Engine/LocalBuildLogs/IoStoreCommands.txt" -compressionformats=Oodle -compresslevel=4 -compressmethod=Kraken   -cryptokeys="/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Cooked/Mac/BadCatLab/Metadata/Crypto.json" -compressionMinBytesSaved=1024 -compressionMinPercentSaved=5 -WriteBackMetadataToAssetRegistry=Disabled -platform=Mac  -unattended
+Running: /Users/Shared/Epic Games/UE_5.8/Engine/Binaries/Mac/UnrealPak "/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/BadCatLab.uproject" /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/BadCatLab.uproject -CreateGlobalContainer="/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac/BadCatLab/Content/Paks/global.utoc" -ProjectStore="/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Cooked/Mac/ue.projectstore" -CookedDirectory="/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Cooked/Mac" -Commands="/Users/joeyzhao/Library/Logs/Unreal Engine/LocalBuildLogs/IoStoreCommands.txt" -compressionformats=Oodle -compresslevel=4 -compressmethod=Kraken   -cryptokeys="/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Cooked/Mac/BadCatLab/Metadata/Crypto.json" -compressionMinBytesSaved=1024 -compressionMinPercentSaved=5 -WriteBackMetadataToAssetRegistry=Disabled -platform=Mac  -unattended
+LogTrace: Display: Control listening on port 1985
+OodleDataCompression: Display: Oodle v2.9.16 format for pak/iostore with method=Kraken, level=4=Normal
+LogStreaming: Display: AsyncLoading2 - Created: Async Loading Thread: false, Async Post Load: false, Multithreaded: false
+LogPakFile: Display: ProjectDir: ../../../../../../joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/
+LogIoStore: Display: ==================== IoStore Utils ====================
+LogIoStore: Display: Parsing crypto keys from a crypto key cache file '/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Cooked/Mac/BadCatLab/Metadata/Crypto.json'
+LogIoStore: Display: Container signing - DISABLED
+LogIoStore: Display: Directory index - ENABLED
+LogIoStore: Display: Using compression format 'Oodle'
+LogConfig: Display: Read in platform Mac ini files took 0.01 seconds
+LogIoStore: Display: Using memory mapping alignment '16384'
+LogIoStore: Display: Using compression block size '65536'
+LogIoStore: Display: Using compression block alignment '65536'
+LogIoStore: Display: Using compression min bytes saved '1024'
+LogIoStore: Display: Using compression min percent saved '5'
+LogIoStore: Display: Using max partition size '0'
+LogIoStore: Display: Not using DDC for compression
+LogIoStore: Display: Container metadata disabled
+LogIoStore: Display: Using command list file: '/Users/joeyzhao/Library/Logs/Unreal Engine/LocalBuildLogs/IoStoreCommands.txt'
+LogIoStore: Display: Selected Oodle level 4 (Normal) from command line for shaders
+LogZenServiceInstance: Display: Launching zen utility '/Users/Shared/Epic Games/UE_5.8/Engine/Binaries/Mac/zen service status'.
+LogZenServiceInstance: Display: Writing plugin version info to '/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/Common/Zen/Install/zen_plugin_versions.json'
+LogZenServiceInstance: Display: Read zen version cache file from '/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/5.8/Saved/Zen/zen.version', version: '5.8.13-202605190511-macosx-arm64-release-094f62c'
+LogZenServiceInstance: Display: Read zen version cache file from '/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/Common/Zen/Install/zen.version', version: '5.8.13-202605190511-macosx-arm64-release-094f62c'
+LogZenServiceInstance: Display: Installed service at '/Users/joeyzhao/Library/Application Support/Epic/UnrealEngine/Common/Zen/Install/zenserver' is up to date
+LogZenServiceInstance: Display: Unreal Zen Storage Server HTTP service at http://[::1]:8558 status: OK!.
+LogZenStore: Display: Opening oplog BadCatLab.fe04fa95 / Mac
+LogIoStore: Display: Fetched 498 oplog items from Zen in 1.71 seconds
+LogIoStore: Display: Parsed 498 oplog items 0.00 seconds, 3405 chunks
+LogIoStore: Display: Loaded 613 chunk hashes from Zen in 0.00 seconds, 613 hashes updated in 0.00 seconds
+LogIoStore: Display: Searching for cooked assets in folder '/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Cooked/Mac'
+LogIoStore: Display: Found '8' files
+LogIoStore: Display: Creating container targets...
+LogIoStore: Display: Processing shader libraries, compressing with Oodle Mermaid, level 4 (Normal)
+LogIoStore: Display: Shader library chunk override is disabled
+LogShaderLibrary: Display: Created IoStoreShaderArchive header: shaders grouped in 398 groups (156 of them didn't need new indices), average uncompressed size 189739 bytes, min 3235 bytes, max 1052608 bytes (r.ShaderCodeLibrary.MaxShaderGroupSize=1048576)
+LogIoStore: Display: Global-SF_METAL_SM5(METAL_SM5): Recompressed 5112 shaders as 398 groups. Library size changed from 55510 KB (1.33 : 1 ratio) to 25645 KB (2.88 : 1 ratio), 46.20% of previous.
+LogIoStore: Display: Save IoStoreShaderCodeArchive 'Global-SF_METAL_SM5-METAL_SM5' with ChunkId 'e3aad1ffc91986a400000008' for target file '/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Cooked/Mac/BadCatLab/Content/ShaderArchive-Global-SF_METAL_SM5-METAL_SM5.ushaderbytecode'
+LogShaderLibrary: Display: Created IoStoreShaderArchive header: shaders grouped in 186 groups (66 of them didn't need new indices), average uncompressed size 95513 bytes, min 3219 bytes, max 863969 bytes (r.ShaderCodeLibrary.MaxShaderGroupSize=1048576)
+LogIoStore: Display: BadCatLab-SF_METAL_SM5(METAL_SM5): Recompressed 1268 shaders as 186 groups. Library size changed from 13003 KB (1.33 : 1 ratio) to 7290 KB (2.38 : 1 ratio), 56.06% of previous.
+LogIoStore: Display: Save IoStoreShaderCodeArchive 'BadCatLab-SF_METAL_SM5-METAL_SM5' with ChunkId 'ea6e4cce1745fd9f00000008' for target file '/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Cooked/Mac/BadCatLab/Content/ShaderArchive-BadCatLab-SF_METAL_SM5-METAL_SM5.ushaderbytecode'
+LogShaderLibrary: Display: Created IoStoreShaderArchive header: shaders grouped in 628 groups (178 of them didn't need new indices), average uncompressed size 349123 bytes, min 3871 bytes, max 1052039 bytes (r.ShaderCodeLibrary.MaxShaderGroupSize=1048576)
+LogIoStore: Display: Global-SF_METAL_SM6(METAL_SM6): Recompressed 9285 shaders as 628 groups. Library size changed from 151709 KB (1.41 : 1 ratio) to 92484 KB (2.32 : 1 ratio), 60.96% of previous.
+LogIoStore: Display: Save IoStoreShaderCodeArchive 'Global-SF_METAL_SM6-METAL_SM6' with ChunkId 'f150c46002ec7d9b00000008' for target file '/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Cooked/Mac/BadCatLab/Content/ShaderArchive-Global-SF_METAL_SM6-METAL_SM6.ushaderbytecode'
+LogShaderLibrary: Display: Created IoStoreShaderArchive header: shaders grouped in 202 groups (60 of them didn't need new indices), average uncompressed size 180780 bytes, min 6083 bytes, max 982777 bytes (r.ShaderCodeLibrary.MaxShaderGroupSize=1048576)
+LogIoStore: Display: BadCatLab-SF_METAL_SM6(METAL_SM6): Recompressed 1923 shaders as 202 groups. Library size changed from 24992 KB (1.43 : 1 ratio) to 15317 KB (2.33 : 1 ratio), 61.29% of previous.
+LogIoStore: Display: Save IoStoreShaderCodeArchive 'BadCatLab-SF_METAL_SM6-METAL_SM6' with ChunkId 'a6d23b4fa4c0cb7d00000008' for target file '/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/Cooked/Mac/BadCatLab/Content/ShaderArchive-BadCatLab-SF_METAL_SM6-METAL_SM6.ushaderbytecode'
+LogIoStore: Display: Shaders processed in 0.65 seconds
+LogIoStore: Display: Initialized WriteRequestManager with MaxConcurrentSourceReads=9 (18 cores), MaxSourceBufferMemory=3072MiB
+LogIoStore: Display: Processing redirects...
+LogIoStore: Display: Creating disk layout...
+LogIoStore: Display: Ordered 495 packages using fallback bundle order
+LogIoStore: Display: Disabled WriteRequestManager memory throttling, MaxConcurrentSourceReads=9 (18 cores)
+LogIoStore: Display: Writing container(s)...
+LogIoStore: Display: Writing and compressing took 0.37 seconds, writes to disk took 0.05 seconds for 281,824,720 bytes @ 5,682,035,917 bytes per second.
+LogIoStore: Display: global: Found perfect hashmap for 1 items.
+LogIoStore: Display: BadCatLab-Mac: Found perfect hashmap for 2032 items.
+LogIoStore: Display: Finalize took 0.0 seconds for 2 writers to write 203,138 bytes, 13,198,528 bytes per second
+LogIoStore: Display: Writing tocs... [Physical: 986 MiB, Virtual: 429346 MiB]
+LogIoStore: Display: 613 / 2,033 hashes were loaded from the hash database, by type:
+LogIoStore: Display:     ExportBundleData           495
+LogIoStore: Display:     BulkData                   118
+LogIoStore: Display: 613 / 2,033 chunks attempted to compress, by type:
+LogIoStore: Display:     ExportBundleData           495 / 495
+LogIoStore: Display:     BulkData                   118 / 118
+LogIoStore: Display:     ScriptObjects              0 / 1
+LogIoStore: Display:     ContainerHeader            0 / 1
+LogIoStore: Display:     ShaderCodeLibrary          0 / 4
+LogIoStore: Display:     ShaderCode                 0 / 1,414
+LogIoStore: Display: Source bytes read:
+LogIoStore: Display:     Zen:                        158,028,871
+LogIoStore: Display:         ExportBundleData        151,317,967 bytes over 495 reads
+LogIoStore: Display:         BulkData                  6,710,904 bytes over 118 reads
+LogIoStore: Display:     Loose File:                           0
+LogIoStore: Display:     Memory:                     289,194,190
+LogIoStore: Display:         ShaderCodeLibrary           963,952 bytes over 8 reads
+LogIoStore: Display:         ShaderCode              288,230,238 bytes over 2,828 reads
+LogIoStore: Display: Calculating stats...
+LogIoStore: Display:
+LogIoStore: Display: Container Summary
+LogIoStore: Display: ==================
+LogIoStore: Display:
+LogIoStore: Display:            Container      Flags      Chunk(s) #       TOC (KiB)       Raw Size (MiB)           Size (MiB)
+LogIoStore: Display: ---------------------------------------------------------------------------------------------------------
+LogIoStore: Display:               global  -/-/-/-/-               1            0.78                 3.06                 3.06 -
+LogIoStore: Display:        BadCatLab-Mac  C/-/-/I/-            2032          197.60               305.81               265.70 (13.11% Oodle)
+LogIoStore: Display: ---------------------------------------------------------------------------------------------------------
+LogIoStore: Display:                Total                       2033          198.38               308.87               268.77
+LogIoStore: Display:
+LogIoStore: Display: ** Flags: (C)ompressed / (E)ncrypted / (S)igned) / (I)ndexed) / (O)nDemand **
+LogIoStore: Display:
+LogIoStore: Display: Compression block padding:    17.18 MiB
+LogIoStore: Display:
+LogIoStore: Display: Container Directory Index
+LogIoStore: Display: ==========================
+LogIoStore: Display:
+LogIoStore: Display:            Container      Size (KiB)
+LogIoStore: Display: ------------------------------------
+LogIoStore: Display:               global            0.00
+LogIoStore: Display:        BadCatLab-Mac           30.37
+LogIoStore: Display:
+LogIoStore: Display: Container Patch Report
+LogIoStore: Display: ========================
+LogIoStore: Display:
+LogIoStore: Display:            Container          Total #       Modified #          Added #   Modified (MiB)      Added (MiB)
+LogIoStore: Display: ---------------------------------------------------------------------------------------------------------
+LogIoStore: Display:               global                1                0                0             0.00             0.00
+LogIoStore: Display:        BadCatLab-Mac             2032                0             2032             0.00           248.52
+LogIoStore: Display: ---------------------------------------------------------------------------------------------------------
+LogIoStore: Display:
+LogIoStore: Display: PackageStore
+LogIoStore: Display: =============
+LogIoStore: Display:
+LogIoStore: Display:            Container      Size (KiB)      Packages #     Localized #
+LogIoStore: Display: --------------------------------------------------------------------
+LogIoStore: Display:        BadCatLab-Mac              13             495               0
+LogIoStore: Display: --------------------------------------------------------------------
+LogIoStore: Display:                Total              13             495               0
+LogIoStore: Display:
+LogIoStore: Display:
+LogIoStore: Display: Input:       495 Packages
+LogIoStore: Display: Input:         0   B UExp
+LogIoStore: Display: Input:    144.31 MiB UAsset
+LogIoStore: Display: Input:      6.40 MiB UBulk
+LogIoStore: Display: Input:    115.36 MiB for 1026 Global shaders
+LogIoStore: Display: Input:      2.97 MiB for 172 Shared shaders
+LogIoStore: Display: Input:         0   B for 0 Unique shaders
+LogIoStore: Display: Input:     19.11 MiB for 216 Inline shaders
+LogIoStore: Display:
+LogIoStore: Display: Output:      501 Imported package entries
+LogIoStore: Display: Output:      313 Packages without imports
+LogIoStore: Display: Output:        0 Public runtime script objects
+LogIoStore: Display: Output:     3.06 MiB InitialLoadData
+LogIoStore: Display:
+LogIoStore: Display: Success
+LogPakFile: Display: UnrealPak executed in 2.831357 seconds
+Took 3.09s to run UnrealPak, ExitCode=0
+DumpManifest: /Users/joeyzhao/Library/Logs/Unreal Engine/LocalBuildLogs/FinalCopyMac_UFSFiles.txt, NumItems: 2350
+DumpManifest: /Users/joeyzhao/Library/Logs/Unreal Engine/LocalBuildLogs/FinalCopyMac_NonUFSFiles.txt, NumItems: 23
+DumpManifest: /Users/joeyzhao/Library/Logs/Unreal Engine/LocalBuildLogs/FinalCopyMac_NonUFSFilesDebug.txt, NumItems: 5
+Copying NonUFSFiles to staging directory: /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac
+Copying DebugFiles to staging directory: /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac
+Discovering modules, targets and source code for project...
+Adding projects for all targets...
+Adding projects for all targets took 0.00s
+Adding projects for all game projects took 0.00s
+Adding projects for all modules took 0.00s
+/Users/Shared/Epic Games/UE_5.8/Engine/Source/ThirdParty/Apple/MetalShaderConverter/MetalShaderConverter.build.cs: warning: Referenced directory '/Users/Shared/Epic Games/UE_5.8/Engine/Source/ThirdParty/Apple/MetalShaderConverter/include/metal_irconverter_ext' does not exist.
+Compiling with Mac SDK 26.1, minimum Target OS version 14.00
+Adding additional Xcode project info took 0.00s
+Writing project files...
+Writing xcode workspace /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFiles/BadCatLab_Mac_BadCatLab.xcworkspace
+Writing project files... 100%
+Writing project files took 0.00s
+No certs of truth reported, skipping certificate verification...
+Known Apple certificate for this team is installed!
+params: UBT_NO_POST_DEPLOY=true /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild build -workspace "/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFiles/BadCatLab_Mac_BadCatLab.xcworkspace" -scheme "BadCatLab" -configuration "Development" -destination generic/platform="macOS" CODE_SIGN_ALLOW_ENTITLEMENTS_MODIFICATION=YES SYMROOT="/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds" EFFECTIVE_PLATFORM_NAME=Mac UE_OVERRIDE_STAGE_DIR="/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac" -allowProvisioningUpdates UE_XCODE_BUILD_MODE=Stage -hideShellScriptEnvironment
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild build -workspace /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFiles/BadCatLab_Mac_BadCatLab.xcworkspace -scheme BadCatLab -configuration Development -destination generic/platform=macOS CODE_SIGN_ALLOW_ENTITLEMENTS_MODIFICATION=YES SYMROOT=/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds EFFECTIVE_PLATFORM_NAME=Mac UE_OVERRIDE_STAGE_DIR=/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac -allowProvisioningUpdates UE_XCODE_BUILD_MODE=Stage -hideShellScriptEnvironment
+
+Build settings from command line:
+    CODE_SIGN_ALLOW_ENTITLEMENTS_MODIFICATION = YES
+    EFFECTIVE_PLATFORM_NAME = Mac
+    SYMROOT = /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds
+    UE_OVERRIDE_STAGE_DIR = /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac
+    UE_XCODE_BUILD_MODE = Stage
+
+Run pre-actions
+
+SchemeAction Touch\ UBT\ generated\ tiles /var/folders/hb/y5jt_sv54tl502h9b4b4rcg00000gn/T/SchemeScriptAction-tRrw5f.sh
+    cd /var/folders/hb/y5jt_sv54tl502h9b4b4rcg00000gn/T/
+    /bin/sh -c /var/folders/hb/y5jt_sv54tl502h9b4b4rcg00000gn/T/SchemeScriptAction-tRrw5f.sh
+
+ComputePackagePrebuildTargetDependencyGraph
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (1 target)
+    Target 'BadCatLab' in project 'BadCatLab (Mac)' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --version --output-format xml1
+
+Build description signature: 895421f7a3bfd63777a5093f079674dd
+Build description path: /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/XCBuildData/895421f7a3bfd63777a5093f079674dd.xcbuilddata
+MkDir /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac/BadCatLab.app/Contents (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    /bin/mkdir -p /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac/BadCatLab.app/Contents
+
+MkDir /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac/BadCatLab.app/Contents/Resources (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    /bin/mkdir -p /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac/BadCatLab.app/Contents/Resources
+
+ProcessProductPackaging /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Build/Mac/Resources/Sandbox.Server.entitlements /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/BadCatLab\ (Mac).build/Mac/BadCatLab.build/BadCatLab.app.xcent (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+
+    Entitlements:
+
+    {
+    "com.apple.security.app-sandbox" = 1;
+    "com.apple.security.get-task-allow" = 1;
+    "com.apple.security.network.client" = 1;
+    "com.apple.security.network.server" = 1;
+}
+
+    builtin-productPackagingUtility /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Build/Mac/Resources/Sandbox.Server.entitlements -entitlements -format xml -o /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/BadCatLab.app.xcent
+
+ProcessProductPackaging /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Build/Mac/Resources/Sandbox.Server.entitlements /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/BadCatLab\ (Mac).build/Mac/BadCatLab.build/BadCatLab.app-Simulated.xcent (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+
+    Entitlements:
+
+    {
+}
+
+    builtin-productPackagingUtility /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Build/Mac/Resources/Sandbox.Server.entitlements -entitlements -format xml -o /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/BadCatLab.app-Simulated.xcent
+
+ProcessProductPackagingDER /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/BadCatLab\ (Mac).build/Mac/BadCatLab.build/BadCatLab.app-Simulated.xcent /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/BadCatLab\ (Mac).build/Mac/BadCatLab.build/BadCatLab.app-Simulated.xcent.der (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    /usr/bin/derq query -f xml -i /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/BadCatLab.app-Simulated.xcent -o /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/BadCatLab.app-Simulated.xcent.der --raw
+
+ProcessProductPackagingDER /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/BadCatLab\ (Mac).build/Mac/BadCatLab.build/BadCatLab.app.xcent /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/BadCatLab\ (Mac).build/Mac/BadCatLab.build/BadCatLab.app.xcent.der (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    /usr/bin/derq query -f xml -i /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/BadCatLab.app.xcent -o /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/BadCatLab.app.xcent.der --raw
+
+CpResource /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac/BadCatLab.app/Contents/Resources/UEMetadata /Users/Shared/Epic\ Games/UE_5.8/Engine/Build/Mac/Resources/UEMetadata (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-unsigned-binaries -strip-deterministic -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks /Users/Shared/Epic\ Games/UE_5.8/Engine/Build/Mac/Resources/UEMetadata /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac/BadCatLab.app/Contents/Resources
+
+LinkAssetCatalog /Users/Shared/Epic\ Games/UE_5.8/Engine/Build/Mac/Resources/Assets.xcassets (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    builtin-linkAssetCatalog --thinned /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_output/thinned --thinned-dependencies /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_dependencies_thinned --thinned-info-plist-content /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_generated_info.plist_thinned --unthinned /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_output/unthinned --unthinned-dependencies /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_dependencies_unthinned --unthinned-info-plist-content /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_generated_info.plist_unthinned --output /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac/BadCatLab.app/Contents/Resources --plist-output /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_generated_info.plist
+note: Emplaced /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac/BadCatLab.app/Contents/Resources/AppIcon.icns (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+note: Emplaced /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac/BadCatLab.app/Contents/Resources/Assets.car (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+
+ProcessInfoPlistFile /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac/BadCatLab.app/Contents/Info.plist /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Build/Mac/Resources/Info.Template.plist (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    builtin-infoPlistUtility /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Build/Mac/Resources/Info.Template.plist -producttype com.apple.product-type.application -genpkginfo /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac/BadCatLab.app/Contents/PkgInfo -expandbuildsettings -format xml -platform macosx -additionalcontentfile /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_generated_info.plist -o /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac/BadCatLab.app/Contents/Info.plist
+
+PhaseScriptExecution Copy\ Executable\ and\ Staged\ Data\ into\ .app /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/BadCatLab\ (Mac).build/Mac/BadCatLab.build/Script-D980D23E6DB1DFE81310F1AD.sh (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    /bin/sh -c /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/BadCatLab\\\ \\\(Mac\\\).build/Mac/BadCatLab.build/Script-D980D23E6DB1DFE81310F1AD.sh
+Copying executable and any standalone dylibs into /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac/BadCatLab.app/Contents/MacOS but do not overwrite unless src is newer
+Syncing /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac to /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac/BadCatLab.app/Contents/UE
+
+CodeSign /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac/BadCatLab.app (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+
+    Signing Identity:     "Sign to Run Locally"
+
+    /usr/bin/codesign --force --sign - --entitlements /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/BadCatLab.app.xcent --timestamp\=none --generate-entitlement-der /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac/BadCatLab.app
+/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac/BadCatLab.app: replacing existing signature
+
+Validate /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac/BadCatLab.app (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    builtin-validationUtility /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac/BadCatLab.app -no-validate-extension -infoplist-subpath Contents/Info.plist
+
+RegisterWithLaunchServices /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac/BadCatLab.app (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    /System/Library/Frameworks/CoreServices.framework/Versions/Current/Frameworks/LaunchServices.framework/Versions/Current/Support/lsregister -f -R -trusted /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac/BadCatLab.app
+
+** BUILD SUCCEEDED **
+
+Stage command time: 38.17 s
+********** STAGE COMMAND COMPLETED **********
+********** PACKAGE COMMAND STARTED **********
+Discovering modules, targets and source code for project...
+Adding projects for all targets...
+Adding projects for all targets took 0.00s
+Adding projects for all game projects took 0.00s
+Adding projects for all modules took 0.00s
+/Users/Shared/Epic Games/UE_5.8/Engine/Source/ThirdParty/Apple/MetalShaderConverter/MetalShaderConverter.build.cs: warning: Referenced directory '/Users/Shared/Epic Games/UE_5.8/Engine/Source/ThirdParty/Apple/MetalShaderConverter/include/metal_irconverter_ext' does not exist.
+Adding additional Xcode project info took 0.00s
+Writing project files...
+Writing xcode workspace /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFiles/BadCatLab_Mac_BadCatLab.xcworkspace
+Writing project files... 100%
+Writing project files took 0.00s
+params: UBT_NO_POST_DEPLOY=true /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild build -workspace "/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFiles/BadCatLab_Mac_BadCatLab.xcworkspace" -scheme "BadCatLab" -configuration "Development" -destination generic/platform="macOS" CODE_SIGN_ALLOW_ENTITLEMENTS_MODIFICATION=YES UE_OVERRIDE_STAGE_DIR="/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac" -allowProvisioningUpdates UE_XCODE_BUILD_MODE=Package -hideShellScriptEnvironment
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild build -workspace /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFiles/BadCatLab_Mac_BadCatLab.xcworkspace -scheme BadCatLab -configuration Development -destination generic/platform=macOS CODE_SIGN_ALLOW_ENTITLEMENTS_MODIFICATION=YES UE_OVERRIDE_STAGE_DIR=/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac -allowProvisioningUpdates UE_XCODE_BUILD_MODE=Package -hideShellScriptEnvironment
+
+Build settings from command line:
+    CODE_SIGN_ALLOW_ENTITLEMENTS_MODIFICATION = YES
+    UE_OVERRIDE_STAGE_DIR = /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac
+    UE_XCODE_BUILD_MODE = Package
+
+Run pre-actions
+
+SchemeAction Touch\ UBT\ generated\ tiles /var/folders/hb/y5jt_sv54tl502h9b4b4rcg00000gn/T/SchemeScriptAction-bXJYKl.sh
+    cd /var/folders/hb/y5jt_sv54tl502h9b4b4rcg00000gn/T/
+    /bin/sh -c /var/folders/hb/y5jt_sv54tl502h9b4b4rcg00000gn/T/SchemeScriptAction-bXJYKl.sh
+
+ComputePackagePrebuildTargetDependencyGraph
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (1 target)
+    Target 'BadCatLab' in project 'BadCatLab (Mac)' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --version --output-format xml1
+
+Build description signature: 978970d65ebd5c73535550cff4d9cccf
+Build description path: /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac/build/XCBuildData/978970d65ebd5c73535550cff4d9cccf.xcbuilddata
+ProcessProductPackaging /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Build/Mac/Resources/Sandbox.Server.entitlements /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ (Mac).build/Mac/BadCatLab.build/BadCatLab.app-Simulated.xcent (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+
+    Entitlements:
+
+    {
+}
+
+    builtin-productPackagingUtility /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Build/Mac/Resources/Sandbox.Server.entitlements -entitlements -format xml -o /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/BadCatLab.app-Simulated.xcent
+
+ProcessProductPackaging /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Build/Mac/Resources/Sandbox.Server.entitlements /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ (Mac).build/Mac/BadCatLab.build/BadCatLab.app.xcent (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+
+    Entitlements:
+
+    {
+    "com.apple.security.app-sandbox" = 1;
+    "com.apple.security.get-task-allow" = 1;
+    "com.apple.security.network.client" = 1;
+    "com.apple.security.network.server" = 1;
+}
+
+    builtin-productPackagingUtility /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Build/Mac/Resources/Sandbox.Server.entitlements -entitlements -format xml -o /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/BadCatLab.app.xcent
+
+ProcessProductPackagingDER /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ (Mac).build/Mac/BadCatLab.build/BadCatLab.app-Simulated.xcent /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ (Mac).build/Mac/BadCatLab.build/BadCatLab.app-Simulated.xcent.der (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    /usr/bin/derq query -f xml -i /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/BadCatLab.app-Simulated.xcent -o /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/BadCatLab.app-Simulated.xcent.der --raw
+
+ProcessProductPackagingDER /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ (Mac).build/Mac/BadCatLab.build/BadCatLab.app.xcent /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ (Mac).build/Mac/BadCatLab.build/BadCatLab.app.xcent.der (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    /usr/bin/derq query -f xml -i /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/BadCatLab.app.xcent -o /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/BadCatLab.app.xcent.der --raw
+
+CompileAssetCatalogVariant thinned /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app/Contents/Resources /Users/Shared/Epic\ Games/UE_5.8/Engine/Build/Mac/Resources/Assets.xcassets (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    /Applications/Xcode.app/Contents/Developer/usr/bin/actool /Users/Shared/Epic\ Games/UE_5.8/Engine/Build/Mac/Resources/Assets.xcassets --compile /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_output/thinned --output-format human-readable-text --notices --warnings --export-dependency-info /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_dependencies_thinned --output-partial-info-plist /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_generated_info.plist_thinned --app-icon AppIcon --enable-on-demand-resources NO --development-region English --target-device mac --minimum-deployment-target 14.00 --platform macosx
+/* com.apple.actool.compilation-results */
+/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab (Mac).build/Mac/BadCatLab.build/assetcatalog_generated_info.plist_thinned
+/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab (Mac).build/Mac/BadCatLab.build/assetcatalog_output/thinned/AppIcon.icns
+/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab (Mac).build/Mac/BadCatLab.build/assetcatalog_output/thinned/Assets.car
+
+
+CpResource /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app/Contents/Resources/UEMetadata /Users/Shared/Epic\ Games/UE_5.8/Engine/Build/Mac/Resources/UEMetadata (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-unsigned-binaries -strip-deterministic -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks /Users/Shared/Epic\ Games/UE_5.8/Engine/Build/Mac/Resources/UEMetadata /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app/Contents/Resources
+
+LinkAssetCatalog /Users/Shared/Epic\ Games/UE_5.8/Engine/Build/Mac/Resources/Assets.xcassets (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    builtin-linkAssetCatalog --thinned /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_output/thinned --thinned-dependencies /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_dependencies_thinned --thinned-info-plist-content /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_generated_info.plist_thinned --unthinned /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_output/unthinned --unthinned-dependencies /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_dependencies_unthinned --unthinned-info-plist-content /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_generated_info.plist_unthinned --output /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app/Contents/Resources --plist-output /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_generated_info.plist
+note: Emplaced /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app/Contents/Resources/AppIcon.icns (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+note: Emplaced /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app/Contents/Resources/Assets.car (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+
+PhaseScriptExecution Copy\ Executable\ and\ Staged\ Data\ into\ .app /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ (Mac).build/Mac/BadCatLab.build/Script-E37934B387E8F3268209583A.sh (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    /bin/sh -c /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\\\ \\\(Mac\\\).build/Mac/BadCatLab.build/Script-E37934B387E8F3268209583A.sh
+Copying executable and any standalone dylibs into /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app/Contents/MacOS but do not overwrite unless src is newer
+Syncing /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Saved/StagedBuilds/Mac to /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app/Contents/UE
+
+ProcessInfoPlistFile /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app/Contents/Info.plist /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Build/Mac/Resources/Info.Template.plist (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    builtin-infoPlistUtility /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Build/Mac/Resources/Info.Template.plist -producttype com.apple.product-type.application -genpkginfo /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app/Contents/PkgInfo -expandbuildsettings -format xml -platform macosx -additionalcontentfile /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/assetcatalog_generated_info.plist -o /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app/Contents/Info.plist
+
+CodeSign /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+
+    Signing Identity:     "Sign to Run Locally"
+
+    /usr/bin/codesign --force --sign - --entitlements /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/BadCatLab\ \(Mac\).build/Mac/BadCatLab.build/BadCatLab.app.xcent --timestamp\=none --generate-entitlement-der /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app
+/Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app: replacing existing signature
+
+RegisterExecutionPolicyException /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    builtin-RegisterExecutionPolicyException /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app
+
+Validate /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    builtin-validationUtility /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app -no-validate-extension -infoplist-subpath Contents/Info.plist
+
+RegisterWithLaunchServices /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    /System/Library/Frameworks/CoreServices.framework/Versions/Current/Frameworks/LaunchServices.framework/Versions/Current/Support/lsregister -f -R -trusted /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app
+
+Touch /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app (in target 'BadCatLab' from project 'BadCatLab (Mac)')
+    cd /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Intermediate/ProjectFilesMac
+    /usr/bin/touch -c /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app
+
+** BUILD SUCCEEDED **
+
+==================================================================================================================================================
+Finalized /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app for running fully self-contained
+==================================================================================================================================================
+Package command time: 3.15 s
+********** PACKAGE COMMAND COMPLETED **********
+********** ARCHIVE COMMAND STARTED **********
+Archiving to /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Builds
+staging targets: 'BadCatLab', 'Development'
+==================================================================================================================================================
+Copying Development package /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Binaries/Mac/BadCatLab.app to archive directory /Users/joeyzhao/Documents/Codex/2026-10-29/new-chat/outputs/BAD_CAT_LAB/Builds/Mac/BadCatLab.app
+==================================================================================================================================================
+Archive command time: 0.35 s
+********** ARCHIVE COMMAND COMPLETED **********
+BuildCookRun time: 87.19 s
+BUILD SUCCESSFUL
+AutomationTool executed for 0h 1m 27s
+AutomationTool exiting with ExitCode=0 (Success)
