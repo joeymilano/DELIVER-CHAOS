@@ -19,3 +19,7 @@ ArtSource/**/base_basic_shaded.glb
 ArtSource/V2Fun/**/Raw/
 ArtSource/V2Fun/**/*.fbm/
 __pycache__/
+
+# User-supplied meme audio remains in the local demo until redistribution rights are recorded.
+ArtSource/Audio/LocalReference/
+Content/Audio/LocalReference/

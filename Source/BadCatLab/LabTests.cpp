@@ -91,4 +91,22 @@ bool FLabSoftPushTest::RunTest(const FString&){
  P->SetActorLocation(FVector(15,0,60));P->Tick(.016f);TestEqual(TEXT("Small tabletop nudge does not bill it"),F.G->Score,0);
  P->SetActorLocation(FVector(25,0,45));P->Tick(.016f);TestEqual(TEXT("Cup falling off edge adds its price"),F.G->Score,89);P->Tick(.016f);TestEqual(TEXT("Falling cup billed only once"),F.G->Score,89);return true;
 }
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabMemeTest,"BadCatLab.Party.MemeCelebrationLifecycle",Flags)
+bool FLabMemeTest::RunTest(const FString&){
+ TestTrue(TEXT("Starts facing camera"),ALabGameMode::MemePose(0).IsNearlyZero());
+ TestFalse(TEXT("Spin burst changes yaw"),ALabGameMode::MemePose(.9f).IsNearlyZero());
+ TestTrue(TEXT("First deadpan pause faces front"),ALabGameMode::MemePose(1.45f).IsNearlyZero(.01f));
+ TestTrue(TEXT("Finishes with complete turns"),ALabGameMode::MemePose(4.8f).IsNearlyZero(.01f));
+ TestEqual(TEXT("No camera-like roll"),ALabGameMode::MemePose(.9f).Roll,0.0);
+ FPartyWorld F;auto G=F.G;G->Score=817;
+ G->StartMeme();TestFalse(TEXT("Cannot trigger during gameplay"),G->MemeShowing);
+ G->Stage=3;G->StartMeme();TestTrue(TEXT("Results can celebrate"),G->MemeShowing);TestNotNull(TEXT("Current cat mesh actor created"),G->MemeCat);
+ const int Count=G->MemeSet.Num();TestTrue(TEXT("Isolated stage exists"),Count>=4);
+ G->TickMeme(.9f);TestEqual(TEXT("Celebration does not change money"),G->Score,817);
+ TestTrue(TEXT("Mesh really rotates"),IsValid(G->MemeCat)&&!G->MemeCat->GetActorRotation().IsNearlyZero(.01f));
+ G->StopMeme();TestFalse(TEXT("Skip immediately shows receipt"),G->MemeShowing);TestEqual(TEXT("Skip keeps results stage"),G->Stage,3);
+ for(int I=0;I<10;I++){G->StartMeme();TestEqual(TEXT("Replay replaces stage actors instead of accumulating"),G->MemeSet.Num(),Count);G->TickMeme(G->MemeDuration+.1f);TestFalse(TEXT("Automatically returns to receipt"),G->MemeShowing);}
+ G->StartMeme();G->OpenSelection();TestFalse(TEXT("Selection stops meme"),G->MemeShowing);TestEqual(TEXT("Selection clears stage actors"),G->MemeSet.Num(),0);TestNull(TEXT("Selection clears camera"),G->MemeCamera);
+ G->Stage=3;G->StartMeme();G->StartRound(false);TestFalse(TEXT("Retry stops meme"),G->MemeShowing);TestEqual(TEXT("Retry clears stage"),G->MemeSet.Num(),0);return true;
+}
 #endif

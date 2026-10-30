@@ -1,0 +1,26 @@
+{
+  "recorded_at": "2026-10-31T02:53:39.088809+08:00",
+  "package": "Builds/Mac/BadCatLab.app",
+  "build_seconds": 92.96,
+  "build_exit_code": 0,
+  "executable_sha256": "3c04849ef03e86b9e44b434f6fe1bd9613c3c652fd14956314e4d56482e1a84e",
+  "tests": {
+    "succeeded": 9,
+    "failed": 0,
+    "succeededWithWarnings": 0,
+    "reportCreatedOn": "2026.10.30-18.49.36"
+  },
+  "visual_checks": [
+    "Packaged 1280x720 MVP: visible current cat, rigid rotation, fixed camera, readable labels",
+    "Space skips to unchanged 817 receipt; Space replays",
+    "Esc pause and resume; R returns to room with 0 bill and 60 seconds",
+    "Non-looping MVP fixture automatically returns to receipt"
+  ],
+  "preview": "Silent actual packaged-game screenshots captured over 5.09 seconds; UIReview + NoSave test data, not player score.",
+  "audio": "4.8-second user reference excerpt imported and present in UFS package manifest. Local demo only; source WAV and uasset excluded from public Git. Auditory beat alignment has not been reviewed.",
+  "limits": [
+    "This implements a results celebration, not a new combat skill.",
+    "Mouse buttons not verified; keyboard paths verified.",
+    "Player humor/fun response not yet tested."
+  ]
+}

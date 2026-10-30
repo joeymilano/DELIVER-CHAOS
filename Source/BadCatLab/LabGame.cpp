@@ -6,6 +6,7 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "Animation/AnimSequence.h"
 #include "Components/StaticMeshComponent.h"
+#include "Components/AudioComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
@@ -90,10 +91,10 @@ void ALabCat::Release(){
  if(Target){Target->Strike(Chain,Dir*Power+FVector(0,0,Pounce?200:110));Impact(Target->Heavy);}
  if(Pounce)LaunchCharacter(Dir*(Super?1050:FMath::Lerp(480.f,780.f,FMath::Clamp(Charge,0.f,1.f)))+FVector(0,0,Super?260:180),true,true);
 }
-void ALabCat::Hop(){if(auto G=GM(GetWorld())){if(G->Stage==5){G->RecipeId=INDEX_NONE;G->StartRound(false);}else if(G->Playing()){Jump();Innocent=false;Idle=0;}}}
+void ALabCat::Hop(){if(auto G=GM(GetWorld())){if(G->Stage==3){if(G->MemeShowing)G->StopMeme();else G->StartMeme();}else if(G->Stage==5){G->RecipeId=INDEX_NONE;G->StartRound(false);}else if(G->Playing()){Jump();Innocent=false;Idle=0;}}}
 void ALabCat::Retry(){UGameplayStatics::SetGamePaused(GetWorld(),false);if(auto G=GM(GetWorld()))G->Retry();}
 void ALabCat::Tutorial(){UGameplayStatics::SetGamePaused(GetWorld(),false);if(auto G=GM(GetWorld()))G->Retry(true);}
-void ALabCat::Pause(){auto G=GM(GetWorld());if(!G||G->Stage==4||G->Stage==5)return;Charging=false;Pushing=false;ZoomTime=0;Charge=0;const bool Paused=!UGameplayStatics::IsGamePaused(GetWorld());UGameplayStatics::SetGamePaused(GetWorld(),Paused);G->SetMenuInput(Paused||G->Stage==3);}
+void ALabCat::Pause(){auto G=GM(GetWorld());if(!G||G->Stage==4||G->Stage==5)return;Charging=false;Pushing=false;ZoomTime=0;Charge=0;const bool Paused=!UGameplayStatics::IsGamePaused(GetWorld());UGameplayStatics::SetGamePaused(GetWorld(),Paused);G->SetMenuInput(Paused||G->Stage==3);if(IsValid(G->MemeAudio))G->MemeAudio->SetPaused(Paused);}
 void ALabCat::ToggleHUD(){if(auto G=GM(GetWorld()))G->HideHUD=!G->HideHUD;}
 void ALabCat::ToggleCamera(){FixedCamera=!FixedCamera;Arm->bUsePawnControlRotation=!FixedCamera;Arm->SetRelativeRotation(FRotator(-40,-30,0));Arm->TargetArmLength=FixedCamera?650:430;}
 void ALabCat::ResetCat(){if(auto PC=Cast<APlayerController>(Controller)){PC->PlayerCameraManager->ViewPitchMin=-65;PC->PlayerCameraManager->ViewPitchMax=-10;PC->FlushPressedKeys();}SetActorLocation(FVector(-220,0,35),false,nullptr,ETeleportType::TeleportPhysics);GetCharacterMovement()->StopMovementImmediately();Charging=false;Pushing=false;ZoomTime=0;ZoomCooldown=0;MeowCooldown=0;AutoMeowCooldown=0;PushClock=0;FallSpeed=0;Charge=0;Idle=0;ActionTime=0;ImpactTime=0;Innocent=false;ActionPounce=false;Arm->SocketOffset=FVector::ZeroVector;SetActorRotation(FRotator::ZeroRotator);if(Controller)Controller->SetControlRotation(FRotator(-32,0,0));}
@@ -151,10 +152,11 @@ void ALabGameMode::BeginPlay(){Super::BeginPlay();LoadProgress();BuildRoom();Ope
    if(Review==TEXT("hidden")){SelectedCat=0;BeginFusionChoice();PartnerCat=3;}
    else{BeginFusionChoice();PartnerCat=1;if(Review==TEXT("fusion")){ConfirmSelection();Remaining=400;}}
   }
-  if(Review==TEXT("hud")||Review==TEXT("pause")||Review==TEXT("results")||Review==TEXT("empty")){
-   Practice=Review!=TEXT("results")&&Review!=TEXT("empty");StartRound(false);
-   if(Review==TEXT("results")){for(auto P:Props)if(P->PropId==0||P->PropId==13||P->PropId==23)Affect(P,NewChain(false));FinishRound();}
+  if(Review==TEXT("hud")||Review==TEXT("pause")||Review==TEXT("results")||Review==TEXT("empty")||Review==TEXT("mvp")){
+   Practice=Review!=TEXT("results")&&Review!=TEXT("empty")&&Review!=TEXT("mvp");StartRound(false);
+   if(Review==TEXT("results")||Review==TEXT("mvp")){for(auto P:Props)if(P->PropId==0||P->PropId==13||P->PropId==23)Affect(P,NewChain(false));FinishRound();}
    if(Review==TEXT("empty"))FinishRound();
+   if(Review==TEXT("results")||Review==TEXT("empty"))StopMeme();
    if(Review==TEXT("pause")){UGameplayStatics::SetGamePaused(GetWorld(),true);SetMenuInput(true);}
   }
  }
@@ -164,6 +166,7 @@ void ALabGameMode::SetMenuInput(bool Enabled){if(auto PC=GetWorld()->GetFirstPla
 bool ALabGameMode::BounceRule() const{return Playing()&&CandySpilled;}
 bool ALabGameMode::ResonanceRule() const{return Playing()&&(CurrentTraits()&CatTrait::Loud);}
 void ALabGameMode::OpenSelection(){
+ ClearMeme();
  UGameplayStatics::SetGlobalTimeDilation(GetWorld(),1);SlowUntil=0;ClearDiscoveries();
  for(auto A:PresentationCats)if(IsValid(A))A->Destroy();PresentationCats.Empty();for(auto P:Props)if(IsValid(P))P->Destroy();Props.Empty();PetCamera=nullptr;
  Chains.Empty();NextChain=1;Score=Best=Current=Swipes=UsedPounces=0;Remaining=60;Pounces=3;Stage=4;RecipeId=INDEX_NONE;ResetParty();PopUntil=0;Challenge=false;Quip.Empty();HideHUD=false;SetMenuInput(true);
@@ -207,6 +210,7 @@ void ALabGameMode::SpawnProps(bool Bounce){
  for(int i=0;i<18;i++){auto P=GetWorld()->SpawnActor<ALabProp>(Positions[i],FRotator::ZeroRotator);P->Configure(i,Scales[i],i%3==0?Orange:i%3==1?Cream:Blue,i==6||i==11,i==15,Bounce);Props.Add(P);}
 }
 void ALabGameMode::StartRound(bool Fused){
+ ClearMeme();
  UGameplayStatics::SetGlobalTimeDilation(GetWorld(),1);SlowUntil=0;ClearDiscoveries();for(auto P:Props)if(IsValid(P))P->Destroy();Props.Empty();Chains.Empty();Current=0;NextChain=1;
  Stage=Fused?2:0;Remaining=60;Score=Best=Swipes=UsedPounces=0;Pounces=3;Challenge=false;Quip.Empty();QuipUntil=0;PopUntil=0;Recorded=false;
  for(auto A:PresentationCats)if(IsValid(A))A->Destroy();PresentationCats.Empty();ResetParty();SpawnProps(false);SpawnPartyProps();SetMenuInput(false);
@@ -228,10 +232,12 @@ void ALabGameMode::Affect(ALabProp* P,int32 Id){
  if(P->Heavy){SlowUntil=FPlatformTime::Seconds()+.18;UGameplayStatics::SetGlobalTimeDilation(GetWorld(),.35f);}
 }
 void ALabGameMode::FinishRound(){
- UGameplayStatics::SetGlobalTimeDilation(GetWorld(),1);SlowUntil=0;Chains.Empty();Current=0;for(auto P:Props)if(IsValid(P))P->Body->SetSimulatePhysics(false);Stage=3;Remaining=0;Learned=true;SetMenuInput(true);RecordRun();Speak(TEXT("OwnerHome"));CameraCaption=TEXT("门口传来钥匙声……主人到家了。");
+ if(!Playing())return;
+ UGameplayStatics::SetGlobalTimeDilation(GetWorld(),1);SlowUntil=0;Chains.Empty();Current=0;for(auto P:Props)if(IsValid(P))P->Body->SetSimulatePhysics(false);Stage=3;Remaining=0;Learned=true;SetMenuInput(true);RecordRun();Speak(TEXT("OwnerHome"));CameraCaption=TEXT("门口传来钥匙声……主人到家了。");StartMeme();
 }
 void ALabGameMode::Tick(float Dt){
  Super::Tick(Dt);
+ TickMeme(Dt);
  if(SlowUntil>0&&FPlatformTime::Seconds()>=SlowUntil){SlowUntil=0;UGameplayStatics::SetGlobalTimeDilation(GetWorld(),1);}
  if(Playing()){
   if(!Practice&&!FParse::Param(FCommandLine::Get(),TEXT("CatArtReview")))Remaining=FMath::Max(0.f,Remaining-Dt);

@@ -13,6 +13,8 @@ class UFont;
 class UTexture2D;
 class UAnimSequence;
 class AStaticMeshActor;
+class ACameraActor;
+class UAudioComponent;
 USTRUCT()
 struct FLabScoreRow {
  GENERATED_BODY()
@@ -110,6 +112,14 @@ public:
  int32 NewChain(bool Pounce); bool Active(int32 Id) const; void Affect(ALabProp* Prop,int32 Id);
  void StartRound(bool Bounce); void FinishRound(); void Retry(bool Full=false);
  void BuildRoom(); void SpawnProps(bool Bounce);
+ UPROPERTY() AActor* MemeCat = nullptr;
+ UPROPERTY() ACameraActor* MemeCamera = nullptr;
+ UPROPERTY() UAudioComponent* MemeAudio = nullptr;
+ UPROPERTY() TArray<AActor*> MemeSet;
+ float MemeElapsed=0; bool MemeShowing=false;
+ static constexpr float MemeDuration=4.8f;
+ void StartMeme(); void StopMeme(); void ClearMeme(); void TickMeme(float Dt);
+ static FRotator MemePose(float Time);
 };
 UCLASS()
 class BADCATLAB_API ALabHUD : public AHUD {

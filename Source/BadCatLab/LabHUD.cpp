@@ -26,6 +26,7 @@ void ALabHUD::NotifyHitBoxClick(FName Name) {
  Super::NotifyHitBoxClick(Name);
  auto G=Cast<ALabGameMode>(GetWorld()->GetAuthGameMode());if(!G)return;
  auto Cat=Cast<ALabCat>(UGameplayStatics::GetPlayerPawn(GetWorld(),0));
+ if(Name==TEXT("Meme")){if(G->MemeShowing)G->StopMeme();else G->StartMeme();return;}
  if(Name==TEXT("Resume")){if(Cat)Cat->Pause();return;}
  if(Name==TEXT("Shake")){if(Cat)Cat->ToggleShake();return;}
  if(Name==TEXT("Retry")){UGameplayStatics::SetGamePaused(GetWorld(),false);G->Retry();return;}
@@ -173,6 +174,17 @@ void ALabHUD::DrawHUD() {
   if(!Paused)return;
  }
 
+ if(G->Stage==3&&G->MemeShowing&&!Paused){
+  Box(0,0,1280,143,Ink);Box(0,586,1280,134,Ink);
+  Center(G->Score>0?TEXT("本场拆家 MVP"):TEXT("本场摸鱼 MVP"),640,28,38,Paper,true);
+  Center(Identity,640,86,22,Orange,true);
+  Text(TEXT("OIIA"),76,269,42,Orange,true);Text(TEXT("OIIA"),76,325,42,Paper,true);
+  Text(TEXT("本次损失"),1030,272,18,Paper);Fit(Money(G->Score),1030,308,32,198,Orange,true);
+  Center(TEXT("账单先放一边。它还在转。"),640,604,23,Paper);
+  Button(TEXT("Meme"),TEXT("好了，看账单"),TEXT("Space"),446,650,388,true);
+  Fixture();return;
+ }
+
  if(G->Stage==3&&!Paused){
   DrawRect(Ink,0,0,W,H);Box(0,0,1280,8,Orange);
   Text(TEXT("主人回来了。"),64,35,34,Paper,true);Text(TEXT("猫还在，家不一定。"),954,48,20,Paper);
@@ -200,7 +212,7 @@ void ALabHUD::DrawHUD() {
    Fit(Row.Cat,824,Y,17,192,Paper);const FString Price=Money(Row.Money);Text(Price,1190-Width(Price,20),Y,20,I==0?Orange:Paper,true);
   }else Wrap(TEXT("还没有人上榜。玩一局限时拆家，把名字留在这里。"),780,367,19,392,Paper);
   Button(TEXT("Select"),G->Progress&&FMath::CountBits((uint32)G->Progress->UnlockedMask)>1?TEXT("换个组合再来"):TEXT("回去选猫"),TEXT("Enter"),64,638,400,true);Button(TEXT("Retry"),TEXT("原样再拆一局"),TEXT("R"),484,638,330,false);
-  Text(G->NoSave?TEXT("测试预览不写入存档"):TEXT("图鉴与榜单已保存在本机"),954,657,15,Paper);Fixture();return;
+  Button(TEXT("Meme"),TEXT("再转一圈"),TEXT("Space"),834,638,382,false);Fixture();return;
  }
 
  if(G->Playing()&&!G->HideHUD&&!Paused){
