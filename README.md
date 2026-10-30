@@ -1,10 +1,23 @@
-# 合成大坏猫
+# DELIVER CHAOS
+
+**中文游戏名：合成大坏猫**
 
 中文 Unreal 5.8.4 连锁恶作剧游戏。2026-10-30 18:46:16（北京时间）首次提交参赛代码；此前准备材料在相邻 Preproduction 目录。
 
+## 协作获取
+
+```bash
+git clone https://github.com/joeymilano/DELIVER-CHAOS.git
+cd DELIVER-CHAOS
+```
+
+仓库包含 Unreal 工程、C++ 源码、已导入的角色/场景资产、生成源文件、制作脚本和验证记录。编译缓存与本地 Mac 应用包不进 Git；克隆后需用兼容的 Unreal 环境构建。当前实测平台为 macOS，Windows 尚未验证。
+
+开始修改前阅读 [协作说明](CONTRIBUTING.md)。当前没有 Git LFS 依赖；首次克隆包含完整二进制素材，会比纯代码仓库大。
+
 ## 启动
 
-打开 `Builds/Mac/BadCatLab.app`。无需启动编辑器。最新验证范围与未完成项见 `Verification/STATUS.md`。
+本机已构建版本可打开 `Builds/Mac/BadCatLab.app`，无需启动编辑器。此目录不随 GitHub 克隆下载；协作者先安装下方开发环境并运行构建脚本。最新验证范围与未完成项见 `Verification/STATUS.md`。
 
 ## 选猫与合成
 

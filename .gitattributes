@@ -1,0 +1,13 @@
+* text=auto
+*.uasset binary
+*.umap binary
+*.fbx binary
+*.glb binary
+*.blend binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ttf binary
+*.wav binary
+*.mp3 binary
+*.sh text eol=lf
