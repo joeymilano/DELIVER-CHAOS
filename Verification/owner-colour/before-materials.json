@@ -1,0 +1,42 @@
+[
+  {
+    "slot": 0,
+    "name": "Wolf3D_Body",
+    "material": null
+  },
+  {
+    "slot": 1,
+    "name": "Wolf3D_Skin",
+    "material": null
+  },
+  {
+    "slot": 2,
+    "name": "Wolf3D_Headwear",
+    "material": null
+  },
+  {
+    "slot": 3,
+    "name": "Wolf3D_Outfit_Bottom",
+    "material": null
+  },
+  {
+    "slot": 4,
+    "name": "Wolf3D_Outfit_Footwear",
+    "material": null
+  },
+  {
+    "slot": 5,
+    "name": "Wolf3D_Outfit_Top",
+    "material": null
+  },
+  {
+    "slot": 6,
+    "name": "Wolf3D_Teeth",
+    "material": null
+  },
+  {
+    "slot": 7,
+    "name": "Wolf3D_Eye",
+    "material": null
+  }
+]

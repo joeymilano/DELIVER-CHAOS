@@ -1,0 +1,66 @@
+[
+  {
+    "slot": 0,
+    "name": "Wolf3D_Body",
+    "material": "/Game/ResidentsLocal/M_Wolf3D_Body.M_Wolf3D_Body",
+    "texture": "/Game/ResidentsLocal/T_Wolf3D_Body.T_Wolf3D_Body",
+    "srgb": true,
+    "skeletal_usage": true
+  },
+  {
+    "slot": 1,
+    "name": "Wolf3D_Skin",
+    "material": "/Game/ResidentsLocal/M_Wolf3D_Skin.M_Wolf3D_Skin",
+    "texture": "/Game/ResidentsLocal/T_Wolf3D_Skin.T_Wolf3D_Skin",
+    "srgb": true,
+    "skeletal_usage": true
+  },
+  {
+    "slot": 2,
+    "name": "Wolf3D_Headwear",
+    "material": "/Game/ResidentsLocal/M_Wolf3D_Headwear.M_Wolf3D_Headwear",
+    "texture": "/Game/ResidentsLocal/T_Wolf3D_Headwear.T_Wolf3D_Headwear",
+    "srgb": true,
+    "skeletal_usage": true
+  },
+  {
+    "slot": 3,
+    "name": "Wolf3D_Outfit_Bottom",
+    "material": "/Game/ResidentsLocal/M_Wolf3D_Outfit_Bottom.M_Wolf3D_Outfit_Bottom",
+    "texture": "/Game/ResidentsLocal/T_Wolf3D_Outfit_Bottom.T_Wolf3D_Outfit_Bottom",
+    "srgb": true,
+    "skeletal_usage": true
+  },
+  {
+    "slot": 4,
+    "name": "Wolf3D_Outfit_Footwear",
+    "material": "/Game/ResidentsLocal/M_Wolf3D_Outfit_Footwear.M_Wolf3D_Outfit_Footwear",
+    "texture": "/Game/ResidentsLocal/T_Wolf3D_Outfit_Footwear.T_Wolf3D_Outfit_Footwear",
+    "srgb": true,
+    "skeletal_usage": true
+  },
+  {
+    "slot": 5,
+    "name": "Wolf3D_Outfit_Top",
+    "material": "/Game/ResidentsLocal/M_Wolf3D_Outfit_Top.M_Wolf3D_Outfit_Top",
+    "texture": "/Game/ResidentsLocal/T_Wolf3D_Outfit_Top.T_Wolf3D_Outfit_Top",
+    "srgb": true,
+    "skeletal_usage": true
+  },
+  {
+    "slot": 6,
+    "name": "Wolf3D_Teeth",
+    "material": "/Game/ResidentsLocal/M_Wolf3D_Teeth.M_Wolf3D_Teeth",
+    "texture": "/Game/ResidentsLocal/T_Wolf3D_Teeth.T_Wolf3D_Teeth",
+    "srgb": true,
+    "skeletal_usage": true
+  },
+  {
+    "slot": 7,
+    "name": "Wolf3D_Eye",
+    "material": "/Game/ResidentsLocal/M_Wolf3D_Eye.M_Wolf3D_Eye",
+    "texture": "/Game/ResidentsLocal/T_Wolf3D_Eye.T_Wolf3D_Eye",
+    "srgb": true,
+    "skeletal_usage": true
+  }
+]

@@ -48,7 +48,7 @@ public:
  UPROPERTY() UStaticMeshComponent* Body;
  UPROPERTY() UPhysicalMaterial* Physics;
  int32 PropId=0, ChainId=0, BaseScore=100, Bounces=0;
- bool Scored=false, Heavy=false, Mutated=false;
+ bool Scored=false, Heavy=false, Mutated=false, GentlyPushed=false, DropSoundPlayed=false;
  FString ItemName=TEXT("摆件"); FVector InitialPosition;
  void Configure(int32 Id,FVector Scale,FLinearColor Color,bool Ball,bool IsHeavy,bool Bounce);
  void Strike(int32 Chain,FVector Velocity);
@@ -72,6 +72,17 @@ public:
  UPROPERTY() TArray<UStaticMeshComponent*> FusionParts;
  UPROPERTY() TArray<UAnimSequence*> Locomotion;
  int32 ActiveAnimation=INDEX_NONE;
+ int32 AnimationSerial=0;
+ float AnimationTime=0,ActionElapsed=0,ActionDuration=0,ContactAt=0;
+ float PawReachAlpha=0,PushPhase=0,ReactionTime=0;
+ FVector PawTargetWorld=FVector::ZeroVector,PendingImpulse=FVector::ZeroVector;
+ TWeakObjectPtr<ALabProp> AttackTarget,PushTarget,LastPushedProp;
+ int32 PendingChain=0,PushCycle=INDEX_NONE;
+ bool AttackPending=false,PushContactApplied=false;
+ static constexpr float PushDuration=.9f,PushContactTime=.30f,PushContactEnd=.50f;
+ void CancelContact();void TickContact(float Dt);void TickCatAnimation(float Dt);
+ bool PawContactPoint(ALabProp* Prop,FVector& Surface,float Slack=0) const;
+ ALabProp* FindPushTarget() const;
  float StepClock=0;
  float Charge=0, ActionTime=0, Idle=0; bool Charging=false, Innocent=false, FixedCamera=false;
  FVector AimDirection=FVector::ForwardVector;
@@ -151,6 +162,9 @@ public:
  float TitleTime=0; bool MusicMuted=false,MusicGameplay=false;
  int MusicVariant=-1; double ChaseMusicUntil=0; bool EndKeyPlayed=false;
  void OpenTitle(); void ClearTitle(); void TickTitle(float Dt); void StartFromTitle(bool FreePlay=false);
+ UPROPERTY() TArray<AActor*> HalloweenDecor;
+ void BuildHalloweenDecor();
+ void WriteSceneAudit();
 
  double WorldSoundUntil=0;
  void WorldSound(const TCHAR* Name,float Volume);void UpdateMusic();
@@ -159,6 +173,10 @@ public:
  double VisualLastTime=0,VisualWarmup=0,VisualSampleSeconds=0;TArray<double> VisualFrameTimes;FString VisualLabel;bool VisualComplete=false;
  void BuildCozyCorner();void SpawnCozyProps();
  void BuildRoom(); void SpawnProps(bool Bounce);
+#if !UE_BUILD_SHIPPING
+ void SetupCupReview();void TickCupReview(float Dt);
+ float CupReviewTime=0;int32 CupReviewStep=0;TWeakObjectPtr<ALabProp> ReviewCup;
+#endif
  UPROPERTY() AActor* MemeCat = nullptr;
  UPROPERTY() ACameraActor* MemeCamera = nullptr;
  UPROPERTY() UAudioComponent* MemeAudio = nullptr;

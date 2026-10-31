@@ -1,0 +1,80 @@
+{
+  "source": "actual running room after normal menu start",
+  "visible_game_mesh_components": 96,
+  "missing_material_components": [],
+  "categories": {
+    "/Game/FabLocal/Furniture/": {
+      "unique_meshes": 10,
+      "meshes": [
+        "/Game/FabLocal/Furniture/SM_Bed_8.SM_Bed_8",
+        "/Game/FabLocal/Furniture/SM_Chair_13.SM_Chair_13",
+        "/Game/FabLocal/Furniture/SM_Chair_28.SM_Chair_28",
+        "/Game/FabLocal/Furniture/SM_Coffe_Table_2.SM_Coffe_Table_2",
+        "/Game/FabLocal/Furniture/SM_Commode_7.SM_Commode_7",
+        "/Game/FabLocal/Furniture/SM_Computer_desk_7.SM_Computer_desk_7",
+        "/Game/FabLocal/Furniture/SM_Prefabricated_kitchen_16.SM_Prefabricated_kitchen_16",
+        "/Game/FabLocal/Furniture/SM_Refrigerato_4.SM_Refrigerato_4",
+        "/Game/FabLocal/Furniture/SM_Sofa_41.SM_Sofa_41",
+        "/Game/FabLocal/Furniture/SM_Wardrobe_9.SM_Wardrobe_9"
+      ],
+      "instances": 14
+    },
+    "/Game/FabLocal/Decor/": {
+      "unique_meshes": 7,
+      "meshes": [
+        "/Game/FabLocal/Decor/SM_SD_BookStack_01.SM_SD_BookStack_01",
+        "/Game/FabLocal/Decor/SM_SD_CeramicVase_01.SM_SD_CeramicVase_01",
+        "/Game/FabLocal/Decor/SM_SD_LinenCurtain_01.SM_SD_LinenCurtain_01",
+        "/Game/FabLocal/Decor/SM_SD_PictureFrame_01.SM_SD_PictureFrame_01",
+        "/Game/FabLocal/Decor/SM_SD_PottedPlant_01.SM_SD_PottedPlant_01",
+        "/Game/FabLocal/Decor/SM_SD_TableLamp_01.SM_SD_TableLamp_01",
+        "/Game/FabLocal/Decor/SM_SD_WallClock_01.SM_SD_WallClock_01"
+      ],
+      "instances": 23
+    },
+    "/Game/FabLocal/Characters/": {
+      "unique_meshes": 1,
+      "meshes": [
+        "/Game/FabLocal/Characters/Guest_Idle.Guest_Idle"
+      ],
+      "instances": 1
+    },
+    "/Game/CozyLocal/": {
+      "unique_meshes": 16,
+      "meshes": [
+        "/Game/CozyLocal/Broom_and_Hat_Stand.Broom_and_Hat_Stand",
+        "/Game/CozyLocal/Candy_Buffet.Candy_Buffet",
+        "/Game/CozyLocal/Candy_Hutch.Candy_Hutch",
+        "/Game/CozyLocal/Candy_Jar_Set.Candy_Jar_Set",
+        "/Game/CozyLocal/Crystal_Ball.Crystal_Ball",
+        "/Game/CozyLocal/Friendly_Cat_Plush.Friendly_Cat_Plush",
+        "/Game/CozyLocal/Ghost_Cookie_Tray.Ghost_Cookie_Tray",
+        "/Game/CozyLocal/Ghost_Window_Garland.Ghost_Window_Garland",
+        "/Game/CozyLocal/Little_Happy_Ghost.Little_Happy_Ghost",
+        "/Game/CozyLocal/Moon_Cookies.Moon_Cookies",
+        "/Game/CozyLocal/Moon_Phase_Board.Moon_Phase_Board",
+        "/Game/CozyLocal/Plum_Teapot.Plum_Teapot",
+        "/Game/CozyLocal/Potion_Trio.Potion_Trio",
+        "/Game/CozyLocal/Pumpkin_Fairy_Lights.Pumpkin_Fairy_Lights",
+        "/Game/CozyLocal/Pumpkin_Fireplace.Pumpkin_Fireplace",
+        "/Game/CozyLocal/Pumpkin_Tea_Cake.Pumpkin_Tea_Cake"
+      ],
+      "instances": 16
+    },
+    "/Game/Art/V2Fun/": {
+      "unique_meshes": 2,
+      "meshes": [
+        "/Game/Art/V2Fun/HalloweenCakeV2/SM_HalloweenCakeV2.SM_HalloweenCakeV2",
+        "/Game/Art/V2Fun/PetCamera/SM_PetCamera.SM_PetCamera"
+      ],
+      "instances": 2
+    },
+    "/Game/ResidentsLocal/": {
+      "unique_meshes": 1,
+      "meshes": [
+        "/Game/ResidentsLocal/Owner_Idle.Owner_Idle"
+      ],
+      "instances": 1
+    }
+  }
+}

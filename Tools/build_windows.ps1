@@ -37,7 +37,17 @@ $Required = @(
     'Content/Audio/Gameplay/CanCanGameplay.uasset',
     'Content/Audio/Pixabay/Menu.uasset',
     'Content/Audio/Pixabay/Chase.uasset',
-    'Content/UI/Fonts/NotoSansCJKsc-Regular.otf'
+    'Content/UI/Fonts/NotoSansCJKsc-Regular.otf',
+    'Content/UI/Fonts/NotoSansCJKsc-Bold.otf',
+    'Content/ResidentsLocal/Owner_Idle.uasset',
+    'Content/ResidentsLocal/Owner_Idle_Anim.uasset',
+    'Content/ResidentsLocal/Owner_Walk_Anim.uasset',
+    'Content/ResidentsLocal/Owner_Run_Anim.uasset',
+    'Content/ResidentsLocal/Owner_Confused_Anim.uasset',
+    'Content/Art/Halloween/M_Sticker.uasset',
+    'Content/Art/Halloween/T_StickerAtlas.uasset',
+    'Content/Art/M_CameraFootprint.uasset',
+    'Content/UI/Title/T_TitleMark.uasset'
 )
 $Missing = @($Required | Where-Object { -not (Test-Path -LiteralPath (Join-Path $ProjectRoot $_)) })
 if ($Missing.Count -gt 0) { throw ('Full project assets are missing: ' + ($Missing -join ', ')) }

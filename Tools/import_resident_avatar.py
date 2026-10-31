@@ -12,10 +12,16 @@ materials={}
 for row in json.loads((base/'materials.json').read_text()):
     name='M_'+row['name'];m=unreal.load_asset(dest+'/'+name) or at.create_asset(name,dest,unreal.Material,unreal.MaterialFactoryNew());lib.delete_all_material_expressions(m)
     if row.get('texture'):
-        tex=imp(base/row['texture'],'T_'+row['name']);c=lib.create_material_expression(m,unreal.MaterialExpressionTextureSample);c.texture=tex;lib.connect_material_property(c,'RGB',unreal.MaterialProperty.MP_BASE_COLOR)
+        tex=imp(base/row['texture'],'T_'+row['name']);tex.set_editor_property('srgb',True);unreal.EditorAssetLibrary.save_loaded_asset(tex)
+        c=lib.create_material_expression(m,unreal.MaterialExpressionTextureSample);c.texture=tex
+        assert lib.connect_material_property(c,'RGB',unreal.MaterialProperty.MP_BASE_COLOR)
     else:
         c=lib.create_material_expression(m,unreal.MaterialExpressionConstant3Vector);c.constant=unreal.LinearColor(*row['color']);lib.connect_material_property(c,'',unreal.MaterialProperty.MP_BASE_COLOR)
-    r=lib.create_material_expression(m,unreal.MaterialExpressionConstant);r.r=row['roughness'];lib.connect_material_property(r,'',unreal.MaterialProperty.MP_ROUGHNESS);lib.recompile_material(m);unreal.EditorAssetLibrary.save_loaded_asset(m);materials[row['name']]=m
+    m.set_editor_property('used_with_skeletal_mesh',True)
+    r=lib.create_material_expression(m,unreal.MaterialExpressionConstant);r.r=row['roughness'];lib.connect_material_property(r,'',unreal.MaterialProperty.MP_ROUGHNESS)
+    errors=lib.recompile_material(m)
+    if errors:raise RuntimeError(str(errors))
+    unreal.EditorAssetLibrary.save_loaded_asset(m);materials[row['name']]=m
 skeleton=None
 for clip in ['Idle','Walk','Run','Confused']:
     file=base/f'Owner_{clip}.fbx';opt=unreal.FbxImportUI();opt.automated_import_should_detect_type=False;opt.import_as_skeletal=True;opt.import_mesh=clip=='Idle';opt.import_animations=True;opt.import_materials=False;opt.import_textures=False
@@ -24,15 +30,21 @@ for clip in ['Idle','Walk','Run','Confused']:
     asset=imp(file,f'Owner_{clip}' if clip=='Idle' else f'Owner_{clip}_Anim',opt)
     if not asset:raise RuntimeError(clip)
     if clip=='Idle':
-        skeleton=asset.skeleton;arr=asset.materials
-        for slot in arr:
-            key=str(slot.material_slot_name)
-            if key not in materials:raise RuntimeError('Unknown material slot '+key)
-            slot.material_interface=materials[key]
-        asset.materials=arr;unreal.EditorAssetLibrary.save_loaded_asset(asset)
+        skeleton=asset.skeleton
         # Mesh import can skip the animation on reimport; always import it explicitly.
         anim=unreal.FbxImportUI();anim.automated_import_should_detect_type=False;anim.import_as_skeletal=True;anim.import_mesh=False;anim.import_animations=True;anim.skeleton=skeleton;anim.mesh_type_to_import=unreal.FBXImportType.FBXIT_ANIMATION
         imp(file,'Owner_Idle_Anim',anim)
+# Assign only after all FBX imports. Iterating Unreal's struct array returns value
+# copies; changes to the loop variable alone do not persist in the mesh's slots.
+mesh=unreal.load_asset(dest+'/Owner_Idle');mesh.modify();slots=mesh.get_editor_property('materials')
+for i in range(len(slots)):
+    slot=slots[i];key=str(slot.material_slot_name)
+    if key not in materials:raise RuntimeError('Unknown material slot '+key)
+    slot.set_editor_property('material_interface',materials[key]);slots[i]=slot
+mesh.set_editor_property('materials',slots)
+if not unreal.EditorAssetLibrary.save_loaded_asset(mesh,only_if_is_dirty=False):raise RuntimeError('Owner material save failed')
+for slot in mesh.get_editor_property('materials'):
+    if slot.material_interface!=materials[str(slot.material_slot_name)]:raise RuntimeError('Material slot was not saved')
 unreal.EditorLoadingAndSavingUtils.save_dirty_packages(True,True)
 unreal.log('RESIDENT_AVATAR_IMPORTED')
 unreal.SystemLibrary.quit_editor()
