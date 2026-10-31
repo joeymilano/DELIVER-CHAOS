@@ -1,0 +1,45 @@
+{
+  "project": "DELIVER CHAOS / 合成大坏猫",
+  "branch": "feature/party-chaos",
+  "engine": "Unreal Engine 5.8.4",
+  "toolchain": "Xcode 26.1.1",
+  "configuration": "Mac Development",
+  "recorded_at": "2026-10-31T01:13:36.495112+08:00",
+  "build_cook_run": {
+    "result": "success",
+    "exit_code": 0,
+    "seconds": 96.21,
+    "phases": [
+      "build",
+      "cook",
+      "stage",
+      "pak",
+      "package",
+      "archive"
+    ]
+  },
+  "package": "Builds/Mac/BadCatLab.app",
+  "executable_sha256": "1539904e9397ce5eb9177a7e374b66e752ccbe0019c977538898f7905a66b5e5",
+  "automated_tests": {
+    "report": "party-tests/index.json",
+    "report_created_utc": "2026.10.30-17.11.34",
+    "passed": 8,
+    "failed": 0,
+    "warnings": 0
+  },
+  "manual_observations": [
+    "Packaged app launches without editor",
+    "F and Enter enter free mode; free mode remains playable beyond 60 seconds",
+    "Chinese loss bill and camera HUD render",
+    "Earlier packaged run: camera destroyed, perfect-crime result and local leaderboard displayed",
+    "Earlier editor run: discover orange cat and choose fusion partner"
+  ],
+  "limitations": [
+    "No five-player usability study",
+    "No measured stable 60fps result",
+    "No network-disabled offline acceptance run",
+    "Native mouse menu clicks need real-mouse verification; automated injected clicks report stale coordinates",
+    "Gesture animation transitions and synthesized voice are prototype quality",
+    "Fourth cat reuses first cat mesh and portrait with scale/accessories"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "recorded_at": "2026-10-31T02:07:57.561631+08:00",
+  "initial_available": 5100,
+  "last_verified_available": 4910,
+  "available_difference": 190,
+  "failed_task_refund_confirmed": false,
+  "jobs": [
+    {
+      "asset": "Dafu",
+      "task_uuid": "b2bd32ef-99e4-4ba4-adc4-2d252c1ea829",
+      "status": "COMPLETED",
+      "documented_credits": 42,
+      "error": null
+    },
+    {
+      "asset": "DafuShared",
+      "task_uuid": "eaf49c65-648d-41d0-a498-c9768a102fde",
+      "status": "FAILED",
+      "documented_credits": 22,
+      "error": "Task execution failed, please retry later"
+    },
+    {
+      "asset": "HalloweenCake",
+      "task_uuid": "c138c6fe-5a73-44c1-a6ec-fec67ab077d3",
+      "status": "COMPLETED",
+      "documented_credits": 42,
+      "error": null
+    },
+    {
+      "asset": "HalloweenCakeV2",
+      "task_uuid": "d467f45b-2736-4178-abf4-b848e9751810",
+      "status": "COMPLETED",
+      "documented_credits": 42,
+      "error": null
+    },
+    {
+      "asset": "PetCamera",
+      "task_uuid": "bdae14af-00c8-43c4-88d3-db47da0e9c3d",
+      "status": "COMPLETED",
+      "documented_credits": 42,
+      "error": null
+    }
+  ]
+}

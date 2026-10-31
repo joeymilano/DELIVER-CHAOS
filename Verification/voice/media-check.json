@@ -1,0 +1,32 @@
+[
+  {
+    "file": "OwnerCaught.wav",
+    "duration_seconds": 5.485714285714286,
+    "peak_dbfs": -4.583462969857502,
+    "clipped_samples": 0
+  },
+  {
+    "file": "OwnerGood.wav",
+    "duration_seconds": 6.034285714285715,
+    "peak_dbfs": -2.99961340124013,
+    "clipped_samples": 0
+  },
+  {
+    "file": "OwnerHome.wav",
+    "duration_seconds": 7.888979591836734,
+    "peak_dbfs": -3.244912301045955,
+    "clipped_samples": 0
+  },
+  {
+    "file": "MeowSoft.wav",
+    "duration_seconds": 1.139546485260771,
+    "peak_dbfs": -6.000477743319013,
+    "clipped_samples": 0
+  },
+  {
+    "file": "Meow.wav",
+    "duration_seconds": 1.544512471655329,
+    "peak_dbfs": -6.000477743319013,
+    "clipped_samples": 0
+  }
+]

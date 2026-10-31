@@ -1,0 +1,27 @@
+[
+  {
+    "file": "Alert.wav",
+    "peak_sample": 28748,
+    "clipped_samples": 0
+  },
+  {
+    "file": "Glass.wav",
+    "peak_sample": 28659,
+    "clipped_samples": 0
+  },
+  {
+    "file": "Footstep.wav",
+    "peak_sample": 29459,
+    "clipped_samples": 0
+  },
+  {
+    "file": "Landing.wav",
+    "peak_sample": 28483,
+    "clipped_samples": 0
+  },
+  {
+    "file": "SneakySnitch.wav",
+    "peak_sample": 19471,
+    "clipped_samples": 0
+  }
+]

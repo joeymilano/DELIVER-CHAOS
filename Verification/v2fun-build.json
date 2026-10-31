@@ -1,0 +1,48 @@
+{
+  "project": "DELIVER CHAOS / 合成大坏猫",
+  "recorded_at": "2026-10-31T02:10:51.310522+08:00",
+  "engine": "Unreal Engine 5.8.4",
+  "build_cook_run": {
+    "result": "success",
+    "seconds": 98.43,
+    "exit_code": 0
+  },
+  "package": "Builds/Mac/BadCatLab.app",
+  "executable_sha256": "e39d8be57a9c07e89472969c97dd11854960806b70a2236cf8bbc4e3903fa342",
+  "assets": [
+    "Dafu independent silver tabby mesh and portrait, shared quadruped skeleton",
+    "Pet camera shell, physics and observation preserved",
+    "Halloween cake V2, price 329, simple convex collision"
+  ],
+  "credits": {
+    "initial": 5100,
+    "available": 4910,
+    "difference": 190,
+    "failed_task_credits": 22,
+    "failed_refund_confirmed": false
+  },
+  "automated_tests": {
+    "passed": 8,
+    "failed": 0,
+    "warnings": 0,
+    "report": "party-tests/index.json"
+  },
+  "manual_observations": [
+    "New package launched without editor, normal selection screen visible",
+    "Dafu model displayed in packaged review run, movement and collision inputs observed",
+    "Cake and camera shell visible in packaged room",
+    "Attribution file present inside packaged app"
+  ],
+  "limitations": [
+    "Prototype innocent-sit posture remains too upright",
+    "Animation transitions and scene lighting need polish",
+    "No measured stable 60fps or five-player study",
+    "No network-disabled acceptance test",
+    "One editor shutdown crash after successful import/save; subsequent tests and package succeeded"
+  ],
+  "security": {
+    "key_written_to_repository": false,
+    "key_in_staged_file_scan": false
+  },
+  "reference_vs_runtime": "Generated concept images and actual Blender mesh renders are separately retained; neither is represented as real gameplay."
+}

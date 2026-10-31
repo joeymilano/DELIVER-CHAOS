@@ -1,0 +1,64 @@
+[
+  {
+    "name": "M_Dafu_0",
+    "nodes": [
+      {
+        "name": "Principled BSDF",
+        "type": "BSDF_PRINCIPLED",
+        "image": null
+      },
+      {
+        "name": "Material Output",
+        "type": "OUTPUT_MATERIAL",
+        "image": null
+      },
+      {
+        "name": "Image Texture",
+        "type": "TEX_IMAGE",
+        "image": "T_Dafu_0"
+      },
+      {
+        "name": "Separate Color",
+        "type": "SEPARATE_COLOR",
+        "image": null
+      },
+      {
+        "name": "Image Texture.001",
+        "type": "TEX_IMAGE",
+        "image": "T_Dafu_1"
+      }
+    ],
+    "links": [
+      {
+        "from": "Principled BSDF",
+        "output": "BSDF",
+        "to": "Material Output",
+        "input": "Surface"
+      },
+      {
+        "from": "Image Texture",
+        "output": "Color",
+        "to": "Principled BSDF",
+        "input": "Base Color"
+      },
+      {
+        "from": "Separate Color",
+        "output": "Blue",
+        "to": "Principled BSDF",
+        "input": "Metallic"
+      },
+      {
+        "from": "Separate Color",
+        "output": "Green",
+        "to": "Principled BSDF",
+        "input": "Roughness"
+      },
+      {
+        "from": "Image Texture.001",
+        "output": "Color",
+        "to": "Separate Color",
+        "input": "Color"
+      }
+    ]
+  }
+]

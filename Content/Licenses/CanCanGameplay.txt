@@ -1,0 +1,4 @@
+CanCan-BGM.mp3
+Source: supplied by the project owner on 2026-10-31 for gameplay music.
+The recording author and distribution license have not been independently verified; this file is not designated CC0 or CC BY. No project-wide license supersedes third-party recording rights.
+Processing: decoded to stereo 44.1 kHz PCM, loudness normalized to -20 LUFS, short fades, imported as looping Unreal SoundWave. Original supplied file: ArtSource/Audio/Gameplay/CanCan-BGM.mp3.

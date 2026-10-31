@@ -1,0 +1,45 @@
+{
+  "asset": "PetCamera",
+  "source_triangles": 499998,
+  "game_triangles": 7000,
+  "materials": [
+    "M_PetCamera_0"
+  ],
+  "textures": [
+    {
+      "file": "T_PetCamera_0.png",
+      "original_size": [
+        3072,
+        3072
+      ],
+      "game_size": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "file": "T_PetCamera_1.png",
+      "original_size": [
+        3072,
+        3072
+      ],
+      "game_size": [
+        2048,
+        2048
+      ]
+    }
+  ],
+  "source_bounds": [
+    [
+      -0.5652242302894592,
+      -0.5708326101303101,
+      -0.8999999761581421
+    ],
+    [
+      0.5652242302894592,
+      0.5708326101303101,
+      0.8999999761581421
+    ]
+  ],
+  "armatures": 0
+}

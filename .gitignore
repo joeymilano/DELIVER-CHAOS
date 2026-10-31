@@ -14,3 +14,24 @@ Build/Mac/*.PackageVersionCounter
 ArtSource/**/*.blend
 ArtSource/**/*.blend1
 ArtSource/**/base_basic_shaded.glb
+
+# Raw AI downloads and duplicated FBX texture folders stay local.
+ArtSource/V2Fun/**/Raw/
+ArtSource/V2Fun/**/*.fbm/
+__pycache__/
+
+# User-supplied meme audio remains in the local demo until redistribution rights are recorded.
+ArtSource/Audio/LocalReference/
+Content/Audio/LocalReference/
+
+# ElevenLabs Free generation is local audition material, not commercial source media.
+ArtSource/Audio/ElevenLabsLocal/
+Content/Audio/ElevenLabsLocal/
+
+# Fab Standard License assets remain local; collaborators acquire from Fab.
+ArtSource/FabLocal/
+Content/FabLocal/
+
+# User-supplied meme frames remain local, like the reference audio.
+ArtSource/MemesLocal/
+Content/UI/MemesLocal/

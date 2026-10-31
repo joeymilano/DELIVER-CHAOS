@@ -1,0 +1,45 @@
+{
+  "asset": "HalloweenCakeV2",
+  "source_triangles": 500000,
+  "game_triangles": 7000,
+  "materials": [
+    "M_HalloweenCakeV2_0"
+  ],
+  "textures": [
+    {
+      "file": "T_HalloweenCakeV2_0.png",
+      "original_size": [
+        3072,
+        3072
+      ],
+      "game_size": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "file": "T_HalloweenCakeV2_1.png",
+      "original_size": [
+        3072,
+        3072
+      ],
+      "game_size": [
+        2048,
+        2048
+      ]
+    }
+  ],
+  "source_bounds": [
+    [
+      -0.8999999761581421,
+      -0.8999991416931152,
+      -0.5558662414550781
+    ],
+    [
+      0.8999999761581421,
+      0.8999991416931152,
+      0.5558662414550781
+    ]
+  ],
+  "armatures": 0
+}

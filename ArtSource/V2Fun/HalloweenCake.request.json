@@ -1,0 +1,14 @@
+{
+  "asset": "HalloweenCake",
+  "expected_credits": 42,
+  "request": {
+    "model": "pro",
+    "with_texture": true,
+    "hd_texture": false,
+    "pbr_texture": true,
+    "options": {
+      "block": false
+    },
+    "prompt": "One exquisite playful Halloween celebration cake on a simple circular ivory ceramic platter, premium stylized game prop for a beautifully decorated modern home. Single round cake, warm vanilla frosting, thick dark chocolate ganache dripping from the top, three tiny orange pumpkin shaped marzipan decorations on top, one small white meringue ghost with two dark chocolate eyes. Orange and cream piping trim, readable hand crafted fondant and icing details, realistic appetizing roughness but simplified bold game silhouette. Flat stable bottom, no text, no lettering, no logo, no candles or floating separate objects, no background, entire cake and platter visible. Tasteful warm ivory charcoal and vivid pumpkin orange palette."
+  }
+}

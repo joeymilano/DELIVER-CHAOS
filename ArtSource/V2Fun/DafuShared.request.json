@@ -1,0 +1,15 @@
+{
+  "asset": "DafuShared",
+  "expected_credits": 22,
+  "endpoint": "/3d_models/textures",
+  "model_file": "ArtSource/V2Fun/Dafu/Shared-base.glb",
+  "reference_file": "ArtSource/References/Generated/dafu-v1.png",
+  "request": {
+    "keep_uv": true,
+    "hd_texture": false,
+    "pbr_texture": true,
+    "options": {
+      "block": false
+    }
+  }
+}

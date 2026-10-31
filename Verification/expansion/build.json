@@ -1,0 +1,35 @@
+{
+  "title": "猫手猫脚 / Delivery Chaos",
+  "package": "Builds/Mac/BadCatLab.app",
+  "build_success": true,
+  "native_retina": true,
+  "tested_render_size": [
+    1920,
+    1080
+  ],
+  "executable_sha256": "7e8bb5cbb4ef0ffa8c4818d4f5240be82ae419af20911c0bd904bfd33994c26e",
+  "tests": {
+    "succeeded": 11,
+    "failed": 0,
+    "at": "2026.10.31-01.05.00"
+  },
+  "manual": [
+    "normal packaged launch without editor",
+    "free mode",
+    "movement and repeat jump to 280cm catwalk",
+    "vase pushing",
+    "drop to floor",
+    "zoomies",
+    "opponent catch and recovery",
+    "camera no longer compressed by opponent",
+    "retry",
+    "HUD toggle",
+    "pause"
+  ],
+  "limitations": [
+    "no full-frame-rate benchmark",
+    "no five-player study",
+    "no twenty-round real-device endurance study",
+    "local audition audio needs commercial licensing"
+  ]
+}
