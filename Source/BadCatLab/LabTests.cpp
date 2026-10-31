@@ -9,6 +9,7 @@
 #include "Engine/SkeletalMesh.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "Components/BoxComponent.h"
 #include "Misc/AutomationTest.h"
 #include "Engine/World.h"
 #include "Engine/Engine.h"
@@ -202,4 +203,49 @@ bool FLabMoneyFeedbackTest::RunTest(const FString&){
  G->TickMoneyFeedback();TestEqual(TEXT("Old effects expire"),G->MoneyBursts.Num(),0);TestTrue(TEXT("Animated counter cannot overrun actual bill"),G->DisplayBill<=G->Score);
  G->OpenSelection();TestEqual(TEXT("Returning to menu clears feedback"),G->MoneyBursts.Num(),0);TestEqual(TEXT("Returning to menu clears animated bill"),G->DisplayBill,0.f);TestEqual(TEXT("Returning to menu clears pulse"),G->BillPulse,0.f);return true;
 }
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabResidentFloorTest,"BadCatLab.World.ResidentGroundRoutes",Flags)
+bool FLabResidentFloorTest::RunTest(const FString&){
+ FPartyWorld F;
+ auto Box=[&](FVector P,FVector Ext){auto A=F.W->SpawnActor<AActor>();auto C=NewObject<UBoxComponent>(A);A->SetRootComponent(C);C->SetBoxExtent(Ext);C->SetCollisionProfileName(TEXT("BlockAll"));C->RegisterComponent();A->SetActorLocation(P);return A;};
+ Box(FVector(0,0,-20),FVector(900,700,20));Box(FVector(0,0,45),FVector(90,100,45));
+ auto R=F.W->SpawnActor<ALabResident>(FVector(-240,0,92),FRotator::ZeroRotator);R->Home=R->GetActorLocation();R->BuildGroundGrid();R->ResetResident();
+ TestFalse(TEXT("Standing beneath tabletop is not a ground route"),R->CanStandAt(FVector(0,0,92)));
+ TestFalse(TEXT("Direct route through table is blocked"),R->GroundSegmentClear(R->GetActorLocation(),FVector(240,0,92)));
+ TestTrue(TEXT("Finds floor route around table"),R->PlanGroundRoute(FVector(240,0,92)));
+ TestTrue(TEXT("Route contains an actual detour"),R->GroundPath.ContainsByPredicate([](FVector P){return FMath::Abs(P.Y)>120;}));
+ FVector Previous=R->GetActorLocation();for(auto P:R->GroundPath){TestEqual(TEXT("All route nodes stay at floor height"),P.Z,92.);TestTrue(TEXT("Route segments clear full standing capsule"),R->GroundSegmentClear(Previous,P));Previous=P;}
+ for(int I=0;I<600;I++){R->NavigateFloor(FVector(240,0,92),1.f/60);R->GetCharacterMovement()->TickComponent(1.f/60,LEVELTICK_All,nullptr);if(R->GetActorLocation().Z>100){AddError(TEXT("Human climbed a tabletop"));break;}}
+ TestTrue(TEXT("Walking reaches the other side without climbing"),FVector::Dist2D(R->GetActorLocation(),FVector(240,0,92))<50);
+ TestTrue(TEXT("High cat target still produces ground route"),R->PlanGroundRoute(FVector(0,0,300)));TestTrue(TEXT("High target stops outside furniture"),FVector::Dist2D(R->FloorGoal,FVector::ZeroVector)>120);TestEqual(TEXT("High target does not raise goal"),R->FloorGoal.Z,92.);
+ auto Prop=F.Prop(910,89,FVector(220,0,25));Prop->Body->SetSimulatePhysics(true);
+ TestEqual(TEXT("Humans ignore scattered physics props"),R->GetCapsuleComponent()->GetCollisionResponseToChannel(Prop->Body->GetCollisionObjectType()),ECR_Ignore);
+ TestFalse(TEXT("Human movement cannot apply kicking forces"),R->GetCharacterMovement()->bEnablePhysicsInteraction);
+ R->Home=FVector(0,0,150);R->ResetResident();TestTrue(TEXT("Retry cannot respawn on tabletop"),R->CanStandAt(R->GetActorLocation()));TestEqual(TEXT("Retry places human on floor"),R->GetActorLocation().Z,92.);
+ F.G->SpawnPartyProps();TestNull(TEXT("Surveillance creates no visible cone"),F.G->CameraVision);
+ return true;
+}
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabResidentRoomRouteTest,"BadCatLab.World.ResidentFurnishedRoomRoutes",Flags)
+bool FLabResidentRoomRouteTest::RunTest(const FString&){
+ FPartyWorld F;F.G->BuildRoom();
+ for(auto R:F.G->Residents){
+  TestTrue(TEXT("Resident spawns in a clear floor location"),R->CanStandAt(R->GetActorLocation()));
+  TestFalse(TEXT("Imported coffee table footprint blocks humans"),R->CanStandAt(FVector(10,0,92)));
+  R->GetCharacterMovement()->MaxWalkSpeed=265;
+  for(auto Target:{FVector(-500,-40,92),FVector(-430,300,92),FVector(430,430,92),FVector(460,-80,92),FVector(10,0,250)}){
+   R->RouteCooldown=0;R->GroundPath.Empty();TestTrue(TEXT("Finds furnished room floor route"),R->PlanGroundRoute(Target));
+   const FVector Goal=R->FloorGoal;
+   AddInfo(FString::Printf(TEXT("Resident route: from %s to requested %s, floor goal %s, nodes %d"),*R->GetActorLocation().ToString(),*Target.ToString(),*Goal.ToString(),R->GroundPath.Num()));
+   TestTrue(TEXT("Floor route actually approaches requested destination"),FVector::Dist2D(Goal,Target)<180);
+   float Highest=0;int Reversals=0;FVector LastDirection=FVector::ZeroVector;
+   for(int I=0;I<1800&&FVector::Dist2D(R->GetActorLocation(),Goal)>20;I++){
+    R->NavigateFloor(Target,1.f/60);R->GetCharacterMovement()->TickComponent(1.f/60,LEVELTICK_All,nullptr);Highest=FMath::Max(Highest,float(R->GetActorLocation().Z));
+    FVector Dir=R->GetVelocity().GetSafeNormal2D();if(!Dir.IsNearlyZero()&&!LastDirection.IsNearlyZero()&&FVector::DotProduct(Dir,LastDirection)<-.5f)Reversals++;if(!Dir.IsNearlyZero())LastDirection=Dir;
+   }
+   if(FVector::Dist2D(R->GetActorLocation(),Goal)>=50){AddInfo(FString::Printf(TEXT("Blocked at %s, valid floor %d, path index %d/%d"),*R->GetActorLocation().ToString(),R->CanStandAt(R->GetActorLocation()),R->PathPoint,R->GroundPath.Num()));for(auto Box:R->FurnitureFootprints)if(Box.IsInsideOrOn(R->GetActorLocation()))AddInfo(TEXT("Inside clearance box: ")+Box.ToString());}
+   TestTrue(TEXT("Human stays on floor around real furniture"),Highest<100);TestTrue(TEXT("Human reaches reachable edge of target"),FVector::Dist2D(R->GetActorLocation(),Goal)<50);TestTrue(TEXT("No alternating collision steering jitter"),Reversals<3);
+  }
+ }
+ return true;
+}
+
 #endif
