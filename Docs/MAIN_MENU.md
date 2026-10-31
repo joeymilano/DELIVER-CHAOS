@@ -5,9 +5,8 @@
 - 开始捣蛋 / Enter：选择猫后进入限时玩法。
 - 随便拆拆 / F：选择猫后进入不限时玩法。
 - 音乐开关 / M：当前会话全局 BGM 静音，不影响操作音效。
-- 制作与音乐 / I：查看曲名、作者和授权说明。
 - 选猫 / 合成页按 Esc 返回首页。
 
-音乐使用 Kevin MacLeod 的 Sneaky Snitch（CC BY 4.0）。保留完整曲目、循环播放，首页音量高于选猫页面。署名见游戏内制作面板及 Content/Licenses/WorldAudio.txt。未使用 Tom and Jerry 原声或声称取得该原声授权。
+音乐使用 Kevin MacLeod 的 Sneaky Snitch（CC BY 4.0）。保留完整曲目、循环播放，首页音量高于选猫页面。署名仅保留在随包 Content/Licenses/WorldAudio.txt，游戏画面不显示制作或授权面板。开局后切换到用户提供的 CanCan，返回选猫时恢复菜单音乐；M 静音继续生效。未使用 Tom and Jerry 原声或声称取得该原声授权。
 
 首页道具独立于玩法房间；进入选猫与开局时销毁，返回首页重建。自动测试覆盖入口、限时/不限时状态、重复返回无场景累积、R 不误开局。

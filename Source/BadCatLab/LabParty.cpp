@@ -142,7 +142,15 @@ void ALabGameMode::SetPractice(){if(Stage==6){StartFromTitle(true);return;}if(St
 void ALabGameMode::Lab(){OpenSelection();}
 
 void ALabGameMode::WorldSound(const TCHAR* Name,float Volume){double Now=GetWorld()->GetTimeSeconds();if(Now<WorldSoundUntil)return;auto Sound=LoadObject<USoundBase>(nullptr,*FString::Printf(TEXT("/Game/Audio/World/%s"),Name));if(Sound){WorldSoundUntil=Now+.1;UGameplayStatics::PlaySound2D(this,Sound,Volume);}}
-void ALabGameMode::UpdateMusic(){if(!IsValid(Music)){if(auto Sound=LoadObject<USoundBase>(nullptr,TEXT("/Game/Audio/World/SneakySnitch")))Music=UGameplayStatics::SpawnSound2D(this,Sound,.27f,1,0,nullptr,true,false);}if(IsValid(Music))Music->SetVolumeMultiplier(MusicMuted||MemeShowing?0.f:Playing()?.27f:Stage==6?.42f:.18f);}
+void ALabGameMode::UpdateMusic(){
+ const bool Gameplay=Playing()||Stage==1||Stage==3;
+ if(IsValid(Music)&&MusicGameplay!=Gameplay){Music->Stop();Music->DestroyComponent();Music=nullptr;}
+ if(!IsValid(Music)){
+  const TCHAR* Path=Gameplay?TEXT("/Game/Audio/Gameplay/CanCanGameplay"):TEXT("/Game/Audio/World/SneakySnitch");
+  if(auto Sound=LoadObject<USoundBase>(nullptr,Path)){MusicGameplay=Gameplay;Music=UGameplayStatics::SpawnSound2D(this,Sound,0.f,1,0,nullptr,true,false);UE_LOG(LogTemp,Display,TEXT("BGM selected: %s"),Path);}
+ }
+ if(IsValid(Music))Music->SetVolumeMultiplier(MusicMuted||MemeShowing?0.f:Gameplay?.42f:Stage==6?.42f:.18f);
+}
 
 bool ALabGameMode::CatchCat(ALabCat* Cat){
  if(!Playing()||!IsValid(Cat)||Cat->CatchGrace>0)return false;

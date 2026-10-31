@@ -7,7 +7,7 @@
 ## 获取与启动
 
 ```bash
-git clone https://github.com/joeymilano/DELIVER-CHAOS.git
+git clone --branch feature/party-chaos https://github.com/joeymilano/DELIVER-CHAOS.git
 cd DELIVER-CHAOS
 bash Tools/build_mac.sh
 ```
@@ -31,7 +31,7 @@ bash Tools/build_mac.sh
 - 房间扩大为 18 × 14 米，包含客厅、厨房、床与衣柜角落；沿墙八级台阶接到 2.8 米高的猫道，可以连续跳上去，再从高处扑回房间。
 - 两个实际骨骼人物在房间里巡逻；看见拆家后追赶，停下装乖会让他们疑惑，被抓到会被赶开并损失挑战时间。当前使用轻量避障，拥挤家具处仍需继续调优。
 - Mac 包开启原生 Retina 显示；界面保留金额、时间、嫌疑和超级扑，完整操作说明放在暂停页。
-- BGM：Kevin MacLeod《Sneaky Snitch》，CC BY 4.0；脚步、落地、玻璃和提示声来自 Kenney CC0。完整归属与改动说明位于 Content/Licenses/WorldAudio.txt。
+- 进入游戏后播放用户提供的 CanCan；首页与选猫页使用 Kevin MacLeod《Sneaky Snitch》，CC BY 4.0；脚步、落地、玻璃和提示声来自 Kenney CC0。完整归属与改动说明位于 Content/Licenses/WorldAudio.txt。
 
 ## 收集与合成
 
@@ -83,7 +83,7 @@ bash Tools/build_mac.sh
 
 当前仍是参赛开发版。动作需要继续调关节过渡；主人对白已在本地替换为 ElevenLabs 配音，免费套餐版本仅供试听，场景和第四只猫需要美术精修。自动测试不等于真人趣味性或商业发行质量验收。Python 只参与制作，运行游戏不依赖网络、生成平台或密钥。
 
-选猫页按 **F** 切换 60 秒挑战 / 自由拆家；数字 1–4 选猫，Enter 确认。完整菜单可使用键盘操作。
+选猫页按 **F** 切换 180 秒挑战 / 自由拆家；数字 1–4 选猫，Enter 确认。完整菜单可使用键盘操作。
 
 界面已改为主角展示、双猫合成预览、轻量 HUD 与实际物品账单。文案和页面规则见 [UI_COPY.md](Docs/UI_COPY.md)。暂停页支持鼠标按钮与 V 震动开关。
 

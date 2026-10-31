@@ -78,7 +78,7 @@ public:
  void RecoverToSafety(); void UpdateSafety();
  void ResetCat(); void SetMutation(bool On);
  void ApplyIdentity(int32 CatIndex,bool Fused);
- void ToggleMusic(); void ToggleCredits();
+ void ToggleMusic();
  void PickOne(); void PickTwo(); void PickThree(); void PickFour();
  void PushStart(); void PushStop(); void ZoomStart(); void ZoomStop(); void Meow(); void ToggleShake(); void TogglePractice();
  uint8 Traits=0; float BodyScale=1,MeshScale=1,MeshFloor=-30,ZoomTime=0,ZoomCooldown=0,MeowCooldown=0,AutoMeowCooldown=0,PushClock=0,FallSpeed=0,ImpactTime=0;
@@ -131,7 +131,7 @@ public:
  UPROPERTY() UPoseableMeshComponent* TitleBody=nullptr;
  UPROPERTY() ACameraActor* TitleCamera=nullptr;
  FRotator TitleHeadRest,TitleTailRest;
- float TitleTime=0; bool MusicMuted=false,TitleCredits=false;
+ float TitleTime=0; bool MusicMuted=false,MusicGameplay=false;
  void OpenTitle(); void ClearTitle(); void TickTitle(float Dt); void StartFromTitle(bool FreePlay=false);
 
  double WorldSoundUntil=0;

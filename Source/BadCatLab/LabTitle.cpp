@@ -16,7 +16,7 @@
 void ALabGameMode::ClearTitle(){
  if(TitleSet.IsEmpty())return;
  if(auto PC=GetWorld()->GetFirstPlayerController())if(auto Pawn=PC->GetPawn())PC->SetViewTarget(Pawn);
- for(auto A:TitleSet)if(IsValid(A))A->Destroy();TitleSet.Empty();TitleBody=nullptr;TitleCamera=nullptr;TitleTime=0;TitleCredits=false;
+ for(auto A:TitleSet)if(IsValid(A))A->Destroy();TitleSet.Empty();TitleBody=nullptr;TitleCamera=nullptr;TitleTime=0;
 }
 void ALabGameMode::StartFromTitle(bool FreePlay){Practice=FreePlay;OpenSelection();}
 void ALabGameMode::OpenTitle(){

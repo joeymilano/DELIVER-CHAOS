@@ -29,7 +29,6 @@ void ALabHUD::NotifyHitBoxClick(FName Name) {
  if(Name==TEXT("TitleStart")){G->StartFromTitle();return;}
  if(Name==TEXT("TitleFree")){G->StartFromTitle(true);return;}
  if(Name==TEXT("TitleMusic")){G->MusicMuted=!G->MusicMuted;G->UpdateMusic();return;}
- if(Name==TEXT("TitleCredits")){G->TitleCredits=!G->TitleCredits;return;}
  if(Name==TEXT("Meme")){G->ToggleMemeGif();return;}
  if(Name==TEXT("Resume")){if(Cat)Cat->Pause();return;}
  if(Name==TEXT("Shake")){if(Cat)Cat->ToggleShake();return;}
@@ -112,16 +111,8 @@ void ALabHUD::DrawHUD() {
   Box(48,636,440,1,Line);
   const bool Hot=Hover(48,653,150,30);
   Text(G->MusicMuted?TEXT("音乐  /  关  M"):TEXT("音乐  /  开  M"),48,655,16,Hot?Orange:Ink,true);Hit(TEXT("TitleMusic"),48,648,150,40);
-  Text(TEXT("制作与音乐  I"),345,655,15,Muted);Hit(TEXT("TitleCredits"),337,648,151,40);
   Pill(TEXT("一爪小事。满屋大事。"),925,48,Paper,Ink);
-  if(G->TitleCredits){
-   Round(590,450,630,212,16,Ink);
-   Text(TEXT("猫手猫脚  /  Delivery Chaos"),616,474,23,Paper,true);
-   Text(TEXT("音乐：Sneaky Snitch — Kevin MacLeod"),616,520,18,Paper);
-   Text(TEXT("incompetech.com  ·  CC BY 4.0"),616,551,16,Paper);
-   Text(TEXT("音量标准化、首尾淡化；完整授权见随包 Licenses。"),616,584,15,Paper);
-   Text(TEXT("个人 + AI 制作  /  Unreal Engine"),616,620,14,Paper);
-  }
+
   return;
  }
  // Selection and fusion share a collection grid, with a distinct primary action.
@@ -185,7 +176,7 @@ void ALabHUD::DrawHUD() {
    Text(G->Practice?TEXT("慢慢逛，不限时 · 不计榜"):TEXT("180 秒挑战 · 计入排行榜"),300,646,16,Muted);
    Button(TEXT("Confirm"),Count>1?TEXT("选搭档"):TEXT("开始拆家"),TEXT("Enter"),918,628,318,true);
   }
-  Text(TEXT("Music: Sneaky Snitch · Kevin MacLeod · CC BY 4.0"),700,704,10,Muted);Footer(Lab?TEXT("数字键选搭档    Space 单猫出门    Tab 重选主猫"):TEXT("1–4 选猫    F 切换模式"));Fixture();return;
+  Footer(Lab?TEXT("数字键选搭档    Space 单猫出门    Tab 重选主猫"):TEXT("1–4 选猫    F 切换模式"));Fixture();return;
  }
 
  const FString Identity=G->RecipeId>=0?LabCatalog::Recipe(G->RecipeId).Name:LabCatalog::Cat(G->SelectedCat).Name;
