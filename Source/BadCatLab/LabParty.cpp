@@ -79,7 +79,8 @@ void ALabGameMode::SpawnPartyProps(){
  for(int I=0;I<3;I++){auto P=Spawn(20+I,FVector(160,80,20+I*33),FVector(.38,.38,.32),FLinearColor(1,.16,.01),TEXT("南瓜灯"),79,true);P->Body->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Game/Art/Party/SM_Pumpkin")));P->SetActorRotation(FRotator(0,90,0));if(I==1)AddWarmPropLight(P);if(I==2)P->ItemName=TEXT("藏猫南瓜灯");}
  // Ascending perches create a reliable high route for orange-cat landings.
  PetCamera=Spawn(30,FVector(310,-245,115),FVector(.3,.3,.30),FLinearColor(.9,.87,.8),TEXT("宠物摄像头"),399,true);PetCamera->Body->SetSimulatePhysics(false);
- CameraVision=NewObject<UStaticMeshComponent>(PetCamera);CameraVision->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Cone")));CameraVision->SetupAttachment(PetCamera->Body);CameraVision->RegisterComponent();CameraVision->SetAbsolute(false,false,true);CameraVision->SetRelativeLocation(FVector(1066,0,0));CameraVision->SetRelativeRotation(FRotationMatrix::MakeFromZ(-FVector::ForwardVector).Rotator());CameraVision->SetWorldScale3D(FVector(9.4,9.4,6));CameraVision->SetCollisionEnabled(ECollisionEnabled::NoCollision);CameraVision->SetCastShadow(false);CameraVision->SetMaterial(0,LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/Art/M_CameraVision")));
+ // Surveillance uses an invisible query; no world-space cone obscures the room.
+
  auto Lens=NewObject<UStaticMeshComponent>(PetCamera);Lens->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Sphere")));Lens->SetupAttachment(PetCamera->Body);Lens->RegisterComponent();Lens->SetRelativeLocation(FVector(45,0,0));Lens->SetRelativeScale3D(FVector(.25,.55,.55));Lens->SetCollisionEnabled(ECollisionEnabled::NoCollision);Colorize(Lens,FLinearColor(.005,.015,.02));
  // Generated shell keeps the existing simple collision body and surveillance origin.
  if(auto ShellMesh=LoadObject<UStaticMesh>(nullptr,TEXT("/Game/Art/V2Fun/PetCamera/SM_PetCamera"))){

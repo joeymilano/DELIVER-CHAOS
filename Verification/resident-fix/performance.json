@@ -1,0 +1,19 @@
+{
+  "label": "resident_floor_final",
+  "stage": 4,
+  "lumen_quality": 2,
+  "width": 1920,
+  "height": 1080,
+  "sample_seconds": 30.004,
+  "frames": 3543,
+  "average_fps": 118.08,
+  "p99_frame_ms": 16.55,
+  "minimum_5s_fps": 119.60,
+  "foreground_only": true,
+  "vsync": 0,
+  "screen_percentage": 100,
+  "gi_method": 1,
+  "reflection_method": 1,
+  "mesh_distance_fields": 1,
+  "hardware_ray_tracing": 0
+}
