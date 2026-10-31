@@ -56,3 +56,7 @@ ElevenLabs 本地试听配音与猫梗动图不在公共仓库，需要团队另
 ## 新增 Nasha 场景素材
 
 16 件模型的清单、导入步骤与 PR #2 音频用途见 [COZY_PARTY.md](Docs/COZY_PARTY.md)。协作者需自行持有两套 Nasha 素材包，按说明生成 Content/CozyLocal；公开仓库不包含可提取的模型。完整 Mac 试玩包包含这些已编入游戏的场景资产。
+
+## Windows 完整工程交接
+
+完整本地工程与 Mac 试玩包保存在 `~/Documents/Deliver Chaos`，Windows 协作者的环境、脚本与验收步骤见 [WINDOWS_README.md](WINDOWS_README.md)。公开 Git 仓库仍排除许可要求保留本地的模型；完整交接 ZIP 只用于有权参与本项目的内部协作。Windows 构建与实机验证完成前，不将交接工程标记为 Windows 可玩版本。

@@ -1,0 +1,3 @@
+The Win64 platform is not supported from this engine distribution.
+Took 0.94s to run dotnet, ExitCode=6
+AutomationTool exiting with ExitCode=6 (6)
