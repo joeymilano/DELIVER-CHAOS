@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-31",
+  "source_commit": "53ef138",
+  "package": "Builds/Mac/BadCatLab.app",
+  "build_success": true,
+  "automation_passed": 15,
+  "automation_failed": 0,
+  "retina_enabled": true,
+  "binary_sha256": "7edb5e617624c6da0288efe7f015c590afbdd44461a76871a6a17295caee6f60",
+  "runtime_checks": [
+    "Main menu and selection show no production or CC credit UI",
+    "Gameplay loads CanCanGameplay sound",
+    "Mute and unmute report playing audio component",
+    "Return to selection restores SneakySnitch"
+  ],
+  "limits": [
+    "Playback state verified; subjective sound quality not independently assessed",
+    "Public repository excludes Fab licensed raw assets and local ElevenLabs/meme files"
+  ]
+}
