@@ -1,0 +1,889 @@
+[2026.10.31-08.55.32:957][523]LogTemp: Display: RESIDENT_TRACE t=309.75 who=Owner state=Patrol pos=V(X=-520.00, Y=400.00, Z=92.00) speed=0.0 anim=0 reach=0.00 catdist=518.6
+[2026.10.31-08.55.32:957][523]LogTemp: Display: RESIDENT_TRACE t=309.75 who=Guest state=Patrol pos=V(X=560.00, Y=400.00, Z=92.00) speed=0.0 anim=0 reach=0.00 catdist=850.0
+[2026.10.31-08.55.33:557][527]LogTemp: Display: RESIDENT_TRACE t=310.39 who=Owner state=Patrol pos=V(X=-520.00, Y=352.23, Z=92.00) speed=110.0 anim=1 reach=0.00 catdist=482.7
+[2026.10.31-08.55.33:557][527]LogTemp: Display: RESIDENT_TRACE t=310.39 who=Guest state=Patrol pos=V(X=514.69, Y=415.10, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=817.9
+[2026.10.31-08.55.33:789][531]LogTemp: Display: SCENE_AUDIT: 145 mesh components recorded to /Users/joeyzhao/Documents/Deliver Chaos/Verification/release/source
+[2026.10.31-08.55.34:069][548]LogTemp: Display: RESIDENT_TRACE t=310.90 who=Owner state=Patrol pos=V(X=-520.00, Y=295.83, Z=92.00) speed=110.0 anim=1 reach=0.00 catdist=443.2
+[2026.10.31-08.55.34:069][548]LogTemp: Display: RESIDENT_TRACE t=310.90 who=Guest state=Patrol pos=V(X=478.64, Y=427.12, Z=92.15) speed=50.8 anim=1 reach=0.00 catdist=793.4
+[2026.10.31-08.55.34:569][578]LogTemp: Display: RESIDENT_TRACE t=311.40 who=Owner state=Patrol pos=V(X=-520.00, Y=240.83, Z=92.00) speed=110.0 anim=1 reach=0.00 catdist=408.5
+[2026.10.31-08.55.34:569][578]LogTemp: Display: RESIDENT_TRACE t=311.40 who=Guest state=Patrol pos=V(X=460.84, Y=433.05, Z=92.15) speed=27.4 anim=1 reach=0.00 catdist=781.7
+[2026.10.31-08.55.35:069][608]LogTemp: Display: RESIDENT_TRACE t=311.90 who=Owner state=Patrol pos=V(X=-520.00, Y=185.82, Z=92.00) speed=110.0 anim=1 reach=0.00 catdist=378.7
+[2026.10.31-08.55.35:069][608]LogTemp: Display: RESIDENT_TRACE t=311.90 who=Guest state=Patrol pos=V(X=449.23, Y=436.92, Z=92.44) speed=24.2 anim=1 reach=0.00 catdist=774.3
+[2026.10.31-08.55.35:569][638]LogTemp: Display: RESIDENT_TRACE t=312.40 who=Owner state=Patrol pos=V(X=-520.00, Y=130.81, Z=92.00) speed=110.0 anim=1 reach=0.00 catdist=355.0
+[2026.10.31-08.55.35:569][638]LogTemp: Display: RESIDENT_TRACE t=312.40 who=Guest state=Patrol pos=V(X=445.06, Y=405.45, Z=92.44) speed=110.0 anim=1 reach=0.00 catdist=753.5
+[2026.10.31-08.55.36:069][668]LogTemp: Display: RESIDENT_TRACE t=312.90 who=Owner state=Patrol pos=V(X=-520.00, Y=75.80, Z=92.00) speed=110.0 anim=1 reach=0.00 catdist=338.6
+[2026.10.31-08.55.36:069][668]LogTemp: Display: RESIDENT_TRACE t=312.90 who=Guest state=Patrol pos=V(X=444.49, Y=350.44, Z=92.44) speed=110.0 anim=1 reach=0.00 catdist=724.8
+[2026.10.31-08.55.36:569][698]LogTemp: Display: RESIDENT_TRACE t=313.40 who=Owner state=Patrol pos=V(X=-520.00, Y=24.84, Z=92.00) speed=80.9 anim=1 reach=0.00 catdist=330.9
+[2026.10.31-08.55.36:569][698]LogTemp: Display: RESIDENT_TRACE t=313.40 who=Guest state=Patrol pos=V(X=443.92, Y=295.44, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=699.4
+[2026.10.31-08.55.37:070][728]LogTemp: Display: RESIDENT_TRACE t=313.90 who=Owner state=Patrol pos=V(X=-520.00, Y=-5.04, Z=92.00) speed=43.6 anim=1 reach=0.00 catdist=330.0
+[2026.10.31-08.55.37:070][728]LogTemp: Display: RESIDENT_TRACE t=313.90 who=Guest state=Patrol pos=V(X=443.34, Y=240.42, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=677.4
+[2026.10.31-08.55.37:570][758]LogTemp: Display: RESIDENT_TRACE t=314.40 who=Owner state=Patrol pos=V(X=-520.00, Y=-21.16, Z=92.00) speed=24.2 anim=1 reach=0.00 catdist=330.7
+[2026.10.31-08.55.37:570][758]LogTemp: Display: RESIDENT_TRACE t=314.40 who=Guest state=Patrol pos=V(X=442.77, Y=185.41, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=659.4
+[2026.10.31-08.55.38:070][788]LogTemp: Display: RESIDENT_TRACE t=314.90 who=Owner state=Patrol pos=V(X=-520.00, Y=-33.26, Z=92.00) speed=24.2 anim=1 reach=0.00 catdist=331.7
+[2026.10.31-08.55.38:070][788]LogTemp: Display: RESIDENT_TRACE t=314.90 who=Guest state=Patrol pos=V(X=442.19, Y=130.40, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=645.5
+[2026.10.31-08.55.38:570][818]LogTemp: Display: RESIDENT_TRACE t=315.40 who=Owner state=Patrol pos=V(X=-508.29, Y=11.89, Z=92.00) speed=110.0 anim=1 reach=0.00 catdist=318.5
+[2026.10.31-08.55.38:570][818]LogTemp: Display: RESIDENT_TRACE t=315.40 who=Guest state=Patrol pos=V(X=441.62, Y=75.39, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=636.1
+[2026.10.31-08.55.39:070][848]LogTemp: Display: RESIDENT_TRACE t=315.90 who=Owner state=Patrol pos=V(X=-494.71, Y=65.20, Z=92.00) speed=110.0 anim=1 reach=0.00 catdist=311.6
+[2026.10.31-08.55.39:070][848]LogTemp: Display: RESIDENT_TRACE t=315.90 who=Guest state=Patrol pos=V(X=441.05, Y=20.39, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=631.4
+[2026.10.31-08.55.39:570][878]LogTemp: Display: RESIDENT_TRACE t=316.40 who=Owner state=Patrol pos=V(X=-481.14, Y=118.50, Z=92.00) speed=110.0 anim=1 reach=0.00 catdist=314.3
+[2026.10.31-08.55.39:570][878]LogTemp: Display: RESIDENT_TRACE t=316.40 who=Guest state=Patrol pos=V(X=440.57, Y=-25.46, Z=92.18) speed=68.1 anim=1 reach=0.00 catdist=631.1
+[2026.10.31-08.55.40:070][908]LogTemp: Display: RESIDENT_TRACE t=316.90 who=Owner state=Patrol pos=V(X=-467.56, Y=171.81, Z=92.00) speed=110.0 anim=1 reach=0.00 catdist=326.4
+[2026.10.31-08.55.40:070][908]LogTemp: Display: RESIDENT_TRACE t=316.90 who=Guest state=Patrol pos=V(X=440.31, Y=-50.59, Z=92.18) speed=36.7 anim=1 reach=0.00 catdist=632.3
+[2026.10.31-08.55.40:570][938]LogTemp: Display: RESIDENT_TRACE t=317.40 who=Owner state=Patrol pos=V(X=-455.28, Y=220.03, Z=92.28) speed=77.2 anim=1 reach=0.00 catdist=344.7
+[2026.10.31-08.55.40:570][938]LogTemp: Display: RESIDENT_TRACE t=317.40 who=Guest state=Patrol pos=V(X=440.16, Y=-64.55, Z=92.18) speed=24.2 anim=1 reach=0.00 catdist=633.5
+[2026.10.31-08.55.41:070][968]LogTemp: Display: RESIDENT_TRACE t=317.90 who=Owner state=Patrol pos=V(X=-448.24, Y=247.66, Z=92.54) speed=41.6 anim=1 reach=0.00 catdist=357.8
+[2026.10.31-08.55.41:070][968]LogTemp: Display: RESIDENT_TRACE t=317.90 who=Guest state=Patrol pos=V(X=433.00, Y=-74.77, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=627.5
+[2026.10.31-08.55.41:570][998]LogTemp: Display: RESIDENT_TRACE t=318.40 who=Owner state=Patrol pos=V(X=-444.43, Y=262.62, Z=92.28) speed=24.2 anim=1 reach=0.00 catdist=365.7
+[2026.10.31-08.55.41:570][998]LogTemp: Display: RESIDENT_TRACE t=318.40 who=Guest state=Patrol pos=V(X=378.15, Y=-78.95, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=573.6
+[2026.10.31-08.55.42:070][ 28]LogTemp: Display: RESIDENT_TRACE t=318.90 who=Owner state=Patrol pos=V(X=-441.44, Y=274.35, Z=92.28) speed=0.0 anim=0 reach=0.00 catdist=372.1
+[2026.10.31-08.55.42:070][ 28]LogTemp: Display: RESIDENT_TRACE t=318.90 who=Guest state=Patrol pos=V(X=323.31, Y=-83.13, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=520.0
+[2026.10.31-08.55.42:570][ 58]LogTemp: Display: RESIDENT_TRACE t=319.40 who=Owner state=Patrol pos=V(X=-391.80, Y=286.42, Z=92.28) speed=110.0 anim=1 reach=0.00 catdist=350.4
+[2026.10.31-08.55.42:570][ 58]LogTemp: Display: RESIDENT_TRACE t=319.40 who=Guest state=Patrol pos=V(X=268.46, Y=-87.32, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=466.7
+[2026.10.31-08.55.43:070][ 88]LogTemp: Display: RESIDENT_TRACE t=319.90 who=Owner state=Patrol pos=V(X=-338.36, Y=299.41, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=334.1
+[2026.10.31-08.55.43:070][ 88]LogTemp: Display: RESIDENT_TRACE t=319.90 who=Guest state=Patrol pos=V(X=213.62, Y=-91.50, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=413.9
+[2026.10.31-08.55.43:570][118]LogTemp: Display: RESIDENT_TRACE t=320.40 who=Owner state=Patrol pos=V(X=-284.91, Y=312.40, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=326.5
+[2026.10.31-08.55.43:570][118]LogTemp: Display: RESIDENT_TRACE t=320.40 who=Guest state=Patrol pos=V(X=158.77, Y=-95.68, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=361.7
+[2026.10.31-08.55.44:070][148]LogTemp: Display: RESIDENT_TRACE t=320.90 who=Owner state=Patrol pos=V(X=-231.46, Y=325.39, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=328.0
+[2026.10.31-08.55.44:070][148]LogTemp: Display: RESIDENT_TRACE t=320.90 who=Guest state=Patrol pos=V(X=103.93, Y=-99.87, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=310.4
+[2026.10.31-08.55.44:570][178]LogTemp: Display: RESIDENT_TRACE t=321.40 who=Owner state=Patrol pos=V(X=-178.01, Y=338.39, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=338.6
+[2026.10.31-08.55.44:570][178]LogTemp: Display: RESIDENT_TRACE t=321.40 who=Guest state=Patrol pos=V(X=49.09, Y=-104.05, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=260.7
+[2026.10.31-08.55.45:070][208]LogTemp: Display: RESIDENT_TRACE t=321.90 who=Owner state=Patrol pos=V(X=-124.57, Y=351.38, Z=92.19) speed=110.0 anim=1 reach=0.00 catdist=357.4
+[2026.10.31-08.55.45:070][208]LogTemp: Display: RESIDENT_TRACE t=321.90 who=Guest state=Patrol pos=V(X=-5.68, Y=-102.31, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=210.8
+[2026.10.31-08.55.45:570][238]LogTemp: Display: RESIDENT_TRACE t=322.40 who=Owner state=Patrol pos=V(X=-71.12, Y=364.37, Z=92.19) speed=110.0 anim=1 reach=0.00 catdist=383.3
+[2026.10.31-08.55.45:571][238]LogTemp: Display: RESIDENT_TRACE t=322.40 who=Guest state=Patrol pos=V(X=-60.33, Y=-96.04, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=161.4
+[2026.10.31-08.55.46:070][268]LogTemp: Display: RESIDENT_TRACE t=322.90 who=Owner state=Patrol pos=V(X=-17.67, Y=377.36, Z=92.23) speed=110.0 anim=1 reach=0.00 catdist=414.8
+[2026.10.31-08.55.46:071][268]LogTemp: Display: RESIDENT_TRACE t=322.90 who=Guest state=Patrol pos=V(X=-114.90, Y=-89.77, Z=93.90) speed=106.9 anim=1 reach=0.00 catdist=117.0
+[2026.10.31-08.55.46:571][298]LogTemp: Display: RESIDENT_TRACE t=323.40 who=Owner state=Patrol pos=V(X=35.77, Y=390.35, Z=92.23) speed=110.0 anim=1 reach=0.00 catdist=450.9
+[2026.10.31-08.55.46:571][298]LogTemp: Display: RESIDENT_TRACE t=323.40 who=Guest state=Patrol pos=V(X=-160.36, Y=-63.02, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=69.6
+[2026.10.31-08.55.47:071][328]LogTemp: Display: RESIDENT_TRACE t=323.90 who=Owner state=Patrol pos=V(X=89.22, Y=403.35, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=490.6
+[2026.10.31-08.55.47:071][328]LogTemp: Display: RESIDENT_TRACE t=323.90 who=Guest state=Patrol pos=V(X=-206.80, Y=-35.12, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=38.9
+[2026.10.31-08.55.47:571][358]LogTemp: Display: RESIDENT_TRACE t=324.40 who=Owner state=Patrol pos=V(X=142.66, Y=416.34, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=532.9
+[2026.10.31-08.55.47:571][358]LogTemp: Display: RESIDENT_TRACE t=324.40 who=Guest state=Patrol pos=V(X=-260.89, Y=-26.29, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=75.6
+[2026.10.31-08.55.48:071][388]LogTemp: Display: RESIDENT_TRACE t=324.90 who=Owner state=Patrol pos=V(X=196.69, Y=425.97, Z=92.15) speed=105.4 anim=1 reach=0.00 catdist=575.3
+[2026.10.31-08.55.48:071][388]LogTemp: Display: RESIDENT_TRACE t=324.90 who=Guest state=Patrol pos=V(X=-315.82, Y=-29.14, Z=92.30) speed=110.0 anim=1 reach=0.00 catdist=129.1
+[2026.10.31-08.55.48:571][418]LogTemp: Display: RESIDENT_TRACE t=325.40 who=Owner state=Patrol pos=V(X=251.07, Y=429.96, Z=92.41) speed=110.0 anim=1 reach=0.00 catdist=616.0
+[2026.10.31-08.55.48:571][418]LogTemp: Display: RESIDENT_TRACE t=325.40 who=Guest state=Patrol pos=V(X=-370.74, Y=-32.06, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=183.6
+[2026.10.31-08.55.49:071][448]LogTemp: Display: RESIDENT_TRACE t=325.90 who=Owner state=Patrol pos=V(X=305.99, Y=432.88, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=658.3
+[2026.10.31-08.55.49:071][448]LogTemp: Display: RESIDENT_TRACE t=325.90 who=Guest state=Patrol pos=V(X=-425.67, Y=-34.98, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=238.2
+[2026.10.31-08.55.49:571][478]LogTemp: Display: RESIDENT_TRACE t=326.40 who=Owner state=Patrol pos=V(X=360.40, Y=435.77, Z=92.15) speed=99.5 anim=1 reach=0.00 catdist=702.0
+[2026.10.31-08.55.49:571][478]LogTemp: Display: RESIDENT_TRACE t=326.40 who=Guest state=Patrol pos=V(X=-469.04, Y=-37.29, Z=92.15) speed=63.7 anim=1 reach=0.00 catdist=281.5
+[2026.10.31-08.55.50:071][508]LogTemp: Display: RESIDENT_TRACE t=326.90 who=Owner state=Patrol pos=V(X=397.09, Y=437.72, Z=92.15) speed=53.6 anim=1 reach=0.00 catdist=732.3
+[2026.10.31-08.55.50:071][508]LogTemp: Display: RESIDENT_TRACE t=326.90 who=Guest state=Patrol pos=V(X=-492.53, Y=-38.54, Z=92.15) speed=34.3 anim=1 reach=0.00 catdist=305.0
+[2026.10.31-08.55.50:571][538]LogTemp: Display: RESIDENT_TRACE t=327.40 who=Owner state=Patrol pos=V(X=416.86, Y=438.77, Z=92.15) speed=28.9 anim=1 reach=0.00 catdist=748.9
+[2026.10.31-08.55.50:571][538]LogTemp: Display: RESIDENT_TRACE t=327.40 who=Guest state=Patrol pos=V(X=-505.88, Y=-39.25, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=318.3
+[2026.10.31-08.55.51:071][568]LogTemp: Display: RESIDENT_TRACE t=327.90 who=Owner state=Patrol pos=V(X=429.23, Y=439.43, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=759.3
+[2026.10.31-08.55.51:071][568]LogTemp: Display: RESIDENT_TRACE t=327.90 who=Guest state=Patrol pos=V(X=-511.49, Y=-27.45, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=322.7
+[2026.10.31-08.55.51:571][598]LogTemp: Display: RESIDENT_TRACE t=328.40 who=Owner state=Patrol pos=V(X=434.40, Y=410.61, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=747.3
+[2026.10.31-08.55.51:571][598]LogTemp: Display: RESIDENT_TRACE t=328.40 who=Guest state=Patrol pos=V(X=-499.03, Y=26.13, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=310.1
+[2026.10.31-08.55.52:071][628]LogTemp: Display: RESIDENT_TRACE t=328.90 who=Owner state=Patrol pos=V(X=435.03, Y=355.61, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=719.1
+[2026.10.31-08.55.52:071][628]LogTemp: Display: RESIDENT_TRACE t=328.90 who=Guest state=Patrol pos=V(X=-486.57, Y=79.70, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=307.1
+[2026.10.31-08.55.52:571][658]LogTemp: Display: RESIDENT_TRACE t=329.40 who=Owner state=Patrol pos=V(X=435.66, Y=300.61, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=694.1
+[2026.10.31-08.55.52:571][658]LogTemp: Display: RESIDENT_TRACE t=329.40 who=Guest state=Patrol pos=V(X=-474.12, Y=133.28, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=313.8
+[2026.10.31-08.55.53:071][688]LogTemp: Display: RESIDENT_TRACE t=329.90 who=Owner state=Patrol pos=V(X=436.28, Y=245.60, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=672.7
+[2026.10.31-08.55.53:071][688]LogTemp: Display: RESIDENT_TRACE t=329.90 who=Guest state=Patrol pos=V(X=-461.66, Y=186.86, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=329.7
+[2026.10.31-08.55.53:571][718]LogTemp: Display: RESIDENT_TRACE t=330.40 who=Owner state=Patrol pos=V(X=436.91, Y=190.60, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=655.2
+[2026.10.31-08.55.53:572][718]LogTemp: Display: RESIDENT_TRACE t=330.40 who=Guest state=Patrol pos=V(X=-451.71, Y=229.64, Z=92.41) speed=64.5 anim=1 reach=0.00 catdist=348.2
+[2026.10.31-08.55.54:072][748]LogTemp: Display: RESIDENT_TRACE t=330.90 who=Owner state=Patrol pos=V(X=437.54, Y=135.60, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=642.0
+[2026.10.31-08.55.54:072][748]LogTemp: Display: RESIDENT_TRACE t=330.90 who=Guest state=Patrol pos=V(X=-446.32, Y=252.84, Z=92.41) speed=34.8 anim=1 reach=0.00 catdist=360.0
+[2026.10.31-08.55.54:571][778]LogTemp: Display: RESIDENT_TRACE t=331.40 who=Owner state=Patrol pos=V(X=438.17, Y=80.61, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=633.3
+[2026.10.31-08.55.54:572][778]LogTemp: Display: RESIDENT_TRACE t=331.40 who=Guest state=Patrol pos=V(X=-443.26, Y=265.96, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=367.3
+[2026.10.31-08.55.55:072][808]LogTemp: Display: RESIDENT_TRACE t=331.90 who=Owner state=Patrol pos=V(X=438.79, Y=25.61, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=629.3
+[2026.10.31-08.55.55:072][808]LogTemp: Display: RESIDENT_TRACE t=331.90 who=Guest state=Patrol pos=V(X=-429.12, Y=277.19, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=366.1
+[2026.10.31-08.55.55:572][838]LogTemp: Display: RESIDENT_TRACE t=332.40 who=Owner state=Patrol pos=V(X=439.34, Y=-22.18, Z=92.15) speed=72.1 anim=1 reach=0.00 catdist=629.7
+[2026.10.31-08.55.55:572][838]LogTemp: Display: RESIDENT_TRACE t=332.40 who=Guest state=Patrol pos=V(X=-375.65, Y=290.20, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=344.5
+[2026.10.31-08.55.56:072][868]LogTemp: Display: RESIDENT_TRACE t=332.90 who=Owner state=Patrol pos=V(X=439.64, Y=-48.82, Z=92.15) speed=38.9 anim=1 reach=0.00 catdist=631.5
+[2026.10.31-08.55.56:072][868]LogTemp: Display: RESIDENT_TRACE t=332.90 who=Guest state=Patrol pos=V(X=-322.20, Y=303.20, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=330.8
+[2026.10.31-08.55.56:572][898]LogTemp: Display: RESIDENT_TRACE t=333.40 who=Owner state=Patrol pos=V(X=439.81, Y=-63.40, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=633.0
+[2026.10.31-08.55.56:572][898]LogTemp: Display: RESIDENT_TRACE t=333.40 who=Guest state=Patrol pos=V(X=-268.76, Y=316.21, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=325.9
+[2026.10.31-08.55.57:072][928]LogTemp: Display: RESIDENT_TRACE t=333.90 who=Owner state=Patrol pos=V(X=438.23, Y=-74.42, Z=92.15) speed=68.3 anim=1 reach=0.00 catdist=632.6
+[2026.10.31-08.55.57:072][928]LogTemp: Display: RESIDENT_TRACE t=333.90 who=Guest state=Patrol pos=V(X=-215.31, Y=329.21, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=330.2
+[2026.10.31-08.55.57:572][958]LogTemp: Display: RESIDENT_TRACE t=334.40 who=Owner state=Patrol pos=V(X=383.52, Y=-78.59, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=578.9
+[2026.10.31-08.55.57:572][958]LogTemp: Display: RESIDENT_TRACE t=334.40 who=Guest state=Patrol pos=V(X=-161.87, Y=342.22, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=343.4
+[2026.10.31-08.55.58:072][988]LogTemp: Display: RESIDENT_TRACE t=334.90 who=Owner state=Patrol pos=V(X=328.66, Y=-82.77, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=525.2
+[2026.10.31-08.55.58:072][988]LogTemp: Display: RESIDENT_TRACE t=334.90 who=Guest state=Patrol pos=V(X=-108.42, Y=355.22, Z=92.16) speed=110.0 anim=1 reach=0.00 catdist=364.5
+[2026.10.31-08.55.58:572][ 18]LogTemp: Display: RESIDENT_TRACE t=335.40 who=Owner state=Patrol pos=V(X=273.82, Y=-86.95, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=471.9
+[2026.10.31-08.55.58:572][ 18]LogTemp: Display: RESIDENT_TRACE t=335.40 who=Guest state=Patrol pos=V(X=-54.97, Y=368.23, Z=92.16) speed=110.0 anim=1 reach=0.00 catdist=392.2
+[2026.10.31-08.55.59:072][ 48]LogTemp: Display: RESIDENT_TRACE t=335.90 who=Owner state=Patrol pos=V(X=218.97, Y=-91.13, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=419.0
+[2026.10.31-08.55.59:072][ 48]LogTemp: Display: RESIDENT_TRACE t=335.90 who=Guest state=Patrol pos=V(X=-1.53, Y=381.23, Z=92.21) speed=110.0 anim=1 reach=0.00 catdist=425.3
+[2026.10.31-08.55.59:572][ 78]LogTemp: Display: RESIDENT_TRACE t=336.40 who=Owner state=Patrol pos=V(X=164.13, Y=-95.30, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=366.7
+[2026.10.31-08.55.59:572][ 78]LogTemp: Display: RESIDENT_TRACE t=336.40 who=Guest state=Patrol pos=V(X=51.91, Y=394.23, Z=92.52) speed=110.0 anim=1 reach=0.00 catdist=462.5
+[2026.10.31-08.56.00:072][108]LogTemp: Display: RESIDENT_TRACE t=336.90 who=Owner state=Patrol pos=V(X=109.29, Y=-99.48, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=315.4
+[2026.10.31-08.56.00:072][108]LogTemp: Display: RESIDENT_TRACE t=336.90 who=Guest state=Patrol pos=V(X=105.36, Y=407.24, Z=92.25) speed=110.0 anim=1 reach=0.00 catdist=503.1
+[2026.10.31-08.56.00:572][138]LogTemp: Display: RESIDENT_TRACE t=337.40 who=Owner state=Patrol pos=V(X=54.44, Y=-103.66, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=265.5
+[2026.10.31-08.56.00:572][138]LogTemp: Display: RESIDENT_TRACE t=337.40 who=Guest state=Patrol pos=V(X=158.94, Y=419.59, Z=92.27) speed=110.0 anim=1 reach=0.00 catdist=545.7
+[2026.10.31-08.56.01:072][168]LogTemp: Display: RESIDENT_TRACE t=337.90 who=Owner state=Patrol pos=V(X=-0.35, Y=-102.96, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=215.8
+[2026.10.31-08.56.01:072][168]LogTemp: Display: RESIDENT_TRACE t=337.90 who=Guest state=Patrol pos=V(X=212.71, Y=427.87, Z=92.27) speed=110.0 anim=1 reach=0.00 catdist=587.6
+[2026.10.31-08.56.01:572][198]LogTemp: Display: RESIDENT_TRACE t=338.40 who=Owner state=Patrol pos=V(X=-54.99, Y=-96.67, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=166.1
+[2026.10.31-08.56.01:572][198]LogTemp: Display: RESIDENT_TRACE t=338.40 who=Guest state=Patrol pos=V(X=267.63, Y=430.84, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=628.5
+[2026.10.31-08.56.02:072][228]LogTemp: Display: RESIDENT_TRACE t=338.90 who=Owner state=Patrol pos=V(X=-109.64, Y=-90.39, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=121.0
+[2026.10.31-08.56.02:072][228]LogTemp: Display: RESIDENT_TRACE t=338.90 who=Guest state=Patrol pos=V(X=322.56, Y=433.76, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=671.5
+[2026.10.31-08.56.02:572][258]LogTemp: Display: RESIDENT_TRACE t=339.40 who=Owner state=Patrol pos=V(X=-156.14, Y=-66.42, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=74.6
+[2026.10.31-08.56.02:572][258]LogTemp: Display: RESIDENT_TRACE t=339.40 who=Guest state=Patrol pos=V(X=373.92, Y=436.49, Z=92.15) speed=82.6 anim=1 reach=0.00 catdist=713.1
+[2026.10.31-08.56.03:073][288]LogTemp: Display: RESIDENT_TRACE t=339.90 who=Owner state=Patrol pos=V(X=-202.05, Y=-37.31, Z=93.90) speed=107.8 anim=1 reach=0.00 catdist=39.2
+[2026.10.31-08.56.03:073][288]LogTemp: Display: RESIDENT_TRACE t=339.90 who=Guest state=Patrol pos=V(X=404.36, Y=438.11, Z=92.15) speed=44.5 anim=1 reach=0.00 catdist=738.4
+[2026.10.31-08.56.03:572][318]LogTemp: Display: RESIDENT_TRACE t=340.40 who=Owner state=Patrol pos=V(X=-255.47, Y=-26.15, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=70.5
+[2026.10.31-08.56.03:572][318]LogTemp: Display: RESIDENT_TRACE t=340.40 who=Guest state=Patrol pos=V(X=420.78, Y=438.98, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=752.2
+[2026.10.31-08.56.04:072][348]LogTemp: Display: RESIDENT_TRACE t=340.90 who=Owner state=Patrol pos=V(X=-310.40, Y=-28.83, Z=92.27) speed=110.0 anim=1 reach=0.00 catdist=123.8
+[2026.10.31-08.56.04:072][348]LogTemp: Display: RESIDENT_TRACE t=340.90 who=Guest state=Patrol pos=V(X=432.87, Y=439.62, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=762.4
+[2026.10.31-08.56.04:573][378]LogTemp: Display: RESIDENT_TRACE t=341.40 who=Owner state=Patrol pos=V(X=-365.33, Y=-31.76, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=178.2
+[2026.10.31-08.56.04:573][378]LogTemp: Display: RESIDENT_TRACE t=341.40 who=Guest state=Patrol pos=V(X=434.60, Y=394.10, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=738.5
+[2026.10.31-08.56.05:072][408]LogTemp: Display: RESIDENT_TRACE t=341.90 who=Owner state=Patrol pos=V(X=-420.25, Y=-34.68, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=232.9
+[2026.10.31-08.56.05:073][408]LogTemp: Display: RESIDENT_TRACE t=341.90 who=Guest state=Patrol pos=V(X=435.22, Y=339.11, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=711.3
+[2026.10.31-08.56.05:572][438]LogTemp: Display: RESIDENT_TRACE t=342.40 who=Owner state=Patrol pos=V(X=-465.84, Y=-37.11, Z=92.15) speed=67.7 anim=1 reach=0.00 catdist=278.3
+[2026.10.31-08.56.05:572][438]LogTemp: Display: RESIDENT_TRACE t=342.40 who=Guest state=Patrol pos=V(X=435.85, Y=284.11, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=687.3
+[2026.10.31-08.56.06:073][468]LogTemp: Display: RESIDENT_TRACE t=342.90 who=Owner state=Patrol pos=V(X=-490.79, Y=-38.44, Z=92.15) speed=36.5 anim=1 reach=0.00 catdist=303.2
+[2026.10.31-08.56.06:073][468]LogTemp: Display: RESIDENT_TRACE t=342.90 who=Guest state=Patrol pos=V(X=436.48, Y=229.10, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=667.1
+[2026.10.31-08.56.06:573][498]LogTemp: Display: RESIDENT_TRACE t=343.40 who=Owner state=Patrol pos=V(X=-504.68, Y=-39.18, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=317.1
+[2026.10.31-08.56.06:573][498]LogTemp: Display: RESIDENT_TRACE t=343.40 who=Guest state=Patrol pos=V(X=437.10, Y=174.09, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=650.8
+[2026.10.31-08.56.07:073][528]LogTemp: Display: RESIDENT_TRACE t=343.90 who=Owner state=Patrol pos=V(X=-512.74, Y=-32.80, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=324.4
+[2026.10.31-08.56.07:073][528]LogTemp: Display: RESIDENT_TRACE t=343.90 who=Guest state=Patrol pos=V(X=437.73, Y=119.09, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=638.9
+[2026.10.31-08.56.07:573][558]LogTemp: Display: RESIDENT_TRACE t=344.40 who=Owner state=Patrol pos=V(X=-500.28, Y=20.78, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=311.0
+[2026.10.31-08.56.07:573][558]LogTemp: Display: RESIDENT_TRACE t=344.40 who=Guest state=Patrol pos=V(X=438.36, Y=64.09, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=631.6
+[2026.10.31-08.56.08:073][588]LogTemp: Display: RESIDENT_TRACE t=344.90 who=Owner state=Patrol pos=V(X=-487.82, Y=74.35, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=307.0
+[2026.10.31-08.56.08:073][588]LogTemp: Display: RESIDENT_TRACE t=344.90 who=Guest state=Patrol pos=V(X=438.98, Y=9.09, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=629.1
+[2026.10.31-08.56.08:573][618]LogTemp: Display: RESIDENT_TRACE t=345.40 who=Owner state=Patrol pos=V(X=-475.36, Y=127.93, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=312.7
+[2026.10.31-08.56.08:573][618]LogTemp: Display: RESIDENT_TRACE t=345.40 who=Guest state=Patrol pos=V(X=439.45, Y=-31.95, Z=92.15) speed=59.9 anim=1 reach=0.00 catdist=630.3
+[2026.10.31-08.56.09:073][648]LogTemp: Display: RESIDENT_TRACE t=345.90 who=Owner state=Patrol pos=V(X=-462.90, Y=181.50, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=327.8
+[2026.10.31-08.56.09:073][648]LogTemp: Display: RESIDENT_TRACE t=345.90 who=Guest state=Patrol pos=V(X=439.70, Y=-54.09, Z=92.15) speed=32.3 anim=1 reach=0.00 catdist=632.0
+[2026.10.31-08.56.09:573][678]LogTemp: Display: RESIDENT_TRACE t=346.40 who=Owner state=Patrol pos=V(X=-452.46, Y=226.43, Z=92.41) speed=68.6 anim=1 reach=0.00 catdist=346.6
+[2026.10.31-08.56.09:573][678]LogTemp: Display: RESIDENT_TRACE t=346.40 who=Guest state=Patrol pos=V(X=439.85, Y=-67.03, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=633.4
+[2026.10.31-08.56.10:073][708]LogTemp: Display: RESIDENT_TRACE t=346.90 who=Owner state=Patrol pos=V(X=-446.72, Y=251.11, Z=92.41) speed=37.0 anim=1 reach=0.00 catdist=359.1
+[2026.10.31-08.56.10:073][708]LogTemp: Display: RESIDENT_TRACE t=346.90 who=Guest state=Patrol pos=V(X=421.91, Y=-75.66, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=616.6
+[2026.10.31-08.56.10:573][738]LogTemp: Display: RESIDENT_TRACE t=347.40 who=Owner state=Patrol pos=V(X=-443.54, Y=264.79, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=366.6
+[2026.10.31-08.56.10:573][738]LogTemp: Display: RESIDENT_TRACE t=347.40 who=Guest state=Patrol pos=V(X=367.06, Y=-79.84, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=562.8
+[2026.10.31-08.56.11:073][768]LogTemp: Display: RESIDENT_TRACE t=347.90 who=Owner state=Patrol pos=V(X=-434.47, Y=275.89, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=368.6
+[2026.10.31-08.56.11:073][768]LogTemp: Display: RESIDENT_TRACE t=347.90 who=Guest state=Patrol pos=V(X=312.22, Y=-84.02, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=509.2
+[2026.10.31-08.56.11:573][798]LogTemp: Display: RESIDENT_TRACE t=348.40 who=Owner state=Patrol pos=V(X=-381.02, Y=288.89, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=346.3
+[2026.10.31-08.56.11:573][798]LogTemp: Display: RESIDENT_TRACE t=348.40 who=Guest state=Patrol pos=V(X=257.38, Y=-88.20, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=456.0
+[2026.10.31-08.56.12:073][828]LogTemp: Display: RESIDENT_TRACE t=348.90 who=Owner state=Patrol pos=V(X=-327.58, Y=301.90, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=331.8
+[2026.10.31-08.56.12:073][828]LogTemp: Display: RESIDENT_TRACE t=348.90 who=Guest state=Patrol pos=V(X=202.53, Y=-92.38, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=403.3
+[2026.10.31-08.56.12:573][858]LogTemp: Display: RESIDENT_TRACE t=349.40 who=Owner state=Patrol pos=V(X=-274.13, Y=314.90, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=325.9
+[2026.10.31-08.56.12:573][858]LogTemp: Display: RESIDENT_TRACE t=349.40 who=Guest state=Patrol pos=V(X=147.69, Y=-96.56, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=351.2
+[2026.10.31-08.56.13:073][888]LogTemp: Display: RESIDENT_TRACE t=349.90 who=Owner state=Patrol pos=V(X=-220.69, Y=327.91, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=329.3
+[2026.10.31-08.56.13:073][888]LogTemp: Display: RESIDENT_TRACE t=349.90 who=Guest state=Patrol pos=V(X=92.84, Y=-100.74, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=300.2
+[2026.10.31-08.56.13:573][918]LogTemp: Display: RESIDENT_TRACE t=350.40 who=Owner state=Patrol pos=V(X=-167.23, Y=340.91, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=341.7
+[2026.10.31-08.56.13:573][918]LogTemp: Display: RESIDENT_TRACE t=350.40 who=Guest state=Patrol pos=V(X=37.99, Y=-104.91, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=251.0
+[2026.10.31-08.56.14:073][948]LogTemp: Display: RESIDENT_TRACE t=350.90 who=Owner state=Patrol pos=V(X=-113.79, Y=353.92, Z=92.17) speed=110.0 anim=1 reach=0.00 catdist=362.0
+[2026.10.31-08.56.14:073][948]LogTemp: Display: RESIDENT_TRACE t=350.90 who=Guest state=Patrol pos=V(X=-16.75, Y=-101.07, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=200.6
+[2026.10.31-08.56.14:573][978]LogTemp: Display: RESIDENT_TRACE t=351.40 who=Owner state=Patrol pos=V(X=-60.34, Y=366.92, Z=92.17) speed=110.0 anim=1 reach=0.00 catdist=389.2
+[2026.10.31-08.56.14:573][978]LogTemp: Display: RESIDENT_TRACE t=351.40 who=Guest state=Patrol pos=V(X=-71.39, Y=-94.79, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=151.8
+[2026.10.31-08.56.15:073][  8]LogTemp: Display: RESIDENT_TRACE t=351.90 who=Owner state=Patrol pos=V(X=-6.89, Y=379.93, Z=92.21) speed=110.0 anim=1 reach=0.00 catdist=421.7
+[2026.10.31-08.56.15:073][  8]LogTemp: Display: RESIDENT_TRACE t=351.90 who=Guest state=Patrol pos=V(X=-124.91, Y=-88.63, Z=93.90) speed=94.3 anim=1 reach=0.00 catdist=110.0
+[2026.10.31-08.56.15:573][ 38]LogTemp: Display: RESIDENT_TRACE t=352.40 who=Owner state=Patrol pos=V(X=46.56, Y=392.93, Z=92.52) speed=110.0 anim=1 reach=0.00 catdist=458.6
+[2026.10.31-08.56.15:573][ 38]LogTemp: Display: RESIDENT_TRACE t=352.40 who=Guest state=Patrol pos=V(X=-169.09, Y=-56.17, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=59.9
+[2026.10.31-08.56.16:073][ 68]LogTemp: Display: RESIDENT_TRACE t=352.90 who=Owner state=Patrol pos=V(X=100.00, Y=405.94, Z=92.25) speed=110.0 anim=1 reach=0.00 catdist=498.9
+[2026.10.31-08.56.16:073][ 68]LogTemp: Display: RESIDENT_TRACE t=352.90 who=Guest state=Patrol pos=V(X=-217.50, Y=-32.26, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=42.4
+[2026.10.31-08.56.16:573][ 98]LogTemp: Display: RESIDENT_TRACE t=353.40 who=Owner state=Patrol pos=V(X=153.51, Y=418.63, Z=92.63) speed=110.0 anim=1 reach=0.00 catdist=541.5
+[2026.10.31-08.56.16:573][ 98]LogTemp: Display: RESIDENT_TRACE t=353.40 who=Guest state=Patrol pos=V(X=-271.96, Y=-26.78, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=86.2
+[2026.10.31-08.56.17:074][128]LogTemp: Display: RESIDENT_TRACE t=353.90 who=Owner state=Patrol pos=V(X=207.22, Y=427.47, Z=92.28) speed=110.0 anim=1 reach=0.00 catdist=583.5
+[2026.10.31-08.56.17:074][128]LogTemp: Display: RESIDENT_TRACE t=353.90 who=Guest state=Patrol pos=V(X=-326.89, Y=-29.70, Z=92.26) speed=110.0 anim=1 reach=0.00 catdist=140.1
+[2026.10.31-08.56.17:574][158]LogTemp: Display: RESIDENT_TRACE t=354.40 who=Owner state=Patrol pos=V(X=262.13, Y=430.54, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=624.3
+[2026.10.31-08.56.17:574][158]LogTemp: Display: RESIDENT_TRACE t=354.40 who=Guest state=Patrol pos=V(X=-381.82, Y=-32.63, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=194.6
+[2026.10.31-08.56.18:074][188]LogTemp: Display: RESIDENT_TRACE t=354.90 who=Owner state=Patrol pos=V(X=317.06, Y=433.46, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=667.1
+[2026.10.31-08.56.18:074][188]LogTemp: Display: RESIDENT_TRACE t=354.90 who=Guest state=Patrol pos=V(X=-436.56, Y=-35.55, Z=92.15) speed=104.2 anim=1 reach=0.00 catdist=249.1
+[2026.10.31-08.56.18:574][218]LogTemp: Display: RESIDENT_TRACE t=355.40 who=Owner state=Patrol pos=V(X=369.71, Y=436.26, Z=92.15) speed=87.8 anim=1 reach=0.00 catdist=709.6
+[2026.10.31-08.56.18:574][218]LogTemp: Display: RESIDENT_TRACE t=355.40 who=Guest state=Patrol pos=V(X=-475.00, Y=-37.60, Z=92.15) speed=56.2 anim=1 reach=0.00 catdist=287.5
+[2026.10.31-08.56.19:074][248]LogTemp: Display: RESIDENT_TRACE t=355.90 who=Owner state=Patrol pos=V(X=402.11, Y=437.99, Z=92.15) speed=47.3 anim=1 reach=0.00 catdist=736.5
+[2026.10.31-08.56.19:074][248]LogTemp: Display: RESIDENT_TRACE t=355.90 who=Guest state=Patrol pos=V(X=-495.74, Y=-38.71, Z=92.15) speed=30.3 anim=1 reach=0.00 catdist=308.2
+[2026.10.31-08.56.19:574][278]LogTemp: Display: RESIDENT_TRACE t=356.40 who=Owner state=Patrol pos=V(X=419.57, Y=438.91, Z=92.15) speed=25.5 anim=1 reach=0.00 catdist=751.1
+[2026.10.31-08.56.19:574][278]LogTemp: Display: RESIDENT_TRACE t=356.40 who=Guest state=Patrol pos=V(X=-508.31, Y=-39.38, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=320.7
+[2026.10.31-08.56.20:074][308]LogTemp: Display: RESIDENT_TRACE t=356.90 who=Owner state=Patrol pos=V(X=431.67, Y=439.56, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=761.4
+[2026.10.31-08.56.20:074][308]LogTemp: Display: RESIDENT_TRACE t=356.90 who=Guest state=Patrol pos=V(X=-509.01, Y=-16.73, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=319.5
+[2026.10.31-08.56.20:574][338]LogTemp: Display: RESIDENT_TRACE t=357.40 who=Owner state=Patrol pos=V(X=434.54, Y=399.61, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=741.4
+[2026.10.31-08.56.20:574][338]LogTemp: Display: RESIDENT_TRACE t=357.40 who=Guest state=Patrol pos=V(X=-496.55, Y=36.85, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=308.8
+[2026.10.31-08.56.21:074][368]LogTemp: Display: RESIDENT_TRACE t=357.90 who=Owner state=Patrol pos=V(X=435.17, Y=344.61, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=713.9
+[2026.10.31-08.56.21:074][368]LogTemp: Display: RESIDENT_TRACE t=357.90 who=Guest state=Patrol pos=V(X=-484.09, Y=90.42, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=307.7
+[2026.10.31-08.56.21:574][398]LogTemp: Display: RESIDENT_TRACE t=358.40 who=Owner state=Patrol pos=V(X=435.79, Y=289.60, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=689.6
+[2026.10.31-08.56.21:574][398]LogTemp: Display: RESIDENT_TRACE t=358.40 who=Guest state=Patrol pos=V(X=-471.63, Y=144.00, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=316.3
+[2026.10.31-08.56.22:075][428]LogTemp: Display: RESIDENT_TRACE t=358.90 who=Owner state=Patrol pos=V(X=436.42, Y=234.60, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=668.9
+[2026.10.31-08.56.22:075][428]LogTemp: Display: RESIDENT_TRACE t=358.90 who=Guest state=Patrol pos=V(X=-459.20, Y=197.47, Z=92.15) speed=105.7 anim=1 reach=0.00 catdist=333.9
+[2026.10.31-08.56.22:575][458]LogTemp: Display: RESIDENT_TRACE t=359.40 who=Owner state=Patrol pos=V(X=437.05, Y=179.60, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=652.3
+[2026.10.31-08.56.22:575][458]LogTemp: Display: RESIDENT_TRACE t=359.40 who=Guest state=Patrol pos=V(X=-450.35, Y=235.49, Z=92.41) speed=57.0 anim=1 reach=0.00 catdist=351.1
+[2026.10.31-08.56.23:075][488]LogTemp: Display: RESIDENT_TRACE t=359.90 who=Owner state=Patrol pos=V(X=437.67, Y=124.59, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=639.9
+[2026.10.31-08.56.23:075][488]LogTemp: Display: RESIDENT_TRACE t=359.90 who=Guest state=Patrol pos=V(X=-445.58, Y=256.00, Z=92.41) speed=30.7 anim=1 reach=0.00 catdist=361.7
+[2026.10.31-08.56.23:575][518]LogTemp: Display: RESIDENT_TRACE t=360.40 who=Owner state=Patrol pos=V(X=438.30, Y=69.60, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=632.1
+[2026.10.31-08.56.23:575][518]LogTemp: Display: RESIDENT_TRACE t=360.40 who=Guest state=Patrol pos=V(X=-442.72, Y=268.33, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=368.6
+[2026.10.31-08.56.24:075][548]LogTemp: Display: RESIDENT_TRACE t=360.90 who=Owner state=Patrol pos=V(X=438.92, Y=14.59, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=629.1
+[2026.10.31-08.56.24:075][548]LogTemp: Display: RESIDENT_TRACE t=360.90 who=Guest state=Patrol pos=V(X=-418.43, Y=279.79, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=361.2
+[2026.10.31-08.56.24:575][578]LogTemp: Display: RESIDENT_TRACE t=361.40 who=Owner state=Patrol pos=V(X=439.42, Y=-28.89, Z=92.15) speed=63.8 anim=1 reach=0.00 catdist=630.1
+[2026.10.31-08.56.24:575][578]LogTemp: Display: RESIDENT_TRACE t=361.40 who=Guest state=Patrol pos=V(X=-364.99, Y=292.80, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=341.1
+[2026.10.31-08.56.25:075][608]LogTemp: Display: RESIDENT_TRACE t=361.90 who=Owner state=Patrol pos=V(X=439.69, Y=-52.44, Z=92.15) speed=34.4 anim=1 reach=0.00 catdist=631.9
+[2026.10.31-08.56.25:075][608]LogTemp: Display: RESIDENT_TRACE t=361.90 who=Guest state=Patrol pos=V(X=-311.55, Y=305.80, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=329.1
+[2026.10.31-08.56.25:575][638]LogTemp: Display: RESIDENT_TRACE t=362.41 who=Owner state=Patrol pos=V(X=439.84, Y=-65.82, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=633.3
+[2026.10.31-08.56.25:575][638]LogTemp: Display: RESIDENT_TRACE t=362.41 who=Guest state=Patrol pos=V(X=-258.10, Y=318.81, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=326.0
+[2026.10.31-08.56.26:075][668]LogTemp: Display: RESIDENT_TRACE t=362.91 who=Owner state=Patrol pos=V(X=427.39, Y=-75.24, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=622.0
+[2026.10.31-08.56.26:075][668]LogTemp: Display: RESIDENT_TRACE t=362.91 who=Guest state=Patrol pos=V(X=-204.65, Y=331.81, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=332.1
+[2026.10.31-08.56.26:575][698]LogTemp: Display: RESIDENT_TRACE t=363.41 who=Owner state=Patrol pos=V(X=372.55, Y=-79.42, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=568.1
+[2026.10.31-08.56.26:575][698]LogTemp: Display: RESIDENT_TRACE t=363.41 who=Guest state=Patrol pos=V(X=-151.21, Y=344.81, Z=92.56) speed=110.0 anim=1 reach=0.00 catdist=347.0
+[2026.10.31-08.56.27:075][728]LogTemp: Display: RESIDENT_TRACE t=363.91 who=Owner state=Patrol pos=V(X=317.70, Y=-83.60, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=514.5
+[2026.10.31-08.56.27:075][728]LogTemp: Display: RESIDENT_TRACE t=363.91 who=Guest state=Patrol pos=V(X=-97.77, Y=357.82, Z=92.17) speed=110.0 anim=1 reach=0.00 catdist=369.5
+[2026.10.31-08.56.27:575][758]LogTemp: Display: RESIDENT_TRACE t=364.41 who=Owner state=Patrol pos=V(X=262.86, Y=-87.78, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=461.3
+[2026.10.31-08.56.27:575][758]LogTemp: Display: RESIDENT_TRACE t=364.41 who=Guest state=Patrol pos=V(X=-44.32, Y=370.82, Z=92.21) speed=110.0 anim=1 reach=0.00 catdist=398.4
+[2026.10.31-08.56.28:075][788]LogTemp: Display: RESIDENT_TRACE t=364.91 who=Owner state=Patrol pos=V(X=208.02, Y=-91.96, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=408.5
+[2026.10.31-08.56.28:075][788]LogTemp: Display: RESIDENT_TRACE t=364.91 who=Guest state=Patrol pos=V(X=9.12, Y=383.82, Z=92.21) speed=110.0 anim=1 reach=0.00 catdist=432.4
+[2026.10.31-08.56.28:575][818]LogTemp: Display: RESIDENT_TRACE t=365.41 who=Owner state=Patrol pos=V(X=153.17, Y=-96.14, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=356.4
+[2026.10.31-08.56.28:575][818]LogTemp: Display: RESIDENT_TRACE t=365.41 who=Guest state=Patrol pos=V(X=62.56, Y=396.83, Z=92.26) speed=110.0 anim=1 reach=0.00 catdist=470.4
+[2026.10.31-08.56.29:075][848]LogTemp: Display: RESIDENT_TRACE t=365.91 who=Owner state=Patrol pos=V(X=98.33, Y=-100.32, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=305.3
+[2026.10.31-08.56.29:075][848]LogTemp: Display: RESIDENT_TRACE t=365.91 who=Guest state=Patrol pos=V(X=116.01, Y=409.83, Z=92.26) speed=110.0 anim=1 reach=0.00 catdist=511.5
+[2026.10.31-08.56.29:575][878]LogTemp: Display: RESIDENT_TRACE t=366.41 who=Owner state=Patrol pos=V(X=43.49, Y=-104.50, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=255.8
+[2026.10.31-08.56.29:575][878]LogTemp: Display: RESIDENT_TRACE t=366.41 who=Guest state=Patrol pos=V(X=169.75, Y=421.42, Z=92.28) speed=110.0 anim=1 reach=0.00 catdist=554.1
+[2026.10.31-08.56.30:080][908]LogTemp: Display: RESIDENT_TRACE t=366.91 who=Owner state=Patrol pos=V(X=-11.82, Y=-101.63, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=205.1
+[2026.10.31-08.56.30:080][908]LogTemp: Display: RESIDENT_TRACE t=366.91 who=Guest state=Patrol pos=V(X=224.15, Y=428.57, Z=92.28) speed=110.0 anim=1 reach=0.00 catdist=596.0
+[2026.10.31-08.56.30:580][938]LogTemp: Display: RESIDENT_TRACE t=367.41 who=Owner state=Patrol pos=V(X=-66.47, Y=-95.35, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=156.1
+[2026.10.31-08.56.30:580][938]LogTemp: Display: RESIDENT_TRACE t=367.41 who=Guest state=Patrol pos=V(X=279.09, Y=431.48, Z=92.28) speed=110.0 anim=1 reach=0.00 catdist=637.4
+[2026.10.31-08.56.31:080][968]LogTemp: Display: RESIDENT_TRACE t=367.91 who=Owner state=Patrol pos=V(X=-120.61, Y=-89.13, Z=93.90) speed=99.7 anim=1 reach=0.00 catdist=113.0
+[2026.10.31-08.56.31:080][968]LogTemp: Display: RESIDENT_TRACE t=367.91 who=Guest state=Patrol pos=V(X=334.01, Y=434.39, Z=92.28) speed=110.0 anim=1 reach=0.00 catdist=680.6
+[2026.10.31-08.56.31:580][998]LogTemp: Display: RESIDENT_TRACE t=368.41 who=Owner state=Patrol pos=V(X=-165.28, Y=-58.84, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=63.8
+[2026.10.31-08.56.31:580][998]LogTemp: Display: RESIDENT_TRACE t=368.41 who=Guest state=Patrol pos=V(X=381.91, Y=436.92, Z=92.18) speed=72.6 anim=1 reach=0.00 catdist=719.7
+[2026.10.31-08.56.32:080][ 28]LogTemp: Display: RESIDENT_TRACE t=368.91 who=Owner state=Patrol pos=V(X=-212.92, Y=-33.19, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=40.3
+[2026.10.31-08.56.32:080][ 28]LogTemp: Display: RESIDENT_TRACE t=368.91 who=Guest state=Patrol pos=V(X=408.67, Y=438.34, Z=92.18) speed=39.1 anim=1 reach=0.00 catdist=742.0
+[2026.10.31-08.56.32:580][ 58]LogTemp: Display: RESIDENT_TRACE t=369.41 who=Owner state=Patrol pos=V(X=-267.29, Y=-26.68, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=81.8
+[2026.10.31-08.56.32:580][ 58]LogTemp: Display: RESIDENT_TRACE t=369.41 who=Guest state=Patrol pos=V(X=423.30, Y=439.12, Z=92.18) speed=24.2 anim=1 reach=0.00 catdist=754.3
+[2026.10.31-08.56.33:080][ 88]LogTemp: Display: RESIDENT_TRACE t=369.91 who=Owner state=Patrol pos=V(X=-322.23, Y=-29.56, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=135.5
+[2026.10.31-08.56.33:080][ 88]LogTemp: Display: RESIDENT_TRACE t=369.91 who=Guest state=Patrol pos=V(X=434.20, Y=437.98, Z=92.18) speed=68.3 anim=1 reach=0.00 catdist=762.5
+[2026.10.31-08.56.33:581][118]LogTemp: Display: RESIDENT_TRACE t=370.41 who=Owner state=Patrol pos=V(X=-377.16, Y=-32.46, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=253.4
+[2026.10.31-08.56.33:581][118]LogTemp: Display: RESIDENT_TRACE t=370.41 who=Guest state=Patrol pos=V(X=434.81, Y=383.10, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=679.0
+[2026.10.31-08.56.34:147][152]LogTemp: Display: RESIDENT_TRACE t=370.92 who=Owner state=Patrol pos=V(X=-432.66, Y=-35.39, Z=92.15) speed=109.1 anim=1 reach=0.00 catdist=324.4
+[2026.10.31-08.56.34:147][152]LogTemp: Display: RESIDENT_TRACE t=370.92 who=Guest state=Patrol pos=V(X=435.44, Y=327.51, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=636.4
+[2026.10.31-08.56.34:647][182]LogTemp: Display: RESIDENT_TRACE t=371.42 who=Owner state=Patrol pos=V(X=-472.90, Y=-37.51, Z=92.18) speed=58.8 anim=1 reach=0.00 catdist=364.6
+[2026.10.31-08.56.34:647][182]LogTemp: Display: RESIDENT_TRACE t=371.42 who=Guest state=Patrol pos=V(X=436.05, Y=272.50, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=610.5
+[2026.10.31-08.56.35:147][212]LogTemp: Display: RESIDENT_TRACE t=371.92 who=Owner state=Patrol pos=V(X=-494.60, Y=-38.66, Z=92.18) speed=31.7 anim=1 reach=0.00 catdist=386.3
+[2026.10.31-08.56.35:147][212]LogTemp: Display: RESIDENT_TRACE t=371.92 who=Guest state=Patrol pos=V(X=436.67, Y=217.50, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=588.5
+[2026.10.31-08.56.35:649][242]LogTemp: Display: RESIDENT_TRACE t=372.42 who=Owner state=Patrol pos=V(X=-507.44, Y=-39.34, Z=92.18) speed=24.2 anim=1 reach=0.00 catdist=399.2
+[2026.10.31-08.56.35:649][242]LogTemp: Display: RESIDENT_TRACE t=372.42 who=Guest state=Patrol pos=V(X=437.29, Y=162.36, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=571.1
+[2026.10.31-08.56.36:149][272]LogTemp: Display: RESIDENT_TRACE t=372.92 who=Owner state=Patrol pos=V(X=-509.78, Y=-20.30, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=400.1
+[2026.10.31-08.56.36:149][272]LogTemp: Display: RESIDENT_TRACE t=372.92 who=Guest state=Patrol pos=V(X=437.90, Y=107.36, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=558.5
+[2026.10.31-08.56.36:649][302]LogTemp: Display: RESIDENT_TRACE t=373.42 who=Owner state=Patrol pos=V(X=-497.33, Y=33.27, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=388.6
+[2026.10.31-08.56.36:649][302]LogTemp: Display: RESIDENT_TRACE t=373.42 who=Guest state=Patrol pos=V(X=438.52, Y=52.36, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=551.2
+[2026.10.31-08.56.37:149][332]LogTemp: Display: RESIDENT_TRACE t=373.92 who=Owner state=Patrol pos=V(X=-484.88, Y=86.85, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=384.6
+[2026.10.31-08.56.37:149][332]LogTemp: Display: RESIDENT_TRACE t=373.92 who=Guest state=Patrol pos=V(X=439.13, Y=-1.90, Z=92.18) speed=97.4 anim=1 reach=0.00 catdist=549.3
+[2026.10.31-08.56.37:649][362]LogTemp: Display: RESIDENT_TRACE t=374.42 who=Owner state=Patrol pos=V(X=-472.43, Y=140.42, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=388.5
+[2026.10.31-08.56.37:649][362]LogTemp: Display: RESIDENT_TRACE t=374.42 who=Guest state=Patrol pos=V(X=439.53, Y=-37.88, Z=92.18) speed=52.6 anim=1 reach=0.00 catdist=551.0
+[2026.10.31-08.56.38:149][392]LogTemp: Display: RESIDENT_TRACE t=374.92 who=Owner state=Patrol pos=V(X=-459.98, Y=194.00, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=400.0
+[2026.10.31-08.56.38:149][392]LogTemp: Display: RESIDENT_TRACE t=374.92 who=Guest state=Patrol pos=V(X=439.75, Y=-57.28, Z=92.18) speed=28.3 anim=1 reach=0.00 catdist=552.9
+[2026.10.31-08.56.38:649][422]LogTemp: Display: RESIDENT_TRACE t=375.42 who=Owner state=Patrol pos=V(X=-450.78, Y=233.62, Z=92.45) speed=59.4 anim=1 reach=0.00 catdist=413.0
+[2026.10.31-08.56.38:649][422]LogTemp: Display: RESIDENT_TRACE t=375.42 who=Guest state=Patrol pos=V(X=439.88, Y=-69.61, Z=92.18) speed=24.2 anim=1 reach=0.00 catdist=554.5
+[2026.10.31-08.56.39:149][452]LogTemp: Display: RESIDENT_TRACE t=375.92 who=Owner state=Patrol pos=V(X=-445.81, Y=254.99, Z=92.45) speed=32.0 anim=1 reach=0.00 catdist=421.5
+[2026.10.31-08.56.39:149][452]LogTemp: Display: RESIDENT_TRACE t=375.92 who=Guest state=Patrol pos=V(X=409.11, Y=-76.41, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=524.9
+[2026.10.31-08.56.39:649][482]LogTemp: Display: RESIDENT_TRACE t=376.42 who=Owner state=Patrol pos=V(X=-442.90, Y=267.54, Z=92.20) speed=24.2 anim=1 reach=0.00 catdist=426.9
+[2026.10.31-08.56.39:649][482]LogTemp: Display: RESIDENT_TRACE t=376.42 who=Guest state=Patrol pos=V(X=354.26, Y=-80.61, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=471.4
+[2026.10.31-08.56.40:149][512]LogTemp: Display: RESIDENT_TRACE t=376.92 who=Owner state=Patrol pos=V(X=-421.99, Y=278.93, Z=92.20) speed=110.0 anim=1 reach=0.00 catdist=418.3
+[2026.10.31-08.56.40:149][512]LogTemp: Display: RESIDENT_TRACE t=376.92 who=Guest state=Patrol pos=V(X=299.42, Y=-84.81, Z=92.35) speed=110.0 anim=1 reach=0.00 catdist=418.3
+[2026.10.31-08.56.40:649][542]LogTemp: Display: RESIDENT_TRACE t=377.42 who=Owner state=Patrol pos=V(X=-368.55, Y=291.93, Z=92.20) speed=110.0 anim=1 reach=0.00 catdist=389.8
+[2026.10.31-08.56.40:649][542]LogTemp: Display: RESIDENT_TRACE t=377.42 who=Guest state=Patrol pos=V(X=244.57, Y=-89.01, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=365.8
+[2026.10.31-08.56.41:149][572]LogTemp: Display: RESIDENT_TRACE t=377.92 who=Owner state=Patrol pos=V(X=-315.11, Y=304.93, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=367.4
+[2026.10.31-08.56.41:149][572]LogTemp: Display: RESIDENT_TRACE t=377.92 who=Guest state=Patrol pos=V(X=189.73, Y=-93.21, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=314.1
+[2026.10.31-08.56.41:649][602]LogTemp: Display: RESIDENT_TRACE t=378.42 who=Owner state=Patrol pos=V(X=-261.66, Y=317.94, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=352.2
+[2026.10.31-08.56.41:649][602]LogTemp: Display: RESIDENT_TRACE t=378.42 who=Guest state=Patrol pos=V(X=134.89, Y=-97.41, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=263.7
+[2026.10.31-08.56.42:149][632]LogTemp: Display: RESIDENT_TRACE t=378.92 who=Owner state=Patrol pos=V(X=-208.22, Y=330.94, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=345.2
+[2026.10.31-08.56.42:149][632]LogTemp: Display: RESIDENT_TRACE t=378.92 who=Guest state=Patrol pos=V(X=80.05, Y=-101.61, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=215.7
+[2026.10.31-08.56.42:649][662]LogTemp: Display: RESIDENT_TRACE t=379.42 who=Owner state=Patrol pos=V(X=-154.77, Y=343.95, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=346.8
+[2026.10.31-08.56.42:649][662]LogTemp: Display: RESIDENT_TRACE t=379.42 who=Guest state=Patrol pos=V(X=25.19, Y=-105.50, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=171.6
+[2026.10.31-08.56.43:149][692]LogTemp: Display: RESIDENT_TRACE t=379.92 who=Owner state=Patrol pos=V(X=-101.33, Y=356.95, Z=92.17) speed=110.0 anim=1 reach=0.00 catdist=357.1
+[2026.10.31-08.56.43:149][692]LogTemp: Display: RESIDENT_TRACE t=379.92 who=Guest state=Patrol pos=V(X=-29.49, Y=-99.55, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=128.2
+[2026.10.31-08.56.43:649][722]LogTemp: Display: RESIDENT_TRACE t=380.42 who=Owner state=Patrol pos=V(X=-47.88, Y=369.95, Z=92.54) speed=110.0 anim=1 reach=0.00 catdist=375.2
+[2026.10.31-08.56.43:649][722]LogTemp: Display: RESIDENT_TRACE t=380.42 who=Guest state=Patrol pos=V(X=-84.13, Y=-93.28, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=96.9
+[2026.10.31-08.56.44:149][752]LogTemp: Display: RESIDENT_TRACE t=380.92 who=Owner state=Patrol pos=V(X=5.56, Y=382.96, Z=92.21) speed=110.0 anim=1 reach=0.00 catdist=400.1
+[2026.10.31-08.56.44:149][752]LogTemp: Display: RESIDENT_TRACE t=380.92 who=Guest state=Patrol pos=V(X=-135.95, Y=-82.24, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=86.2
+[2026.10.31-08.56.44:649][782]LogTemp: Display: RESIDENT_TRACE t=381.42 who=Owner state=Patrol pos=V(X=59.01, Y=395.96, Z=92.26) speed=110.0 anim=1 reach=0.00 catdist=430.6
+[2026.10.31-08.56.44:649][782]LogTemp: Display: RESIDENT_TRACE t=381.42 who=Guest state=Patrol pos=V(X=-179.10, Y=-48.69, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=84.4
+[2026.10.31-08.56.45:149][812]LogTemp: Display: RESIDENT_TRACE t=381.92 who=Owner state=Patrol pos=V(X=112.45, Y=408.97, Z=92.26) speed=110.0 anim=1 reach=0.00 catdist=465.6
+[2026.10.31-08.56.45:149][812]LogTemp: Display: RESIDENT_TRACE t=381.92 who=Guest state=Patrol pos=V(X=-230.12, Y=-29.94, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=123.6
+[2026.10.31-08.56.45:649][842]LogTemp: Display: RESIDENT_TRACE t=382.42 who=Owner state=Patrol pos=V(X=166.14, Y=420.81, Z=92.28) speed=110.0 anim=1 reach=0.00 catdist=503.4
+[2026.10.31-08.56.45:649][842]LogTemp: Display: RESIDENT_TRACE t=382.42 who=Guest state=Patrol pos=V(X=-284.77, Y=-27.45, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=176.7
+[2026.10.31-08.56.46:149][872]LogTemp: Display: RESIDENT_TRACE t=382.92 who=Owner state=Patrol pos=V(X=220.00, Y=428.29, Z=92.28) speed=110.0 anim=1 reach=0.00 catdist=540.8
+[2026.10.31-08.56.46:149][872]LogTemp: Display: RESIDENT_TRACE t=382.92 who=Guest state=Patrol pos=V(X=-339.70, Y=-30.38, Z=92.27) speed=110.0 anim=1 reach=0.00 catdist=231.5
+[2026.10.31-08.56.46:650][902]LogTemp: Display: RESIDENT_TRACE t=383.42 who=Owner state=Patrol pos=V(X=274.94, Y=431.22, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=578.2
+[2026.10.31-08.56.46:650][902]LogTemp: Display: RESIDENT_TRACE t=383.42 who=Guest state=Patrol pos=V(X=-394.64, Y=-33.31, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=286.4
+[2026.10.31-08.56.47:150][932]LogTemp: Display: RESIDENT_TRACE t=383.92 who=Owner state=Patrol pos=V(X=329.87, Y=434.14, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=618.2
+[2026.10.31-08.56.47:150][932]LogTemp: Display: RESIDENT_TRACE t=383.92 who=Guest state=Patrol pos=V(X=-447.76, Y=-36.15, Z=92.49) speed=90.3 anim=1 reach=0.00 catdist=339.5
+[2026.10.31-08.56.47:650][962]LogTemp: Display: RESIDENT_TRACE t=384.42 who=Owner state=Patrol pos=V(X=379.13, Y=436.76, Z=92.15) speed=76.0 anim=1 reach=0.00 catdist=655.9
+[2026.10.31-08.56.47:650][962]LogTemp: Display: RESIDENT_TRACE t=384.42 who=Guest state=Patrol pos=V(X=-481.04, Y=-37.92, Z=92.15) speed=48.7 anim=1 reach=0.00 catdist=372.8
+[2026.10.31-08.56.48:150][992]LogTemp: Display: RESIDENT_TRACE t=384.92 who=Owner state=Patrol pos=V(X=407.17, Y=438.25, Z=92.15) speed=41.0 anim=1 reach=0.00 catdist=678.0
+[2026.10.31-08.56.48:150][992]LogTemp: Display: RESIDENT_TRACE t=384.92 who=Guest state=Patrol pos=V(X=-498.99, Y=-38.88, Z=92.15) speed=26.3 anim=1 reach=0.00 catdist=390.7
+[2026.10.31-08.56.48:650][ 22]LogTemp: Display: RESIDENT_TRACE t=385.42 who=Owner state=Patrol pos=V(X=422.39, Y=439.06, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=690.2
+[2026.10.31-08.56.48:650][ 22]LogTemp: Display: RESIDENT_TRACE t=385.42 who=Guest state=Patrol pos=V(X=-511.12, Y=-39.53, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=402.9
+[2026.10.31-08.56.49:150][ 52]LogTemp: Display: RESIDENT_TRACE t=385.92 who=Owner state=Patrol pos=V(X=434.07, Y=439.68, Z=92.15) speed=0.0 anim=0 reach=0.00 catdist=699.7
+[2026.10.31-08.56.49:150][ 52]LogTemp: Display: RESIDENT_TRACE t=385.92 who=Guest state=Patrol pos=V(X=-506.10, Y=-4.23, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=395.9
+[2026.10.31-08.56.49:650][ 82]LogTemp: Display: RESIDENT_TRACE t=386.42 who=Owner state=Patrol pos=V(X=434.67, Y=386.77, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=668.2
+[2026.10.31-08.56.49:650][ 82]LogTemp: Display: RESIDENT_TRACE t=386.42 who=Guest state=Patrol pos=V(X=-493.64, Y=49.35, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=386.6
+[2026.10.31-08.56.50:150][112]LogTemp: Display: RESIDENT_TRACE t=386.92 who=Owner state=Patrol pos=V(X=435.30, Y=331.76, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=638.5
+[2026.10.31-08.56.50:150][112]LogTemp: Display: RESIDENT_TRACE t=386.92 who=Guest state=Patrol pos=V(X=-481.18, Y=102.92, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=385.0
+[2026.10.31-08.56.50:650][142]LogTemp: Display: RESIDENT_TRACE t=387.42 who=Owner state=Patrol pos=V(X=435.93, Y=276.76, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=612.3
+[2026.10.31-08.56.50:650][142]LogTemp: Display: RESIDENT_TRACE t=387.42 who=Guest state=Patrol pos=V(X=-468.72, Y=156.50, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=391.2
+[2026.10.31-08.56.51:151][172]LogTemp: Display: RESIDENT_TRACE t=387.92 who=Owner state=Patrol pos=V(X=436.56, Y=221.69, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=590.0
+[2026.10.31-08.56.51:151][172]LogTemp: Display: RESIDENT_TRACE t=387.92 who=Guest state=Patrol pos=V(X=-456.60, Y=208.60, Z=92.15) speed=91.5 anim=1 reach=0.00 catdist=404.4
+[2026.10.31-08.56.51:651][202]LogTemp: Display: RESIDENT_TRACE t=388.42 who=Owner state=Patrol pos=V(X=437.19, Y=166.69, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=572.2
+[2026.10.31-08.56.51:651][202]LogTemp: Display: RESIDENT_TRACE t=388.42 who=Guest state=Patrol pos=V(X=-448.95, Y=241.50, Z=92.41) speed=49.3 anim=1 reach=0.00 catdist=416.0
+[2026.10.31-08.56.52:151][232]LogTemp: Display: RESIDENT_TRACE t=388.92 who=Owner state=Patrol pos=V(X=437.81, Y=111.68, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=559.3
+[2026.10.31-08.56.52:151][232]LogTemp: Display: RESIDENT_TRACE t=388.92 who=Guest state=Patrol pos=V(X=-444.83, Y=259.24, Z=92.41) speed=26.6 anim=1 reach=0.00 catdist=423.3
+[2026.10.31-08.56.52:651][262]LogTemp: Display: RESIDENT_TRACE t=389.42 who=Owner state=Patrol pos=V(X=438.44, Y=56.67, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=551.6
+[2026.10.31-08.56.52:651][262]LogTemp: Display: RESIDENT_TRACE t=389.42 who=Guest state=Patrol pos=V(X=-442.07, Y=271.09, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=428.5
+[2026.10.31-08.56.53:151][292]LogTemp: Display: RESIDENT_TRACE t=389.92 who=Owner state=Patrol pos=V(X=439.06, Y=1.97, Z=92.15) speed=102.3 anim=1 reach=0.00 catdist=549.3
+[2026.10.31-08.56.53:151][292]LogTemp: Display: RESIDENT_TRACE t=389.92 who=Guest state=Patrol pos=V(X=-405.95, Y=282.85, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=409.2
+[2026.10.31-08.56.53:651][322]LogTemp: Display: RESIDENT_TRACE t=390.42 who=Owner state=Patrol pos=V(X=439.50, Y=-35.80, Z=92.15) speed=55.1 anim=1 reach=0.00 catdist=550.9
+[2026.10.31-08.56.53:651][322]LogTemp: Display: RESIDENT_TRACE t=390.42 who=Guest state=Patrol pos=V(X=-352.50, Y=295.85, Z=92.43) speed=110.0 anim=1 reach=0.00 catdist=382.4
+[2026.10.31-08.56.54:151][352]LogTemp: Display: RESIDENT_TRACE t=390.92 who=Owner state=Patrol pos=V(X=439.73, Y=-56.16, Z=92.15) speed=29.7 anim=1 reach=0.00 catdist=552.8
+[2026.10.31-08.56.54:151][352]LogTemp: Display: RESIDENT_TRACE t=390.92 who=Guest state=Patrol pos=V(X=-299.05, Y=308.85, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=362.0
+[2026.10.31-08.56.54:651][382]LogTemp: Display: RESIDENT_TRACE t=391.42 who=Owner state=Patrol pos=V(X=439.87, Y=-68.66, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=554.3
+[2026.10.31-08.56.54:651][382]LogTemp: Display: RESIDENT_TRACE t=391.42 who=Guest state=Patrol pos=V(X=-245.61, Y=321.86, Z=92.58) speed=110.0 anim=1 reach=0.00 catdist=349.2
+[2026.10.31-08.56.55:151][412]LogTemp: Display: RESIDENT_TRACE t=391.92 who=Owner state=Patrol pos=V(X=414.59, Y=-76.24, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=530.3
+[2026.10.31-08.56.55:151][412]LogTemp: Display: RESIDENT_TRACE t=391.92 who=Guest state=Patrol pos=V(X=-192.17, Y=334.86, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=344.7
+[2026.10.31-08.56.55:651][442]LogTemp: Display: RESIDENT_TRACE t=392.42 who=Owner state=Patrol pos=V(X=359.75, Y=-80.42, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=476.8
+[2026.10.31-08.56.55:651][442]LogTemp: Display: RESIDENT_TRACE t=392.42 who=Guest state=Patrol pos=V(X=-138.72, Y=347.86, Z=92.17) speed=110.0 anim=1 reach=0.00 catdist=349.0
+[2026.10.31-08.56.56:151][472]LogTemp: Display: RESIDENT_TRACE t=392.92 who=Owner state=Patrol pos=V(X=304.91, Y=-84.59, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=423.6
+[2026.10.31-08.56.56:151][472]LogTemp: Display: RESIDENT_TRACE t=392.92 who=Guest state=Patrol pos=V(X=-85.28, Y=360.86, Z=92.17) speed=110.0 anim=1 reach=0.00 catdist=361.7
+[2026.10.31-08.56.56:651][502]LogTemp: Display: RESIDENT_TRACE t=393.42 who=Owner state=Patrol pos=V(X=250.06, Y=-88.77, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=371.0
+[2026.10.31-08.56.56:651][502]LogTemp: Display: RESIDENT_TRACE t=393.42 who=Guest state=Patrol pos=V(X=-31.83, Y=373.87, Z=92.21) speed=110.0 anim=1 reach=0.00 catdist=382.0
+[2026.10.31-08.56.57:151][532]LogTemp: Display: RESIDENT_TRACE t=393.92 who=Owner state=Patrol pos=V(X=195.21, Y=-92.95, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=319.2
+[2026.10.31-08.56.57:151][532]LogTemp: Display: RESIDENT_TRACE t=393.92 who=Guest state=Patrol pos=V(X=21.62, Y=386.87, Z=92.21) speed=110.0 anim=1 reach=0.00 catdist=408.7
+[2026.10.31-08.56.57:651][562]LogTemp: Display: RESIDENT_TRACE t=394.42 who=Owner state=Patrol pos=V(X=140.37, Y=-97.12, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=268.7
+[2026.10.31-08.56.57:651][562]LogTemp: Display: RESIDENT_TRACE t=394.42 who=Guest state=Patrol pos=V(X=75.06, Y=399.87, Z=92.25) speed=110.0 anim=1 reach=0.00 catdist=440.7
+[2026.10.31-08.56.58:151][592]LogTemp: Display: RESIDENT_TRACE t=394.92 who=Owner state=Patrol pos=V(X=85.53, Y=-101.30, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=220.4
+[2026.10.31-08.56.58:151][592]LogTemp: Display: RESIDENT_TRACE t=394.92 who=Guest state=Patrol pos=V(X=128.50, Y=412.87, Z=92.25) speed=110.0 anim=1 reach=0.00 catdist=476.9
+[2026.10.31-08.56.58:651][622]LogTemp: Display: RESIDENT_TRACE t=395.42 who=Owner state=Patrol pos=V(X=30.68, Y=-105.48, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=176.0
+[2026.10.31-08.56.58:652][622]LogTemp: Display: RESIDENT_TRACE t=395.42 who=Guest state=Patrol pos=V(X=182.43, Y=423.56, Z=92.28) speed=110.0 anim=1 reach=0.00 catdist=514.8
+[2026.10.31-08.56.59:151][652]LogTemp: Display: RESIDENT_TRACE t=395.92 who=Owner state=Patrol pos=V(X=-24.02, Y=-100.24, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=132.2
+[2026.10.31-08.56.59:151][652]LogTemp: Display: RESIDENT_TRACE t=395.92 who=Guest state=Patrol pos=V(X=236.50, Y=429.18, Z=92.28) speed=110.0 anim=1 reach=0.00 catdist=551.7
+[2026.10.31-08.56.59:652][682]LogTemp: Display: RESIDENT_TRACE t=396.42 who=Owner state=Patrol pos=V(X=-78.68, Y=-93.95, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=99.1
+[2026.10.31-08.56.59:652][682]LogTemp: Display: RESIDENT_TRACE t=396.42 who=Guest state=Patrol pos=V(X=291.44, Y=432.10, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=589.9
+[2026.10.31-08.57.00:152][712]LogTemp: Display: RESIDENT_TRACE t=396.92 who=Owner state=Patrol pos=V(X=-131.48, Y=-85.45, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=88.1
+[2026.10.31-08.57.00:152][712]LogTemp: Display: RESIDENT_TRACE t=396.92 who=Guest state=Patrol pos=V(X=346.37, Y=435.02, Z=92.50) speed=110.0 anim=1 reach=0.00 catdist=630.6
+[2026.10.31-08.57.00:652][742]LogTemp: Display: RESIDENT_TRACE t=397.42 who=Owner state=Patrol pos=V(X=-174.70, Y=-51.73, Z=93.90) speed=103.9 anim=1 reach=0.00 catdist=82.7
+[2026.10.31-08.57.00:652][742]LogTemp: Display: RESIDENT_TRACE t=397.42 who=Guest state=Patrol pos=V(X=389.44, Y=437.31, Z=92.15) speed=63.2 anim=1 reach=0.00 catdist=664.0
+[2026.10.31-08.57.01:152][772]LogTemp: Display: RESIDENT_TRACE t=397.92 who=Owner state=Patrol pos=V(X=-224.73, Y=-30.90, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=118.6
+[2026.10.31-08.57.01:152][772]LogTemp: Display: RESIDENT_TRACE t=397.92 who=Guest state=Patrol pos=V(X=412.74, Y=438.55, Z=92.15) speed=34.1 anim=1 reach=0.00 catdist=682.5
+[2026.10.31-08.57.01:652][802]LogTemp: Display: RESIDENT_TRACE t=398.42 who=Owner state=Patrol pos=V(X=-279.32, Y=-27.16, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=171.3
+[2026.10.31-08.57.01:652][802]LogTemp: Display: RESIDENT_TRACE t=398.42 who=Guest state=Patrol pos=V(X=426.03, Y=439.26, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=693.2
+[2026.10.31-08.57.02:152][832]LogTemp: Display: RESIDENT_TRACE t=398.92 who=Owner state=Patrol pos=V(X=-334.25, Y=-30.09, Z=92.25) speed=110.0 anim=1 reach=0.00 catdist=226.1
+[2026.10.31-08.57.02:152][832]LogTemp: Display: RESIDENT_TRACE t=398.92 who=Guest state=Patrol pos=V(X=434.25, Y=425.27, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=690.9
+[2026.10.31-08.57.02:652][862]LogTemp: Display: RESIDENT_TRACE t=399.42 who=Owner state=Patrol pos=V(X=-389.18, Y=-33.02, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=280.9
+[2026.10.31-08.57.02:652][862]LogTemp: Display: RESIDENT_TRACE t=399.42 who=Guest state=Patrol pos=V(X=434.88, Y=370.27, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=658.9
+[2026.10.31-08.57.03:152][892]LogTemp: Display: RESIDENT_TRACE t=399.92 who=Owner state=Patrol pos=V(X=-443.20, Y=-35.90, Z=92.15) speed=96.0 anim=1 reach=0.00 catdist=334.9
+[2026.10.31-08.57.03:152][892]LogTemp: Display: RESIDENT_TRACE t=399.92 who=Guest state=Patrol pos=V(X=435.50, Y=315.26, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=630.2
+[2026.10.31-08.57.03:652][922]LogTemp: Display: RESIDENT_TRACE t=400.42 who=Owner state=Patrol pos=V(X=-478.58, Y=-37.79, Z=92.15) speed=51.7 anim=1 reach=0.00 catdist=370.3
+[2026.10.31-08.57.03:652][922]LogTemp: Display: RESIDENT_TRACE t=400.42 who=Guest state=Patrol pos=V(X=436.13, Y=260.25, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=605.2
+[2026.10.31-08.57.04:153][952]LogTemp: Display: RESIDENT_TRACE t=400.92 who=Owner state=Patrol pos=V(X=-497.66, Y=-38.81, Z=92.15) speed=27.9 anim=1 reach=0.00 catdist=389.4
+[2026.10.31-08.57.04:153][952]LogTemp: Display: RESIDENT_TRACE t=400.92 who=Guest state=Patrol pos=V(X=436.75, Y=205.25, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=584.2
+[2026.10.31-08.57.04:653][982]LogTemp: Display: RESIDENT_TRACE t=401.42 who=Owner state=Patrol pos=V(X=-509.93, Y=-39.46, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=401.7
+[2026.10.31-08.57.04:653][982]LogTemp: Display: RESIDENT_TRACE t=401.42 who=Guest state=Patrol pos=V(X=437.38, Y=150.23, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=567.8
+[2026.10.31-08.57.05:153][ 12]LogTemp: Display: RESIDENT_TRACE t=401.92 who=Owner state=Patrol pos=V(X=-507.36, Y=-9.59, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=397.3
+[2026.10.31-08.57.05:153][ 12]LogTemp: Display: RESIDENT_TRACE t=401.92 who=Guest state=Patrol pos=V(X=438.01, Y=95.23, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=556.4
+[2026.10.31-08.57.05:653][ 42]LogTemp: Display: RESIDENT_TRACE t=402.42 who=Owner state=Patrol pos=V(X=-494.90, Y=43.99, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=387.2
+[2026.10.31-08.57.05:653][ 42]LogTemp: Display: RESIDENT_TRACE t=402.42 who=Guest state=Patrol pos=V(X=438.63, Y=40.23, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=550.3
+[2026.10.31-08.57.06:153][ 72]LogTemp: Display: RESIDENT_TRACE t=402.92 who=Owner state=Patrol pos=V(X=-482.43, Y=97.56, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=384.8
+[2026.10.31-08.57.06:153][ 72]LogTemp: Display: RESIDENT_TRACE t=402.92 who=Guest state=Patrol pos=V(X=439.22, Y=-11.84, Z=92.15) speed=85.0 anim=1 reach=0.00 catdist=549.6
+[2026.10.31-08.57.06:653][102]LogTemp: Display: RESIDENT_TRACE t=403.42 who=Owner state=Patrol pos=V(X=-469.97, Y=151.14, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=390.2
+[2026.10.31-08.57.06:653][102]LogTemp: Display: RESIDENT_TRACE t=403.42 who=Guest state=Patrol pos=V(X=439.58, Y=-43.24, Z=92.15) speed=45.9 anim=1 reach=0.00 catdist=551.5
+[2026.10.31-08.57.07:153][132]LogTemp: Display: RESIDENT_TRACE t=403.92 who=Owner state=Patrol pos=V(X=-457.68, Y=203.99, Z=92.15) speed=97.4 anim=1 reach=0.00 catdist=402.9
+[2026.10.31-08.57.07:153][132]LogTemp: Display: RESIDENT_TRACE t=403.92 who=Guest state=Patrol pos=V(X=439.77, Y=-60.18, Z=92.15) speed=24.7 anim=1 reach=0.00 catdist=553.3
+[2026.10.31-08.57.07:653][162]LogTemp: Display: RESIDENT_TRACE t=404.42 who=Owner state=Patrol pos=V(X=-449.54, Y=239.00, Z=92.41) speed=52.5 anim=1 reach=0.00 catdist=415.1
+[2026.10.31-08.57.07:653][162]LogTemp: Display: RESIDENT_TRACE t=404.42 who=Guest state=Patrol pos=V(X=439.91, Y=-72.28, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=554.8
+[2026.10.31-08.57.08:153][192]LogTemp: Display: RESIDENT_TRACE t=404.92 who=Owner state=Patrol pos=V(X=-445.14, Y=257.89, Z=92.41) speed=28.3 anim=1 reach=0.00 catdist=422.7
+[2026.10.31-08.57.08:153][192]LogTemp: Display: RESIDENT_TRACE t=404.92 who=Guest state=Patrol pos=V(X=398.14, Y=-77.48, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=514.2
+[2026.10.31-08.57.08:653][222]LogTemp: Display: RESIDENT_TRACE t=405.42 who=Owner state=Patrol pos=V(X=-442.35, Y=269.89, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=428.0
+[2026.10.31-08.57.08:653][222]LogTemp: Display: RESIDENT_TRACE t=405.42 who=Guest state=Patrol pos=V(X=343.29, Y=-81.66, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=460.8
+[2026.10.31-08.57.09:153][252]LogTemp: Display: RESIDENT_TRACE t=405.92 who=Owner state=Patrol pos=V(X=-411.31, Y=281.53, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=412.2
+[2026.10.31-08.57.09:153][252]LogTemp: Display: RESIDENT_TRACE t=405.92 who=Guest state=Patrol pos=V(X=288.45, Y=-85.84, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=407.8
+[2026.10.31-08.57.09:653][282]LogTemp: Display: RESIDENT_TRACE t=406.42 who=Owner state=Patrol pos=V(X=-357.86, Y=294.53, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=384.8
+[2026.10.31-08.57.09:653][282]LogTemp: Display: RESIDENT_TRACE t=406.42 who=Guest state=Patrol pos=V(X=233.60, Y=-90.01, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=355.4
+[2026.10.31-08.57.10:153][312]LogTemp: Display: RESIDENT_TRACE t=406.92 who=Owner state=Patrol pos=V(X=-304.41, Y=307.54, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=363.7
+[2026.10.31-08.57.10:153][312]LogTemp: Display: RESIDENT_TRACE t=406.92 who=Guest state=Patrol pos=V(X=178.74, Y=-94.19, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=303.9
+[2026.10.31-08.57.10:653][342]LogTemp: Display: RESIDENT_TRACE t=407.42 who=Owner state=Patrol pos=V(X=-250.96, Y=320.54, Z=92.58) speed=110.0 anim=1 reach=0.00 catdist=350.1
+[2026.10.31-08.57.10:653][342]LogTemp: Display: RESIDENT_TRACE t=407.42 who=Guest state=Patrol pos=V(X=123.90, Y=-98.37, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=253.9
+[2026.10.31-08.57.11:153][372]LogTemp: Display: RESIDENT_TRACE t=407.92 who=Owner state=Patrol pos=V(X=-197.52, Y=333.54, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=344.8
+[2026.10.31-08.57.11:153][372]LogTemp: Display: RESIDENT_TRACE t=407.92 who=Guest state=Patrol pos=V(X=69.05, Y=-102.55, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=206.5
+[2026.10.31-08.57.11:653][402]LogTemp: Display: RESIDENT_TRACE t=408.42 who=Owner state=Patrol pos=V(X=-144.07, Y=346.55, Z=92.17) speed=110.0 anim=1 reach=0.00 catdist=348.2
+[2026.10.31-08.57.11:653][402]LogTemp: Display: RESIDENT_TRACE t=408.42 who=Guest state=Patrol pos=V(X=14.21, Y=-104.61, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=162.5
+[2026.10.31-08.57.12:153][432]LogTemp: Display: RESIDENT_TRACE t=408.92 who=Owner state=Patrol pos=V(X=-90.63, Y=359.55, Z=92.17) speed=110.0 anim=1 reach=0.00 catdist=360.1
+[2026.10.31-08.57.12:153][432]LogTemp: Display: RESIDENT_TRACE t=408.92 who=Guest state=Patrol pos=V(X=-40.43, Y=-98.35, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=120.6
+[2026.10.31-08.57.12:653][462]LogTemp: Display: RESIDENT_TRACE t=409.42 who=Owner state=Patrol pos=V(X=-37.19, Y=372.56, Z=92.21) speed=110.0 anim=1 reach=0.00 catdist=379.6
+[2026.10.31-08.57.12:653][462]LogTemp: Display: RESIDENT_TRACE t=409.42 who=Guest state=Patrol pos=V(X=-95.08, Y=-92.07, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=93.3
+[2026.10.31-08.57.13:153][492]LogTemp: Display: RESIDENT_TRACE t=409.92 who=Owner state=Patrol pos=V(X=16.26, Y=385.56, Z=92.21) speed=110.0 anim=1 reach=0.00 catdist=405.8
+[2026.10.31-08.57.13:153][492]LogTemp: Display: RESIDENT_TRACE t=409.92 who=Guest state=Patrol pos=V(X=-144.65, Y=-75.52, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=83.0
+[2026.10.31-08.57.13:653][522]LogTemp: Display: RESIDENT_TRACE t=410.42 who=Owner state=Patrol pos=V(X=69.70, Y=398.56, Z=92.25) speed=110.0 anim=1 reach=0.00 catdist=437.3
+[2026.10.31-08.57.13:653][522]LogTemp: Display: RESIDENT_TRACE t=410.42 who=Guest state=Patrol pos=V(X=-188.87, Y=-43.66, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=90.0
+[2026.10.31-08.57.14:157][552]LogTemp: Display: RESIDENT_TRACE t=410.93 who=Owner state=Patrol pos=V(X=123.51, Y=411.66, Z=92.25) speed=110.0 anim=1 reach=0.00 catdist=473.4
+[2026.10.31-08.57.14:157][552]LogTemp: Display: RESIDENT_TRACE t=410.93 who=Guest state=Patrol pos=V(X=-241.31, Y=-28.01, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=134.1
+[2026.10.31-08.57.14:657][582]LogTemp: Display: RESIDENT_TRACE t=411.43 who=Owner state=Patrol pos=V(X=177.36, Y=422.73, Z=92.22) speed=110.0 anim=1 reach=0.00 catdist=511.3
+[2026.10.31-08.57.14:657][582]LogTemp: Display: RESIDENT_TRACE t=411.43 who=Guest state=Patrol pos=V(X=-296.12, Y=-28.03, Z=93.22) speed=110.0 anim=1 reach=0.00 catdist=188.0
+[2026.10.31-08.57.15:157][612]LogTemp: Display: RESIDENT_TRACE t=411.93 who=Owner state=Patrol pos=V(X=231.32, Y=428.95, Z=92.22) speed=110.0 anim=1 reach=0.00 catdist=548.3
+[2026.10.31-08.57.15:157][612]LogTemp: Display: RESIDENT_TRACE t=411.93 who=Guest state=Patrol pos=V(X=-351.04, Y=-30.96, Z=92.41) speed=110.0 anim=1 reach=0.00 catdist=242.8
+[2026.10.31-08.57.15:657][642]LogTemp: Display: RESIDENT_TRACE t=412.43 who=Owner state=Patrol pos=V(X=286.24, Y=431.86, Z=92.31) speed=110.0 anim=1 reach=0.00 catdist=586.2
+[2026.10.31-08.57.15:657][642]LogTemp: Display: RESIDENT_TRACE t=412.43 who=Guest state=Patrol pos=V(X=-405.97, Y=-33.90, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=297.7
+[2026.10.31-08.57.16:157][672]LogTemp: Display: RESIDENT_TRACE t=412.93 who=Owner state=Patrol pos=V(X=341.17, Y=434.77, Z=92.31) speed=110.0 anim=1 reach=0.00 catdist=626.7
+[2026.10.31-08.57.16:157][672]LogTemp: Display: RESIDENT_TRACE t=412.93 who=Guest state=Patrol pos=V(X=-456.40, Y=-36.60, Z=92.15) speed=79.5 anim=1 reach=0.00 catdist=348.1
+[2026.10.31-08.57.16:657][702]LogTemp: Display: RESIDENT_TRACE t=413.43 who=Owner state=Patrol pos=V(X=386.40, Y=437.16, Z=92.21) speed=67.0 anim=1 reach=0.00 catdist=661.6
+[2026.10.31-08.57.16:657][702]LogTemp: Display: RESIDENT_TRACE t=413.43 who=Guest state=Patrol pos=V(X=-485.70, Y=-38.17, Z=92.15) speed=42.9 anim=1 reach=0.00 catdist=377.4
+[2026.10.31-08.57.17:157][732]LogTemp: Display: RESIDENT_TRACE t=413.93 who=Owner state=Patrol pos=V(X=411.09, Y=438.47, Z=92.21) speed=36.1 anim=1 reach=0.00 catdist=681.2
+[2026.10.31-08.57.17:157][732]LogTemp: Display: RESIDENT_TRACE t=413.93 who=Guest state=Patrol pos=V(X=-501.53, Y=-39.01, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=393.3
+[2026.10.31-08.57.17:657][762]LogTemp: Display: RESIDENT_TRACE t=414.43 who=Owner state=Patrol pos=V(X=424.88, Y=439.20, Z=92.21) speed=24.2 anim=1 reach=0.00 catdist=692.2
+[2026.10.31-08.57.17:657][762]LogTemp: Display: RESIDENT_TRACE t=414.43 who=Guest state=Patrol pos=V(X=-513.62, Y=-39.66, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=405.4
+[2026.10.31-08.57.18:157][792]LogTemp: Display: RESIDENT_TRACE t=414.93 who=Owner state=Patrol pos=V(X=434.24, Y=430.78, Z=92.21) speed=110.0 anim=1 reach=0.00 catdist=694.3
+[2026.10.31-08.57.18:157][792]LogTemp: Display: RESIDENT_TRACE t=414.93 who=Guest state=Patrol pos=V(X=-502.91, Y=8.30, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=392.8
+[2026.10.31-08.57.18:657][822]LogTemp: Display: RESIDENT_TRACE t=415.43 who=Owner state=Patrol pos=V(X=434.86, Y=375.78, Z=92.21) speed=110.0 anim=1 reach=0.00 catdist=662.0
+[2026.10.31-08.57.18:657][822]LogTemp: Display: RESIDENT_TRACE t=415.43 who=Guest state=Patrol pos=V(X=-490.50, Y=61.88, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=385.3
+[2026.10.31-08.57.19:157][852]LogTemp: Display: RESIDENT_TRACE t=415.93 who=Owner state=Patrol pos=V(X=435.48, Y=320.78, Z=92.21) speed=110.0 anim=1 reach=0.00 catdist=633.0
+[2026.10.31-08.57.19:157][852]LogTemp: Display: RESIDENT_TRACE t=415.93 who=Guest state=Patrol pos=V(X=-478.10, Y=115.47, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=385.6
+[2026.10.31-08.57.19:657][882]LogTemp: Display: RESIDENT_TRACE t=416.43 who=Owner state=Patrol pos=V(X=436.10, Y=265.78, Z=92.21) speed=110.0 anim=1 reach=0.00 catdist=607.5
+[2026.10.31-08.57.19:657][882]LogTemp: Display: RESIDENT_TRACE t=416.43 who=Guest state=Patrol pos=V(X=-465.69, Y=169.06, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=393.6
+[2026.10.31-08.57.20:157][912]LogTemp: Display: RESIDENT_TRACE t=416.93 who=Owner state=Patrol pos=V(X=436.72, Y=210.78, Z=92.21) speed=110.0 anim=1 reach=0.00 catdist=586.1
+[2026.10.31-08.57.20:157][912]LogTemp: Display: RESIDENT_TRACE t=416.93 who=Guest state=Patrol pos=V(X=-454.31, Y=218.18, Z=92.42) speed=79.2 anim=1 reach=0.00 catdist=407.4
+[2026.10.31-08.57.20:657][942]LogTemp: Display: RESIDENT_TRACE t=417.43 who=Owner state=Patrol pos=V(X=437.34, Y=155.77, Z=92.21) speed=110.0 anim=1 reach=0.00 catdist=569.3
+[2026.10.31-08.57.20:657][942]LogTemp: Display: RESIDENT_TRACE t=417.43 who=Guest state=Patrol pos=V(X=-447.72, Y=246.66, Z=92.42) speed=42.7 anim=1 reach=0.00 catdist=418.0
+[2026.10.31-08.57.21:157][972]LogTemp: Display: RESIDENT_TRACE t=417.93 who=Owner state=Patrol pos=V(X=437.96, Y=100.77, Z=92.21) speed=110.0 anim=1 reach=0.00 catdist=557.4
+[2026.10.31-08.57.21:157][972]LogTemp: Display: RESIDENT_TRACE t=417.93 who=Guest state=Patrol pos=V(X=-444.16, Y=262.05, Z=92.42) speed=24.2 anim=1 reach=0.00 catdist=424.5
+[2026.10.31-08.57.21:657][  2]LogTemp: Display: RESIDENT_TRACE t=418.43 who=Owner state=Patrol pos=V(X=438.58, Y=45.77, Z=92.21) speed=110.0 anim=1 reach=0.00 catdist=550.7
+[2026.10.31-08.57.21:657][  2]LogTemp: Display: RESIDENT_TRACE t=418.43 who=Guest state=Patrol pos=V(X=-441.43, Y=273.84, Z=92.17) speed=24.2 anim=1 reach=0.00 catdist=429.8
+[2026.10.31-08.57.22:157][ 32]LogTemp: Display: RESIDENT_TRACE t=418.93 who=Owner state=Patrol pos=V(X=439.18, Y=-7.47, Z=92.21) speed=90.5 anim=1 reach=0.00 catdist=549.4
+[2026.10.31-08.57.22:157][ 32]LogTemp: Display: RESIDENT_TRACE t=418.93 who=Guest state=Patrol pos=V(X=-393.48, Y=285.88, Z=92.17) speed=110.0 anim=1 reach=0.00 catdist=402.5
+[2026.10.31-08.57.22:657][ 62]LogTemp: Display: RESIDENT_TRACE t=419.43 who=Owner state=Patrol pos=V(X=439.56, Y=-40.88, Z=92.21) speed=48.8 anim=1 reach=0.00 catdist=551.3
+[2026.10.31-08.57.22:657][ 62]LogTemp: Display: RESIDENT_TRACE t=419.43 who=Guest state=Patrol pos=V(X=-340.04, Y=298.88, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=377.0
+[2026.10.31-08.57.23:157][ 92]LogTemp: Display: RESIDENT_TRACE t=419.93 who=Owner state=Patrol pos=V(X=439.76, Y=-58.90, Z=92.21) speed=26.3 anim=1 reach=0.00 catdist=553.1
+[2026.10.31-08.57.23:157][ 92]LogTemp: Display: RESIDENT_TRACE t=419.93 who=Guest state=Patrol pos=V(X=-286.59, Y=311.88, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=358.3
+[2026.10.31-08.57.23:657][122]LogTemp: Display: RESIDENT_TRACE t=420.43 who=Owner state=Patrol pos=V(X=439.90, Y=-71.06, Z=92.21) speed=24.2 anim=1 reach=0.00 catdist=554.7
+[2026.10.31-08.57.23:657][122]LogTemp: Display: RESIDENT_TRACE t=420.43 who=Guest state=Patrol pos=V(X=-233.15, Y=324.89, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=347.4
+[2026.10.31-08.57.24:157][152]LogTemp: Display: RESIDENT_TRACE t=420.93 who=Owner state=Patrol pos=V(X=403.63, Y=-77.05, Z=92.21) speed=110.0 anim=1 reach=0.00 catdist=519.6
+[2026.10.31-08.57.24:157][152]LogTemp: Display: RESIDENT_TRACE t=420.93 who=Guest state=Patrol pos=V(X=-179.70, Y=337.89, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=345.0
+[2026.10.31-08.57.24:657][182]LogTemp: Display: RESIDENT_TRACE t=421.43 who=Owner state=Patrol pos=V(X=348.79, Y=-81.23, Z=92.60) speed=110.0 anim=1 reach=0.00 catdist=466.1
+[2026.10.31-08.57.24:657][182]LogTemp: Display: RESIDENT_TRACE t=421.43 who=Guest state=Patrol pos=V(X=-126.26, Y=350.89, Z=92.17) speed=110.0 anim=1 reach=0.00 catdist=351.3
+[2026.10.31-08.57.25:157][212]LogTemp: Display: RESIDENT_TRACE t=421.93 who=Owner state=Patrol pos=V(X=293.94, Y=-85.41, Z=93.62) speed=110.0 anim=1 reach=0.00 catdist=413.1
+[2026.10.31-08.57.25:157][212]LogTemp: Display: RESIDENT_TRACE t=421.93 who=Guest state=Patrol pos=V(X=-72.82, Y=363.89, Z=92.17) speed=110.0 anim=1 reach=0.00 catdist=365.8
+[2026.10.31-08.57.25:657][242]LogTemp: Display: RESIDENT_TRACE t=422.43 who=Owner state=Patrol pos=V(X=239.10, Y=-89.59, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=360.6
+[2026.10.31-08.57.25:658][242]LogTemp: Display: RESIDENT_TRACE t=422.43 who=Guest state=Patrol pos=V(X=-19.37, Y=376.90, Z=92.21) speed=110.0 anim=1 reach=0.00 catdist=387.7
+[2026.10.31-08.57.26:158][272]LogTemp: Display: RESIDENT_TRACE t=422.93 who=Owner state=Patrol pos=V(X=184.25, Y=-93.77, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=309.0
+[2026.10.31-08.57.26:158][272]LogTemp: Display: RESIDENT_TRACE t=422.93 who=Guest state=Patrol pos=V(X=34.07, Y=389.90, Z=92.21) speed=110.0 anim=1 reach=0.00 catdist=415.7
+[2026.10.31-08.57.26:657][302]LogTemp: Display: RESIDENT_TRACE t=423.43 who=Owner state=Patrol pos=V(X=129.41, Y=-97.95, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=258.9
+[2026.10.31-08.57.26:658][302]LogTemp: Display: RESIDENT_TRACE t=423.43 who=Guest state=Patrol pos=V(X=87.51, Y=402.90, Z=92.25) speed=110.0 anim=1 reach=0.00 catdist=448.8
+[2026.10.31-08.57.27:158][332]LogTemp: Display: RESIDENT_TRACE t=423.93 who=Owner state=Patrol pos=V(X=74.57, Y=-102.13, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=211.1
+[2026.10.31-08.57.27:158][332]LogTemp: Display: RESIDENT_TRACE t=423.93 who=Guest state=Patrol pos=V(X=140.95, Y=415.90, Z=92.25) speed=110.0 anim=1 reach=0.00 catdist=485.9
+[2026.10.31-08.57.27:657][362]LogTemp: Display: RESIDENT_TRACE t=424.43 who=Owner state=Patrol pos=V(X=19.72, Y=-105.17, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=167.2
+[2026.10.31-08.57.27:658][362]LogTemp: Display: RESIDENT_TRACE t=424.43 who=Guest state=Patrol pos=V(X=195.02, Y=425.68, Z=92.28) speed=107.5 anim=1 reach=0.00 catdist=523.8
+[2026.10.31-08.57.28:159][392]LogTemp: Display: RESIDENT_TRACE t=424.93 who=Owner state=Patrol pos=V(X=-35.05, Y=-98.96, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=124.3
+[2026.10.31-08.57.28:159][392]LogTemp: Display: RESIDENT_TRACE t=424.93 who=Guest state=Patrol pos=V(X=249.41, Y=429.87, Z=92.60) speed=110.0 anim=1 reach=0.00 catdist=560.5
+[2026.10.31-08.57.28:659][422]LogTemp: Display: RESIDENT_TRACE t=425.43 who=Owner state=Patrol pos=V(X=-89.70, Y=-92.68, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=94.9
+[2026.10.31-08.57.28:659][422]LogTemp: Display: RESIDENT_TRACE t=425.43 who=Guest state=Patrol pos=V(X=304.34, Y=432.79, Z=92.34) speed=110.0 anim=1 reach=0.00 catdist=599.3
+[2026.10.31-08.57.29:159][452]LogTemp: Display: RESIDENT_TRACE t=425.93 who=Owner state=Patrol pos=V(X=-140.40, Y=-78.90, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=84.5
+[2026.10.31-08.57.29:159][452]LogTemp: Display: RESIDENT_TRACE t=425.93 who=Guest state=Patrol pos=V(X=358.90, Y=435.69, Z=92.25) speed=101.3 anim=1 reach=0.00 catdist=640.2
+[2026.10.31-08.57.29:659][482]LogTemp: Display: RESIDENT_TRACE t=426.43 who=Owner state=Patrol pos=V(X=-184.01, Y=-46.08, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=87.0
+[2026.10.31-08.57.29:659][482]LogTemp: Display: RESIDENT_TRACE t=426.43 who=Guest state=Patrol pos=V(X=396.26, Y=437.67, Z=92.25) speed=54.6 anim=1 reach=0.00 catdist=669.4
+[2026.10.31-08.57.30:159][512]LogTemp: Display: RESIDENT_TRACE t=426.93 who=Owner state=Patrol pos=V(X=-235.59, Y=-28.97, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=128.7
+[2026.10.31-08.57.30:159][512]LogTemp: Display: RESIDENT_TRACE t=426.93 who=Guest state=Patrol pos=V(X=416.41, Y=438.75, Z=92.25) speed=29.5 anim=1 reach=0.00 catdist=685.4
+[2026.10.31-08.57.30:659][542]LogTemp: Display: RESIDENT_TRACE t=427.43 who=Owner state=Patrol pos=V(X=-290.33, Y=-27.74, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=182.2
+[2026.10.31-08.57.30:659][542]LogTemp: Display: RESIDENT_TRACE t=427.43 who=Guest state=Patrol pos=V(X=428.86, Y=439.41, Z=92.25) speed=24.2 anim=1 reach=0.00 catdist=695.5
+[2026.10.31-08.57.31:163][572]LogTemp: Display: RESIDENT_TRACE t=427.93 who=Owner state=Patrol pos=V(X=-345.74, Y=-30.70, Z=92.25) speed=110.0 anim=1 reach=0.00 catdist=237.5
+[2026.10.31-08.57.31:163][572]LogTemp: Display: RESIDENT_TRACE t=427.93 who=Guest state=Patrol pos=V(X=434.41, Y=411.82, Z=92.25) speed=110.0 anim=1 reach=0.00 catdist=682.8
+[2026.10.31-08.57.31:663][602]LogTemp: Display: RESIDENT_TRACE t=428.43 who=Owner state=Patrol pos=V(X=-400.69, Y=-33.63, Z=92.34) speed=110.0 anim=1 reach=0.00 catdist=292.4
+[2026.10.31-08.57.31:663][602]LogTemp: Display: RESIDENT_TRACE t=428.43 who=Guest state=Patrol pos=V(X=435.04, Y=356.79, Z=92.25) speed=110.0 anim=1 reach=0.00 catdist=651.6
+[2026.10.31-08.57.32:164][632]LogTemp: Display: RESIDENT_TRACE t=428.93 who=Owner state=Patrol pos=V(X=-452.51, Y=-36.40, Z=92.63) speed=84.3 anim=1 reach=0.00 catdist=344.2
+[2026.10.31-08.57.32:164][632]LogTemp: Display: RESIDENT_TRACE t=428.93 who=Guest state=Patrol pos=V(X=435.66, Y=301.80, Z=92.25) speed=110.0 anim=1 reach=0.00 catdist=623.7
+[2026.10.31-08.57.32:664][662]LogTemp: Display: RESIDENT_TRACE t=429.43 who=Owner state=Patrol pos=V(X=-483.60, Y=-38.06, Z=92.29) speed=45.5 anim=1 reach=0.00 catdist=375.3
+[2026.10.31-08.57.32:664][662]LogTemp: Display: RESIDENT_TRACE t=429.43 who=Guest state=Patrol pos=V(X=436.29, Y=246.80, Z=92.25) speed=110.0 anim=1 reach=0.00 catdist=599.6
+[2026.10.31-08.57.33:164][692]LogTemp: Display: RESIDENT_TRACE t=429.93 who=Owner state=Patrol pos=V(X=-500.37, Y=-38.95, Z=92.29) speed=24.5 anim=1 reach=0.00 catdist=392.1
+[2026.10.31-08.57.33:164][692]LogTemp: Display: RESIDENT_TRACE t=429.93 who=Guest state=Patrol pos=V(X=436.91, Y=191.80, Z=92.25) speed=110.0 anim=1 reach=0.00 catdist=579.8
+[2026.10.31-08.57.33:664][722]LogTemp: Display: RESIDENT_TRACE t=430.43 who=Owner state=Patrol pos=V(X=-512.45, Y=-39.60, Z=92.29) speed=24.2 anim=1 reach=0.00 catdist=404.2
+[2026.10.31-08.57.33:664][722]LogTemp: Display: RESIDENT_TRACE t=430.43 who=Guest state=Patrol pos=V(X=437.54, Y=136.80, Z=92.25) speed=110.0 anim=1 reach=0.00 catdist=564.6
+[2026.10.31-08.57.34:164][752]LogTemp: Display: RESIDENT_TRACE t=430.93 who=Owner state=Patrol pos=V(X=-504.19, Y=2.94, Z=92.29) speed=110.0 anim=1 reach=0.00 catdist=394.0
+[2026.10.31-08.57.34:164][752]LogTemp: Display: RESIDENT_TRACE t=430.93 who=Guest state=Patrol pos=V(X=438.16, Y=81.80, Z=92.25) speed=110.0 anim=1 reach=0.00 catdist=554.4
+[2026.10.31-08.57.34:664][782]LogTemp: Display: RESIDENT_TRACE t=431.43 who=Owner state=Patrol pos=V(X=-491.78, Y=56.52, Z=92.29) speed=110.0 anim=1 reach=0.00 catdist=385.7
+[2026.10.31-08.57.34:664][782]LogTemp: Display: RESIDENT_TRACE t=431.43 who=Guest state=Patrol pos=V(X=438.79, Y=26.80, Z=92.25) speed=110.0 anim=1 reach=0.00 catdist=549.6
+[2026.10.31-08.57.35:164][812]LogTemp: Display: RESIDENT_TRACE t=431.93 who=Owner state=Patrol pos=V(X=-479.36, Y=110.10, Z=92.29) speed=110.0 anim=1 reach=0.00 catdist=385.2
+[2026.10.31-08.57.35:164][812]LogTemp: Display: RESIDENT_TRACE t=431.93 who=Guest state=Patrol pos=V(X=439.33, Y=-21.39, Z=92.25) speed=73.1 anim=1 reach=0.00 catdist=550.0
+[2026.10.31-08.57.35:664][842]LogTemp: Display: RESIDENT_TRACE t=432.43 who=Owner state=Patrol pos=V(X=-466.95, Y=163.69, Z=92.29) speed=110.0 anim=1 reach=0.00 catdist=392.5
+[2026.10.31-08.57.35:664][842]LogTemp: Display: RESIDENT_TRACE t=432.43 who=Guest state=Patrol pos=V(X=439.64, Y=-48.39, Z=92.25) speed=39.4 anim=1 reach=0.00 catdist=552.0
+[2026.10.31-08.57.36:164][872]LogTemp: Display: RESIDENT_TRACE t=432.93 who=Owner state=Patrol pos=V(X=-455.24, Y=214.23, Z=92.29) speed=84.2 anim=1 reach=0.00 catdist=406.1
+[2026.10.31-08.57.36:164][872]LogTemp: Display: RESIDENT_TRACE t=432.93 who=Guest state=Patrol pos=V(X=439.81, Y=-63.13, Z=92.25) speed=24.2 anim=1 reach=0.00 catdist=553.6
+[2026.10.31-08.57.36:664][902]LogTemp: Display: RESIDENT_TRACE t=433.43 who=Owner state=Patrol pos=V(X=-448.22, Y=244.53, Z=92.54) speed=45.4 anim=1 reach=0.00 catdist=417.2
+[2026.10.31-08.57.36:664][902]LogTemp: Display: RESIDENT_TRACE t=433.43 who=Guest state=Patrol pos=V(X=438.23, Y=-74.15, Z=92.25) speed=68.3 anim=1 reach=0.00 catdist=553.4
+[2026.10.31-08.57.37:164][932]LogTemp: Display: RESIDENT_TRACE t=433.93 who=Owner state=Patrol pos=V(X=-444.43, Y=260.87, Z=92.28) speed=24.5 anim=1 reach=0.00 catdist=424.0
+[2026.10.31-08.57.37:164][932]LogTemp: Display: RESIDENT_TRACE t=433.93 who=Guest state=Patrol pos=V(X=383.52, Y=-78.35, Z=92.25) speed=110.0 anim=1 reach=0.00 catdist=499.9
+[2026.10.31-08.57.37:664][962]LogTemp: Display: RESIDENT_TRACE t=434.43 who=Owner state=Patrol pos=V(X=-441.70, Y=272.66, Z=92.28) speed=24.2 anim=1 reach=0.00 catdist=429.2
+[2026.10.31-08.57.37:664][962]LogTemp: Display: RESIDENT_TRACE t=434.43 who=Guest state=Patrol pos=V(X=328.67, Y=-82.55, Z=92.34) speed=110.0 anim=1 reach=0.00 catdist=446.6
+[2026.10.31-08.57.38:164][992]LogTemp: Display: RESIDENT_TRACE t=434.93 who=Owner state=Patrol pos=V(X=-398.81, Y=284.58, Z=92.28) speed=110.0 anim=1 reach=0.00 catdist=405.3
+[2026.10.31-08.57.38:164][992]LogTemp: Display: RESIDENT_TRACE t=434.93 who=Guest state=Patrol pos=V(X=273.82, Y=-86.75, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=393.7
+[2026.10.31-08.57.38:664][ 22]LogTemp: Display: RESIDENT_TRACE t=435.43 who=Owner state=Patrol pos=V(X=-345.37, Y=297.58, Z=92.60) speed=110.0 anim=1 reach=0.00 catdist=379.3
+[2026.10.31-08.57.38:664][ 22]LogTemp: Display: RESIDENT_TRACE t=435.43 who=Guest state=Patrol pos=V(X=218.97, Y=-90.96, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=341.5
+[2026.10.31-08.57.39:164][ 52]LogTemp: Display: RESIDENT_TRACE t=435.93 who=Owner state=Patrol pos=V(X=-291.91, Y=310.59, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=326.6
+[2026.10.31-08.57.39:164][ 52]LogTemp: Display: RESIDENT_TRACE t=435.93 who=Guest state=Patrol pos=V(X=164.11, Y=-95.16, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=326.0
+[2026.10.31-08.57.39:664][ 82]LogTemp: Display: RESIDENT_TRACE t=436.43 who=Owner state=Patrol pos=V(X=-238.46, Y=323.59, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=209.0
+[2026.10.31-08.57.39:664][ 82]LogTemp: Display: RESIDENT_TRACE t=436.43 who=Guest state=Patrol pos=V(X=109.27, Y=-99.36, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=445.9
+[2026.10.31-08.57.40:164][112]LogTemp: Display: RESIDENT_TRACE t=436.93 who=Owner state=Patrol pos=V(X=-185.02, Y=336.59, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=235.1
+[2026.10.31-08.57.40:164][112]LogTemp: Display: RESIDENT_TRACE t=436.93 who=Guest state=Chase pos=V(X=24.09, Y=-105.71, Z=93.90) speed=245.0 anim=2 reach=0.00 catdist=457.9
+[2026.10.31-08.57.40:664][142]LogTemp: Display: RESIDENT_TRACE t=437.43 who=Owner state=Patrol pos=V(X=-131.58, Y=349.59, Z=92.16) speed=110.0 anim=1 reach=0.00 catdist=282.7
+[2026.10.31-08.57.40:664][142]LogTemp: Display: RESIDENT_TRACE t=437.43 who=Guest state=Chase pos=V(X=-97.67, Y=-92.76, Z=93.90) speed=245.0 anim=2 reach=0.00 catdist=357.4
+[2026.10.31-08.57.41:164][172]LogTemp: Display: RESIDENT_TRACE t=437.93 who=Owner state=Patrol pos=V(X=-78.13, Y=362.60, Z=92.16) speed=110.0 anim=1 reach=0.00 catdist=422.1
+[2026.10.31-08.57.41:164][172]LogTemp: Display: RESIDENT_TRACE t=437.93 who=Guest state=Chase pos=V(X=-193.70, Y=-26.84, Z=93.90) speed=245.0 anim=2 reach=0.00 catdist=415.1
+[2026.10.31-08.57.41:664][202]LogTemp: Display: RESIDENT_TRACE t=438.43 who=Owner state=Patrol pos=V(X=-24.69, Y=375.60, Z=92.21) speed=110.0 anim=1 reach=0.00 catdist=532.2
+[2026.10.31-08.57.41:664][202]LogTemp: Display: RESIDENT_TRACE t=438.43 who=Guest state=Chase pos=V(X=-276.13, Y=63.81, Z=93.90) speed=245.0 anim=2 reach=0.00 catdist=514.0
+[2026.10.31-08.57.42:164][232]LogTemp: Display: RESIDENT_TRACE t=438.93 who=Owner state=Patrol pos=V(X=28.76, Y=388.60, Z=92.21) speed=110.0 anim=1 reach=0.00 catdist=581.5
+[2026.10.31-08.57.42:164][232]LogTemp: Display: RESIDENT_TRACE t=438.93 who=Guest state=Chase pos=V(X=-343.24, Y=165.27, Z=92.15) speed=245.0 anim=2 reach=0.00 catdist=392.5
+[2026.10.31-08.57.42:664][262]LogTemp: Display: RESIDENT_TRACE t=439.43 who=Owner state=Patrol pos=V(X=82.20, Y=401.61, Z=92.25) speed=110.0 anim=1 reach=0.00 catdist=631.7
+[2026.10.31-08.57.42:664][262]LogTemp: Display: RESIDENT_TRACE t=439.43 who=Guest state=Confused pos=V(X=-376.03, Y=231.05, Z=92.15) speed=0.0 anim=3 reach=0.00 catdist=319.2
+[2026.10.31-08.57.43:164][292]LogTemp: Display: RESIDENT_TRACE t=439.93 who=Owner state=Patrol pos=V(X=135.65, Y=414.61, Z=92.25) speed=110.0 anim=1 reach=0.00 catdist=682.7
+[2026.10.31-08.57.43:164][292]LogTemp: Display: RESIDENT_TRACE t=439.93 who=Guest state=Confused pos=V(X=-376.03, Y=231.05, Z=92.15) speed=0.0 anim=3 reach=0.00 catdist=319.2
+[2026.10.31-08.57.43:664][322]LogTemp: Display: RESIDENT_TRACE t=440.43 who=Owner state=Patrol pos=V(X=189.68, Y=424.78, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=735.1
+[2026.10.31-08.57.43:664][322]LogTemp: Display: RESIDENT_TRACE t=440.43 who=Guest state=Confused pos=V(X=-376.03, Y=231.05, Z=92.15) speed=0.0 anim=3 reach=0.00 catdist=319.2
+[2026.10.31-08.57.44:164][352]LogTemp: Display: RESIDENT_TRACE t=440.93 who=Owner state=Patrol pos=V(X=243.83, Y=429.57, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=788.5
+[2026.10.31-08.57.44:164][352]LogTemp: Display: RESIDENT_TRACE t=440.93 who=Guest state=Confused pos=V(X=-376.03, Y=231.05, Z=92.15) speed=0.0 anim=3 reach=0.00 catdist=319.2
+[2026.10.31-08.57.44:664][382]LogTemp: Display: RESIDENT_TRACE t=441.43 who=Owner state=Patrol pos=V(X=298.76, Y=432.49, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=843.0
+[2026.10.31-08.57.44:664][382]LogTemp: Display: RESIDENT_TRACE t=441.43 who=Guest state=Confused pos=V(X=-376.03, Y=231.05, Z=92.15) speed=0.0 anim=3 reach=0.00 catdist=319.2
+[2026.10.31-08.57.45:164][412]LogTemp: Display: RESIDENT_TRACE t=441.93 who=Owner state=Patrol pos=V(X=353.65, Y=435.41, Z=92.50) speed=107.9 anim=1 reach=0.00 catdist=897.4
+[2026.10.31-08.57.45:164][412]LogTemp: Display: RESIDENT_TRACE t=441.93 who=Guest state=Patrol pos=V(X=-385.38, Y=213.46, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=329.9
+[2026.10.31-08.57.45:664][442]LogTemp: Display: RESIDENT_TRACE t=442.43 who=Owner state=Patrol pos=V(X=393.43, Y=437.52, Z=92.15) speed=58.2 anim=1 reach=0.00 catdist=937.0
+[2026.10.31-08.57.45:664][442]LogTemp: Display: RESIDENT_TRACE t=442.43 who=Guest state=Patrol pos=V(X=-411.18, Y=164.89, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=363.4
+[2026.10.31-08.57.46:164][472]LogTemp: Display: RESIDENT_TRACE t=442.93 who=Owner state=Patrol pos=V(X=414.88, Y=438.67, Z=92.15) speed=31.4 anim=1 reach=0.00 catdist=958.3
+[2026.10.31-08.57.46:165][472]LogTemp: Display: RESIDENT_TRACE t=442.93 who=Guest state=Patrol pos=V(X=-436.98, Y=116.31, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=401.7
+[2026.10.31-08.57.46:664][502]LogTemp: Display: RESIDENT_TRACE t=443.43 who=Owner state=Patrol pos=V(X=427.63, Y=439.34, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=971.0
+[2026.10.31-08.57.46:664][502]LogTemp: Display: RESIDENT_TRACE t=443.43 who=Guest state=Patrol pos=V(X=-462.78, Y=67.73, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=443.5
+[2026.10.31-08.57.47:164][532]LogTemp: Display: RESIDENT_TRACE t=443.93 who=Owner state=Patrol pos=V(X=434.32, Y=417.94, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=979.3
+[2026.10.31-08.57.47:164][532]LogTemp: Display: RESIDENT_TRACE t=443.93 who=Guest state=Patrol pos=V(X=-487.39, Y=21.39, Z=92.15) speed=86.7 anim=1 reach=0.00 catdist=485.9
+[2026.10.31-08.57.47:665][562]LogTemp: Display: RESIDENT_TRACE t=444.43 who=Owner state=Patrol pos=V(X=434.95, Y=362.94, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=986.3
+[2026.10.31-08.57.47:665][562]LogTemp: Display: RESIDENT_TRACE t=444.43 who=Guest state=Patrol pos=V(X=-502.41, Y=-6.89, Z=92.15) speed=46.8 anim=1 reach=0.00 catdist=512.6
+[2026.10.31-08.57.48:165][592]LogTemp: Display: RESIDENT_TRACE t=444.93 who=Owner state=Patrol pos=V(X=435.58, Y=307.94, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=996.3
+[2026.10.31-08.57.48:165][592]LogTemp: Display: RESIDENT_TRACE t=444.93 who=Guest state=Patrol pos=V(X=-510.52, Y=-22.14, Z=92.15) speed=25.2 anim=1 reach=0.00 catdist=527.3
+[2026.10.31-08.57.48:665][622]LogTemp: Display: RESIDENT_TRACE t=445.43 who=Owner state=Patrol pos=V(X=436.20, Y=252.94, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=1009.1
+[2026.10.31-08.57.48:665][622]LogTemp: Display: RESIDENT_TRACE t=445.43 who=Guest state=Patrol pos=V(X=-516.20, Y=-32.84, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=537.7
+[2026.10.31-08.57.49:165][652]LogTemp: Display: RESIDENT_TRACE t=445.93 who=Owner state=Patrol pos=V(X=436.83, Y=197.94, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=1024.8
+[2026.10.31-08.57.49:165][652]LogTemp: Display: RESIDENT_TRACE t=445.93 who=Guest state=Patrol pos=V(X=-507.77, Y=3.95, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=501.4
+[2026.10.31-08.57.49:665][682]LogTemp: Display: RESIDENT_TRACE t=446.43 who=Owner state=Patrol pos=V(X=437.46, Y=142.94, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=1043.2
+[2026.10.31-08.57.49:665][682]LogTemp: Display: RESIDENT_TRACE t=446.43 who=Guest state=Patrol pos=V(X=-494.66, Y=57.37, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=449.3
+[2026.10.31-08.57.50:165][712]LogTemp: Display: RESIDENT_TRACE t=446.93 who=Owner state=Patrol pos=V(X=438.09, Y=87.95, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=1064.1
+[2026.10.31-08.57.50:165][712]LogTemp: Display: RESIDENT_TRACE t=446.93 who=Guest state=Patrol pos=V(X=-481.55, Y=110.78, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=398.0
+[2026.10.31-08.57.50:665][742]LogTemp: Display: RESIDENT_TRACE t=447.43 who=Owner state=Patrol pos=V(X=438.71, Y=32.94, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=1087.3
+[2026.10.31-08.57.50:665][742]LogTemp: Display: RESIDENT_TRACE t=447.43 who=Guest state=Patrol pos=V(X=-468.43, Y=164.20, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=347.7
+[2026.10.31-08.57.51:165][772]LogTemp: Display: RESIDENT_TRACE t=447.93 who=Owner state=Patrol pos=V(X=439.28, Y=-17.20, Z=92.15) speed=78.4 anim=1 reach=0.00 catdist=1110.5
+[2026.10.31-08.57.51:165][772]LogTemp: Display: RESIDENT_TRACE t=447.93 who=Guest state=Patrol pos=V(X=-456.07, Y=214.55, Z=92.15) speed=84.1 anim=1 reach=0.00 catdist=301.9
+[2026.10.31-08.57.51:665][802]LogTemp: Display: RESIDENT_TRACE t=448.43 who=Owner state=Patrol pos=V(X=439.61, Y=-46.13, Z=92.15) speed=42.3 anim=1 reach=0.00 catdist=1124.6
+[2026.10.31-08.57.51:665][802]LogTemp: Display: RESIDENT_TRACE t=448.43 who=Guest state=Patrol pos=V(X=-448.67, Y=244.70, Z=92.44) speed=45.3 anim=1 reach=0.00 catdist=275.5
+[2026.10.31-08.57.52:165][832]LogTemp: Display: RESIDENT_TRACE t=448.93 who=Owner state=Patrol pos=V(X=439.79, Y=-61.78, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=1132.5
+[2026.10.31-08.57.52:165][832]LogTemp: Display: RESIDENT_TRACE t=448.93 who=Guest state=Patrol pos=V(X=-444.67, Y=260.96, Z=92.44) speed=24.5 anim=1 reach=0.00 catdist=261.7
+[2026.10.31-08.57.52:665][862]LogTemp: Display: RESIDENT_TRACE t=449.43 who=Owner state=Patrol pos=V(X=439.93, Y=-73.88, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=1138.8
+[2026.10.31-08.57.52:665][862]LogTemp: Display: RESIDENT_TRACE t=449.43 who=Guest state=Patrol pos=V(X=-441.79, Y=272.71, Z=92.17) speed=24.2 anim=1 reach=0.00 catdist=252.0
+[2026.10.31-08.57.53:165][892]LogTemp: Display: RESIDENT_TRACE t=449.93 who=Owner state=Patrol pos=V(X=390.83, Y=-78.03, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=1098.9
+[2026.10.31-08.57.53:165][892]LogTemp: Display: RESIDENT_TRACE t=449.93 who=Guest state=Patrol pos=V(X=-398.90, Y=284.62, Z=92.17) speed=110.0 anim=1 reach=0.00 catdist=261.7
+[2026.10.31-08.57.53:665][922]LogTemp: Display: RESIDENT_TRACE t=450.43 who=Owner state=Patrol pos=V(X=335.99, Y=-82.21, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=1055.1
+[2026.10.31-08.57.53:665][922]LogTemp: Display: RESIDENT_TRACE t=450.43 who=Guest state=Patrol pos=V(X=-345.45, Y=297.62, Z=92.59) speed=110.0 anim=1 reach=0.00 catdist=284.6
+[2026.10.31-08.57.54:165][952]LogTemp: Display: RESIDENT_TRACE t=450.93 who=Owner state=Patrol pos=V(X=281.14, Y=-86.38, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=1012.4
+[2026.10.31-08.57.54:165][952]LogTemp: Display: RESIDENT_TRACE t=450.93 who=Guest state=Patrol pos=V(X=-292.01, Y=310.62, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=315.5
+[2026.10.31-08.57.54:665][982]LogTemp: Display: RESIDENT_TRACE t=451.43 who=Owner state=Patrol pos=V(X=226.30, Y=-90.56, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=971.0
+[2026.10.31-08.57.54:665][982]LogTemp: Display: RESIDENT_TRACE t=451.43 who=Guest state=Patrol pos=V(X=-238.56, Y=323.61, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=352.4
+[2026.10.31-08.57.55:165][ 12]LogTemp: Display: RESIDENT_TRACE t=451.93 who=Owner state=Patrol pos=V(X=171.45, Y=-94.74, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=930.9
+[2026.10.31-08.57.55:165][ 12]LogTemp: Display: RESIDENT_TRACE t=451.93 who=Guest state=Patrol pos=V(X=-185.12, Y=336.61, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=393.5
+[2026.10.31-08.57.55:665][ 42]LogTemp: Display: RESIDENT_TRACE t=452.43 who=Owner state=Patrol pos=V(X=116.61, Y=-98.92, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=892.5
+[2026.10.31-08.57.55:665][ 42]LogTemp: Display: RESIDENT_TRACE t=452.43 who=Guest state=Patrol pos=V(X=-131.67, Y=349.61, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=437.7
+[2026.10.31-08.57.56:165][ 72]LogTemp: Display: RESIDENT_TRACE t=452.93 who=Owner state=Patrol pos=V(X=61.76, Y=-103.10, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=855.8
+[2026.10.31-08.57.56:165][ 72]LogTemp: Display: RESIDENT_TRACE t=452.93 who=Guest state=Patrol pos=V(X=-78.22, Y=362.61, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=484.1
+[2026.10.31-08.57.56:665][102]LogTemp: Display: RESIDENT_TRACE t=453.43 who=Owner state=Patrol pos=V(X=6.95, Y=-103.79, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=818.6
+[2026.10.31-08.57.56:665][102]LogTemp: Display: RESIDENT_TRACE t=453.43 who=Guest state=Patrol pos=V(X=-24.78, Y=375.61, Z=92.22) speed=110.0 anim=1 reach=0.00 catdist=532.2
+[2026.10.31-08.57.57:165][132]LogTemp: Display: RESIDENT_TRACE t=453.93 who=Owner state=Patrol pos=V(X=-47.70, Y=-97.51, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=778.2
+[2026.10.31-08.57.57:165][132]LogTemp: Display: RESIDENT_TRACE t=453.93 who=Guest state=Patrol pos=V(X=28.67, Y=388.60, Z=92.22) speed=110.0 anim=1 reach=0.00 catdist=581.4
+[2026.10.31-08.57.57:665][162]LogTemp: Display: RESIDENT_TRACE t=454.43 who=Owner state=Patrol pos=V(X=-102.34, Y=-91.23, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=739.7
+[2026.10.31-08.57.57:665][162]LogTemp: Display: RESIDENT_TRACE t=454.43 who=Guest state=Patrol pos=V(X=82.11, Y=401.60, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=631.7
+[2026.10.31-08.57.58:165][192]LogTemp: Display: RESIDENT_TRACE t=454.93 who=Owner state=Patrol pos=V(X=-150.38, Y=-70.97, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=695.4
+[2026.10.31-08.57.58:165][192]LogTemp: Display: RESIDENT_TRACE t=454.93 who=Guest state=Patrol pos=V(X=135.55, Y=414.60, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=682.6
+[2026.10.31-08.57.58:665][222]LogTemp: Display: RESIDENT_TRACE t=455.43 who=Owner state=Patrol pos=V(X=-195.46, Y=-40.47, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=645.2
+[2026.10.31-08.57.58:665][222]LogTemp: Display: RESIDENT_TRACE t=455.43 who=Guest state=Patrol pos=V(X=189.58, Y=424.77, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=735.0
+[2026.10.31-08.57.59:165][252]LogTemp: Display: RESIDENT_TRACE t=455.93 who=Owner state=Patrol pos=V(X=-248.16, Y=-26.76, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=606.5
+[2026.10.31-08.57.59:165][252]LogTemp: Display: RESIDENT_TRACE t=455.93 who=Guest state=Patrol pos=V(X=243.75, Y=429.56, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=788.4
+[2026.10.31-08.57.59:665][282]LogTemp: Display: RESIDENT_TRACE t=456.43 who=Owner state=Patrol pos=V(X=-303.06, Y=-28.44, Z=92.27) speed=110.0 anim=1 reach=0.00 catdist=583.5
+[2026.10.31-08.57.59:665][282]LogTemp: Display: RESIDENT_TRACE t=456.43 who=Guest state=Patrol pos=V(X=298.67, Y=432.48, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=842.9
+[2026.10.31-08.58.00:165][312]LogTemp: Display: RESIDENT_TRACE t=456.93 who=Owner state=Patrol pos=V(X=-357.98, Y=-31.37, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=566.1
+[2026.10.31-08.58.00:165][312]LogTemp: Display: RESIDENT_TRACE t=456.93 who=Guest state=Patrol pos=V(X=353.56, Y=435.40, Z=92.49) speed=108.0 anim=1 reach=0.00 catdist=897.4
+[2026.10.31-08.58.00:665][342]LogTemp: Display: RESIDENT_TRACE t=457.43 who=Owner state=Patrol pos=V(X=-412.91, Y=-34.29, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=553.6
+[2026.10.31-08.58.00:665][342]LogTemp: Display: RESIDENT_TRACE t=457.43 who=Guest state=Patrol pos=V(X=393.38, Y=437.52, Z=92.15) speed=58.2 anim=1 reach=0.00 catdist=936.9
+[2026.10.31-08.58.01:165][372]LogTemp: Display: RESIDENT_TRACE t=457.93 who=Owner state=Patrol pos=V(X=-461.17, Y=-36.87, Z=92.15) speed=73.5 anim=1 reach=0.00 catdist=547.0
+[2026.10.31-08.58.01:165][372]LogTemp: Display: RESIDENT_TRACE t=457.93 who=Guest state=Patrol pos=V(X=414.86, Y=438.66, Z=92.15) speed=31.4 anim=1 reach=0.00 catdist=958.3
+[2026.10.31-08.58.01:665][402]LogTemp: Display: RESIDENT_TRACE t=458.43 who=Owner state=Patrol pos=V(X=-488.27, Y=-38.31, Z=92.15) speed=39.6 anim=1 reach=0.00 catdist=545.1
+[2026.10.31-08.58.01:665][402]LogTemp: Display: RESIDENT_TRACE t=458.43 who=Guest state=Patrol pos=V(X=427.61, Y=439.34, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=970.9
+[2026.10.31-08.58.02:165][432]LogTemp: Display: RESIDENT_TRACE t=458.93 who=Owner state=Patrol pos=V(X=-503.06, Y=-39.10, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=544.7
+[2026.10.31-08.58.02:165][432]LogTemp: Display: RESIDENT_TRACE t=458.93 who=Guest state=Patrol pos=V(X=434.30, Y=417.94, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=979.3
+[2026.10.31-08.58.02:665][462]LogTemp: Display: RESIDENT_TRACE t=459.43 who=Owner state=Patrol pos=V(X=-514.21, Y=-39.14, Z=92.15) speed=34.1 anim=1 reach=0.00 catdist=544.1
+[2026.10.31-08.58.02:665][462]LogTemp: Display: RESIDENT_TRACE t=459.43 who=Guest state=Patrol pos=V(X=434.93, Y=362.94, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=986.3
+[2026.10.31-08.58.03:165][492]LogTemp: Display: RESIDENT_TRACE t=459.93 who=Owner state=Patrol pos=V(X=-501.94, Y=13.63, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=492.2
+[2026.10.31-08.58.03:165][492]LogTemp: Display: RESIDENT_TRACE t=459.93 who=Guest state=Patrol pos=V(X=435.56, Y=307.94, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=996.2
+[2026.10.31-08.58.03:665][522]LogTemp: Display: RESIDENT_TRACE t=460.43 who=Owner state=Patrol pos=V(X=-489.48, Y=67.20, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=440.1
+[2026.10.31-08.58.03:665][522]LogTemp: Display: RESIDENT_TRACE t=460.43 who=Guest state=Patrol pos=V(X=436.19, Y=252.94, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=1009.1
+[2026.10.31-08.58.04:165][552]LogTemp: Display: RESIDENT_TRACE t=460.93 who=Owner state=Patrol pos=V(X=-477.02, Y=120.77, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=388.8
+[2026.10.31-08.58.04:165][552]LogTemp: Display: RESIDENT_TRACE t=460.93 who=Guest state=Patrol pos=V(X=436.82, Y=197.94, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=1024.8
+[2026.10.31-08.58.04:665][582]LogTemp: Display: RESIDENT_TRACE t=461.43 who=Owner state=Patrol pos=V(X=-464.57, Y=174.35, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=338.7
+[2026.10.31-08.58.04:665][582]LogTemp: Display: RESIDENT_TRACE t=461.43 who=Guest state=Patrol pos=V(X=437.45, Y=142.95, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=1043.2
+[2026.10.31-08.58.05:165][612]LogTemp: Display: RESIDENT_TRACE t=461.93 who=Owner state=Patrol pos=V(X=-453.53, Y=221.83, Z=92.41) speed=74.5 anim=1 reach=0.00 catdist=295.7
+[2026.10.31-08.58.05:165][612]LogTemp: Display: RESIDENT_TRACE t=461.93 who=Guest state=Patrol pos=V(X=438.08, Y=87.95, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=1064.0
+[2026.10.31-08.58.05:665][642]LogTemp: Display: RESIDENT_TRACE t=462.43 who=Owner state=Patrol pos=V(X=-447.30, Y=248.63, Z=92.41) speed=40.2 anim=1 reach=0.00 catdist=272.3
+[2026.10.31-08.58.05:665][642]LogTemp: Display: RESIDENT_TRACE t=462.43 who=Guest state=Patrol pos=V(X=438.71, Y=32.95, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=1087.3
+[2026.10.31-08.58.06:165][672]LogTemp: Display: RESIDENT_TRACE t=462.93 who=Owner state=Patrol pos=V(X=-443.90, Y=263.21, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=259.9
+[2026.10.31-08.58.06:165][672]LogTemp: Display: RESIDENT_TRACE t=462.93 who=Guest state=Patrol pos=V(X=439.28, Y=-17.19, Z=92.15) speed=78.4 anim=1 reach=0.00 catdist=1110.5
+[2026.10.31-08.58.06:665][702]LogTemp: Display: RESIDENT_TRACE t=463.43 who=Owner state=Patrol pos=V(X=-440.79, Y=274.35, Z=92.15) speed=34.1 anim=1 reach=0.00 catdist=250.9
+[2026.10.31-08.58.06:665][702]LogTemp: Display: RESIDENT_TRACE t=463.43 who=Guest state=Patrol pos=V(X=439.61, Y=-46.13, Z=92.15) speed=42.3 anim=1 reach=0.00 catdist=1124.6
+[2026.10.31-08.58.07:165][732]LogTemp: Display: RESIDENT_TRACE t=463.93 who=Owner state=Patrol pos=V(X=-388.15, Y=287.16, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=265.6
+[2026.10.31-08.58.07:165][732]LogTemp: Display: RESIDENT_TRACE t=463.93 who=Guest state=Patrol pos=V(X=439.79, Y=-61.78, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=1132.5
+[2026.10.31-08.58.07:665][762]LogTemp: Display: RESIDENT_TRACE t=464.43 who=Owner state=Patrol pos=V(X=-334.70, Y=300.16, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=290.3
+[2026.10.31-08.58.07:665][762]LogTemp: Display: RESIDENT_TRACE t=464.43 who=Guest state=Patrol pos=V(X=439.93, Y=-73.88, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=1138.8
+[2026.10.31-08.58.08:165][792]LogTemp: Display: RESIDENT_TRACE t=464.93 who=Owner state=Patrol pos=V(X=-281.26, Y=313.16, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=322.6
+[2026.10.31-08.58.08:165][792]LogTemp: Display: RESIDENT_TRACE t=464.93 who=Guest state=Patrol pos=V(X=390.83, Y=-78.02, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=1098.9
+[2026.10.31-08.58.08:665][822]LogTemp: Display: RESIDENT_TRACE t=465.43 who=Owner state=Patrol pos=V(X=-227.82, Y=326.17, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=360.4
+[2026.10.31-08.58.08:665][822]LogTemp: Display: RESIDENT_TRACE t=465.43 who=Guest state=Patrol pos=V(X=335.98, Y=-82.20, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=1055.1
+[2026.10.31-08.58.09:165][852]LogTemp: Display: RESIDENT_TRACE t=465.93 who=Owner state=Patrol pos=V(X=-174.38, Y=339.17, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=402.2
+[2026.10.31-08.58.09:165][852]LogTemp: Display: RESIDENT_TRACE t=465.93 who=Guest state=Patrol pos=V(X=281.14, Y=-86.38, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=1012.4
+[2026.10.31-08.58.09:665][882]LogTemp: Display: RESIDENT_TRACE t=466.43 who=Owner state=Patrol pos=V(X=-120.93, Y=352.18, Z=92.17) speed=110.0 anim=1 reach=0.00 catdist=446.9
+[2026.10.31-08.58.09:665][882]LogTemp: Display: RESIDENT_TRACE t=466.43 who=Guest state=Patrol pos=V(X=226.30, Y=-90.56, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=971.0
+[2026.10.31-08.58.10:165][912]LogTemp: Display: RESIDENT_TRACE t=466.93 who=Owner state=Patrol pos=V(X=-67.49, Y=365.18, Z=92.17) speed=110.0 anim=1 reach=0.00 catdist=493.7
+[2026.10.31-08.58.10:165][912]LogTemp: Display: RESIDENT_TRACE t=466.93 who=Guest state=Patrol pos=V(X=171.46, Y=-94.74, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=930.9
+[2026.10.31-08.58.10:665][942]LogTemp: Display: RESIDENT_TRACE t=467.43 who=Owner state=Patrol pos=V(X=-14.05, Y=378.18, Z=92.22) speed=110.0 anim=1 reach=0.00 catdist=542.0
+[2026.10.31-08.58.10:665][942]LogTemp: Display: RESIDENT_TRACE t=467.43 who=Guest state=Patrol pos=V(X=116.62, Y=-98.92, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=892.5
+[2026.10.31-08.58.11:165][972]LogTemp: Display: RESIDENT_TRACE t=467.93 who=Owner state=Patrol pos=V(X=39.39, Y=391.19, Z=92.22) speed=110.0 anim=1 reach=0.00 catdist=591.4
+[2026.10.31-08.58.11:165][972]LogTemp: Display: RESIDENT_TRACE t=467.93 who=Guest state=Patrol pos=V(X=61.77, Y=-103.10, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=855.8
+[2026.10.31-08.58.11:666][  2]LogTemp: Display: RESIDENT_TRACE t=468.43 who=Owner state=Patrol pos=V(X=92.84, Y=404.19, Z=92.26) speed=110.0 anim=1 reach=0.00 catdist=641.8
+[2026.10.31-08.58.11:666][  2]LogTemp: Display: RESIDENT_TRACE t=468.43 who=Guest state=Patrol pos=V(X=6.95, Y=-103.79, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=818.6
+[2026.10.31-08.58.12:166][ 32]LogTemp: Display: RESIDENT_TRACE t=468.93 who=Owner state=Patrol pos=V(X=146.28, Y=417.20, Z=92.26) speed=110.0 anim=1 reach=0.00 catdist=692.9
+[2026.10.31-08.58.12:166][ 32]LogTemp: Display: RESIDENT_TRACE t=468.93 who=Guest state=Patrol pos=V(X=-47.69, Y=-97.51, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=778.2
+[2026.10.31-08.58.12:666][ 62]LogTemp: Display: RESIDENT_TRACE t=469.43 who=Owner state=Patrol pos=V(X=200.10, Y=426.54, Z=92.28) speed=101.1 anim=1 reach=0.00 catdist=745.3
+[2026.10.31-08.58.12:666][ 62]LogTemp: Display: RESIDENT_TRACE t=469.43 who=Guest state=Patrol pos=V(X=-102.34, Y=-91.23, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=739.7
+[2026.10.31-08.58.13:166][ 92]LogTemp: Display: RESIDENT_TRACE t=469.93 who=Owner state=Patrol pos=V(X=254.78, Y=430.15, Z=92.59) speed=110.0 anim=1 reach=0.00 catdist=799.4
+[2026.10.31-08.58.13:166][ 92]LogTemp: Display: RESIDENT_TRACE t=469.93 who=Guest state=Patrol pos=V(X=-150.39, Y=-70.97, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=695.4
+[2026.10.31-08.58.13:666][122]LogTemp: Display: RESIDENT_TRACE t=470.43 who=Owner state=Patrol pos=V(X=309.70, Y=433.07, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=853.8
+[2026.10.31-08.58.13:666][122]LogTemp: Display: RESIDENT_TRACE t=470.43 who=Guest state=Patrol pos=V(X=-195.46, Y=-40.47, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=645.2
+[2026.10.31-08.58.14:166][152]LogTemp: Display: RESIDENT_TRACE t=470.93 who=Owner state=Patrol pos=V(X=363.64, Y=435.94, Z=92.15) speed=95.4 anim=1 reach=0.00 catdist=907.4
+[2026.10.31-08.58.14:166][152]LogTemp: Display: RESIDENT_TRACE t=470.93 who=Guest state=Patrol pos=V(X=-248.16, Y=-26.76, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=606.5
+[2026.10.31-08.58.14:666][182]LogTemp: Display: RESIDENT_TRACE t=471.43 who=Owner state=Patrol pos=V(X=398.82, Y=437.81, Z=92.15) speed=51.5 anim=1 reach=0.00 catdist=942.3
+[2026.10.31-08.58.14:666][182]LogTemp: Display: RESIDENT_TRACE t=471.43 who=Guest state=Patrol pos=V(X=-303.07, Y=-28.44, Z=92.27) speed=110.0 anim=1 reach=0.00 catdist=583.5
+[2026.10.31-08.58.15:166][212]LogTemp: Display: RESIDENT_TRACE t=471.93 who=Owner state=Patrol pos=V(X=417.79, Y=438.82, Z=92.15) speed=27.7 anim=1 reach=0.00 catdist=961.2
+[2026.10.31-08.58.15:166][212]LogTemp: Display: RESIDENT_TRACE t=471.93 who=Guest state=Patrol pos=V(X=-357.99, Y=-31.37, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=566.1
+[2026.10.31-08.58.15:666][242]LogTemp: Display: RESIDENT_TRACE t=472.43 who=Owner state=Patrol pos=V(X=430.04, Y=439.47, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=973.3
+[2026.10.31-08.58.15:666][242]LogTemp: Display: RESIDENT_TRACE t=472.43 who=Guest state=Patrol pos=V(X=-412.92, Y=-34.29, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=553.6
+[2026.10.31-08.58.16:166][272]LogTemp: Display: RESIDENT_TRACE t=472.93 who=Owner state=Patrol pos=V(X=434.44, Y=406.94, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=980.4
+[2026.10.31-08.58.16:166][272]LogTemp: Display: RESIDENT_TRACE t=472.93 who=Guest state=Patrol pos=V(X=-461.18, Y=-36.87, Z=92.15) speed=73.5 anim=1 reach=0.00 catdist=547.0
+[2026.10.31-08.58.16:666][302]LogTemp: Display: RESIDENT_TRACE t=473.43 who=Owner state=Patrol pos=V(X=435.07, Y=351.94, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=988.0
+[2026.10.31-08.58.16:666][302]LogTemp: Display: RESIDENT_TRACE t=473.43 who=Guest state=Patrol pos=V(X=-488.28, Y=-38.31, Z=92.15) speed=39.6 anim=1 reach=0.00 catdist=545.1
+[2026.10.31-08.58.17:166][332]LogTemp: Display: RESIDENT_TRACE t=473.93 who=Owner state=Patrol pos=V(X=435.70, Y=296.94, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=998.6
+[2026.10.31-08.58.17:166][332]LogTemp: Display: RESIDENT_TRACE t=473.93 who=Guest state=Patrol pos=V(X=-503.06, Y=-39.10, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=544.7
+[2026.10.31-08.58.17:666][362]LogTemp: Display: RESIDENT_TRACE t=474.43 who=Owner state=Patrol pos=V(X=436.32, Y=241.94, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=1012.1
+[2026.10.31-08.58.17:666][362]LogTemp: Display: RESIDENT_TRACE t=474.43 who=Guest state=Patrol pos=V(X=-514.21, Y=-39.14, Z=92.15) speed=34.1 anim=1 reach=0.00 catdist=544.1
+[2026.10.31-08.58.18:166][392]LogTemp: Display: RESIDENT_TRACE t=474.93 who=Owner state=Patrol pos=V(X=436.95, Y=186.94, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=1028.3
+[2026.10.31-08.58.18:166][392]LogTemp: Display: RESIDENT_TRACE t=474.93 who=Guest state=Patrol pos=V(X=-501.94, Y=13.63, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=492.2
+[2026.10.31-08.58.18:666][422]LogTemp: Display: RESIDENT_TRACE t=475.44 who=Owner state=Patrol pos=V(X=437.58, Y=131.95, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=1047.2
+[2026.10.31-08.58.18:666][422]LogTemp: Display: RESIDENT_TRACE t=475.44 who=Guest state=Patrol pos=V(X=-489.48, Y=67.20, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=440.1
+[2026.10.31-08.58.19:166][452]LogTemp: Display: RESIDENT_TRACE t=475.94 who=Owner state=Patrol pos=V(X=438.21, Y=76.95, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=1068.5
+[2026.10.31-08.58.19:166][452]LogTemp: Display: RESIDENT_TRACE t=475.94 who=Guest state=Patrol pos=V(X=-477.02, Y=120.77, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=388.8
+[2026.10.31-08.58.19:666][482]LogTemp: Display: RESIDENT_TRACE t=476.44 who=Owner state=Patrol pos=V(X=438.84, Y=21.95, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=1092.2
+[2026.10.31-08.58.19:666][482]LogTemp: Display: RESIDENT_TRACE t=476.44 who=Guest state=Patrol pos=V(X=-464.57, Y=174.35, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=338.7
+[2026.10.31-08.58.20:166][512]LogTemp: Display: RESIDENT_TRACE t=476.94 who=Owner state=Patrol pos=V(X=439.37, Y=-24.49, Z=92.15) speed=69.3 anim=1 reach=0.00 catdist=1114.0
+[2026.10.31-08.58.20:166][512]LogTemp: Display: RESIDENT_TRACE t=476.94 who=Guest state=Patrol pos=V(X=-453.53, Y=221.83, Z=92.41) speed=74.5 anim=1 reach=0.00 catdist=295.7
+[2026.10.31-08.58.20:666][542]LogTemp: Display: RESIDENT_TRACE t=477.44 who=Owner state=Patrol pos=V(X=439.66, Y=-50.06, Z=92.15) speed=37.4 anim=1 reach=0.00 catdist=1126.6
+[2026.10.31-08.58.20:666][542]LogTemp: Display: RESIDENT_TRACE t=477.44 who=Guest state=Patrol pos=V(X=-447.29, Y=248.63, Z=92.41) speed=40.2 anim=1 reach=0.00 catdist=272.3
+[2026.10.31-08.58.21:166][572]LogTemp: Display: RESIDENT_TRACE t=477.94 who=Owner state=Patrol pos=V(X=439.82, Y=-64.20, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=1133.8
+[2026.10.31-08.58.21:166][572]LogTemp: Display: RESIDENT_TRACE t=477.94 who=Guest state=Patrol pos=V(X=-443.90, Y=263.21, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=259.9
+[2026.10.31-08.58.21:666][602]LogTemp: Display: RESIDENT_TRACE t=478.44 who=Owner state=Patrol pos=V(X=434.70, Y=-74.68, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=1134.7
+[2026.10.31-08.58.21:666][602]LogTemp: Display: RESIDENT_TRACE t=478.44 who=Guest state=Patrol pos=V(X=-440.79, Y=274.35, Z=92.15) speed=34.1 anim=1 reach=0.00 catdist=250.9
+[2026.10.31-08.58.22:166][632]LogTemp: Display: RESIDENT_TRACE t=478.94 who=Owner state=Patrol pos=V(X=379.86, Y=-78.86, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=1090.1
+[2026.10.31-08.58.22:166][632]LogTemp: Display: RESIDENT_TRACE t=478.94 who=Guest state=Patrol pos=V(X=-388.15, Y=287.16, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=265.6
+[2026.10.31-08.58.22:666][662]LogTemp: Display: RESIDENT_TRACE t=479.44 who=Owner state=Patrol pos=V(X=325.01, Y=-83.04, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=1046.5
+[2026.10.31-08.58.22:666][662]LogTemp: Display: RESIDENT_TRACE t=479.44 who=Guest state=Patrol pos=V(X=-334.70, Y=300.16, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=290.3
+[2026.10.31-08.58.23:166][692]LogTemp: Display: RESIDENT_TRACE t=479.94 who=Owner state=Patrol pos=V(X=270.17, Y=-87.22, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=1004.0
+[2026.10.31-08.58.23:166][692]LogTemp: Display: RESIDENT_TRACE t=479.94 who=Guest state=Patrol pos=V(X=-281.26, Y=313.17, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=322.6
+[2026.10.31-08.58.23:666][722]LogTemp: Display: RESIDENT_TRACE t=480.44 who=Owner state=Patrol pos=V(X=215.33, Y=-91.40, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=962.8
+[2026.10.31-08.58.23:666][722]LogTemp: Display: RESIDENT_TRACE t=480.44 who=Guest state=Patrol pos=V(X=-227.82, Y=326.17, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=360.4
+[2026.10.31-08.58.24:166][752]LogTemp: Display: RESIDENT_TRACE t=480.94 who=Owner state=Patrol pos=V(X=160.49, Y=-95.58, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=923.1
+[2026.10.31-08.58.24:166][752]LogTemp: Display: RESIDENT_TRACE t=480.94 who=Guest state=Patrol pos=V(X=-174.38, Y=339.17, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=402.2
+[2026.10.31-08.58.24:666][782]LogTemp: Display: RESIDENT_TRACE t=481.44 who=Owner state=Patrol pos=V(X=105.64, Y=-99.76, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=885.0
+[2026.10.31-08.58.24:666][782]LogTemp: Display: RESIDENT_TRACE t=481.44 who=Guest state=Patrol pos=V(X=-120.93, Y=352.18, Z=92.17) speed=110.0 anim=1 reach=0.00 catdist=446.9
+[2026.10.31-08.58.25:166][812]LogTemp: Display: RESIDENT_TRACE t=481.94 who=Owner state=Patrol pos=V(X=50.80, Y=-103.94, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=848.7
+[2026.10.31-08.58.25:166][812]LogTemp: Display: RESIDENT_TRACE t=481.94 who=Guest state=Patrol pos=V(X=-67.49, Y=365.18, Z=92.17) speed=110.0 anim=1 reach=0.00 catdist=493.7
+[2026.10.31-08.58.25:666][842]LogTemp: Display: RESIDENT_TRACE t=482.44 who=Owner state=Patrol pos=V(X=-3.98, Y=-102.54, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=810.4
+[2026.10.31-08.58.25:666][842]LogTemp: Display: RESIDENT_TRACE t=482.44 who=Guest state=Patrol pos=V(X=-14.04, Y=378.19, Z=92.21) speed=110.0 anim=1 reach=0.00 catdist=542.0
+[2026.10.31-08.58.26:166][872]LogTemp: Display: RESIDENT_TRACE t=482.94 who=Owner state=Patrol pos=V(X=-58.62, Y=-96.25, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=770.4
+[2026.10.31-08.58.26:166][872]LogTemp: Display: RESIDENT_TRACE t=482.94 who=Guest state=Patrol pos=V(X=39.40, Y=391.19, Z=92.21) speed=110.0 anim=1 reach=0.00 catdist=591.5
+[2026.10.31-08.58.26:666][902]LogTemp: Display: RESIDENT_TRACE t=483.44 who=Owner state=Patrol pos=V(X=-113.25, Y=-89.97, Z=93.90) speed=108.9 anim=1 reach=0.00 catdist=732.3
+[2026.10.31-08.58.26:666][902]LogTemp: Display: RESIDENT_TRACE t=483.44 who=Guest state=Patrol pos=V(X=92.84, Y=404.19, Z=92.26) speed=110.0 anim=1 reach=0.00 catdist=641.8
+[2026.10.31-08.58.27:166][932]LogTemp: Display: RESIDENT_TRACE t=483.94 who=Owner state=Patrol pos=V(X=-159.01, Y=-64.14, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=684.9
+[2026.10.31-08.58.27:166][932]LogTemp: Display: RESIDENT_TRACE t=483.94 who=Guest state=Patrol pos=V(X=146.29, Y=417.20, Z=92.26) speed=110.0 anim=1 reach=0.00 catdist=692.9
+[2026.10.31-08.58.27:666][962]LogTemp: Display: RESIDENT_TRACE t=484.44 who=Owner state=Patrol pos=V(X=-205.19, Y=-35.80, Z=93.90) speed=103.5 anim=1 reach=0.00 catdist=636.0
+[2026.10.31-08.58.27:666][962]LogTemp: Display: RESIDENT_TRACE t=484.44 who=Guest state=Patrol pos=V(X=200.11, Y=426.54, Z=92.28) speed=101.1 anim=1 reach=0.00 catdist=745.3
+[2026.10.31-08.58.28:166][992]LogTemp: Display: RESIDENT_TRACE t=484.94 who=Owner state=Patrol pos=V(X=-259.13, Y=-26.20, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=600.8
+[2026.10.31-08.58.28:166][992]LogTemp: Display: RESIDENT_TRACE t=484.94 who=Guest state=Patrol pos=V(X=254.79, Y=430.15, Z=92.59) speed=110.0 anim=1 reach=0.00 catdist=799.4
+[2026.10.31-08.58.28:666][ 22]LogTemp: Display: RESIDENT_TRACE t=485.44 who=Owner state=Patrol pos=V(X=-314.06, Y=-29.02, Z=92.27) speed=110.0 anim=1 reach=0.00 catdist=579.6
+[2026.10.31-08.58.28:666][ 22]LogTemp: Display: RESIDENT_TRACE t=485.44 who=Guest state=Patrol pos=V(X=309.71, Y=433.07, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=853.8
+[2026.10.31-08.58.29:166][ 52]LogTemp: Display: RESIDENT_TRACE t=485.94 who=Owner state=Patrol pos=V(X=-368.99, Y=-31.95, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=563.2
+[2026.10.31-08.58.29:166][ 52]LogTemp: Display: RESIDENT_TRACE t=485.94 who=Guest state=Patrol pos=V(X=363.65, Y=435.94, Z=92.15) speed=95.4 anim=1 reach=0.00 catdist=907.4
+[2026.10.31-08.58.29:667][ 82]LogTemp: Display: RESIDENT_TRACE t=486.44 who=Owner state=Patrol pos=V(X=-423.91, Y=-34.88, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=551.7
+[2026.10.31-08.58.29:667][ 82]LogTemp: Display: RESIDENT_TRACE t=486.44 who=Guest state=Patrol pos=V(X=398.83, Y=437.81, Z=92.15) speed=51.4 anim=1 reach=0.00 catdist=942.3
+[2026.10.31-08.58.30:166][112]LogTemp: Display: RESIDENT_TRACE t=486.94 who=Owner state=Patrol pos=V(X=-468.02, Y=-37.23, Z=92.15) speed=64.9 anim=1 reach=0.00 catdist=546.4
+[2026.10.31-08.58.30:166][112]LogTemp: Display: RESIDENT_TRACE t=486.94 who=Guest state=Patrol pos=V(X=417.79, Y=438.82, Z=92.15) speed=27.7 anim=1 reach=0.00 catdist=961.2
+[2026.10.31-08.58.30:667][142]LogTemp: Display: RESIDENT_TRACE t=487.44 who=Owner state=Patrol pos=V(X=-491.97, Y=-38.51, Z=92.15) speed=35.0 anim=1 reach=0.00 catdist=545.0
+[2026.10.31-08.58.30:667][142]LogTemp: Display: RESIDENT_TRACE t=487.44 who=Guest state=Patrol pos=V(X=430.04, Y=439.47, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=973.3
+[2026.10.31-08.58.31:167][172]LogTemp: Display: RESIDENT_TRACE t=487.94 who=Owner state=Patrol pos=V(X=-505.48, Y=-39.23, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=544.7
+[2026.10.31-08.58.31:167][172]LogTemp: Display: RESIDENT_TRACE t=487.94 who=Guest state=Patrol pos=V(X=434.44, Y=406.94, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=980.4
+[2026.10.31-08.58.31:667][202]LogTemp: Display: RESIDENT_TRACE t=488.44 who=Owner state=Patrol pos=V(X=-511.91, Y=-29.23, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=534.3
+[2026.10.31-08.58.31:667][202]LogTemp: Display: RESIDENT_TRACE t=488.44 who=Guest state=Patrol pos=V(X=435.07, Y=351.93, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=988.0
+[2026.10.31-08.58.32:170][232]LogTemp: Display: RESIDENT_TRACE t=488.94 who=Owner state=Patrol pos=V(X=-499.36, Y=24.70, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=481.4
+[2026.10.31-08.58.32:170][232]LogTemp: Display: RESIDENT_TRACE t=488.94 who=Guest state=Patrol pos=V(X=435.70, Y=296.57, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=998.7
+[2026.10.31-08.58.32:670][262]LogTemp: Display: RESIDENT_TRACE t=489.44 who=Owner state=Patrol pos=V(X=-486.91, Y=78.28, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=429.4
+[2026.10.31-08.58.32:670][262]LogTemp: Display: RESIDENT_TRACE t=489.44 who=Guest state=Patrol pos=V(X=436.33, Y=241.56, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=1012.2
+[2026.10.31-09.00.47:413][344]LogTemp: Display: RESIDENT_TRACE t=624.17 who=Owner state=Chase pos=V(X=-520.00, Y=381.41, Z=92.00) speed=178.3 anim=2 reach=0.00 catdist=504.4
+[2026.10.31-09.00.47:413][344]LogTemp: Display: RESIDENT_TRACE t=624.17 who=Guest state=Patrol pos=V(X=543.99, Y=405.34, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=838.5
+[2026.10.31-09.00.47:913][374]LogTemp: Display: RESIDENT_TRACE t=624.67 who=Owner state=Chase pos=V(X=-520.00, Y=250.09, Z=92.00) speed=265.0 anim=2 reach=0.00 catdist=414.1
+[2026.10.31-09.00.47:913][374]LogTemp: Display: RESIDENT_TRACE t=624.67 who=Guest state=Patrol pos=V(X=497.39, Y=420.87, Z=92.15) speed=75.5 anim=1 reach=0.00 catdist=806.0
+[2026.10.31-09.00.48:032][381]LogTemp: Display: SCENE_AUDIT: 145 mesh components recorded to /Users/joeyzhao/Documents/Deliver Chaos/Verification/release/source
+[2026.10.31-09.00.48:413][404]LogTemp: Display: RESIDENT_TRACE t=625.17 who=Owner state=Chase pos=V(X=-439.21, Y=173.74, Z=92.15) speed=265.0 anim=2 reach=0.00 catdist=303.8
+[2026.10.31-09.00.48:413][404]LogTemp: Display: RESIDENT_TRACE t=625.17 who=Guest state=Patrol pos=V(X=470.95, Y=429.68, Z=92.15) speed=40.7 anim=1 reach=0.00 catdist=788.3
+[2026.10.31-09.00.48:913][434]LogTemp: Display: RESIDENT_TRACE t=625.67 who=Owner state=Chase pos=V(X=-331.98, Y=95.86, Z=92.15) speed=265.0 anim=2 reach=0.00 catdist=171.3
+[2026.10.31-09.00.48:913][434]LogTemp: Display: RESIDENT_TRACE t=625.67 who=Guest state=Patrol pos=V(X=456.59, Y=434.47, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=779.0
+[2026.10.31-09.00.49:413][464]LogTemp: Display: RESIDENT_TRACE t=626.17 who=Owner state=Chase pos=V(X=-237.02, Y=26.89, Z=93.77) speed=141.7 anim=1 reach=0.18 catdist=54.2
+[2026.10.31-09.00.49:413][464]LogTemp: Display: RESIDENT_TRACE t=626.17 who=Guest state=Patrol pos=V(X=445.49, Y=438.17, Z=92.43) speed=0.0 anim=0 reach=0.00 catdist=771.9
+[2026.10.31-09.00.49:730][483]LogTemp: Display: RESIDENT_CAPTURE count=1 remaining=180.00 timeout=1 grace=8
+[2026.10.31-09.00.49:913][494]LogTemp: Display: RESIDENT_TRACE t=626.67 who=Owner state=Confused pos=V(X=-213.38, Y=9.72, Z=93.77) speed=0.0 anim=3 reach=0.00 catdist=11.8
+[2026.10.31-09.00.49:913][494]LogTemp: Display: RESIDENT_TRACE t=626.67 who=Guest state=Patrol pos=V(X=444.93, Y=385.25, Z=92.43) speed=110.0 anim=1 reach=0.00 catdist=768.5
+[2026.10.31-09.00.50:413][524]LogTemp: Display: RESIDENT_TRACE t=627.17 who=Owner state=Confused pos=V(X=-213.38, Y=9.72, Z=93.77) speed=0.0 anim=3 reach=0.00 catdist=11.8
+[2026.10.31-09.00.50:413][524]LogTemp: Display: RESIDENT_TRACE t=627.17 who=Guest state=Patrol pos=V(X=444.35, Y=330.23, Z=92.43) speed=110.0 anim=1 reach=0.00 catdist=741.9
+[2026.10.31-09.00.50:913][554]LogTemp: Display: RESIDENT_TRACE t=627.67 who=Owner state=Confused pos=V(X=-213.38, Y=9.72, Z=93.77) speed=0.0 anim=3 reach=0.00 catdist=11.8
+[2026.10.31-09.00.50:913][554]LogTemp: Display: RESIDENT_TRACE t=627.67 who=Guest state=Patrol pos=V(X=443.76, Y=275.23, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=718.6
+[2026.10.31-09.00.51:413][584]LogTemp: Display: RESIDENT_TRACE t=628.17 who=Owner state=Confused pos=V(X=-213.38, Y=9.72, Z=93.77) speed=0.0 anim=3 reach=0.00 catdist=11.8
+[2026.10.31-09.00.51:413][584]LogTemp: Display: RESIDENT_TRACE t=628.17 who=Guest state=Patrol pos=V(X=443.18, Y=220.22, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=698.8
+[2026.10.31-09.00.51:914][614]LogTemp: Display: RESIDENT_TRACE t=628.68 who=Owner state=Patrol pos=V(X=-231.23, Y=6.82, Z=93.77) speed=110.0 anim=1 reach=0.00 catdist=13.1
+[2026.10.31-09.00.51:914][614]LogTemp: Display: RESIDENT_TRACE t=628.68 who=Guest state=Patrol pos=V(X=442.60, Y=165.22, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=682.9
+[2026.10.31-09.00.52:414][644]LogTemp: Display: RESIDENT_TRACE t=629.18 who=Owner state=Patrol pos=V(X=-285.53, Y=-1.98, Z=93.77) speed=110.0 anim=1 reach=0.00 catdist=65.6
+[2026.10.31-09.00.52:414][644]LogTemp: Display: RESIDENT_TRACE t=629.18 who=Guest state=Patrol pos=V(X=442.01, Y=110.21, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=671.1
+[2026.10.31-09.00.52:914][674]LogTemp: Display: RESIDENT_TRACE t=629.68 who=Owner state=Patrol pos=V(X=-339.83, Y=-10.79, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=120.3
+[2026.10.31-09.00.52:914][674]LogTemp: Display: RESIDENT_TRACE t=629.68 who=Guest state=Patrol pos=V(X=441.43, Y=55.21, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=663.7
+[2026.10.31-09.00.53:414][704]LogTemp: Display: RESIDENT_TRACE t=630.18 who=Owner state=Patrol pos=V(X=-394.13, Y=-19.59, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=175.2
+[2026.10.31-09.00.53:414][704]LogTemp: Display: RESIDENT_TRACE t=630.18 who=Guest state=Patrol pos=V(X=440.85, Y=0.63, Z=92.18) speed=100.6 anim=1 reach=0.00 catdist=660.9
+[2026.10.31-09.00.53:914][734]LogTemp: Display: RESIDENT_TRACE t=630.68 who=Owner state=Patrol pos=V(X=-446.99, Y=-28.16, Z=92.56) speed=92.3 anim=1 reach=0.00 catdist=228.7
+[2026.10.31-09.00.53:914][734]LogTemp: Display: RESIDENT_TRACE t=630.68 who=Guest state=Patrol pos=V(X=440.46, Y=-36.52, Z=92.18) speed=54.3 anim=1 reach=0.00 catdist=661.5
+[2026.10.31-09.00.54:414][764]LogTemp: Display: RESIDENT_TRACE t=631.18 who=Owner state=Patrol pos=V(X=-480.62, Y=-33.62, Z=92.25) speed=49.8 anim=1 reach=0.00 catdist=262.8
+[2026.10.31-09.00.54:414][764]LogTemp: Display: RESIDENT_TRACE t=631.18 who=Guest state=Patrol pos=V(X=440.25, Y=-56.55, Z=92.18) speed=29.3 anim=1 reach=0.00 catdist=662.7
+[2026.10.31-09.00.54:914][794]LogTemp: Display: RESIDENT_TRACE t=631.68 who=Owner state=Patrol pos=V(X=-498.76, Y=-36.56, Z=92.25) speed=26.8 anim=1 reach=0.00 catdist=281.2
+[2026.10.31-09.00.54:914][794]LogTemp: Display: RESIDENT_TRACE t=631.68 who=Guest state=Patrol pos=V(X=440.12, Y=-68.98, Z=92.18) speed=24.2 anim=1 reach=0.00 catdist=663.7
+[2026.10.31-09.00.55:414][824]LogTemp: Display: RESIDENT_TRACE t=632.18 who=Owner state=Patrol pos=V(X=-510.80, Y=-38.51, Z=92.25) speed=24.2 anim=1 reach=0.00 catdist=293.3
+[2026.10.31-09.00.55:414][824]LogTemp: Display: RESIDENT_TRACE t=632.18 who=Guest state=Patrol pos=V(X=412.89, Y=-76.30, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=637.5
+[2026.10.31-09.00.55:914][854]LogTemp: Display: RESIDENT_TRACE t=632.68 who=Owner state=Patrol pos=V(X=-506.53, Y=-5.41, Z=92.25) speed=110.0 anim=1 reach=0.00 catdist=286.6
+[2026.10.31-09.00.55:914][854]LogTemp: Display: RESIDENT_TRACE t=632.68 who=Guest state=Patrol pos=V(X=358.05, Y=-80.48, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=583.6
+[2026.10.31-09.00.56:414][884]LogTemp: Display: RESIDENT_TRACE t=633.18 who=Owner state=Patrol pos=V(X=-494.04, Y=48.16, Z=92.25) speed=110.0 anim=1 reach=0.00 catdist=278.2
+[2026.10.31-09.00.56:414][884]LogTemp: Display: RESIDENT_TRACE t=633.18 who=Guest state=Patrol pos=V(X=303.20, Y=-84.67, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=530.0
+[2026.10.31-09.00.56:914][914]LogTemp: Display: RESIDENT_TRACE t=633.68 who=Owner state=Patrol pos=V(X=-481.55, Y=101.73, Z=92.25) speed=110.0 anim=1 reach=0.00 catdist=280.6
+[2026.10.31-09.00.56:914][914]LogTemp: Display: RESIDENT_TRACE t=633.68 who=Guest state=Patrol pos=V(X=248.36, Y=-88.85, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=476.7
+[2026.10.31-09.00.57:414][944]LogTemp: Display: RESIDENT_TRACE t=634.18 who=Owner state=Patrol pos=V(X=-469.07, Y=155.29, Z=92.25) speed=110.0 anim=1 reach=0.00 catdist=293.5
+[2026.10.31-09.00.57:414][944]LogTemp: Display: RESIDENT_TRACE t=634.18 who=Guest state=Patrol pos=V(X=193.52, Y=-93.03, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=423.9
+[2026.10.31-09.00.57:914][974]LogTemp: Display: RESIDENT_TRACE t=634.68 who=Owner state=Patrol pos=V(X=-456.89, Y=207.54, Z=92.25) speed=92.8 anim=1 reach=0.00 catdist=314.9
+[2026.10.31-09.00.57:914][974]LogTemp: Display: RESIDENT_TRACE t=634.68 who=Guest state=Patrol pos=V(X=138.67, Y=-97.22, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=371.6
+[2026.10.31-09.00.58:414][  4]LogTemp: Display: RESIDENT_TRACE t=635.18 who=Owner state=Patrol pos=V(X=-449.11, Y=240.92, Z=92.52) speed=50.1 anim=1 reach=0.00 catdist=332.5
+[2026.10.31-09.00.58:414][  4]LogTemp: Display: RESIDENT_TRACE t=635.18 who=Guest state=Patrol pos=V(X=83.82, Y=-101.40, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=320.3
+[2026.10.31-09.00.58:914][ 34]LogTemp: Display: RESIDENT_TRACE t=635.68 who=Owner state=Patrol pos=V(X=-444.91, Y=258.92, Z=92.52) speed=27.0 anim=1 reach=0.00 catdist=343.0
+[2026.10.31-09.00.58:914][ 34]LogTemp: Display: RESIDENT_TRACE t=635.68 who=Guest state=Patrol pos=V(X=28.98, Y=-105.58, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=270.4
+[2026.10.31-09.00.59:414][ 64]LogTemp: Display: RESIDENT_TRACE t=636.18 who=Owner state=Patrol pos=V(X=-442.14, Y=270.81, Z=92.27) speed=24.2 anim=1 reach=0.00 catdist=350.3
+[2026.10.31-09.00.59:414][ 64]LogTemp: Display: RESIDENT_TRACE t=636.18 who=Guest state=Patrol pos=V(X=-25.72, Y=-100.01, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=218.5
+[2026.10.31-09.00.59:914][ 94]LogTemp: Display: RESIDENT_TRACE t=636.68 who=Owner state=Patrol pos=V(X=-407.72, Y=282.51, Z=92.27) speed=110.0 anim=1 reach=0.00 catdist=339.2
+[2026.10.31-09.00.59:914][ 94]LogTemp: Display: RESIDENT_TRACE t=636.68 who=Guest state=Patrol pos=V(X=-80.36, Y=-93.74, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=168.2
+[2026.10.31-09.01.00:414][124]LogTemp: Display: RESIDENT_TRACE t=637.18 who=Owner state=Patrol pos=V(X=-354.27, Y=295.51, Z=92.27) speed=110.0 anim=1 reach=0.00 catdist=324.6
+[2026.10.31-09.01.00:414][124]LogTemp: Display: RESIDENT_TRACE t=637.18 who=Guest state=Patrol pos=V(X=-132.87, Y=-84.42, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=121.3
+[2026.10.31-09.01.00:914][154]LogTemp: Display: RESIDENT_TRACE t=637.68 who=Owner state=Patrol pos=V(X=-300.83, Y=308.50, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=318.9
+[2026.10.31-09.01.00:914][154]LogTemp: Display: RESIDENT_TRACE t=637.68 who=Guest state=Patrol pos=V(X=-175.92, Y=-50.71, Z=93.90) speed=102.0 anim=1 reach=0.00 catdist=67.2
+[2026.10.31-09.01.01:414][184]LogTemp: Display: RESIDENT_TRACE t=638.18 who=Owner state=Patrol pos=V(X=-247.38, Y=321.49, Z=92.58) speed=110.0 anim=1 reach=0.00 catdist=322.7
+[2026.10.31-09.01.01:414][184]LogTemp: Display: RESIDENT_TRACE t=638.18 who=Guest state=Patrol pos=V(X=-226.42, Y=-30.61, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=31.3
+[2026.10.31-09.01.01:914][214]LogTemp: Display: RESIDENT_TRACE t=638.68 who=Owner state=Patrol pos=V(X=-193.94, Y=334.49, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=335.5
+[2026.10.31-09.01.01:914][214]LogTemp: Display: RESIDENT_TRACE t=638.68 who=Guest state=Patrol pos=V(X=-281.02, Y=-27.29, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=66.8
+[2026.10.31-09.01.02:414][244]LogTemp: Display: RESIDENT_TRACE t=639.18 who=Owner state=Patrol pos=V(X=-140.49, Y=347.49, Z=92.16) speed=110.0 anim=1 reach=0.00 catdist=356.5
+[2026.10.31-09.01.02:414][244]LogTemp: Display: RESIDENT_TRACE t=639.18 who=Guest state=Patrol pos=V(X=-335.95, Y=-30.21, Z=92.30) speed=110.0 anim=1 reach=0.00 catdist=119.8
+[2026.10.31-09.01.02:971][270]LogTemp: Display: RESIDENT_TRACE t=639.73 who=Owner state=Patrol pos=V(X=-81.20, Y=361.90, Z=92.16) speed=110.0 anim=1 reach=0.00 catdist=387.6
+[2026.10.31-09.01.02:971][270]LogTemp: Display: RESIDENT_TRACE t=639.73 who=Guest state=Patrol pos=V(X=-396.88, Y=-33.45, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=180.0
+[2026.10.31-09.01.03:485][298]LogTemp: Display: RESIDENT_TRACE t=640.25 who=Owner state=Patrol pos=V(X=-26.09, Y=375.30, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=422.4
+[2026.10.31-09.01.03:485][298]LogTemp: Display: RESIDENT_TRACE t=640.25 who=Guest state=Patrol pos=V(X=-450.93, Y=-36.33, Z=92.52) speed=86.3 anim=1 reach=0.00 catdist=233.8
+[2026.10.31-09.01.03:986][328]LogTemp: Display: RESIDENT_TRACE t=640.75 who=Owner state=Patrol pos=V(X=27.49, Y=388.33, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=460.5
+[2026.10.31-09.01.03:986][328]LogTemp: Display: RESIDENT_TRACE t=640.75 who=Guest state=Patrol pos=V(X=-482.81, Y=-38.02, Z=92.15) speed=46.5 anim=1 reach=0.00 catdist=265.5
+[2026.10.31-09.01.04:486][358]LogTemp: Display: RESIDENT_TRACE t=641.25 who=Owner state=Patrol pos=V(X=80.97, Y=401.33, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=501.7
+[2026.10.31-09.01.04:486][358]LogTemp: Display: RESIDENT_TRACE t=641.25 who=Guest state=Patrol pos=V(X=-499.95, Y=-38.93, Z=92.15) speed=25.0 anim=1 reach=0.00 catdist=282.6
+[2026.10.31-09.01.04:987][388]LogTemp: Display: RESIDENT_TRACE t=641.75 who=Owner state=Patrol pos=V(X=134.42, Y=414.33, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=545.2
+[2026.10.31-09.01.04:987][388]LogTemp: Display: RESIDENT_TRACE t=641.75 who=Guest state=Patrol pos=V(X=-512.04, Y=-39.58, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=294.7
+[2026.10.31-09.01.05:494][418]LogTemp: Display: RESIDENT_TRACE t=642.25 who=Owner state=Patrol pos=V(X=189.21, Y=424.74, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=589.8
+[2026.10.31-09.01.05:494][418]LogTemp: Display: RESIDENT_TRACE t=642.25 who=Guest state=Patrol pos=V(X=-504.42, Y=1.91, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=284.4
+[2026.10.31-09.01.05:994][448]LogTemp: Display: RESIDENT_TRACE t=642.76 who=Owner state=Patrol pos=V(X=243.42, Y=429.54, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=631.9
+[2026.10.31-09.01.05:994][448]LogTemp: Display: RESIDENT_TRACE t=642.76 who=Guest state=Patrol pos=V(X=-492.01, Y=55.50, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=277.6
+[2026.10.31-09.01.06:494][478]LogTemp: Display: RESIDENT_TRACE t=643.26 who=Owner state=Patrol pos=V(X=298.35, Y=432.46, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=675.1
+[2026.10.31-09.01.06:494][478]LogTemp: Display: RESIDENT_TRACE t=643.26 who=Guest state=Patrol pos=V(X=-479.59, Y=109.08, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=281.6
+[2026.10.31-09.01.06:994][508]LogTemp: Display: RESIDENT_TRACE t=643.76 who=Owner state=Patrol pos=V(X=353.26, Y=435.38, Z=92.46) speed=108.4 anim=1 reach=0.00 catdist=719.9
+[2026.10.31-09.01.06:994][508]LogTemp: Display: RESIDENT_TRACE t=643.76 who=Guest state=Patrol pos=V(X=-467.18, Y=162.68, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=295.9
+[2026.10.31-09.01.07:494][538]LogTemp: Display: RESIDENT_TRACE t=644.26 who=Owner state=Patrol pos=V(X=393.23, Y=437.51, Z=92.15) speed=58.4 anim=1 reach=0.00 catdist=753.3
+[2026.10.31-09.01.07:494][538]LogTemp: Display: RESIDENT_TRACE t=644.26 who=Guest state=Patrol pos=V(X=-455.41, Y=213.47, Z=92.15) speed=85.2 anim=1 reach=0.00 catdist=317.8
+[2026.10.31-09.01.07:994][568]LogTemp: Display: RESIDENT_TRACE t=644.76 who=Owner state=Patrol pos=V(X=414.78, Y=438.66, Z=92.15) speed=31.5 anim=1 reach=0.00 catdist=771.6
+[2026.10.31-09.01.07:994][568]LogTemp: Display: RESIDENT_TRACE t=644.76 who=Guest state=Patrol pos=V(X=-448.31, Y=244.12, Z=92.44) speed=45.9 anim=1 reach=0.00 catdist=334.2
+[2026.10.31-09.01.08:494][598]LogTemp: Display: RESIDENT_TRACE t=645.26 who=Owner state=Patrol pos=V(X=427.55, Y=439.34, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=782.5
+[2026.10.31-09.01.08:494][598]LogTemp: Display: RESIDENT_TRACE t=645.26 who=Guest state=Patrol pos=V(X=-444.48, Y=260.65, Z=92.44) speed=24.8 anim=1 reach=0.00 catdist=344.0
+[2026.10.31-09.01.08:994][628]LogTemp: Display: RESIDENT_TRACE t=645.76 who=Owner state=Patrol pos=V(X=434.61, Y=419.79, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=777.6
+[2026.10.31-09.01.08:994][628]LogTemp: Display: RESIDENT_TRACE t=645.76 who=Guest state=Patrol pos=V(X=-441.75, Y=272.44, Z=92.18) speed=24.2 anim=1 reach=0.00 catdist=351.3
+[2026.10.31-09.01.09:494][658]LogTemp: Display: RESIDENT_TRACE t=646.26 who=Owner state=Patrol pos=V(X=435.20, Y=364.79, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=749.9
+[2026.10.31-09.01.09:494][658]LogTemp: Display: RESIDENT_TRACE t=646.26 who=Guest state=Patrol pos=V(X=-400.57, Y=284.31, Z=92.18) speed=110.0 anim=1 reach=0.00 catdist=336.8
+[2026.10.31-09.01.09:994][688]LogTemp: Display: RESIDENT_TRACE t=646.76 who=Owner state=Patrol pos=V(X=435.80, Y=309.78, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=725.3
+[2026.10.31-09.01.09:994][688]LogTemp: Display: RESIDENT_TRACE t=646.76 who=Guest state=Patrol pos=V(X=-347.11, Y=297.30, Z=92.43) speed=110.0 anim=1 reach=0.00 catdist=323.3
+[2026.10.31-09.01.10:494][718]LogTemp: Display: RESIDENT_TRACE t=647.26 who=Owner state=Patrol pos=V(X=436.39, Y=254.78, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=704.1
+[2026.10.31-09.01.10:494][718]LogTemp: Display: RESIDENT_TRACE t=647.26 who=Guest state=Patrol pos=V(X=-293.66, Y=310.29, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=318.9
+[2026.10.31-09.01.10:994][748]LogTemp: Display: RESIDENT_TRACE t=647.76 who=Owner state=Patrol pos=V(X=436.98, Y=199.78, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=686.7
+[2026.10.31-09.01.10:994][748]LogTemp: Display: RESIDENT_TRACE t=647.76 who=Guest state=Patrol pos=V(X=-240.22, Y=323.28, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=323.9
+[2026.10.31-09.01.11:494][778]LogTemp: Display: RESIDENT_TRACE t=648.26 who=Owner state=Patrol pos=V(X=437.58, Y=144.78, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=673.3
+[2026.10.31-09.01.11:495][778]LogTemp: Display: RESIDENT_TRACE t=648.26 who=Guest state=Patrol pos=V(X=-186.77, Y=336.27, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=337.9
+[2026.10.31-09.01.11:995][808]LogTemp: Display: RESIDENT_TRACE t=648.76 who=Owner state=Patrol pos=V(X=438.17, Y=89.76, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=664.3
+[2026.10.31-09.01.11:995][808]LogTemp: Display: RESIDENT_TRACE t=648.76 who=Guest state=Patrol pos=V(X=-133.30, Y=349.27, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=359.9
+[2026.10.31-09.01.12:495][838]LogTemp: Display: RESIDENT_TRACE t=649.26 who=Owner state=Patrol pos=V(X=438.76, Y=34.76, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=659.7
+[2026.10.31-09.01.12:495][838]LogTemp: Display: RESIDENT_TRACE t=649.26 who=Guest state=Patrol pos=V(X=-79.85, Y=362.26, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=388.4
+[2026.10.31-09.01.12:995][868]LogTemp: Display: RESIDENT_TRACE t=649.76 who=Owner state=Patrol pos=V(X=439.31, Y=-15.91, Z=92.15) speed=80.0 anim=1 reach=0.00 catdist=659.5
+[2026.10.31-09.01.12:995][868]LogTemp: Display: RESIDENT_TRACE t=649.76 who=Guest state=Patrol pos=V(X=-26.40, Y=375.25, Z=92.19) speed=110.0 anim=1 reach=0.00 catdist=422.2
+[2026.10.31-09.01.13:495][898]LogTemp: Display: RESIDENT_TRACE t=650.26 who=Owner state=Patrol pos=V(X=439.63, Y=-45.43, Z=92.15) speed=43.1 anim=1 reach=0.00 catdist=661.2
+[2026.10.31-09.01.13:495][898]LogTemp: Display: RESIDENT_TRACE t=650.26 who=Guest state=Patrol pos=V(X=27.04, Y=388.24, Z=92.19) speed=110.0 anim=1 reach=0.00 catdist=460.2
+[2026.10.31-09.01.13:995][928]LogTemp: Display: RESIDENT_TRACE t=650.76 who=Owner state=Patrol pos=V(X=439.80, Y=-61.38, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=662.6
+[2026.10.31-09.01.13:995][928]LogTemp: Display: RESIDENT_TRACE t=650.76 who=Guest state=Patrol pos=V(X=80.49, Y=401.23, Z=92.24) speed=110.0 anim=1 reach=0.00 catdist=501.3
+[2026.10.31-09.01.14:495][958]LogTemp: Display: RESIDENT_TRACE t=651.26 who=Owner state=Patrol pos=V(X=439.93, Y=-73.48, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=664.0
+[2026.10.31-09.01.14:495][958]LogTemp: Display: RESIDENT_TRACE t=651.26 who=Guest state=Patrol pos=V(X=133.93, Y=414.22, Z=92.24) speed=110.0 anim=1 reach=0.00 catdist=544.8
+[2026.10.31-09.01.14:996][988]LogTemp: Display: RESIDENT_TRACE t=651.76 who=Owner state=Patrol pos=V(X=392.65, Y=-77.89, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=617.6
+[2026.10.31-09.01.14:996][988]LogTemp: Display: RESIDENT_TRACE t=651.76 who=Guest state=Patrol pos=V(X=187.95, Y=424.51, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=588.8
+[2026.10.31-09.01.15:495][ 18]LogTemp: Display: RESIDENT_TRACE t=652.26 who=Owner state=Patrol pos=V(X=337.76, Y=-82.07, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=563.8
+[2026.10.31-09.01.15:495][ 18]LogTemp: Display: RESIDENT_TRACE t=652.26 who=Guest state=Patrol pos=V(X=242.12, Y=429.51, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=630.9
+[2026.10.31-09.01.15:996][ 48]LogTemp: Display: RESIDENT_TRACE t=652.76 who=Owner state=Patrol pos=V(X=282.91, Y=-86.25, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=510.2
+[2026.10.31-09.01.15:996][ 48]LogTemp: Display: RESIDENT_TRACE t=652.76 who=Guest state=Patrol pos=V(X=297.05, Y=432.42, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=674.0
+[2026.10.31-09.01.16:496][ 78]LogTemp: Display: RESIDENT_TRACE t=653.26 who=Owner state=Patrol pos=V(X=228.05, Y=-90.43, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=457.1
+[2026.10.31-09.01.16:496][ 78]LogTemp: Display: RESIDENT_TRACE t=653.26 who=Guest state=Patrol pos=V(X=351.99, Y=435.33, Z=92.51) speed=110.0 anim=1 reach=0.00 catdist=718.8
+[2026.10.31-09.01.16:996][108]LogTemp: Display: RESIDENT_TRACE t=653.76 who=Owner state=Patrol pos=V(X=173.20, Y=-94.61, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=404.4
+[2026.10.31-09.01.16:996][108]LogTemp: Display: RESIDENT_TRACE t=653.76 who=Guest state=Patrol pos=V(X=392.54, Y=437.48, Z=92.24) speed=59.3 anim=1 reach=0.00 catdist=752.7
+[2026.10.31-09.01.17:496][138]LogTemp: Display: RESIDENT_TRACE t=654.26 who=Owner state=Patrol pos=V(X=118.35, Y=-98.79, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=352.5
+[2026.10.31-09.01.17:496][138]LogTemp: Display: RESIDENT_TRACE t=654.26 who=Guest state=Patrol pos=V(X=414.41, Y=438.64, Z=92.24) speed=32.0 anim=1 reach=0.00 catdist=771.3
+[2026.10.31-09.01.17:996][168]LogTemp: Display: RESIDENT_TRACE t=654.76 who=Owner state=Patrol pos=V(X=63.49, Y=-102.97, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=301.6
+[2026.10.31-09.01.17:996][168]LogTemp: Display: RESIDENT_TRACE t=654.76 who=Guest state=Patrol pos=V(X=427.26, Y=439.32, Z=92.24) speed=24.2 anim=1 reach=0.00 catdist=782.3
+[2026.10.31-09.01.18:496][198]LogTemp: Display: RESIDENT_TRACE t=655.26 who=Owner state=Patrol pos=V(X=8.67, Y=-104.00, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=251.2
+[2026.10.31-09.01.18:496][198]LogTemp: Display: RESIDENT_TRACE t=655.26 who=Guest state=Patrol pos=V(X=434.34, Y=419.77, Z=92.24) speed=110.0 anim=1 reach=0.00 catdist=777.4
+[2026.10.31-09.01.18:996][228]LogTemp: Display: RESIDENT_TRACE t=655.76 who=Owner state=Patrol pos=V(X=-45.98, Y=-97.72, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=199.6
+[2026.10.31-09.01.18:996][228]LogTemp: Display: RESIDENT_TRACE t=655.76 who=Guest state=Patrol pos=V(X=434.96, Y=364.77, Z=92.24) speed=110.0 anim=1 reach=0.00 catdist=749.7
+[2026.10.31-09.01.19:496][258]LogTemp: Display: RESIDENT_TRACE t=656.26 who=Owner state=Patrol pos=V(X=-100.62, Y=-91.43, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=150.4
+[2026.10.31-09.01.19:496][258]LogTemp: Display: RESIDENT_TRACE t=656.26 who=Guest state=Patrol pos=V(X=435.58, Y=309.77, Z=92.24) speed=110.0 anim=1 reach=0.00 catdist=725.1
+[2026.10.31-09.01.19:996][288]LogTemp: Display: RESIDENT_TRACE t=656.76 who=Owner state=Patrol pos=V(X=-149.05, Y=-72.09, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=101.2
+[2026.10.31-09.01.19:996][288]LogTemp: Display: RESIDENT_TRACE t=656.76 who=Guest state=Patrol pos=V(X=436.21, Y=254.75, Z=92.24) speed=110.0 anim=1 reach=0.00 catdist=703.9
+[2026.10.31-09.01.20:496][318]LogTemp: Display: RESIDENT_TRACE t=657.26 who=Owner state=Patrol pos=V(X=-193.89, Y=-41.23, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=48.8
+[2026.10.31-09.01.20:496][318]LogTemp: Display: RESIDENT_TRACE t=657.26 who=Guest state=Patrol pos=V(X=436.83, Y=199.75, Z=92.24) speed=110.0 anim=1 reach=0.00 catdist=686.5
+[2026.10.31-09.01.20:996][348]LogTemp: Display: RESIDENT_TRACE t=657.76 who=Owner state=Patrol pos=V(X=-246.44, Y=-27.05, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=37.8
+[2026.10.31-09.01.20:996][348]LogTemp: Display: RESIDENT_TRACE t=657.76 who=Guest state=Patrol pos=V(X=437.45, Y=144.74, Z=92.24) speed=110.0 anim=1 reach=0.00 catdist=673.2
+[2026.10.31-09.01.21:497][378]LogTemp: Display: RESIDENT_TRACE t=658.26 who=Owner state=Patrol pos=V(X=-301.32, Y=-28.32, Z=92.24) speed=110.0 anim=1 reach=0.00 catdist=86.1
+[2026.10.31-09.01.21:497][378]LogTemp: Display: RESIDENT_TRACE t=658.26 who=Guest state=Patrol pos=V(X=438.08, Y=89.74, Z=92.24) speed=110.0 anim=1 reach=0.00 catdist=664.2
+[2026.10.31-09.01.21:996][408]LogTemp: Display: RESIDENT_TRACE t=658.76 who=Owner state=Patrol pos=V(X=-356.25, Y=-31.25, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=139.8
+[2026.10.31-09.01.21:996][408]LogTemp: Display: RESIDENT_TRACE t=658.76 who=Guest state=Patrol pos=V(X=438.70, Y=34.74, Z=92.24) speed=110.0 anim=1 reach=0.00 catdist=659.6
+[2026.10.31-09.01.22:497][438]LogTemp: Display: RESIDENT_TRACE t=659.26 who=Owner state=Patrol pos=V(X=-411.19, Y=-34.19, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=194.2
+[2026.10.31-09.01.22:497][438]LogTemp: Display: RESIDENT_TRACE t=659.26 who=Guest state=Patrol pos=V(X=439.27, Y=-15.93, Z=92.24) speed=79.9 anim=1 reach=0.00 catdist=659.5
+[2026.10.31-09.01.22:997][468]LogTemp: Display: RESIDENT_TRACE t=659.76 who=Owner state=Patrol pos=V(X=-460.03, Y=-36.80, Z=92.15) speed=74.9 anim=1 reach=0.00 catdist=242.8
+[2026.10.31-09.01.22:997][468]LogTemp: Display: RESIDENT_TRACE t=659.76 who=Guest state=Patrol pos=V(X=439.61, Y=-45.45, Z=92.24) speed=43.1 anim=1 reach=0.00 catdist=661.2
+[2026.10.31-09.01.23:497][498]LogTemp: Display: RESIDENT_TRACE t=660.26 who=Owner state=Patrol pos=V(X=-487.66, Y=-38.27, Z=92.15) speed=40.4 anim=1 reach=0.00 catdist=270.4
+[2026.10.31-09.01.23:497][498]LogTemp: Display: RESIDENT_TRACE t=660.26 who=Guest state=Patrol pos=V(X=439.79, Y=-61.39, Z=92.24) speed=24.2 anim=1 reach=0.00 catdist=662.6
+[2026.10.31-09.01.23:997][528]LogTemp: Display: RESIDENT_TRACE t=660.76 who=Owner state=Patrol pos=V(X=-502.68, Y=-39.08, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=285.4
+[2026.10.31-09.01.23:997][528]LogTemp: Display: RESIDENT_TRACE t=660.76 who=Guest state=Patrol pos=V(X=439.93, Y=-73.49, Z=92.24) speed=24.2 anim=1 reach=0.00 catdist=664.0
+[2026.10.31-09.01.24:497][558]LogTemp: Display: RESIDENT_TRACE t=661.26 who=Owner state=Patrol pos=V(X=-514.36, Y=-39.70, Z=92.15) speed=0.0 anim=0 reach=0.00 catdist=297.0
+[2026.10.31-09.01.24:497][558]LogTemp: Display: RESIDENT_TRACE t=661.26 who=Guest state=Patrol pos=V(X=392.65, Y=-77.90, Z=92.24) speed=110.0 anim=1 reach=0.00 catdist=617.6
+[2026.10.31-09.01.24:997][588]LogTemp: Display: RESIDENT_TRACE t=661.76 who=Owner state=Patrol pos=V(X=-502.37, Y=11.85, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=282.6
+[2026.10.31-09.01.24:997][588]LogTemp: Display: RESIDENT_TRACE t=661.76 who=Guest state=Patrol pos=V(X=337.80, Y=-82.08, Z=92.34) speed=110.0 anim=1 reach=0.00 catdist=563.8
+[2026.10.31-09.01.25:497][618]LogTemp: Display: RESIDENT_TRACE t=662.26 who=Owner state=Patrol pos=V(X=-489.91, Y=65.42, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=277.7
+[2026.10.31-09.01.25:497][618]LogTemp: Display: RESIDENT_TRACE t=662.26 who=Guest state=Patrol pos=V(X=282.96, Y=-86.25, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=510.3
+[2026.10.31-09.01.25:997][648]LogTemp: Display: RESIDENT_TRACE t=662.76 who=Owner state=Patrol pos=V(X=-477.45, Y=119.00, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=283.6
+[2026.10.31-09.01.25:997][648]LogTemp: Display: RESIDENT_TRACE t=662.76 who=Guest state=Patrol pos=V(X=228.11, Y=-90.43, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=457.1
+[2026.10.31-09.01.26:497][678]LogTemp: Display: RESIDENT_TRACE t=663.26 who=Owner state=Patrol pos=V(X=-464.99, Y=172.57, Z=92.15) speed=110.0 anim=1 reach=0.00 catdist=299.7
+[2026.10.31-09.01.26:497][678]LogTemp: Display: RESIDENT_TRACE t=663.26 who=Guest state=Patrol pos=V(X=173.27, Y=-94.61, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=404.5
+[2026.10.31-09.01.26:997][708]LogTemp: Display: RESIDENT_TRACE t=663.76 who=Owner state=Patrol pos=V(X=-453.81, Y=220.63, Z=92.41) speed=76.1 anim=1 reach=0.00 catdist=321.5
+[2026.10.31-09.01.26:997][708]LogTemp: Display: RESIDENT_TRACE t=663.76 who=Guest state=Patrol pos=V(X=118.42, Y=-98.79, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=352.5
+[2026.10.31-09.01.27:497][738]LogTemp: Display: RESIDENT_TRACE t=664.26 who=Owner state=Patrol pos=V(X=-447.45, Y=247.98, Z=92.41) speed=41.0 anim=1 reach=0.00 catdist=336.5
+[2026.10.31-09.01.27:497][738]LogTemp: Display: RESIDENT_TRACE t=664.26 who=Guest state=Patrol pos=V(X=63.58, Y=-102.97, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=301.7
+[2026.10.31-09.01.27:997][768]LogTemp: Display: RESIDENT_TRACE t=664.76 who=Owner state=Patrol pos=V(X=-444.00, Y=262.82, Z=92.15) speed=24.2 anim=1 reach=0.00 catdist=345.3
+[2026.10.31-09.01.27:997][768]LogTemp: Display: RESIDENT_TRACE t=664.76 who=Guest state=Patrol pos=V(X=8.75, Y=-104.00, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=251.3
+[2026.10.31-09.01.28:498][798]LogTemp: Display: RESIDENT_TRACE t=665.26 who=Owner state=Patrol pos=V(X=-441.34, Y=274.22, Z=92.15) speed=0.0 anim=0 reach=0.00 catdist=352.4
+[2026.10.31-09.01.28:498][798]LogTemp: Display: RESIDENT_TRACE t=665.26 who=Guest state=Patrol pos=V(X=-45.91, Y=-97.72, Z=93.90) speed=110.0 anim=1 reach=0.00 catdist=199.6

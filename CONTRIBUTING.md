@@ -5,7 +5,7 @@
 1. 克隆仓库。不要将只下载的单个源码文件当作完整工程；角色使用 Content 中的二进制资产。
 2. 安装 Unreal Engine 5.8.4。Mac 当前通过验证的是 Xcode 26.1.1 与相应 Metal 工具链；Windows 尚未验证。
 3. 在 macOS 中运行 `bash Tools/build_mac.sh`；引擎不在默认位置时设置 `UNREAL_ENGINE_ROOT`，Xcode 路径不同时设置 `BAD_CAT_DEVELOPER_DIR`。
-4. 打开 `BadCatLab.uproject`，使用 `/Game/Maps/LivingRoom`。独立应用生成到 `Builds/Mac/BadCatLab.app`。
+4. 打开 `BadCatLab.uproject`，使用 `/Game/Maps/LivingRoom`。默认使用 Shipping 配置，独立应用生成到 `Builds/Mac/BadCatLab.app`；可通过 `BAD_CAT_CONFIGURATION=Development` 构建调试版。
 5. 普通代码协作不需要重新生成模型。只有修改制作源文件时才运行对应 Blender / 编辑器导入脚本。
 
 ## 日常分支流程
@@ -60,3 +60,8 @@ ElevenLabs 本地试听配音与猫梗动图不在公共仓库，需要团队另
 ## Windows 完整工程交接
 
 完整本地工程与 Mac 试玩包保存在 `~/Documents/Deliver Chaos`，Windows 协作者的环境、脚本与验收步骤见 [WINDOWS_README.md](WINDOWS_README.md)。公开 Git 仓库仍排除许可要求保留本地的模型；完整交接 ZIP 只用于有权参与本项目的内部协作。Windows 构建与实机验证完成前，不将交接工程标记为 Windows 可玩版本。
+
+
+## 新男主人与最终协作包
+
+`Content/ResidentsLocal` 保存用户提供的新男主人和原始材质；完整 Windows 内部工程包包含这些资源，公开 GitHub 继续排除独立人物资产。使用完整工程无需重新导入。若重新导入，用 `Tools/import_resident_avatar.py` 在最后绑定并强制保存八个材质槽，再用 `Tools/verify_resident_materials.py` 独立回读。`Tools/make_windows_handoff.py --fast` 按最新授权快速导出，保留逐文件清单但不追加归档复验。

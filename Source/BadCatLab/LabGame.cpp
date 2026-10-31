@@ -1,4 +1,6 @@
 #include "LabGame.h"
+#include "TimerManager.h"
+#include "LabCatAnimation.h"
 #include "LabResident.h"
 #include "LabCatalog.h"
 #include "Engine/Texture2D.h"
@@ -40,6 +42,7 @@ static void Paint(UStaticMeshComponent* C,FLinearColor Color){
  if(!M) M=LoadObject<UMaterialInterface>(nullptr,TEXT("/Engine/BasicShapes/BasicShapeMaterial.BasicShapeMaterial"));
  if(M){auto D=UMaterialInstanceDynamic::Create(M,C);D->SetVectorParameterValue(TEXT("Color"),Color);bool Applied=false;for(int32 I=0;I<C->GetNumMaterials();I++){if(C->GetMaterial(I)&&C->GetMaterial(I)->GetName().Contains(TEXT("Prop_Base"))){C->SetMaterial(I,D);Applied=true;}}if(!Applied&&C->GetNumMaterials()<=1)C->SetMaterial(0,D);}
 }
+static bool IsFragileProp(const FString& Name){return Name.Contains(TEXT("杯"))||Name.Contains(TEXT("瓶"))||Name.Contains(TEXT("碗"))||Name.Contains(TEXT("水晶"))||Name.Contains(TEXT("茶壶"))||Name.Contains(TEXT("糖果罐"))||Name.Contains(TEXT("台灯"));}
 static ALabGameMode* GM(UWorld* W){return Cast<ALabGameMode>(W->GetAuthGameMode());}
 ALabProp::ALabProp(){PrimaryActorTick.bCanEverTick=true; Body=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Body"));SetRootComponent(Body);Body->SetStaticMesh(Shape(TEXT("Cube")));Body->SetCollisionProfileName(TEXT("PhysicsActor"));Body->SetNotifyRigidBodyCollision(true);Body->SetUseCCD(true);Body->OnComponentHit.AddDynamic(this,&ALabProp::Hit);}
 void ALabProp::Configure(int32 Id,FVector Scale,FLinearColor Color,bool Ball,bool IsHeavy,bool Bounce){
@@ -55,6 +58,7 @@ void ALabProp::Strike(int32 Chain,FVector V){auto G=GM(GetWorld());if(!G||!G->Pl
 void ALabProp::Hit(UPrimitiveComponent*,AActor* Other,UPrimitiveComponent*,FVector Impulse,const FHitResult& R){
  auto G=GM(GetWorld());if(!G||!G->Playing())return;
  auto P=Cast<ALabProp>(Other);
+ if(GentlyPushed&&!DropSoundPlayed&&GetActorLocation().Z<InitialPosition.Z-10&&Impulse.Size()>25&&R.ImpactNormal.Z>.35f){DropSoundPlayed=true;G->WorldSound(IsFragileProp(ItemName)?TEXT("Glass"):TEXT("Landing"),.3f);}
  if(P && Impulse.Size()>15){if(G->Active(ChainId)&&!G->Active(P->ChainId)){P->ChainId=ChainId;G->Affect(P,ChainId);}else if(!G->Active(ChainId)&&G->Active(P->ChainId)){ChainId=P->ChainId;G->Affect(this,ChainId);}}
  if(Mutated && G->Active(ChainId)&&Impulse.Size()>80 && Bounces<4){Bounces++;Body->AddImpulse(R.ImpactNormal*(160),NAME_None,true);if(Bounces==4){Physics->Restitution=.15f;Body->SetPhysMaterialOverride(Physics);Body->SetLinearDamping(2);}}
 }
@@ -89,33 +93,33 @@ void ALabCat::Right(float V){auto G=GM(GetWorld());if(G&&G->Playing()&&CaughtTim
 void ALabCat::Turn(float){}
 void ALabCat::Look(float){}
 void ALabCat::TogglePractice(){if(auto G=GM(GetWorld()))G->SetPractice();}
-void ALabCat::Press(){auto G=GM(GetWorld());if(G&&G->Playing()&&CaughtTime<=0&&!UGameplayStatics::IsGamePaused(GetWorld())){Charging=true;Innocent=false;Pushing=false;Charge=0;Idle=0;}}
+void ALabCat::Press(){auto G=GM(GetWorld());if(G&&G->Playing()&&CaughtTime<=0&&!UGameplayStatics::IsGamePaused(GetWorld())){CancelContact();Charging=true;Innocent=false;Pushing=false;Charge=0;Idle=0;}}
 void ALabCat::Release(){
  auto G=GM(GetWorld());if(!Charging||!G||!G->Playing())return;Charging=false;
  const bool Pounce=Charge>=.25f;const bool Super=Pounce&&Charge>=1.05f&&G->Pounces>0;
  const int32 Chain=G->NewChain(Pounce);G->Swipes++;if(Super){G->Pounces--;G->UsedPounces++;}
  FVector Dir=AttackDirection();auto Target=FindTarget(Pounce?235:170,.10f);
  if(Target){Dir=(Target->GetActorLocation()-GetActorLocation()).GetSafeNormal2D();}
- G->WorldSound(TEXT("Swipe"),.3f);AimDirection=Dir;SetActorRotation(Dir.Rotation());ActionPounce=Pounce;ActionTime=Pounce?.43f:.36f;ActiveAnimation=INDEX_NONE;Idle=0;
+ G->WorldSound(TEXT("Swipe"),.3f);AimDirection=Dir;SetActorRotation(Dir.Rotation());ActionPounce=Pounce;ActionTime=Pounce?.43f:.40f;ActionDuration=ActionTime;ActionElapsed=0;ContactAt=Pounce?.10f:.18f;AnimationSerial++;Idle=0;
  const float Power=(Super?1500.f:Pounce?FMath::Lerp(620.f,1000.f,FMath::Clamp(Charge,0.f,1.f)):LabCatalog::Cat(G->SelectedCat).Swipe)*(Traits&CatTrait::Giant?1.65f:1.f);
- if(Target){Target->Strike(Chain,Dir*Power+FVector(0,0,Pounce?200:110));Impact(Target->Heavy);}
+ AttackTarget=Target;PendingChain=Chain;PendingImpulse=Dir*Power+FVector(0,0,Pounce?200:110);AttackPending=true;
  if(Pounce)LaunchCharacter(Dir*(Super?1050:FMath::Lerp(480.f,780.f,FMath::Clamp(Charge,0.f,1.f)))+FVector(0,0,Super?260:180),true,true);
 }
-void ALabCat::Hop(){if(auto G=GM(GetWorld())){if(G->Stage==3){G->ToggleMemeGif();}else if(G->Stage==5){G->RecipeId=INDEX_NONE;G->StartRound(false);}else if(G->Playing()&&CaughtTime<=0){Jump();Innocent=false;Idle=0;}}}
+void ALabCat::Hop(){if(auto G=GM(GetWorld())){if(G->Stage==3){G->ToggleMemeGif();}else if(G->Stage==5){G->RecipeId=INDEX_NONE;G->StartRound(false);}else if(G->Playing()&&CaughtTime<=0){CancelContact();Pushing=false;Jump();Innocent=false;Idle=0;}}}
 void ALabCat::Retry(){UGameplayStatics::SetGamePaused(GetWorld(),false);if(auto G=GM(GetWorld()))G->Retry();}
 void ALabCat::Tutorial(){UGameplayStatics::SetGamePaused(GetWorld(),false);if(auto G=GM(GetWorld()))G->Retry(true);}
-void ALabCat::Pause(){auto G=GM(GetWorld());if(!G)return;if(G->Stage==6){return;}if(G->Stage==4||G->Stage==5){G->OpenTitle();return;}Charging=false;Pushing=false;ZoomTime=0;Charge=0;const bool Paused=!UGameplayStatics::IsGamePaused(GetWorld());G->MenuCursor=0;UGameplayStatics::SetGamePaused(GetWorld(),Paused);G->SetMenuInput(Paused||G->Stage==3);if(IsValid(G->MemeAudio))G->MemeAudio->SetPaused(Paused);G->PauseVoices(Paused);}
+void ALabCat::Pause(){auto G=GM(GetWorld());if(!G)return;if(G->Stage==6){return;}if(G->Stage==4||G->Stage==5){G->OpenTitle();return;}Charging=false;Pushing=false;ZoomTime=0;Charge=0;CancelContact();const bool Paused=!UGameplayStatics::IsGamePaused(GetWorld());G->MenuCursor=0;UGameplayStatics::SetGamePaused(GetWorld(),Paused);G->SetMenuInput(Paused||G->Stage==3);if(IsValid(G->MemeAudio))G->MemeAudio->SetPaused(Paused);G->PauseVoices(Paused);}
 void ALabCat::ToggleHUD(){if(auto G=GM(GetWorld()))G->HideHUD=!G->HideHUD;}
 void ALabCat::ToggleCamera(){FixedCamera=!FixedCamera;ConfigureKeyboardCamera();}
-void ALabCat::ResetCat(){if(auto PC=Cast<APlayerController>(Controller)){PC->PlayerCameraManager->ViewPitchMin=-65;PC->PlayerCameraManager->ViewPitchMax=-10;PC->FlushPressedKeys();}CaughtTime=CatchGrace=0;GetCharacterMovement()->SetMovementMode(MOVE_Walking);SetActorLocation(FVector(-220,0,30*BodyScale+8),false,nullptr,ETeleportType::TeleportPhysics);GetCharacterMovement()->StopMovementImmediately();Charging=false;Pushing=false;ZoomTime=0;ZoomCooldown=0;MeowCooldown=0;AutoMeowCooldown=0;PushClock=0;FallSpeed=0;Charge=0;Idle=0;ActionTime=0;ImpactTime=0;Innocent=false;ActionPounce=false;AimDirection=FVector::ForwardVector;ConfigureKeyboardCamera();GetCharacterMovement()->ClearAccumulatedForces();LastSafePosition=GetActorLocation();GetMesh()->SetVisibility(true);HeroMesh->SetVisibility(true);Arm->SocketOffset=FVector::ZeroVector;SetActorRotation(FRotator::ZeroRotator);if(Controller)Controller->SetControlRotation(FRotator(-32,0,0));}
+void ALabCat::ResetCat(){if(auto PC=Cast<APlayerController>(Controller)){if(PC->PlayerCameraManager){PC->PlayerCameraManager->ViewPitchMin=-65;PC->PlayerCameraManager->ViewPitchMax=-10;}PC->FlushPressedKeys();}CaughtTime=CatchGrace=0;GetCharacterMovement()->SetMovementMode(MOVE_Walking);SetActorLocation(FVector(-220,0,30*BodyScale+8),false,nullptr,ETeleportType::TeleportPhysics);GetCharacterMovement()->StopMovementImmediately();CancelContact();AnimationTime=0;AnimationSerial++;Charging=false;Pushing=false;ZoomTime=0;ZoomCooldown=0;MeowCooldown=0;AutoMeowCooldown=0;PushClock=0;FallSpeed=0;Charge=0;Idle=0;ActionTime=0;ImpactTime=0;Innocent=false;ActionPounce=false;AimDirection=FVector::ForwardVector;ConfigureKeyboardCamera();GetCharacterMovement()->ClearAccumulatedForces();LastSafePosition=GetActorLocation();GetMesh()->SetVisibility(true);HeroMesh->SetVisibility(true);Arm->SocketOffset=FVector::ZeroVector;SetActorRotation(FRotator::ZeroRotator);if(Controller)Controller->SetControlRotation(FRotator(-32,0,0));}
 void ALabCat::SetMutation(bool On){auto G=GM(GetWorld());ApplyIdentity(G?G->SelectedCat:0,On);}
 void ALabCat::ApplyIdentity(int32 Id,bool Fused){
  Traits=GM(GetWorld())?GM(GetWorld())->CurrentTraits():LabCatalog::Cat(Id).Traits;BodyScale=Traits&CatTrait::Giant?1.8f:1.f;GetCapsuleComponent()->SetCapsuleSize(20*BodyScale,30*BodyScale);
  const auto& D=LabCatalog::Cat(Id);GetCharacterMovement()->MaxWalkSpeed=D.Speed;GetCharacterMovement()->JumpZVelocity=D.Jump;
  const FString MeshPath(D.Mesh);const FString Folder=FPaths::GetPath(MeshPath);
  const FString RigPath=MeshPath.Replace(TEXT("SM_"),TEXT("SK_"));auto Rig=LoadObject<USkeletalMesh>(nullptr,*RigPath);
- GetMesh()->SetSkeletalMesh(Rig);GetMesh()->SetVisibility(Rig!=nullptr);GetMesh()->SetCollisionEnabled(ECollisionEnabled::NoCollision);Locomotion.Empty();ActiveAnimation=INDEX_NONE;
- if(Rig){const FBox B=Rig->GetImportedBounds().GetBox();const float Scale=64.f*BodyScale/FMath::Max(1.f,B.GetSize().Z);MeshScale=Scale;MeshFloor=-30*BodyScale-B.Min.Z*Scale;GetMesh()->SetRelativeScale3D(FVector(Scale));GetMesh()->SetRelativeLocation(FVector(0,0,MeshFloor));GetMesh()->SetRelativeRotation(FRotator(0,-90,0));for(const TCHAR* A:{TEXT("A_Idle"),TEXT("A_Run"),TEXT("A_Walk"),TEXT("A_Sit"),TEXT("A_Charge"),TEXT("A_Swipe"),TEXT("A_Push"),TEXT("A_Pounce")})Locomotion.Add(LoadObject<UAnimSequence>(nullptr,*(Folder/FString(A))));}
+ CancelContact();GetMesh()->SetSkeletalMesh(Rig);GetMesh()->SetVisibility(Rig!=nullptr);GetMesh()->SetCollisionEnabled(ECollisionEnabled::NoCollision);Locomotion.Empty();ActiveAnimation=INDEX_NONE;
+ if(Rig){const FBox B=Rig->GetImportedBounds().GetBox();const float Scale=64.f*BodyScale/FMath::Max(1.f,B.GetSize().Z);MeshScale=Scale;MeshFloor=-30*BodyScale-B.Min.Z*Scale;GetMesh()->SetRelativeScale3D(FVector(Scale));GetMesh()->SetRelativeLocation(FVector(0,0,MeshFloor));GetMesh()->SetRelativeRotation(FRotator(0,-90,0));for(const TCHAR* A:{TEXT("A_Idle"),TEXT("A_Run"),TEXT("A_Walk"),TEXT("A_Sit"),TEXT("A_Charge"),TEXT("A_Swipe"),TEXT("A_Push"),TEXT("A_Pounce")})Locomotion.Add(LoadObject<UAnimSequence>(nullptr,*(Folder/FString(A))));GetMesh()->SetAnimInstanceClass(ULabCatAnimation::StaticClass());GetMesh()->AddTickPrerequisiteActor(this);}
  UStaticMesh* M=Rig?nullptr:LoadObject<UStaticMesh>(nullptr,D.Mesh);HeroMesh->EmptyOverrideMaterials();HeroMesh->SetStaticMesh(M);HeroMesh->SetVisibility(M!=nullptr);Visual->SetVisibility(M==nullptr&&Rig==nullptr,true);
  if(M){const FBox B=M->GetBoundingBox();const float Scale=64.f/FMath::Max(1.f,B.GetSize().Z);HeroMesh->SetRelativeScale3D(FVector(Scale));HeroMesh->SetRelativeLocation(FVector(0,0,-30-B.Min.Z*Scale));HeroMesh->SetRelativeRotation(FRotator(0,-90,0));}
  TArray<UStaticMeshComponent*> Parts;GetComponents(Parts);for(auto C:Parts){if(C==HeroMesh||FusionParts.Contains(C))continue;FString N=C->GetName();Paint(C,N==TEXT("Nose")||N.StartsWith(TEXT("Eye"))?Ink:N==TEXT("Patch")||N==TEXT("Tail")?Id==1?FLinearColor(.6,.12,.025):Ink:D.Color);}
@@ -135,23 +139,10 @@ void ALabCat::Tick(float Dt){
  if(G->Playing()&&!GetLastMovementInputVector().IsNearlyZero()&&ZoomTime<=0)AimDirection=GetLastMovementInputVector().GetSafeNormal2D();
  CatchGrace=FMath::Max(0.f,CatchGrace-Dt);CaughtTime=FMath::Max(0.f,CaughtTime-Dt);
  if(CaughtTime>0){GetCharacterMovement()->StopMovementImmediately();ConsumeMovementInputVector();}
- UpdateSafety();TickInstincts(Dt);Idle+=Dt;ActionTime=FMath::Max(0.f,ActionTime-Dt);
+ UpdateSafety();TickInstincts(Dt);TickContact(Dt);
  const float Speed=GetVelocity().Size2D(),T=GetWorld()->GetTimeSeconds();
- if(Speed>12||Charging||Pushing||ZoomTime>0)Idle=0;
- const bool WasInnocent=Innocent;
- Innocent=G->Playing()&&Idle>.85f&&Speed<12&&!GetCharacterMovement()->IsFalling();
- if(Innocent&&!WasInnocent&&G->Swipes>0)G->Speak(TEXT("MeowSoft"));
- if(Charging){Charge=FMath::Min(1.25f,Charge+Dt);DrawDebugDirectionalArrow(GetWorld(),GetActorLocation(),GetActorLocation()+AttackDirection()*(90+Charge*110),20,Charge>=1.05f&&G->Pounces>0?FColor::Yellow:FColor(255,106,43),false,0,0,3);}
- if(GetMesh()->GetSkeletalMeshAsset()){
-  const int Desired=Charging?4:Pushing?6:ActionTime>0?(ActionPounce?7:5):Innocent?3:Speed>180?1:Speed>15?2:0;
-  if(Desired!=ActiveAnimation&&Locomotion.IsValidIndex(Desired)&&Locomotion[Desired]){GetMesh()->PlayAnimation(Locomotion[Desired],Desired!=5&&Desired!=7);ActiveAnimation=Desired;}
-  const float Wiggle=Charging?FMath::Sin(T*(15+Charge*12))*FMath::Lerp(2.f,6.f,Charge/1.25f):0;
-  const float Lean=FMath::Clamp(FVector::DotProduct(GetVelocity(),GetActorRightVector())*.025f,-7.f,7.f);
-  GetMesh()->SetRelativeRotation(FMath::RInterpTo(GetMesh()->GetRelativeRotation(),FRotator(GetCharacterMovement()->IsFalling()?-8:0,-90+Wiggle,Lean),Dt,12));
-  if(ActiveAnimation==1||ActiveAnimation==2)GetMesh()->SetPlayRate(FMath::Clamp(Speed/(ActiveAnimation==1?300.f:100.f),.65f,1.55f));else GetMesh()->SetPlayRate(1.f);
-  GetMesh()->SetRelativeScale3D(FVector(MeshScale));
-  GetMesh()->SetRelativeLocation(FVector(0,0,MeshFloor));
- }
+ TickCatAnimation(Dt);
+
  if(G->Playing()&&Speed>35&&!GetCharacterMovement()->IsFalling()){StepClock+=Dt;if(StepClock>(Speed>180?.22f:.36f)){StepClock=0;G->WorldSound(TEXT("Footstep"),.12f);}}
  Visual->SetRelativeRotation(FRotator(ActionTime>0?-18:Innocent?12:0,0,0));
  if(Shake&&ImpactTime>0){ImpactTime=FMath::Max(0.f,ImpactTime-Dt);Arm->SocketOffset=FVector(0,FMath::Sin(T*110)*ImpactTime*32,FMath::Sin(T*87)*ImpactTime*20);}else Arm->SocketOffset=FVector::ZeroVector;
@@ -161,6 +152,7 @@ void ALabCat::Tick(float Dt){
 ALabGameMode::ALabGameMode(){PrimaryActorTick.bCanEverTick=true;DefaultPawnClass=ALabCat::StaticClass();HUDClass=ALabHUD::StaticClass();}
 void ALabGameMode::BeginPlay(){Super::BeginPlay();ConfigureLighting();LoadProgress();BuildRoom();OpenTitle();
 #if !UE_BUILD_SHIPPING
+ SetupCupReview();
  if(FParse::Param(FCommandLine::Get(),TEXT("CatArtReview"))){int32 ReviewCat=0,ReviewRecipe=-1;FParse::Value(FCommandLine::Get(),TEXT("ReviewCat="),ReviewCat);FParse::Value(FCommandLine::Get(),TEXT("ReviewRecipe="),ReviewRecipe);SelectedCat=FMath::Clamp(ReviewCat,0,3);RecipeId=FMath::Clamp(ReviewRecipe,-1,5);StartRound(RecipeId>=0);if(auto Cat=Cast<ALabCat>(UGameplayStatics::GetPlayerPawn(GetWorld(),0))){Cat->FixedCamera=true;Cat->Arm->bUsePawnControlRotation=false;Cat->Arm->SetRelativeRotation(FRotator(-25,-25,0));Cat->Arm->TargetArmLength=260;Cat->SetActorRotation(FRotator(0,155,0));}}
  // Deterministic screen review is opt-in, Development-only and never touches player saves.
  FString Review;
@@ -218,7 +210,7 @@ void ALabGameMode::ConfirmSelection(){
  else if(Stage==5){const int R=LabCatalog::RecipeFor(SelectedCat,PartnerCat);if(!Unlocked(PartnerCat)||!RecipeUnlocked(R))return;RecipeId=R;Progress->RecipesMask|=1<<R;SaveProgress();Stage=1;Remaining=4;WorldSound(TEXT("Fusion"),.5f);SetMenuInput(false);UpdatePresentation();}
  else if(Stage==3)Lab();
 }
-void ALabGameMode::BeginFusionChoice(){Stage=5;Remaining=0;PartnerCat=INDEX_NONE;for(int I=0;I<LabCatalog::CatCount;I++)if(I!=SelectedCat&&Unlocked(I)){PartnerCat=I;break;}SetMenuInput(true);if(auto Cat=Cast<ALabCat>(UGameplayStatics::GetPlayerPawn(GetWorld(),0))){Cat->Charging=false;Cat->Pushing=false;Cat->ZoomTime=0;Cat->GetCharacterMovement()->StopMovementImmediately();}}
+void ALabGameMode::BeginFusionChoice(){Stage=5;Remaining=0;PartnerCat=INDEX_NONE;for(int I=0;I<LabCatalog::CatCount;I++)if(I!=SelectedCat&&Unlocked(I)){PartnerCat=I;break;}SetMenuInput(true);if(auto Cat=Cast<ALabCat>(UGameplayStatics::GetPlayerPawn(GetWorld(),0))){Cat->CancelContact();Cat->Charging=false;Cat->Pushing=false;Cat->ZoomTime=0;Cat->GetCharacterMovement()->StopMovementImmediately();}}
 void ALabGameMode::UpdatePresentation(){for(auto A:PresentationCats)if(IsValid(A))A->Destroy();PresentationCats.Empty();if(Stage!=1)return;auto Cat=Cast<ALabCat>(UGameplayStatics::GetPlayerPawn(GetWorld(),0));if(!Cat)return;for(int i=0;i<2;i++){const auto& D=LabCatalog::Cat(i?PartnerCat:SelectedCat);auto M=LoadObject<UStaticMesh>(nullptr,D.Mesh);if(!M)continue;auto A=GetWorld()->SpawnActor<AStaticMeshActor>();auto C=A->GetStaticMeshComponent();C->SetMobility(EComponentMobility::Movable);C->SetStaticMesh(M);C->SetCollisionEnabled(ECollisionEnabled::NoCollision);C->SetWorldScale3D(FVector(55.f/FMath::Max(1.f,M->GetBoundingBox().GetSize().Z)));PresentationCats.Add(A);}}
 void ALabGameMode::TryResonate(ALabProp* Source,int32 Id,FVector Direction){
  if(!ResonanceRule()||!Source)return;auto Chain=Chains.Find(Id);if(!Chain||Chain->Resonated||!Active(Id))return;Chain->Resonated=true;
@@ -271,7 +263,7 @@ void ALabGameMode::BuildRoom(){
  auto L=W->SpawnActor<ADirectionalLight>(FVector(0,0,300),FRotator(-55,-35,0));L->GetLightComponent()->SetIntensity(6);L->GetLightComponent()->SetLightColor(FLinearColor(1,.94,.86));
  if(LightingStage<2){auto Fill=W->SpawnActor<ADirectionalLight>(FVector(0,0,300),FRotator(-35,145,0));Fill->GetLightComponent()->SetIntensity(4);Fill->GetLightComponent()->SetCastShadows(false);}
  auto Sky=W->SpawnActor<ASkyLight>();Sky->GetLightComponent()->SetMobility(EComponentMobility::Movable);Sky->GetLightComponent()->SetIntensity(1.5);Sky->GetLightComponent()->RecaptureSky();
- BuildCozyCorner();BuildLightingFinish();
+ BuildCozyCorner();BuildHalloweenDecor();BuildLightingFinish();
  for(int I=0;I<2;I++){auto R=W->SpawnActor<ALabResident>(FVector(I?550:-550,400,92),FRotator::ZeroRotator);R->Configure(I==1);Residents.Add(R);}
 }
 void ALabGameMode::SpawnProps(bool Bounce){
@@ -286,6 +278,7 @@ void ALabGameMode::StartRound(bool Fused){
  Stage=Fused?2:0;Remaining=180;Score=Best=Swipes=UsedPounces=0;Pounces=3;Challenge=false;Quip.Empty();QuipUntil=0;Recorded=false;
  for(auto A:PresentationCats)if(IsValid(A))A->Destroy();PresentationCats.Empty();EndKeyPlayed=false;ChaseMusicUntil=0;ResetParty();for(auto R:Residents)if(IsValid(R))R->ResetResident();SpawnProps(false);SpawnPartyProps();SpawnCozyProps();for(int I=0;I<12;I++){FVector Pos=I<6?FVector(150+I*90,-555,305):FVector(620,-350+(I-6)*90,142);auto P=GetWorld()->SpawnActor<ALabProp>(Pos,FRotator::ZeroRotator);P->Configure(200+I,FVector(.3,.3,.36),I%2?Cream:Orange,false,false,false);if(auto M=I<6?LoadObject<UStaticMesh>(nullptr,TEXT("/Game/FabLocal/Decor/SM_SD_CeramicVase_01")):ArtShape(TEXT("SM_Cup"))){P->Body->SetSimulatePhysics(false);P->Body->SetStaticMesh(M);if(I<6){P->Body->SetMaterial(0,M->GetMaterial(0));P->Body->SetWorldScale3D(FVector(36.f/FMath::Max(1.f,M->GetBoundingBox().GetSize().Z)));P->SetActorLocation(FVector(Pos.X,Pos.Y,282));}else P->Body->SetWorldScale3D(FVector(.22,.22,.28));P->Body->SetSimulatePhysics(true);P->Body->SetMassOverrideInKg(NAME_None,1.5f);P->InitialPosition=P->GetActorLocation();}P->ItemName=I<6?TEXT("高台花瓶"):TEXT("厨房瓷杯");P->BaseScore=I<6?129:69;Props.Add(P);}SetMenuInput(false);
  if(auto Cat=Cast<ALabCat>(UGameplayStatics::GetPlayerPawn(GetWorld(),0))){Cat->ResetCat();Cat->SetMutation(Fused);Cat->SetActorLocation(FVector(-190,0,35*Cat->BodyScale),false,nullptr,ETeleportType::TeleportPhysics);}
+ if(NoSave&&FParse::Param(FCommandLine::Get(),TEXT("SceneAudit"))){FTimerHandle AuditTimer;GetWorld()->GetTimerManager().SetTimer(AuditTimer,this,&ALabGameMode::WriteSceneAudit,.8f,false);}
 }
 void ALabGameMode::Retry(bool Full){if(Stage==4||Stage==6)return;if(Full)RecipeId=INDEX_NONE;StartRound(RecipeId!=INDEX_NONE);}
 int32 ALabGameMode::NewChain(bool Big){FLabChain C;C.Id=NextChain++;C.Pounce=Big;C.Last=GetWorld()->GetTimeSeconds();Chains.Add(C.Id,C);return C.Id;}
@@ -294,8 +287,8 @@ void ALabGameMode::Affect(ALabProp* P,int32 Id){
  auto C=Chains.Find(Id);if(!P||!Playing()||!C||!Active(Id)||C->Members.Contains(P->PropId))return;
  C->Members.Add(P->PropId);C->Last=GetWorld()->GetTimeSeconds();Current=C->Members.Num();Best=FMath::Max(Best,Current);
  if(P->Scored)return;P->Scored=true;Score+=P->BaseScore;
- const FString& Name=P->ItemName;const bool Fragile=Name.Contains(TEXT("杯"))||Name.Contains(TEXT("瓶"))||Name.Contains(TEXT("碗"))||Name.Contains(TEXT("水晶"))||Name.Contains(TEXT("茶壶"))||Name.Contains(TEXT("糖果罐"))||Name.Contains(TEXT("台灯"));
- WorldSound(Fragile?TEXT("Glass"):TEXT("Landing"),P->Heavy?.45f:.3f);QueueMoneyBurst(P,Current);
+ const bool Fragile=IsFragileProp(P->ItemName);
+ if(!P->GentlyPushed)WorldSound(Fragile?TEXT("Glass"):TEXT("Landing"),P->Heavy?.45f:.3f);QueueMoneyBurst(P,Current);
  if(P->PropId==30)DisableCamera();
  if(P->PropId==19)SpillCandy(P->GetActorLocation(),Id);
  if(P->PropId==18)Discover(1,P->GetActorLocation()+FVector(0,0,30));
@@ -309,6 +302,9 @@ void ALabGameMode::FinishRound(){
 }
 void ALabGameMode::Tick(float Dt){
  Super::Tick(Dt);
+#if !UE_BUILD_SHIPPING
+ TickCupReview(Dt);
+#endif
  TickMoneyFeedback();TickVisualBenchmark();TickTitle(Dt);TickMeme(Dt);UpdateMusic();
  if(SlowUntil>0&&FPlatformTime::Seconds()>=SlowUntil){SlowUntil=0;UGameplayStatics::SetGlobalTimeDilation(GetWorld(),1);}
  if(Playing()){
@@ -323,7 +319,7 @@ void ALabCat::ToggleMusic(){if(auto G=GM(GetWorld())){G->MusicMuted=!G->MusicMut
 
 void ALabCat::RecoverToSafety(){
  auto Move=GetCharacterMovement();Move->StopMovementImmediately();Move->ClearAccumulatedForces();Move->SetMovementMode(MOVE_Walking);
- Charging=Pushing=false;ZoomTime=Charge=ActionTime=FallSpeed=0;ConsumeMovementInputVector();
+ CancelContact();Charging=Pushing=false;ZoomTime=Charge=ActionTime=FallSpeed=0;ConsumeMovementInputVector();
  FVector Safe=LastSafePosition;if(Safe.ContainsNaN()||FMath::Abs(Safe.X)>820||FMath::Abs(Safe.Y)>620||Safe.Z<0||Safe.Z>450)Safe=FVector(-220,0,30*BodyScale+8);
  Safe.Z+=8;SetActorLocation(Safe,false,nullptr,ETeleportType::TeleportPhysics);
  Arm->bEnableCameraLag=false;Arm->TickComponent(0,LEVELTICK_All,nullptr);Arm->bEnableCameraLag=true;

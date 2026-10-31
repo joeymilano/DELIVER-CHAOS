@@ -1,0 +1,44 @@
+﻿{
+	"devices": [
+		{
+			"deviceName": "MacBook-Pro.local",
+			"instance": "E263D77CE547F5FC683DB095B3AA89C6",
+			"instanceName": "MacBook-Pro.local-92452",
+			"platform": "MacEditor",
+			"oSVersion": "macOS 26.7.1 25G241",
+			"model": "Default",
+			"gPU": "Apple M5 Max",
+			"cPUModel": "Apple M5 Max",
+			"rAMInGB": 48,
+			"renderMode": "SM6",
+			"rHI": "",
+			"appInstanceLog": ""
+		}
+	],
+	"reportCreatedOn": "2026.10.31-08.36.14",
+	"succeeded": 1,
+	"succeededWithWarnings": 0,
+	"failed": 0,
+	"notRun": 0,
+	"inProcess": 0,
+	"totalDuration": 0.035125542432069778,
+	"comparisonExported": false,
+	"comparisonExportDirectory": "",
+	"tests": [
+		{
+			"testDisplayName": "ResidentBoneMotion",
+			"fullTestPath": "BadCatLab.World.ResidentBoneMotion",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"E263D77CE547F5FC683DB095B3AA89C6"
+			],
+			"duration": 0.035125542432069778,
+			"dateTime": "2026.10.31-08.36.14",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		}
+	]
+}

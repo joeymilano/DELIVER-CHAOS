@@ -1,0 +1,5 @@
+[2026.10.31-08.26.37:452][  0]LogTemp: Display: CUP_REVIEW setup table IsValid=true, Min=(X=-90.000 Y=-54.458 Z=-6.000), Max=(X=110.000 Y=54.458 Z=44.000) cup X=101.000 Y=0.000 Z=59.000 cat X=54.000 Y=-4.000 Z=75.000
+[2026.10.31-08.26.40:274][ 65]LogTemp: Display: CUP_REVIEW begin reachable=1 shoulder=X=76.316 Y=1.882 Z=71.980 forearm=X=76.587 Y=0.555 Z=64.169 foot=X=77.591 Y=0.450 Z=57.897 cup=X=101.000 Y=-0.003 Z=58.128
+[2026.10.31-08.26.40:622][ 70]LogTemp: Display: CUP_REVIEW contact t=2.453 cup=X=101.000 Y=-0.003 Z=58.128 velocity=X=0.000 Y=0.000 Z=0.000
+[2026.10.31-08.26.41:251][ 79]LogTemp: Display: CUP_REVIEW fall t=3.082
+[2026.10.31-08.26.41:613][ 84]LogTemp: Display: CUP_REVIEW innocent t=3.444 score=89

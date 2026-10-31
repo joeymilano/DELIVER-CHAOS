@@ -25,14 +25,15 @@ ALabProp* ALabCat::FindTarget(float Range,float Cone) const{
  float Value=Dist*(P->Scored?1.3f:1.f)*(1+.2f*(1-FVector::DotProduct(D.GetSafeNormal2D(),Aim)));if(Value<BestValue){Best=P;BestValue=Value;}}
  return Best;
 }
-void ALabCat::PushStart(){if(auto G=Party(GetWorld());G&&G->Playing()&&CaughtTime<=0){Pushing=true;Innocent=false;Charging=false;PushClock=0;Idle=0;}}
-void ALabCat::PushStop(){Pushing=false;}
-void ALabCat::ZoomStart(){if(auto G=Party(GetWorld());G&&G->Playing()&&CaughtTime<=0&&ZoomCooldown<=0){ZoomTime=(Traits&CatTrait::Giant)&&(Traits&CatTrait::Wild)?1.8f:1.1f;ZoomCooldown=2.1f;ZoomDirection=AttackDirection();ZoomHit.Empty();Innocent=false;Charging=Pushing=false;Idle=0;}}
+void ALabCat::PushStart(){if(auto G=Party(GetWorld());G&&G->Playing()&&CaughtTime<=0){if(UGameplayStatics::IsGamePaused(GetWorld()))return;CancelContact();Pushing=true;Innocent=false;Charging=false;PushClock=0;PushPhase=0;PushCycle=INDEX_NONE;PushContactApplied=false;Idle=0;AnimationSerial++;}}
+void ALabCat::PushStop(){Pushing=false;PushTarget.Reset();PawReachAlpha=0;}
+void ALabCat::ZoomStart(){if(auto G=Party(GetWorld());G&&G->Playing()&&CaughtTime<=0&&ZoomCooldown<=0){CancelContact();ZoomTime=(Traits&CatTrait::Giant)&&(Traits&CatTrait::Wild)?1.8f:1.1f;ZoomCooldown=2.1f;ZoomDirection=AttackDirection();ZoomHit.Empty();Innocent=false;Charging=Pushing=false;Idle=0;}}
 void ALabCat::ZoomStop(){if(!(Traits&CatTrait::Wild))ZoomTime=FMath::Min(ZoomTime,.15f);}
 void ALabCat::ToggleShake(){Shake=!Shake;}
 void ALabCat::Meow(){NoisePulse(false);}
 void ALabCat::NoisePulse(bool Automatic){
  auto G=Party(GetWorld());if(!G||!G->Playing()||CaughtTime>0||!(Traits&CatTrait::Loud)||(Automatic?AutoMeowCooldown>0:MeowCooldown>0))return;MeowCooldown=1.4f;AutoMeowCooldown=.2f;Innocent=false;Idle=0;ActionTime=.2f;
+ if(!Automatic){CancelContact();Charging=Pushing=false;ActionTime=ActionDuration=.2f;ActionElapsed=0;ActionPounce=false;}
  const int Chain=G->NewChain(false);const FVector Origin=GetActorLocation(),Dir=Automatic?ZoomDirection:AttackDirection();auto Copy=G->Props;int Count=0;
  for(auto P:Copy){if(!IsValid(P)||(P->Heavy&&!(Traits&CatTrait::Giant)))continue;FVector D=P->GetActorLocation()-Origin;if(D.Size()>230*BodyScale||FVector::DotProduct(D.GetSafeNormal2D(),Dir)<.45f)continue;P->Strike(Chain,D.GetSafeNormal()*650+FVector(0,0,160));if(++Count>=8)break;}
  DrawDebugCone(GetWorld(),Origin,Dir,230*BodyScale,.8f,.5f,20,FColor(90,210,230),false,.35f,0,3);G->Quip=TEXT("听见了吧。");G->QuipUntil=GetWorld()->GetTimeSeconds()+1.5;G->Speak(TEXT("Meow"));
@@ -43,7 +44,7 @@ void ALabCat::TickInstincts(float Dt){
  auto G=Party(GetWorld());if(!G||!G->Playing()||CaughtTime>0)return;
  ZoomCooldown=FMath::Max(0.f,ZoomCooldown-Dt);MeowCooldown=FMath::Max(0.f,MeowCooldown-Dt);AutoMeowCooldown=FMath::Max(0.f,AutoMeowCooldown-Dt);
  if(GetCharacterMovement()->IsFalling())FallSpeed=FMath::Max(FallSpeed,-GetVelocity().Z);
- if(Pushing){PushClock-=Dt;if(PushClock<=0){PushClock=.12f;if(auto P=FindTarget(170,.15f)){int Id=G->Active(P->ChainId)?P->ChainId:G->NewChain(false);P->ChainId=Id;G->Chains[Id].Last=GetWorld()->GetTimeSeconds();FVector V=P->Body->GetPhysicsLinearVelocity();const FVector D=(P->GetActorLocation()-GetActorLocation()).GetSafeNormal2D();AimDirection=D;SetActorRotation(D.Rotation());P->Body->SetPhysicsLinearVelocity(FVector(D.X*55,D.Y*55,V.Z));ActionTime=.1f;}}}
+
  GetCharacterMovement()->MaxWalkSpeed=ZoomTime>0?950:LabCatalog::Cat(G->SelectedCat).Speed;
  GetCharacterMovement()->RotationRate=FRotator(0,ZoomTime>0?180:800,0);
  if(ZoomTime>0){ZoomTime-=Dt;AddMovementInput(ZoomDirection,1);SetActorRotation(ZoomDirection.Rotation());auto Copy=G->Props;
@@ -179,6 +180,7 @@ bool ALabGameMode::CatchCat(ALabCat* Cat){
  UGameplayStatics::SetGlobalTimeDilation(GetWorld(),1);SlowUntil=0;TimesCaught++;
  if(!Practice)Remaining=FMath::Max(0.f,Remaining-5);
  Cat->ResetCat();Cat->CaughtTime=1;Cat->CatchGrace=8;Cat->Idle=1;
+ UE_LOG(LogTemp,Display,TEXT("RESIDENT_CAPTURE count=%d remaining=%.2f timeout=1 grace=8"),TimesCaught,Remaining);
  Quip=Practice?TEXT("被抱回猫窝"):TEXT("被抱回猫窝 · −5 秒");QuipUntil=GetWorld()->GetTimeSeconds()+4;
  Speak(TEXT("OwnerCaught"));return true;
 }

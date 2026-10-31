@@ -34,8 +34,13 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\Tools\build_windows.ps1 -E
 
 ## 资产和协作
 
-完整本地交接包已包含 `Content/FabLocal`、`Content/CozyLocal`、角色、动作、音乐和字体，无需重新生成或导入。`.uasset` 可以在 Windows 上由同版本 UE 加载，Mac 的编译缓存和应用包不需要带过去。
+完整本地交接包已包含 `Content/FabLocal`、全部 16 件 `Content/CozyLocal` 模型、新男主人及修复后的八套材质 `Content/ResidentsLocal`、万圣节贴纸、角色动作、音乐和字体，无需重新生成或导入。`.uasset` 可以在 Windows 上由同版本 UE 加载，Mac 的编译缓存和应用包不需要带过去。
 
 本包也保留 ArtSource 制作源文件与 Tools 导入脚本，但不包含 Unreal 引擎、Git 历史和 Mac 构建缓存。版本依据见 `HANDOFF_VERSION.json`，文件完整性见 `HANDOFF_MANIFEST.json`；若有 Python，可运行 `python Tools/verify_handoff.py`。
 
 Fab / Nasha 等素材仅用于有权参与本项目的协作者内部开发，继续遵守各自许可，不要把本交接包作为公开素材库上传 GitHub。公开仓库仍只提交许可允许公开的文件；原有 .gitignore 已包含本地素材排除规则。ElevenLabs 本地试听和用户提供音乐的发行状态见 Content/Licenses 与 ArtSource/Audio/README.md。
+
+
+## 本次交付更新
+
+包含新版推杯子接触与动作过渡、万圣节墙贴和地毯、主人颜色修复、贴地监控预警、较轻抓包惩罚、纯键盘操作及艺术字开始页。26 项本机 Editor 回归检查通过。Mac 使用 Shipping 构建并已单独启动，观察到正常巡逻、追捕和抓包；按项目拥有者最新要求不继续追加验证。Windows 为完整源工程，尚未生成或运行 Windows EXE。需要发行配置时可给构建脚本加 `-Configuration Shipping`。

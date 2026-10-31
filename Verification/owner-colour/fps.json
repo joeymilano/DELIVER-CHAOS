@@ -1,0 +1,19 @@
+{
+  "label": "owner-colour",
+  "stage": 4,
+  "lumen_quality": 2,
+  "width": 1920,
+  "height": 1080,
+  "sample_seconds": 30.007,
+  "frames": 2314,
+  "average_fps": 77.12,
+  "p99_frame_ms": 17.16,
+  "minimum_5s_fps": 70.30,
+  "foreground_only": true,
+  "vsync": 0,
+  "screen_percentage": 100,
+  "gi_method": 1,
+  "reflection_method": 1,
+  "mesh_distance_fields": 1,
+  "hardware_ray_tracing": 0
+}

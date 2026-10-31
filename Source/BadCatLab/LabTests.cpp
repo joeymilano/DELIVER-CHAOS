@@ -1,6 +1,7 @@
 #if WITH_DEV_AUTOMATION_TESTS
 #include "LabGame.h"
 #include "LabCatalog.h"
+#include "LabCatAnimation.h"
 #include "LabResident.h"
 #include "ProceduralMeshComponent.h"
 #include "Animation/AnimSequence.h"
@@ -8,6 +9,7 @@
 #include "GameFramework/PlayerController.h"
 #include "Animation/Skeleton.h"
 #include "Engine/SkeletalMesh.h"
+#include "Materials/MaterialInterface.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/BoxComponent.h"
@@ -29,6 +31,62 @@ struct FPartyWorld {
  ALabProp* Prop(int Id,int Price=100,FVector Pos=FVector(0,0,50)){auto P=W->SpawnActor<ALabProp>(Pos,FRotator::ZeroRotator);P->PropId=Id;P->BaseScore=Price;G->Props.Add(P);return P;}
 };
 constexpr auto Flags=EAutomationTestFlags::EditorContext|EAutomationTestFlags::EngineFilter;
+}
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabPawContactTest,"BadCatLab.Animation.ContactTimingAndCancellation",Flags)
+bool FLabPawContactTest::RunTest(const FString&){
+ FPartyWorld F;auto Cat=F.W->SpawnActor<ALabCat>();Cat->SetActorLocation(FVector(0,0,35));
+ auto Cup=F.Prop(951,89,FVector(70,0,35));Cup->Body->SetWorldScale3D(FVector(.1f));Cup->Body->SetSimulatePhysics(true);
+ Cat->Press();Cat->Release();TestEqual(TEXT("Release cannot bill before paw arrives"),F.G->Score,0);
+ Cat->TickContact(.17f);TestEqual(TEXT("Windup has no damage"),F.G->Score,0);
+ Cat->TickContact(.02f);TestEqual(TEXT("Contact bills the cup once"),F.G->Score,89);
+ Cat->TickContact(.3f);TestEqual(TEXT("Recovery cannot apply a second hit"),F.G->Score,89);
+ auto Other=F.Prop(952,69,FVector(60,10,35));Other->Body->SetWorldScale3D(FVector(.1f));Other->Body->SetSimulatePhysics(true);
+ Cup->SetActorLocation(FVector(2000,0,35));Cat->Press();Cat->Release();Other->SetActorLocation(FVector(2000,0,35));
+ Cat->TickContact(.3f);TestEqual(TEXT("Target leaving reach before contact escapes"),F.G->Score,89);
+ Other->SetActorLocation(FVector(60,0,35));Cat->Press();Cat->Release();Cat->CancelContact();Cat->TickContact(1);
+ TestFalse(TEXT("Cancelled windup cannot fire later"),Other->Scored);
+ Cat->Press();Cat->Release();F.G->Stage=3;Cat->TickContact(1);TestFalse(TEXT("Round end cancels pending contact"),Cat->AttackPending);
+ TestFalse(TEXT("No damage on result page"),Other->Scored);
+ return true;
+}
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabGentlePushTest,"BadCatLab.Animation.GentlePushAndInnocence",Flags)
+bool FLabGentlePushTest::RunTest(const FString&){
+ FPartyWorld F;auto Cat=F.W->SpawnActor<ALabCat>();Cat->SetActorLocation(FVector(0,0,35));
+ auto Cup=F.Prop(953,89,FVector(50,0,35));Cup->InitialPosition=Cup->GetActorLocation();Cup->Body->SetWorldScale3D(FVector(.1f));Cup->Body->SetSimulatePhysics(true);
+ Cat->PushStart();Cat->TickContact(.2f);
+ TestTrue(TEXT("Before contact the cup stays still"),Cup->Body->GetPhysicsLinearVelocity().IsNearlyZero());
+ Cat->PushStop();Cat->TickContact(.3f);TestEqual(TEXT("Short E tap has no push or charge"),Cup->ChainId,0);
+ Cat->PushStart();Cat->TickContact(.29f);TestEqual(TEXT("Paw approach preserves cup causality"),Cup->ChainId,0);
+ Cat->TickContact(.02f);TestTrue(TEXT("Contact starts a causal push chain"),Cup->ChainId>0);
+ F.W->Tick(LEVELTICK_All,.016f);
+ const FVector Velocity=Cup->Body->GetPhysicsLinearVelocity();TestTrue(TEXT("Gentle contact moves the actual rigid body"),Velocity.X>0&&Velocity.X<=49);
+ TestEqual(TEXT("Tiny push cannot immediately bill cup"),F.G->Score,0);
+ Cat->TickContact(.1f);TestTrue(TEXT("Hold has one push per paw cycle"),Cup->Body->GetPhysicsLinearVelocity().Equals(Velocity,.01f));
+ Cup->SetActorLocation(FVector(60,0,19));Cup->Body->SetPhysicsLinearVelocity(FVector(0,0,-50));Cat->TickContact(.01f);
+ TestFalse(TEXT("Falling cup makes cat withdraw even if E is held"),Cat->Pushing);
+ Cat->TickCatAnimation(.2f);TestFalse(TEXT("Withdrawal precedes innocent sit"),Cat->Innocent);
+ Cat->TickContact(.31f);Cat->TickCatAnimation(.31f);TestTrue(TEXT("Cat settles into innocence after withdrawal"),Cat->Innocent);
+ Cup->Tick(.01f);TestEqual(TEXT("Real cup drop bills once"),F.G->Score,89);Cup->Tick(.01f);TestEqual(TEXT("Drop cannot bill twice"),F.G->Score,89);
+ Cat->GetCharacterMovement()->Velocity=FVector(80,0,0);Cat->TickCatAnimation(.01f);TestFalse(TEXT("Movement immediately interrupts innocence"),Cat->Innocent);
+ Cat->CancelContact();Cat->GetCharacterMovement()->Velocity=FVector::ZeroVector;Cat->PushStart();F.G->Stage=3;Cat->TickContact(1);TestFalse(TEXT("Menus cancel push"),Cat->Pushing);
+ return true;
+}
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabPoseTransitionTest,"BadCatLab.Animation.BlendedPoseAndSharedClock",Flags)
+bool FLabPoseTransitionTest::RunTest(const FString&){
+ FPartyWorld F;auto Cat=F.W->SpawnActor<ALabCat>();Cat->ApplyIdentity(0,false);Cat->GetMesh()->bEnableUpdateRateOptimizations=false;
+ TestNotNull(TEXT("Native blend instance is installed"),Cast<ULabCatAnimation>(Cat->GetMesh()->GetAnimInstance()));
+ Cat->ActiveAnimation=0;Cat->AnimationTime=.1f;Cat->GetMesh()->TickAnimation(.016f,false);Cat->GetMesh()->RefreshBoneTransforms();
+ const FTransform Before=Cat->GetMesh()->GetSocketTransform(TEXT("Head"),RTS_Component);
+ Cat->ActiveAnimation=3;Cat->AnimationTime=.5f;Cat->GetMesh()->TickAnimation(.016f,false);Cat->GetMesh()->RefreshBoneTransforms();
+ const FTransform First=Cat->GetMesh()->GetSocketTransform(TEXT("Head"),RTS_Component);
+ TestTrue(TEXT("First sitting frame cannot snap the head"),FVector::Dist(Before.GetLocation(),First.GetLocation())<5);
+ for(int I=0;I<20;I++){Cat->GetMesh()->TickAnimation(.016f,false);Cat->GetMesh()->RefreshBoneTransforms();}
+ const FTransform Settled=Cat->GetMesh()->GetSocketTransform(TEXT("Head"),RTS_Component);
+ TestTrue(TEXT("Blend actually reaches a different sitting pose"),FVector::Dist(Before.GetLocation(),Settled.GetLocation())>5);
+ Cat->ActiveAnimation=6;Cat->Pushing=true;Cat->PushPhase=ALabCat::PushContactTime;Cat->TickCatAnimation(0);
+ TestTrue(TEXT("Push pose samples gameplay contact clock"),FMath::IsNearlyEqual(Cat->AnimationTime/Cat->Locomotion[6]->GetPlayLength(),ALabCat::PushContactTime/ALabCat::PushDuration,.001f));
+ Cat->ResetCat();TestFalse(TEXT("Reset cannot retain pending target"),Cat->AttackTarget.IsValid());TestEqual(TEXT("Reset clears paw reach"),Cat->PawReachAlpha,0.f);
+ return true;
 }
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabBillTest,"BadCatLab.Party.UniqueBill",Flags)
 bool FLabBillTest::RunTest(const FString&){
@@ -189,6 +247,11 @@ bool FLabSafetyTest::RunTest(const FString&){
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabResidentPoseTest,"BadCatLab.World.ResidentBoneMotion",Flags)
 bool FLabResidentPoseTest::RunTest(const FString&){
  FPartyWorld F;for(bool Guest:{false,true}){auto R=F.W->SpawnActor<ALabResident>();R->Configure(Guest);
+  auto Mesh=R->GetMesh()->GetSkeletalMeshAsset();
+  if(Mesh&&Mesh->GetPathName().Contains(TEXT("/ResidentsLocal/"))){
+   TestEqual(TEXT("Supplied avatar retains all eight material slots"),Mesh->GetMaterials().Num(),8);
+   for(const auto& Slot:Mesh->GetMaterials())if(TestNotNull(TEXT("Resident colour material is assigned"),Slot.MaterialInterface.Get()))TestEqual(TEXT("Each body part has its own matching colour material"),Slot.MaterialInterface->GetName(),FString(TEXT("M_"))+Slot.MaterialSlotName.ToString());
+  }
   auto Walk=R->Clips[1];if(!TestNotNull(TEXT("Walk exists"),Walk))continue;
   int Id=Walk->GetSkeleton()->GetReferenceSkeleton().FindBoneIndex(TEXT("thigh_L"));TestTrue(TEXT("Thigh bone exists"),Id>=0);if(Id<0)continue;
   FTransform A,B;Walk->GetBoneTransform(A,FSkeletonPoseBoneIndex(Id),FAnimExtractContext(.05),false);Walk->GetBoneTransform(B,FSkeletonPoseBoneIndex(Id),FAnimExtractContext(.3),false);
@@ -278,6 +341,23 @@ bool FLabResidentRoomRouteTest::RunTest(const FString&){
  return true;
 }
 
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabResidentFlowTest,"BadCatLab.World.ResidentPatrolChaseEscapeCapture",Flags)
+bool FLabResidentFlowTest::RunTest(const FString&){
+ FPartyWorld F;auto G=F.G;G->BuildRoom();auto Cat=F.W->SpawnActor<ALabCat>();auto PC=F.W->SpawnActor<APlayerController>();F.W->AddController(PC);PC->Possess(Cat);Cat->ApplyIdentity(0,false);Cat->ResetCat();G->Remaining=100;
+ if(!TestEqual(TEXT("Resident sees the actual player pawn"),UGameplayStatics::GetPlayerPawn(F.W,0),static_cast<APawn*>(Cat)))return false;
+ auto R=G->Residents[0];const FVector Start=R->GetActorLocation();bool Walked=false;
+ auto Step=[&](){R->Tick(1.f/60);R->GetCharacterMovement()->TickComponent(1.f/60,LEVELTICK_All,nullptr);Walked|=R->Anim==1&&R->GetVelocity().Size2D()>8;};
+ for(int I=0;I<180;I++)Step();
+ TestTrue(TEXT("Normal round owner actually patrols"),FVector::Dist2D(Start,R->GetActorLocation())>35);TestTrue(TEXT("Patrol plays walking animation"),Walked);TestEqual(TEXT("No inspection freeze in normal patrol"),R->Confused,0.f);
+ auto FaceCat=[&](){R->Home=FVector(-480,-40,92);R->ResetResident();R->SetActorRotation(FRotator::ZeroRotator);Cat->SetActorLocation(FVector(-360,-40,35));Cat->Innocent=false;Cat->Charging=true;Cat->CatchGrace=0;};
+ FaceCat();Step();TestTrue(TEXT("Visible mischief starts pursuit"),R->Alert>0);
+ Cat->Charging=false;Cat->SetActorLocation(FVector(810,600,35));for(int I=0;I<310;I++)Step();
+ TestEqual(TEXT("Escaping sight returns owner to patrol"),R->Alert,0.f);TestEqual(TEXT("Escaping before sustained reach avoids capture"),G->TimesCaught,0);
+ FaceCat();bool Ran=false;for(int I=0;I<360&&G->TimesCaught==0;I++){Step();Ran|=R->Anim==2;}
+ TestTrue(TEXT("Pursuit uses the running animation"),Ran);TestEqual(TEXT("Sustained close pursuit captures once"),G->TimesCaught,1);TestEqual(TEXT("Capture uses the lighter five-second penalty"),G->Remaining,95.f);TestEqual(TEXT("Capture grants protection"),Cat->CatchGrace,8.f);
+ R->ResetResident();TestEqual(TEXT("Retry restores unconfused patrol"),R->Confused,0.f);return true;
+}
+
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabKeyboardAimTest,"BadCatLab.Controls.KeyboardCameraAndAttack",Flags)
 bool FLabKeyboardAimTest::RunTest(const FString&){
  FPartyWorld F;auto Cat=F.W->SpawnActor<ALabCat>();auto PC=F.W->SpawnActor<APlayerController>();PC->Possess(Cat);Cat->SetActorLocation(FVector(0,0,35));Cat->ConfigureKeyboardCamera();
@@ -288,7 +368,7 @@ bool FLabKeyboardAimTest::RunTest(const FString&){
  TestTrue(TEXT("Up follows screen-forward instead of controller yaw"),FVector::DotProduct(Up.GetSafeNormal(),Cat->ScreenForward())>.99f);TestTrue(TEXT("Screen movement axes stay perpendicular"),FMath::Abs(FVector::DotProduct(Up,Right))<.01f);
  Cat->AimDirection=Up;const FRotator Before=PC->GetControlRotation();Cat->Turn(3);Cat->Look(-3);TestTrue(TEXT("Mouse motion cannot turn keyboard camera"),PC->GetControlRotation().Equals(Before,.01f));
  auto P=F.Prop(950,89,Cat->GetActorLocation()+Up*90+Right*35);P->Body->SetWorldScale3D(FVector(.2));P->Body->SetSimulatePhysics(true);
- TestEqual(TEXT("Nearby object selected without mouse aiming"),Cat->FindTarget(170,.1f),P);Cat->Press();Cat->Release();TestEqual(TEXT("Keyboard attack bills selected object"),F.G->Score,89);TestEqual(TEXT("Keyboard tap attacks once"),F.G->Swipes,1);
+ TestEqual(TEXT("Nearby object selected without mouse aiming"),Cat->FindTarget(170,.1f),P);Cat->Press();Cat->Release();TestEqual(TEXT("Keyboard tap waits for paw contact"),F.G->Score,0);Cat->TickContact(.19f);TestEqual(TEXT("Keyboard attack bills selected object at contact"),F.G->Score,89);TestEqual(TEXT("Keyboard tap attacks once"),F.G->Swipes,1);
  Cat->AimDirection=Up;Cat->Press();Cat->Charge=.5f;Cat->Release();TestEqual(TEXT("Ordinary keyboard pounce stays unlimited"),F.G->Pounces,3);
  Cat->ToggleCamera();TestTrue(TEXT("Wide view keeps screen directions"),FMath::Abs(FRotator::NormalizeAxis(Cat->Arm->GetTargetRotation().Yaw-Yaw))<.01f);
  const auto Settings=GetDefault<UInputSettings>();TestTrue(TEXT("J reaches the existing attack action"),Settings->GetActionMappings().ContainsByPredicate([](const FInputActionKeyMapping& M){return M.ActionName==TEXT("Attack")&&M.Key==EKeys::J;}));

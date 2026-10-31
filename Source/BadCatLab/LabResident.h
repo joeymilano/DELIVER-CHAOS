@@ -16,4 +16,5 @@ public:
  FVector GroundCell(int Index) const;int NearestGroundCell(FVector Position) const;
  bool Guest=false;float Alert=0,Confused=0,CatchCooldown=0,StepClock=0,CaptureTime=0;int Point=0,Anim=-1;FVector Home;
  UPROPERTY() TArray<UAnimSequence*> Clips;
+ bool TraceResident=false;float TraceClock=0;
 };

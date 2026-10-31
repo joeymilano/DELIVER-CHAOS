@@ -1,0 +1,19 @@
+{
+  "label": "halloween-final",
+  "stage": 4,
+  "lumen_quality": 2,
+  "width": 1920,
+  "height": 1080,
+  "sample_seconds": 30.000,
+  "frames": 3599,
+  "average_fps": 119.97,
+  "p99_frame_ms": 9.49,
+  "minimum_5s_fps": 119.80,
+  "foreground_only": true,
+  "vsync": 0,
+  "screen_percentage": 100,
+  "gi_method": 1,
+  "reflection_method": 1,
+  "mesh_distance_fields": 1,
+  "hardware_ray_tracing": 0
+}

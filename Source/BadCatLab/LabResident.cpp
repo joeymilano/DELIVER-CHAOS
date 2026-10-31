@@ -6,9 +6,14 @@
 #include "Kismet/GameplayStatics.h"
 #include "Animation/AnimSequence.h"
 #include "Engine/SkeletalMesh.h"
+#include "Misc/CommandLine.h"
+#include "Misc/Parse.h"
 ALabResident::ALabResident(){PrimaryActorTick.bCanEverTick=true;GetCapsuleComponent()->InitCapsuleSize(28,90);GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_Camera,ECR_Ignore);GetCharacterMovement()->bRunPhysicsWithNoController=true;GetCharacterMovement()->bOrientRotationToMovement=true;GetCharacterMovement()->RotationRate=FRotator(0,280,0);GetCharacterMovement()->MaxStepHeight=3;GetCharacterMovement()->bCanWalkOffLedges=false;GetCharacterMovement()->bEnablePhysicsInteraction=false;GetCharacterMovement()->StandingDownwardForceScale=0;GetCharacterMovement()->InitialPushForceFactor=0;GetCharacterMovement()->PushForceFactor=0;GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_PhysicsBody,ECR_Ignore);GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_Pawn,ECR_Ignore);bUseControllerRotationYaw=false;GetMesh()->SetCollisionEnabled(ECollisionEnabled::NoCollision);GetMesh()->VisibilityBasedAnimTickOption=EVisibilityBasedAnimTickOption::AlwaysTickPoseAndRefreshBones;}
 void ALabResident::Configure(bool IsGuest){
  Guest=IsGuest;Home=GetActorLocation();BuildGroundGrid();ResetResident();Clips.Empty();
+#if !UE_BUILD_SHIPPING
+ TraceResident=FParse::Param(FCommandLine::Get(),TEXT("ResidentTrace"));
+#endif
  const FString Name=Guest?TEXT("Guest"):TEXT("Owner");FString Folder=TEXT("/Game/FabLocal/Characters");
  USkeletalMesh* Mesh=nullptr;TArray<UAnimSequence*> AvatarClips;
  if(!Guest){
@@ -52,4 +57,5 @@ void ALabResident::Tick(float Dt){Super::Tick(Dt);auto G=Cast<ALabGameMode>(UGam
  if(AdvanceCapture(Dt,Alert>0&&Confused<=0&&!Cat->Innocent&&Cat->CatchGrace<=0&&Dist<85&&FMath::Abs(Delta.Z)<80&&CatchCooldown<=0&&(!Block||Hit.GetActor()==Cat))&&G->CatchCat(Cat)){CaptureTime=0;CatchCooldown=8;Confused=2;Alert=0;}
 
  int Desired=Confused>0?3:GetVelocity().Size2D()>150?2:GetVelocity().Size2D()>8?1:0;if((Desired!=Anim||!GetMesh()->IsPlaying())&&Clips.IsValidIndex(Desired)&&Clips[Desired]){GetMesh()->PlayAnimation(Clips[Desired],true);Anim=Desired;}if(Desired==1||Desired==2)GetMesh()->SetPlayRate(FMath::Clamp(GetVelocity().Size2D()/(Desired==2?255.f:110.f),.65f,1.4f));else GetMesh()->SetPlayRate(1);
+ if(TraceResident&&(TraceClock-=Dt)<=0){TraceClock=.5f;UE_LOG(LogTemp,Display,TEXT("RESIDENT_TRACE t=%.2f who=%s state=%s pos=%s speed=%.1f anim=%d reach=%.2f catdist=%.1f"),GetWorld()->GetTimeSeconds(),Guest?TEXT("Guest"):TEXT("Owner"),Confused>0?TEXT("Confused"):Alert>0?TEXT("Chase"):TEXT("Patrol"),*GetActorLocation().ToCompactString(),GetVelocity().Size2D(),Anim,CaptureTime,Dist);}
 }

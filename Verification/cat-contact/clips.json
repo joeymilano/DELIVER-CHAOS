@@ -1,0 +1,42 @@
+[
+  {
+    "cat": "Ahuai",
+    "clip": "Push",
+    "duration": 0.8999999761581421
+  },
+  {
+    "cat": "Ahuai",
+    "clip": "Swipe",
+    "duration": 0.4000000059604645
+  },
+  {
+    "cat": "Jutuan",
+    "clip": "Push",
+    "duration": 0.8999999761581421
+  },
+  {
+    "cat": "Jutuan",
+    "clip": "Swipe",
+    "duration": 0.4000000059604645
+  },
+  {
+    "cat": "Wumei",
+    "clip": "Push",
+    "duration": 0.8999999761581421
+  },
+  {
+    "cat": "Wumei",
+    "clip": "Swipe",
+    "duration": 0.4000000059604645
+  },
+  {
+    "cat": "Dafu",
+    "clip": "Push",
+    "duration": 0.8999999761581421
+  },
+  {
+    "cat": "Dafu",
+    "clip": "Swipe",
+    "duration": 0.4000000059604645
+  }
+]
