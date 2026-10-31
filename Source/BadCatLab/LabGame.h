@@ -15,6 +15,7 @@ class UAnimSequence;
 class AStaticMeshActor;
 class ACameraActor;
 class UAudioComponent;
+class ALabResident;
 USTRUCT()
 struct FLabScoreRow {
  GENERATED_BODY()
@@ -66,6 +67,7 @@ public:
  UPROPERTY() TArray<UStaticMeshComponent*> FusionParts;
  UPROPERTY() TArray<UAnimSequence*> Locomotion;
  int32 ActiveAnimation=INDEX_NONE;
+ float StepClock=0;
  float Charge=0, ActionTime=0, Idle=0; bool Charging=false, Innocent=false, FixedCamera=false;
  void Forward(float V); void Right(float V); void Turn(float V); void Look(float V);
  void Press(); void Release(); void Hop(); void Retry(); void Pause(); void ToggleHUD(); void ToggleCamera(); void Tutorial();
@@ -86,7 +88,7 @@ public:
  UPROPERTY() TArray<ALabProp*> Props;
  TMap<int32,FLabChain> Chains;
  int32 NextChain=1,Stage=0,Score=0,Best=0,Current=0,Pounces=3,Swipes=0,UsedPounces=0;
- float Remaining=60; bool Learned=false,Challenge=false,HideHUD=false;
+ float Remaining=180; bool Learned=false,Challenge=false,HideHUD=false;
  int32 SelectedCat=0,PartnerCat=1,RecipeId=INDEX_NONE;
  UPROPERTY() TArray<AStaticMeshActor*> PresentationCats;
  FString Quip; double QuipUntil=0;
@@ -116,6 +118,10 @@ public:
  bool Playing() const {return Stage==0 || Stage==2;}
  int32 NewChain(bool Pounce); bool Active(int32 Id) const; void Affect(ALabProp* Prop,int32 Id);
  void StartRound(bool Bounce); void FinishRound(); void Retry(bool Full=false);
+ UPROPERTY() TArray<ALabResident*> Residents;
+ UPROPERTY() UAudioComponent* Music=nullptr;
+ double WorldSoundUntil=0;
+ void WorldSound(const TCHAR* Name,float Volume);void UpdateMusic();
  void BuildRoom(); void SpawnProps(bool Bounce);
  UPROPERTY() AActor* MemeCat = nullptr;
  UPROPERTY() ACameraActor* MemeCamera = nullptr;

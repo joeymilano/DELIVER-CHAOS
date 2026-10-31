@@ -87,7 +87,7 @@ void ALabHUD::DrawHUD() {
  };
  auto Pill=[&](const FString& T,float X,float Y,FLinearColor BG,FLinearColor FG){float BW=Width(T,14)+24;Round(X,Y,BW,28,14,BG);Text(T,X+12,Y+6,14,FG);};
  auto Background=[&](){DrawRect(Paper,0,0,W,H);Box(0,0,1280,8,Orange);};
- auto Brand=[&](){Text(TEXT("DELIVER CHAOS"),44,28,13,Muted,true);};
+ auto Brand=[&](){Text(TEXT("Delivery Chaos"),44,28,13,Muted,true);};
  auto Footer=[&](const FString& T){Box(44,690,1192,1,Line);Text(T,44,701,12,Muted);};
  auto Fixture=[&](){
 #if !UE_BUILD_SHIPPING
@@ -99,8 +99,8 @@ void ALabHUD::DrawHUD() {
  if(G->Stage==4||G->Stage==5){
   Background();Brand();const bool Lab=G->Stage==5;const int Count=G->Progress?FMath::CountBits((uint32)G->Progress->UnlockedMask):1;
   const int Made=G->Progress?FMath::CountBits((uint32)G->Progress->RecipesMask):0;
-  Text(Lab?TEXT("找个搭档，一起闯祸。"):TEXT("合成大坏猫"),44,55,42,Ink,true);
-  Text(Lab?TEXT("挑两只猫，把它们的本事合在一起。"):TEXT("主人刚摆好派对。你负责重新摆。"),46,116,18,Muted);
+  Text(Lab?TEXT("合成实验室"):TEXT("猫手猫脚"),44,55,42,Ink,true);
+  Text(Lab?TEXT("两只猫，双倍破坏力。"):TEXT("今天，家里归猫。"),46,116,18,Muted);
   Pill(FString::Printf(TEXT("找到 %d / 4 只猫"),Count),933,40,Ink,Paper);Pill(FString::Printf(TEXT("合成 %d / 6"),Made),1110,40,Blue,Ink);
   Text(Lab?TEXT("02  合成搭档"):TEXT("01  选一只猫"),1032,112,16,Muted);
   Round(44,159,408,445,20,Ink);
@@ -137,26 +137,26 @@ void ALabHUD::DrawHUD() {
   // The next useful information sits beside the choice, not in an unrelated banner.
   Round(480,501,756,103,16,Blue);
   if(Lab){
-   Text(TEXT("想先试试一只猫？"),500,518,19,Ink,true);
-   Text(TEXT("单猫也能进客厅，找到新伙伴再回来合成。"),500,554,16,Ink);
+   Text(TEXT("单猫行动"),500,518,19,Ink,true);
+   Text(TEXT("先出门，边拆边找。"),500,554,16,Ink);
    Button(TEXT("Solo"),TEXT("单猫出门"),TEXT("Space"),998,527,218,false);
   }else{
    Text(LabCatalog::Cat(G->SelectedCat).Ability,500,518,18,Ink,true);
    const bool BigKnown=G->Progress&&(G->Progress->RecipesMask&(1<<5));
    Text(BigKnown?TEXT("大坏猫已发现。选阿坏与大福，再拆一局。"):
-    TEXT("还有一只大坏猫。找到 4 只猫，合成 3 种组合后解锁。"),500,556,15,Ink);
+    TEXT("隐藏猫 · 收集 4 猫，完成 3 种合成"),500,556,15,Ink);
   }
   if(Lab){
    Button(TEXT("Select"),TEXT("重选主猫"),TEXT("Tab"),44,628,236,false);
-   Text(G->Practice?TEXT("自由拆家 · 不限时，不计榜"):TEXT("限时拆家 · 主人 60 秒后回家"),310,646,16,Muted);
+   Text(G->Practice?TEXT("自由拆家 · 不限时，不计榜"):TEXT("限时拆家 · 180 秒挑战"),310,646,16,Muted);
    const int R=LabCatalog::RecipeFor(G->SelectedCat,G->PartnerCat);const bool Ready=R>=0&&G->Unlocked(G->PartnerCat)&&G->RecipeUnlocked(R);
    Button(TEXT("Confirm"),Ready?TEXT("合成，去拆家"):TEXT("先完成解锁条件"),TEXT("Enter"),918,628,318,true,Ready);
   }else{
    Button(TEXT("Practice"),G->Practice?TEXT("自由拆家"):TEXT("限时拆家"),TEXT("F"),44,628,236,false);
-   Text(G->Practice?TEXT("慢慢逛，不限时 · 不计榜"):TEXT("60 秒后主人回家 · 计入排行榜"),300,646,16,Muted);
-   Button(TEXT("Confirm"),Count>1?TEXT("下一步，选搭档"):TEXT("进屋，拆家"),TEXT("Enter"),918,628,318,true);
+   Text(G->Practice?TEXT("慢慢逛，不限时 · 不计榜"):TEXT("180 秒挑战 · 计入排行榜"),300,646,16,Muted);
+   Button(TEXT("Confirm"),Count>1?TEXT("选搭档"):TEXT("开始拆家"),TEXT("Enter"),918,628,318,true);
   }
-  Footer(Lab?TEXT("数字键选搭档    Space 单猫出门    Tab 重选主猫"):TEXT("数字键选猫    F 切换玩法    找到的猫与配方会保存在这台电脑"));Fixture();return;
+  Text(TEXT("Music: Sneaky Snitch · Kevin MacLeod · CC BY 4.0"),700,704,10,Muted);Footer(Lab?TEXT("数字键选搭档    Space 单猫出门    Tab 重选主猫"):TEXT("1–4 选猫    F 切换模式"));Fixture();return;
  }
 
  const FString Identity=G->RecipeId>=0?LabCatalog::Recipe(G->RecipeId).Name:LabCatalog::Cat(G->SelectedCat).Name;
@@ -180,14 +180,14 @@ void ALabHUD::DrawHUD() {
   Center(Identity,640,86,22,Orange,true);
   Text(TEXT("OIIA"),76,269,42,Orange,true);Text(TEXT("OIIA"),76,325,42,Paper,true);
   Text(TEXT("本次损失"),1030,272,18,Paper);Fit(Money(G->Score),1030,308,32,198,Orange,true);
-  Center(TEXT("账单先放一边。它还在转。"),640,604,23,Paper);
+  Center(TEXT("本场最坏"),640,604,23,Paper);
   Button(TEXT("Meme"),TEXT("好了，看账单"),TEXT("Space"),446,650,388,true);
   Fixture();return;
  }
 
  if(G->Stage==3&&!Paused){
   DrawRect(Ink,0,0,W,H);Box(0,0,1280,8,Orange);
-  Text(TEXT("主人回来了。"),64,35,34,Paper,true);Text(TEXT("猫还在，家不一定。"),954,48,20,Paper);
+  Text(TEXT("该算账了。"),64,35,34,Paper,true);Text(TEXT("猫还在，家不一定。"),954,48,20,Paper);
   // Receipt with a torn edge, real damage rows and a truthful zero-damage state.
   Round(64,104,662,507,18,White);for(int I=0;I<33;I++)Tri(FVector2D(66+I*20,605),FVector2D(86+I*20,605),FVector2D(76+I*20,617),White);
   Text(TEXT("本次拆家账单"),92,128,20,Muted);Text(Identity,532,132,17,Muted);
@@ -217,21 +217,21 @@ void ALabHUD::DrawHUD() {
 
  if(G->Playing()&&!G->HideHUD&&!Paused){
   // Leave the middle of the room open. Only actionable information stays on screen.
-  Round(24,22,292,110,15,Ink);Text(TEXT("拆家账单"),42,36,15,Paper);
-  Fit(Money(G->Score),42,62,43,252,Orange,true);Text(Identity,42,111,13,Paper);
+  Round(24,22,244,88,15,Ink);Text(TEXT("拆家账单"),42,36,15,Paper);
+  Fit(Money(G->Score),42,61,33,208,Orange,true);
   Round(512,22,256,76,15,G->Remaining<=10&&!G->Practice?Red:Ink);
   Center(G->Practice?TEXT("慢慢拆"):FString::Printf(TEXT("%02d 秒"),FMath::CeilToInt(G->Remaining)),640,32,31,Paper,true);
-  Center(G->Practice?TEXT("不限时 · 不计榜"):TEXT("主人就要回来了"),640,73,13,Paper);
-  Round(956,22,300,113,15,G->CameraBroken?Hex(TEXT("283B2C")):Ink);
+  Center(G->Practice?TEXT("不限时 · 不计榜"):TEXT("派对倒计时"),640,73,13,Paper);
+  Round(956,22,300,78,15,G->CameraBroken?Hex(TEXT("283B2C")):Ink);
   Ellipse(976,46,4,4,G->CameraBroken?Green:G->CameraFlash>0?Red:Orange);
   Text(G->CameraBroken?TEXT("监控已断线"):G->CameraFlash>0?TEXT("被拍到了！"):TEXT("摄像头正看着呢"),990,35,19,Paper,true);
   for(int I=0;I<5;I++)Round(974+I*53,70,43,5,2,I<G->Suspicion?Orange:Hex(TEXT("62645E")));
-  Text(G->CameraBroken?TEXT("完美犯罪 · 可以放心动爪"):FString::Printf(TEXT("嫌疑 %d / 5   停下装乖能减轻嫌疑"),G->Suspicion),974,94,13,Paper);
-  Round(24,147,292,60,12,Paper);Text(TEXT("超级扑"),40,159,17,Ink,true);
-  for(int I=0;I<3;I++)CatMark(157+I*39,169,10,I<G->Pounces?Orange:Line);
-  Text(G->Pounces>0?TEXT("蓄满约 1 秒 · 普通扑不限次"):TEXT("超级扑用完了 · 普通扑照常用"),40,186,12,Muted);
+
+  Round(24,122,244,38,10,Paper);Text(TEXT("超级扑"),40,131,16,Ink,true);
+  for(int I=0;I<3;I++)CatMark(147+I*36,141,9,I<G->Pounces?Orange:Line);
+
   const FString Toast=Now<G->QuipUntil?G->Quip:Now<CaptionVisibleUntil?G->CameraCaption:
-   Now-StageEnteredAt<8&&G->Swipes==0?TEXT("先拍茶几上的杯子。轻点左键就行。"):TEXT("");
+   Now-StageEnteredAt<8&&G->Swipes==0?TEXT("左键，拍杯子。"):TEXT("");
   if(!Toast.IsEmpty()){Round(370,117,540,68,12,Paper);Wrap(Toast,392,132,18,496,Ink);}
   if(Now<G->PopUntil){FVector P=Project(G->PopLocation);if(P.Z>0){float PX=FMath::Clamp((P.X-OX)/S,32.f,1000.f),PY=FMath::Clamp((P.Y-OY)/S-34,225.f,555.f);float BW=Width(G->PopText,18)+28;Round(PX,PY,BW,34,8,Ink);Text(G->PopText,PX+14,PY+7,18,Orange,true);}}
   if(Cat){
@@ -239,13 +239,13 @@ void ALabHUD::DrawHUD() {
    else if(Cat->Innocent){Pill(TEXT("我来的时候就这样了。"),512,539,Paper,Ink);}
    if(auto P=Cat->FindTarget(200,.1f);P){FString Label=P->ItemName+TEXT("  ")+Money(P->BaseScore)+(P->Scored?TEXT("  已计入账单"):TEXT(""));float BW=FMath::Max(320.f,Width(Label,17)+140);float X=(1280-BW)*.5f;Round(X,607,BW,40,10,Paper);Text(Label,X+16,618,17,Ink);Key(TEXT("E"),X+BW-98,614,26);Text(TEXT("慢推"),X+BW-62,619,15,Ink);}
   }
-  Round(24,668,960,34,9,Ink);Text(TEXT("WASD 移动   左键 挥爪   长按左键 扑击   E 慢推   Shift 暴冲   Space 跳跃"),40,677,14,Paper);
-  if(G->CurrentTraits()&CatTrait::Loud)Text(TEXT("Q 喵一声"),858,677,14,Orange);
+  if(Now-StageEnteredAt<12){Round(24,668,960,34,9,Ink);Text(TEXT("WASD 移动   左键 挥爪   长按左键 扑击   E 慢推   Shift 暴冲   Space 跳跃"),40,677,14,Paper);
+  if(G->CurrentTraits()&CatTrait::Loud)Text(TEXT("Q 喵一声"),858,677,14,Orange);}
   Round(1064,668,192,34,9,Ink);Text(TEXT("Esc 暂停与操作说明"),1080,677,14,Paper);Fixture();
  }
  if(Paused){
   DrawRect(FLinearColor(0,0,0,.82f),0,0,W,H);Round(160,111,960,498,22,Paper);
-  Text(TEXT("坏猫歇一会儿。"),192,141,36,Ink,true);Text(TEXT("暂停期间，主人也不会提前回家。"),194,196,18,Muted);
+  Text(TEXT("坏猫歇一会儿。"),192,141,36,Ink,true);Text(TEXT("时间停住了。想好下一爪再继续。"),194,196,18,Muted);
   const TCHAR* Keys[]={TEXT("WASD"),TEXT("左键"),TEXT("长按左键"),TEXT("E"),TEXT("Shift"),TEXT("Space"),TEXT("Q")};
   const TCHAR* Help[]={TEXT("移动，鼠标转动视角"),TEXT("挥爪，想拍几次都行"),TEXT("扭屁股蓄力，松开扑击"),TEXT("慢慢把眼前的东西推走"),TEXT("暴冲，转弯会有点来不及"),TEXT("跳上家具，换个角度出爪"),TEXT("喵声冲击，需要乌梅的本领")};
   for(int I=0;I<7;I++){Key(Keys[I],194,245+I*39,86);Text(Help[I],294,249+I*39,17,Ink);}

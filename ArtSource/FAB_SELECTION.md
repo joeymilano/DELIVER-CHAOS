@@ -1,3 +1,19 @@
+# Fab 实际接入记录 — 2026-10-31
+
+本轮已接受用户授权的 Fab EULA，并下载、导入、打包以下三套资源：
+
+|资源|实际使用|状态|
+|---|---|---|
+|Furniture FREE / IZIGAMES|沙发、茶几、扶手椅、厨房柜体、冰箱、衣柜和床|35 个静态网格已导入，选用部分摆入房间|
+|SOLID Furniture Decor Free / PolyClem|窗帘、花盆、书堆、挂画、时钟、台灯和互动花瓶|21 个静态网格已导入|
+|Casual Characters Pack FREE / IZIGAMES|主人和派对来客，两个追赶对手|两个骨骼角色；自行制作待机、走路、跑步和疑惑动作|
+
+家具改用原备选 Furniture FREE，因为直接提供 FBX，且包含扩房需要的厨房和冰箱。原选 Next Level 3D 家具包和食品包未下载，不能计为已接入。白床单幽灵未使用。
+
+源码工具：Tools/prepare_fab.py → Tools/import_fab.py。Fab 源文件和可提取 uasset 保留本地 ArtSource/FabLocal 与 Content/FabLocal，不上传公开仓库。协作者需自行领取相同资源再运行导入流程。
+
+以下保留原选型依据，状态以本节为准。
+
 # 《合成大坏猫》免费场景与对手资源选型
 
 核查日期：2026-10-31。状态：**已完成选型与官方预览审看；尚未领取、下载、导入或通过本机运行验收。** 本清单不是已安装资产清单。

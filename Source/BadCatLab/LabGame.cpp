@@ -1,4 +1,5 @@
 #include "LabGame.h"
+#include "LabResident.h"
 #include "LabCatalog.h"
 #include "Engine/Texture2D.h"
 #include "Sound/SoundBase.h"
@@ -58,8 +59,8 @@ void ALabProp::Hit(UPrimitiveComponent*,AActor* Other,UPrimitiveComponent*,FVect
 }
 void ALabProp::Tick(float Dt){Super::Tick(Dt);if(!Scored){auto G=GM(GetWorld());if(G&&G->Playing()&&G->Active(ChainId)&&(GetActorLocation().Z<InitialPosition.Z-10||FVector::Dist2D(GetActorLocation(),InitialPosition)>35))G->Affect(this,ChainId);}FVector V=Body->GetPhysicsLinearVelocity();if(V.Size()>1800)Body->SetPhysicsLinearVelocity(V.GetClampedToMaxSize(1800));if(GetActorLocation().Z< -150 || GetActorLocation().Size()>2500){Body->SetSimulatePhysics(false);SetActorHiddenInGame(true);SetActorEnableCollision(false);}}
 ALabCat::ALabCat(){
- PrimaryActorTick.bCanEverTick=true;GetCapsuleComponent()->InitCapsuleSize(20,30);GetCharacterMovement()->MaxWalkSpeed=290;GetCharacterMovement()->JumpZVelocity=390;GetCharacterMovement()->AirControl=.6f;GetCharacterMovement()->bOrientRotationToMovement=true;GetCharacterMovement()->RotationRate=FRotator(0,800,0);bUseControllerRotationYaw=false;
- Arm=CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraArm"));Arm->SetupAttachment(RootComponent);Arm->TargetArmLength=430;Arm->SocketOffset=FVector::ZeroVector;Arm->bUsePawnControlRotation=true;Arm->bEnableCameraLag=true;Arm->CameraLagSpeed=10;
+ PrimaryActorTick.bCanEverTick=true;GetCapsuleComponent()->InitCapsuleSize(20,30);GetCharacterMovement()->MaxWalkSpeed=290;GetCharacterMovement()->JumpZVelocity=390;GetCharacterMovement()->AirControl=.8f;GetCharacterMovement()->bOrientRotationToMovement=true;GetCharacterMovement()->RotationRate=FRotator(0,800,0);bUseControllerRotationYaw=false;
+ Arm=CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraArm"));Arm->SetupAttachment(RootComponent);Arm->TargetArmLength=430;Arm->SocketOffset=FVector::ZeroVector;Arm->bUsePawnControlRotation=true;Arm->bEnableCameraLag=true;Arm->CameraLagSpeed=14;
  HeroMesh=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("HeroMesh"));HeroMesh->SetupAttachment(RootComponent);HeroMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
  Camera=CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));Camera->SetupAttachment(Arm);Camera->FieldOfView=72;
  Visual=CreateDefaultSubobject<USceneComponent>(TEXT("Cat"));Visual->SetupAttachment(RootComponent);Visual->SetRelativeLocation(FVector(0,0,-23));
@@ -133,10 +134,13 @@ void ALabCat::Tick(float Dt){
   const int Desired=Charging?4:Pushing?6:ActionTime>0?(ActionPounce?7:5):Innocent?3:Speed>180?1:Speed>15?2:0;
   if(Desired!=ActiveAnimation&&Locomotion.IsValidIndex(Desired)&&Locomotion[Desired]){GetMesh()->PlayAnimation(Locomotion[Desired],Desired!=5&&Desired!=7);ActiveAnimation=Desired;}
   const float Wiggle=Charging?FMath::Sin(T*(15+Charge*12))*FMath::Lerp(2.f,6.f,Charge/1.25f):0;
-  GetMesh()->SetRelativeRotation(FRotator(0,-90+Wiggle,0));
+  const float Lean=FMath::Clamp(FVector::DotProduct(GetVelocity(),GetActorRightVector())*.025f,-7.f,7.f);
+  GetMesh()->SetRelativeRotation(FMath::RInterpTo(GetMesh()->GetRelativeRotation(),FRotator(GetCharacterMovement()->IsFalling()?-8:0,-90+Wiggle,Lean),Dt,12));
+  if(ActiveAnimation==1||ActiveAnimation==2)GetMesh()->SetPlayRate(FMath::Clamp(Speed/(ActiveAnimation==1?300.f:100.f),.65f,1.55f));else GetMesh()->SetPlayRate(1.f);
   GetMesh()->SetRelativeScale3D(FVector(MeshScale));
   GetMesh()->SetRelativeLocation(FVector(0,0,MeshFloor));
  }
+ if(G->Playing()&&Speed>35&&!GetCharacterMovement()->IsFalling()){StepClock+=Dt;if(StepClock>(Speed>180?.22f:.36f)){StepClock=0;G->WorldSound(TEXT("Footstep"),.12f);}}
  Visual->SetRelativeRotation(FRotator(ActionTime>0?-18:Innocent?12:0,0,0));
  if(Shake&&ImpactTime>0){ImpactTime=FMath::Max(0.f,ImpactTime-Dt);Arm->SocketOffset=FVector(0,FMath::Sin(T*110)*ImpactTime*32,FMath::Sin(T*87)*ImpactTime*20);}else Arm->SocketOffset=FVector::ZeroVector;
  if(GetActorLocation().Z< -100)ResetCat();
@@ -171,7 +175,7 @@ void ALabGameMode::OpenSelection(){
  ClearMeme();
  UGameplayStatics::SetGlobalTimeDilation(GetWorld(),1);SlowUntil=0;ClearDiscoveries();
  for(auto A:PresentationCats)if(IsValid(A))A->Destroy();PresentationCats.Empty();for(auto P:Props)if(IsValid(P))P->Destroy();Props.Empty();PetCamera=nullptr;
- Chains.Empty();NextChain=1;Score=Best=Current=Swipes=UsedPounces=0;Remaining=60;Pounces=3;Stage=4;RecipeId=INDEX_NONE;ResetParty();PopUntil=0;Challenge=false;Quip.Empty();HideHUD=false;SetMenuInput(true);
+ Chains.Empty();NextChain=1;Score=Best=Current=Swipes=UsedPounces=0;Remaining=180;Pounces=3;Stage=4;RecipeId=INDEX_NONE;ResetParty();PopUntil=0;Challenge=false;Quip.Empty();HideHUD=false;SetMenuInput(true);
  if(!Unlocked(SelectedCat))SelectedCat=0;
  if(auto Cat=Cast<ALabCat>(UGameplayStatics::GetPlayerPawn(GetWorld(),0))){Cat->ResetCat();Cat->ApplyIdentity(SelectedCat,false);}
 }
@@ -196,15 +200,43 @@ void ALabGameMode::TryResonate(ALabProp* Source,int32 Id,FVector Direction){
 static void Furniture(UWorld* W,FVector Pos,FVector Scale,FLinearColor Color,const TCHAR* Mesh=TEXT("Cube")){
  auto A=W->SpawnActor<AStaticMeshActor>(Pos,FRotator::ZeroRotator);auto C=A->GetStaticMeshComponent();C->SetMobility(EComponentMobility::Movable);auto Rounded=FString(Mesh)==TEXT("Cube")&&Scale.Z>.15f?ArtShape(TEXT("SM_RoundedBlock")):nullptr;C->SetStaticMesh(Rounded?Rounded:Shape(Mesh));C->SetWorldScale3D(Scale);C->SetCollisionProfileName(TEXT("BlockAll"));Paint(C,Color);
 }
+static AStaticMeshActor* FabPiece(UWorld* W,const TCHAR* Group,const TCHAR* Name,FVector Pos,float Scale=1,float Yaw=0){
+ auto Mesh=LoadObject<UStaticMesh>(nullptr,*FString::Printf(TEXT("/Game/FabLocal/%s/%s"),Group,Name));if(!Mesh)return nullptr;
+ auto A=W->SpawnActor<AStaticMeshActor>(Pos,FRotator(0,Yaw,0));auto C=A->GetStaticMeshComponent();C->SetMobility(EComponentMobility::Movable);C->SetStaticMesh(Mesh);C->SetWorldScale3D(FVector(Scale));C->SetCollisionProfileName(TEXT("BlockAll"));return A;
+}
 void ALabGameMode::BuildRoom(){
- for(int i=0;i<2;i++){auto Fill=GetWorld()->SpawnActor<APointLight>(FVector(-140,i?200:-200,230),FRotator::ZeroRotator);auto Light=Cast<UPointLightComponent>(Fill->GetLightComponent());Light->SetIntensity(60000);Light->SetAttenuationRadius(1400);Light->SetLightColor(FLinearColor(1,.94,.86));Light->SetCastShadows(false);}
- Furniture(GetWorld(),FVector(0,0,-12),FVector(9,7,.24),Cream);Furniture(GetWorld(),FVector(440,0,150),FVector(.2,7,3),Cream);Furniture(GetWorld(),FVector(0,-350,150),FVector(9,.2,3),Blue);Furniture(GetWorld(),FVector(0,350,150),FVector(9,.2,3),Cream);
- Furniture(GetWorld(),FVector(10,0,35),FVector(1.8,1.25,.18),Blue);for(int i=0;i<4;i++)Furniture(GetWorld(),FVector(i<2?-60:80,i%2?45:-45,13),FVector(.12,.12,.26),Ink);
- Furniture(GetWorld(),FVector(-60,-245,30),FVector(2.6,.8,.6),Blue);Furniture(GetWorld(),FVector(-60,-285,65),FVector(2.6,.2,1),Blue);
- Furniture(GetWorld(),FVector(260,-220,40),FVector(1.9,.75,.15),Cream);Furniture(GetWorld(),FVector(260,235,40),FVector(2.3,.8,.2),Blue);
- auto L=GetWorld()->SpawnActor<ADirectionalLight>(FVector(0,0,300),FRotator(-55,-35,0));Cast<UDirectionalLightComponent>(L->GetLightComponent())->SetForwardShadingPriority(1);L->GetLightComponent()->SetIntensity(4);L->GetLightComponent()->SetLightColor(FLinearColor(1,.92,.8));
- auto FillSun=GetWorld()->SpawnActor<ADirectionalLight>(FVector(0,0,300),FRotator(-35,145,0));FillSun->GetLightComponent()->SetIntensity(1.5f);FillSun->GetLightComponent()->SetCastShadows(false);FillSun->GetLightComponent()->SetLightColor(FLinearColor(.85,.92,1));
- auto S=GetWorld()->SpawnActor<ASkyLight>();S->GetLightComponent()->SetMobility(EComponentMobility::Movable);S->GetLightComponent()->SetIntensity(1.2);S->GetLightComponent()->RecaptureSky();
+ auto W=GetWorld();const FLinearColor Wood(.49,.31,.17),Wall(.78,.74,.65);
+ Furniture(W,FVector(0,0,-12),FVector(18,14,.24),Wood);
+ for(int X=-850;X<900;X+=100)Furniture(W,FVector(X,0,.2),FVector(.015,14,.006),FLinearColor(.3,.19,.11));
+ Furniture(W,FVector(900,0,200),FVector(.2,14,4),Wall);Furniture(W,FVector(-900,0,200),FVector(.2,14,4),Wall);
+ Furniture(W,FVector(0,-700,200),FVector(18,.2,4),Blue);Furniture(W,FVector(0,700,200),FVector(18,.2,4),Wall);
+ Furniture(W,FVector(0,-110,1),FVector(5.8,4.2,.015),FLinearColor(.12,.24,.26));
+ FabPiece(W,TEXT("Furniture"),TEXT("SM_Coffe_Table_2"),FVector(10,0,-6));
+ FabPiece(W,TEXT("Furniture"),TEXT("SM_Sofa_41"),FVector(-60,-260,0));
+ FabPiece(W,TEXT("Furniture"),TEXT("SM_Commode_7"),FVector(260,-220,0),.48f);
+ FabPiece(W,TEXT("Furniture"),TEXT("SM_Computer_desk_7"),FVector(260,235,0),.65f);
+ FabPiece(W,TEXT("Furniture"),TEXT("SM_Chair_13"),FVector(-285,-100,0),1,90);
+ FabPiece(W,TEXT("Furniture"),TEXT("SM_Chair_28"),FVector(280,360,0),1,180);
+ for(int I=0;I<5;I++)FabPiece(W,TEXT("Furniture"),TEXT("SM_Prefabricated_kitchen_16"),FVector(650,-380+I*100,0),1,90);
+ FabPiece(W,TEXT("Furniture"),TEXT("SM_Refrigerato_4"),FVector(650,200,0),1,90);
+ FabPiece(W,TEXT("Furniture"),TEXT("SM_Wardrobe_9"),FVector(-650,560,0),1,180);
+ FabPiece(W,TEXT("Furniture"),TEXT("SM_Bed_8"),FVector(-600,360,0),.9f);
+ // Low steps, elevated landing, and a broad overhead catwalk form a complete return route.
+ for(int I=0;I<8;I++){float Top=35*(I+1);Furniture(W,FVector(-700+I*95,-555,Top*.5f),FVector(.95,1.65,Top/100),I%2?Cream:Wood);}
+ Furniture(W,FVector(400,-555,270),FVector(7,1.65,.2),Wood);
+ Furniture(W,FVector(600,-300,270),FVector(1.3,3.5,.2),Wood);
+ Furniture(W,FVector(600,-35,220),FVector(1.3,1.4,.16),Cream);
+ // Landing targets make both ascent and diving useful, not just decorative height.
+ for(int I=0;I<4;I++)FabPiece(W,TEXT("Decor"),TEXT("SM_SD_PottedPlant_01"),FVector(I%2?790:-790,I<2?-590:590,0));
+ for(int I=0;I<5;I++)FabPiece(W,TEXT("Decor"),TEXT("SM_SD_LinenCurtain_01"),FVector(-400+I*160,680,80),1.3f);
+ for(int I=0;I<3;I++){FabPiece(W,TEXT("Decor"),TEXT("SM_SD_PictureFrame_01"),FVector(880,-350+I*190,175),1.5f,90);FabPiece(W,TEXT("Decor"),TEXT("SM_SD_BookStack_01"),FVector(620,-300+I*110,115));}
+ FabPiece(W,TEXT("Decor"),TEXT("SM_SD_TableLamp_01"),FVector(-650,550,235));
+ FabPiece(W,TEXT("Decor"),TEXT("SM_SD_WallClock_01"),FVector(0,680,280),2,180);
+ for(int I=0;I<4;I++){auto Fill=W->SpawnActor<APointLight>(FVector(I%2?500:-500,I<2?-350:350,310),FRotator::ZeroRotator);auto Light=Cast<UPointLightComponent>(Fill->GetLightComponent());Light->SetIntensity(95000);Light->SetAttenuationRadius(1600);Light->SetLightColor(FLinearColor(1,.91,.76));Light->SetCastShadows(false);}
+ auto L=W->SpawnActor<ADirectionalLight>(FVector(0,0,300),FRotator(-55,-35,0));L->GetLightComponent()->SetIntensity(6);L->GetLightComponent()->SetLightColor(FLinearColor(1,.94,.86));
+ auto Fill=W->SpawnActor<ADirectionalLight>(FVector(0,0,300),FRotator(-35,145,0));Fill->GetLightComponent()->SetIntensity(4);Fill->GetLightComponent()->SetCastShadows(false);
+ auto Sky=W->SpawnActor<ASkyLight>();Sky->GetLightComponent()->SetMobility(EComponentMobility::Movable);Sky->GetLightComponent()->SetIntensity(1.5);Sky->GetLightComponent()->RecaptureSky();
+ for(int I=0;I<2;I++){auto R=W->SpawnActor<ALabResident>(FVector(I?550:-550,400,92),FRotator::ZeroRotator);R->Configure(I==1);Residents.Add(R);}
 }
 void ALabGameMode::SpawnProps(bool Bounce){
  const FVector Positions[]={ {-55,0,57},{-10,0,52},{35,0,57},{35,0,82},{35,0,107},{-40,43,51},{130,-220,65},{190,-220,68},{220,-220,68},{250,-220,68},{290,-220,63},{330,-220,65},{165,235,61},{215,235,80},{265,235,68},{280,235,105},{330,235,64},{360,235,64}};
@@ -214,8 +246,8 @@ void ALabGameMode::SpawnProps(bool Bounce){
 void ALabGameMode::StartRound(bool Fused){
  ClearMeme();
  UGameplayStatics::SetGlobalTimeDilation(GetWorld(),1);SlowUntil=0;ClearDiscoveries();for(auto P:Props)if(IsValid(P))P->Destroy();Props.Empty();Chains.Empty();Current=0;NextChain=1;
- Stage=Fused?2:0;Remaining=60;Score=Best=Swipes=UsedPounces=0;Pounces=3;Challenge=false;Quip.Empty();QuipUntil=0;PopUntil=0;Recorded=false;
- for(auto A:PresentationCats)if(IsValid(A))A->Destroy();PresentationCats.Empty();ResetParty();SpawnProps(false);SpawnPartyProps();SetMenuInput(false);
+ Stage=Fused?2:0;Remaining=180;Score=Best=Swipes=UsedPounces=0;Pounces=3;Challenge=false;Quip.Empty();QuipUntil=0;PopUntil=0;Recorded=false;
+ for(auto A:PresentationCats)if(IsValid(A))A->Destroy();PresentationCats.Empty();ResetParty();for(auto R:Residents)if(IsValid(R))R->ResetResident();SpawnProps(false);SpawnPartyProps();for(int I=0;I<12;I++){FVector Pos=I<6?FVector(150+I*90,-555,305):FVector(620,-350+(I-6)*90,142);auto P=GetWorld()->SpawnActor<ALabProp>(Pos,FRotator::ZeroRotator);P->Configure(200+I,FVector(.3,.3,.36),I%2?Cream:Orange,false,false,false);if(auto M=I<6?LoadObject<UStaticMesh>(nullptr,TEXT("/Game/FabLocal/Decor/SM_SD_CeramicVase_01")):ArtShape(TEXT("SM_Cup"))){P->Body->SetSimulatePhysics(false);P->Body->SetStaticMesh(M);if(I<6){P->Body->SetMaterial(0,M->GetMaterial(0));P->Body->SetWorldScale3D(FVector(36.f/FMath::Max(1.f,M->GetBoundingBox().GetSize().Z)));P->SetActorLocation(FVector(Pos.X,Pos.Y,282));}else P->Body->SetWorldScale3D(FVector(.22,.22,.28));P->Body->SetSimulatePhysics(true);P->Body->SetMassOverrideInKg(NAME_None,1.5f);P->InitialPosition=P->GetActorLocation();}P->ItemName=I<6?TEXT("高台花瓶"):TEXT("厨房瓷杯");P->BaseScore=I<6?129:69;Props.Add(P);}SetMenuInput(false);
  if(auto Cat=Cast<ALabCat>(UGameplayStatics::GetPlayerPawn(GetWorld(),0))){Cat->ResetCat();Cat->SetMutation(Fused);Cat->SetActorLocation(FVector(-190,0,35*Cat->BodyScale),false,nullptr,ETeleportType::TeleportPhysics);}
 }
 void ALabGameMode::Retry(bool Full){if(Stage==4)return;if(Full)RecipeId=INDEX_NONE;StartRound(RecipeId!=INDEX_NONE);}
@@ -224,7 +256,7 @@ bool ALabGameMode::Active(int32 Id) const {const auto C=Chains.Find(Id);return C
 void ALabGameMode::Affect(ALabProp* P,int32 Id){
  auto C=Chains.Find(Id);if(!P||!Playing()||!C||!Active(Id)||C->Members.Contains(P->PropId))return;
  C->Members.Add(P->PropId);C->Last=GetWorld()->GetTimeSeconds();Current=C->Members.Num();Best=FMath::Max(Best,Current);
- if(P->Scored)return;P->Scored=true;Score+=P->BaseScore;
+ if(P->Scored)return;P->Scored=true;Score+=P->BaseScore;WorldSound(P->Heavy?TEXT("Landing"):TEXT("Glass"),P->Heavy?.45f:.35f);
  PopText=FString::Printf(TEXT("%s  +¥%d"),*P->ItemName,P->BaseScore);PopLocation=P->GetActorLocation();PopUntil=C->Last+1.6;
  if(P->PropId==30)DisableCamera();
  if(P->PropId==19)SpillCandy(P->GetActorLocation(),Id);
@@ -235,11 +267,11 @@ void ALabGameMode::Affect(ALabProp* P,int32 Id){
 }
 void ALabGameMode::FinishRound(){
  if(!Playing())return;
- UGameplayStatics::SetGlobalTimeDilation(GetWorld(),1);SlowUntil=0;Chains.Empty();Current=0;for(auto P:Props)if(IsValid(P))P->Body->SetSimulatePhysics(false);Stage=3;Remaining=0;Learned=true;SetMenuInput(true);RecordRun();CameraCaption=TEXT("门口传来钥匙声……主人到家了。");StartMeme();ReceiptGreetingPending=MemeShowing;if(!MemeShowing)Speak(TEXT("OwnerHome"));
+ UGameplayStatics::SetGlobalTimeDilation(GetWorld(),1);SlowUntil=0;Chains.Empty();Current=0;for(auto P:Props)if(IsValid(P))P->Body->SetSimulatePhysics(false);Stage=3;Remaining=0;Learned=true;SetMenuInput(true);RecordRun();CameraCaption=TEXT("派对结束。账单来了。");StartMeme();ReceiptGreetingPending=MemeShowing;if(!MemeShowing)Speak(TEXT("OwnerHome"));
 }
 void ALabGameMode::Tick(float Dt){
  Super::Tick(Dt);
- TickMeme(Dt);
+ TickMeme(Dt);UpdateMusic();
  if(SlowUntil>0&&FPlatformTime::Seconds()>=SlowUntil){SlowUntil=0;UGameplayStatics::SetGlobalTimeDilation(GetWorld(),1);}
  if(Playing()){
   if(!Practice&&!FParse::Param(FCommandLine::Get(),TEXT("CatArtReview")))Remaining=FMath::Max(0.f,Remaining-Dt);

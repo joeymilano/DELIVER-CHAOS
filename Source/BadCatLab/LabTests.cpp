@@ -1,6 +1,9 @@
 #if WITH_DEV_AUTOMATION_TESTS
 #include "LabGame.h"
 #include "LabCatalog.h"
+#include "LabResident.h"
+#include "Components/SkeletalMeshComponent.h"
+#include "Components/CapsuleComponent.h"
 #include "Misc/AutomationTest.h"
 #include "Engine/World.h"
 #include "Engine/Engine.h"
@@ -49,7 +52,7 @@ bool FLabFusionTest::RunTest(const FString&){
 }
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabCameraTest,"BadCatLab.Party.CameraConsequences",Flags)
 bool FLabCameraTest::RunTest(const FString&){
- FPartyWorld F;auto G=F.G;G->CameraObservation(true,false);TestEqual(TEXT("Caught adds suspicion"),G->Suspicion,1);TestEqual(TEXT("Caught brings owner home sooner"),G->Remaining,57.f);
+ FPartyWorld F;auto G=F.G;G->CameraObservation(true,false);TestEqual(TEXT("Caught adds suspicion"),G->Suspicion,1);TestEqual(TEXT("Caught brings owner home sooner"),G->Remaining,177.f);
  G->CameraObservation(true,false);TestEqual(TEXT("Cooldown prevents per-frame punishment"),G->Suspicion,1);
  G->CameraObservation(true,true);TestEqual(TEXT("Innocent pose wins even during falling objects"),G->GoodCat,1);TestEqual(TEXT("Innocence reduces suspicion"),G->Suspicion,0);
  G->GoodCooldown=0;G->CameraObservation(false,true);G->GoodCooldown=0;G->CameraObservation(false,true);G->GoodCooldown=0;G->CameraObservation(false,true);TestEqual(TEXT("Good-cat farming capped"),G->GoodCat,3);
@@ -72,9 +75,9 @@ IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabResetTest,"BadCatLab.Party.TwentyRoundReset
 bool FLabResetTest::RunTest(const FString&){
  FPartyWorld F;auto G=F.G;
  for(int Round=0;Round<20;Round++){
-  G->RecipeId=Round%2?2:1;G->StartRound(true);TestEqual(TEXT("Each round starts with 25 props"),G->Props.Num(),25);
+  G->RecipeId=Round%2?2:1;G->StartRound(true);TestEqual(TEXT("Each round starts with 37 props"),G->Props.Num(),37);
   ALabProp* Bowl=nullptr;for(auto P:G->Props)if(P->PropId==19)Bowl=P;
-  TestNotNull(TEXT("Candy bowl exists"),Bowl);if(!Bowl)return false;int C=G->NewChain(true);G->Affect(Bowl,C);TestEqual(TEXT("Bowl releases exactly 24 candies"),G->Props.Num(),49);G->Affect(Bowl,G->NewChain(false));TestEqual(TEXT("Bowl cannot duplicate candies"),G->Props.Num(),49);
+  TestNotNull(TEXT("Candy bowl exists"),Bowl);if(!Bowl)return false;int C=G->NewChain(true);G->Affect(Bowl,C);TestEqual(TEXT("Bowl releases exactly 24 candies"),G->Props.Num(),61);G->Affect(Bowl,G->NewChain(false));TestEqual(TEXT("Bowl cannot duplicate candies"),G->Props.Num(),61);
   G->DisableCamera();G->Suspicion=4;G->OpenSelection();TestEqual(TEXT("Reset clears all props"),G->Props.Num(),0);TestEqual(TEXT("Reset clears all presentation actors"),G->PresentationCats.Num(),0);TestEqual(TEXT("Reset clears money"),G->Score,0);TestEqual(TEXT("Reset clears chains"),G->Chains.Num(),0);TestEqual(TEXT("Reset clears suspicion"),G->Suspicion,0);TestFalse(TEXT("Reset restores camera"),G->CameraBroken);TestFalse(TEXT("Reset clears candy rule"),G->CandySpilled);TestEqual(TEXT("Reset restores time scale"),UGameplayStatics::GetGlobalTimeDilation(F.W),1.f);
  }
  return true;
@@ -119,5 +122,14 @@ bool FLabVoiceTest::RunTest(const FString&){
  G->Stage=3;G->StartMeme();G->ReceiptGreetingPending=true;G->StopMeme();TestFalse(TEXT("Receipt greeting consumed once"),G->ReceiptGreetingPending);
  const double HomeUntil=G->OwnerVoiceUntil;G->StopMeme();TestEqual(TEXT("Repeated stop cannot repeat greeting"),G->OwnerVoiceUntil,HomeUntil);
  G->ClearMeme();G->ClearVoices();return true;
+}
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabWorldUpgradeTest,"BadCatLab.World.FabResidentsAndRoute",Flags)
+bool FLabWorldUpgradeTest::RunTest(const FString&){
+ if(!LoadObject<UStaticMesh>(nullptr,TEXT("/Game/FabLocal/Furniture/SM_Sofa_41"),nullptr,LOAD_Quiet|LOAD_NoWarn)){AddWarning(TEXT("Acquire local Fab assets to run integration test"));return true;}
+ FPartyWorld F;F.G->BuildRoom();TestEqual(TEXT("Two visible opponents exist"),F.G->Residents.Num(),2);
+ for(auto R:F.G->Residents){TestTrue(TEXT("Opponent never pushes camera into cat"),R->GetCapsuleComponent()->GetCollisionResponseToChannel(ECC_Camera)==ECR_Ignore);TestNotNull(TEXT("Resident skeletal model"),R->GetMesh()->GetSkeletalMeshAsset());for(auto A:R->Clips)TestNotNull(TEXT("Resident animation imported"),A);R->Alert=4;R->CatchCooldown=6;R->ResetResident();TestEqual(TEXT("Retry clears pursuit"),R->Alert,0.f);TestEqual(TEXT("Retry clears catch cooldown"),R->CatchCooldown,0.f);}
+ FHitResult Hit;bool Floor=F.W->LineTraceSingleByChannel(Hit,FVector(-820,0,100),FVector(-820,0,-50),ECC_Visibility);TestTrue(TEXT("Expanded floor has collision"),Floor);
+ bool Catwalk=F.W->LineTraceSingleByChannel(Hit,FVector(400,-555,400),FVector(400,-555,200),ECC_Visibility);TestTrue(TEXT("Elevated route supports the cat"),Catwalk);if(Catwalk)TestTrue(TEXT("Catwalk at intended height"),Hit.Location.Z>260);
+ F.G->StartRound(false);TestEqual(TEXT("Challenge lasts three minutes"),F.G->Remaining,180.f);TestTrue(TEXT("New upper and kitchen targets spawned"),F.G->Props.Num()>=37);return true;
 }
 #endif

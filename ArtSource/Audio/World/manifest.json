@@ -1,0 +1,37 @@
+[
+  {
+    "file": "Alert.wav",
+    "seconds": 1.480181,
+    "sample_rate": "44100",
+    "channels": 1,
+    "sha256": "1079e535ed436af2a46bac93812f39fa1648b304491f8a3bcce3a882ce5b5bc5"
+  },
+  {
+    "file": "Glass.wav",
+    "seconds": 0.540454,
+    "sample_rate": "44100",
+    "channels": 1,
+    "sha256": "15af1d4ec263e5d274139089ce73c0a11c63935e0f59a276296a8179fe04597e"
+  },
+  {
+    "file": "Footstep.wav",
+    "seconds": 0.271383,
+    "sample_rate": "44100",
+    "channels": 1,
+    "sha256": "e0b05acda8c250d22f541927f6b1e3b8a87fb65a69f5ecd62b6015c98efcf157"
+  },
+  {
+    "file": "Landing.wav",
+    "seconds": 0.779002,
+    "sample_rate": "44100",
+    "channels": 1,
+    "sha256": "94d0baf9eb6969c33915754cb0327f3a0516f04819964080bfa8388ef9cc8642"
+  },
+  {
+    "file": "SneakySnitch.wav",
+    "seconds": 136.620408,
+    "sample_rate": "44100",
+    "channels": 2,
+    "sha256": "9fea43f3d5a82aedd8ab6aca9581ea27912d276ece7f49f4bc75638948a8ec5c"
+  }
+]

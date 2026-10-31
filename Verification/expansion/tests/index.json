@@ -1,0 +1,194 @@
+﻿{
+	"devices": [
+		{
+			"deviceName": "MacBook-Pro.local",
+			"instance": "E920BDE18A44D7B6692633A01F8A3CCC",
+			"instanceName": "MacBook-Pro.local-27067",
+			"platform": "MacEditor",
+			"oSVersion": "macOS 26.7.1 25G241",
+			"model": "Default",
+			"gPU": "Apple M5 Max",
+			"cPUModel": "Apple M5 Max",
+			"rAMInGB": 48,
+			"renderMode": "SM6",
+			"rHI": "",
+			"appInstanceLog": ""
+		}
+	],
+	"reportCreatedOn": "2026.10.31-01.05.00",
+	"succeeded": 11,
+	"succeededWithWarnings": 0,
+	"failed": 0,
+	"notRun": 0,
+	"inProcess": 0,
+	"totalDuration": 0.31606417894363403,
+	"comparisonExported": false,
+	"comparisonExportDirectory": "",
+	"tests": [
+		{
+			"testDisplayName": "BoundedResonance",
+			"fullTestPath": "BadCatLab.Party.BoundedResonance",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"E920BDE18A44D7B6692633A01F8A3CCC"
+			],
+			"duration": 0.018753498792648315,
+			"dateTime": "2026.10.31-01.05.00",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "CameraConsequences",
+			"fullTestPath": "BadCatLab.Party.CameraConsequences",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"E920BDE18A44D7B6692633A01F8A3CCC"
+			],
+			"duration": 0.01516525074839592,
+			"dateTime": "2026.10.31-01.05.00",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "CollectionAndRecipes",
+			"fullTestPath": "BadCatLab.Party.CollectionAndRecipes",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"E920BDE18A44D7B6692633A01F8A3CCC"
+			],
+			"duration": 0.015407916158437729,
+			"dateTime": "2026.10.31-01.05.00",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "LocalProgress",
+			"fullTestPath": "BadCatLab.Party.LocalProgress",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"E920BDE18A44D7B6692633A01F8A3CCC"
+			],
+			"duration": 0.015841331332921982,
+			"dateTime": "2026.10.31-01.05.00",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "MemeCelebrationLifecycle",
+			"fullTestPath": "BadCatLab.Party.MemeCelebrationLifecycle",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"E920BDE18A44D7B6692633A01F8A3CCC"
+			],
+			"duration": 0.043638873845338821,
+			"dateTime": "2026.10.31-01.05.00",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "SlowPushDelaysBill",
+			"fullTestPath": "BadCatLab.Party.SlowPushDelaysBill",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"E920BDE18A44D7B6692633A01F8A3CCC"
+			],
+			"duration": 0.014590416103601456,
+			"dateTime": "2026.10.31-01.05.00",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "TwentyRoundReset",
+			"fullTestPath": "BadCatLab.Party.TwentyRoundReset",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"E920BDE18A44D7B6692633A01F8A3CCC"
+			],
+			"duration": 0.081838786602020264,
+			"dateTime": "2026.10.31-01.05.00",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "UniqueBill",
+			"fullTestPath": "BadCatLab.Party.UniqueBill",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"E920BDE18A44D7B6692633A01F8A3CCC"
+			],
+			"duration": 0.017354000359773636,
+			"dateTime": "2026.10.31-01.05.00",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "UnlimitedPounce",
+			"fullTestPath": "BadCatLab.Party.UnlimitedPounce",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"E920BDE18A44D7B6692633A01F8A3CCC"
+			],
+			"duration": 0.017267748713493347,
+			"dateTime": "2026.10.31-01.05.00",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "VocalCooldownAndReset",
+			"fullTestPath": "BadCatLab.Party.VocalCooldownAndReset",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"E920BDE18A44D7B6692633A01F8A3CCC"
+			],
+			"duration": 0.017364956438541412,
+			"dateTime": "2026.10.31-01.05.00",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "FabResidentsAndRoute",
+			"fullTestPath": "BadCatLab.World.FabResidentsAndRoute",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"E920BDE18A44D7B6692633A01F8A3CCC"
+			],
+			"duration": 0.058841418474912643,
+			"dateTime": "2026.10.31-01.05.00",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		}
+	]
+}

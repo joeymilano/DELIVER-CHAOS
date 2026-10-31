@@ -27,3 +27,7 @@ Content/Audio/LocalReference/
 # ElevenLabs Free generation is local audition material, not commercial source media.
 ArtSource/Audio/ElevenLabsLocal/
 Content/Audio/ElevenLabsLocal/
+
+# Fab Standard License assets remain local; collaborators acquire from Fab.
+ArtSource/FabLocal/
+Content/FabLocal/

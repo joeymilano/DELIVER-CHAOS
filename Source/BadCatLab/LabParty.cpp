@@ -35,7 +35,7 @@ void ALabCat::NoisePulse(bool Automatic){
  for(auto P:Copy){if(!IsValid(P)||(P->Heavy&&!(Traits&CatTrait::Giant)))continue;FVector D=P->GetActorLocation()-Origin;if(D.Size()>230*BodyScale||FVector::DotProduct(D.GetSafeNormal2D(),Dir)<.45f)continue;P->Strike(Chain,D.GetSafeNormal()*650+FVector(0,0,160));if(++Count>=8)break;}
  DrawDebugCone(GetWorld(),Origin,Dir,230*BodyScale,.8f,.5f,20,FColor(90,210,230),false,.35f,0,3);G->Quip=TEXT("听见了吧。");G->QuipUntil=GetWorld()->GetTimeSeconds()+1.5;G->Speak(TEXT("Meow"));
 }
-void ALabCat::Landed(const FHitResult& Hit){Super::Landed(Hit);auto G=Party(GetWorld());if(G&&G->Playing()&&(Traits&CatTrait::Heavy)&&FallSpeed>230){G->RadialSmash(GetActorLocation(),FMath::Clamp(FallSpeed,350.f,1000.f)*BodyScale,160*BodyScale);Impact(true);}FallSpeed=0;}
+void ALabCat::Landed(const FHitResult& Hit){Super::Landed(Hit);auto G=Party(GetWorld());if(G&&G->Playing())G->WorldSound(TEXT("Landing"),.3f);if(G&&G->Playing()&&(Traits&CatTrait::Heavy)&&FallSpeed>230){G->RadialSmash(GetActorLocation(),FMath::Clamp(FallSpeed,350.f,1000.f)*BodyScale,160*BodyScale);Impact(true);}FallSpeed=0;}
 void ALabCat::Impact(bool Heavy){auto G=Party(GetWorld());if(!G)return;ImpactTime=.13f;G->Speak(Heavy?TEXT("Thud"):TEXT("Clink"));G->SlowUntil=FPlatformTime::Seconds()+(Heavy?.18:.05);UGameplayStatics::SetGlobalTimeDilation(GetWorld(),Heavy?.35f:.08f);}
 void ALabCat::TickInstincts(float Dt){
  auto G=Party(GetWorld());if(!G||!G->Playing())return;
@@ -77,7 +77,6 @@ void ALabGameMode::SpawnPartyProps(){
  for(int I=0;I<6;I++){auto Candy=GetWorld()->SpawnActor<AStaticMeshActor>(FVector(65+(I%3)*12,105+(I/3)*14,35),FRotator::ZeroRotator);auto C=Candy->GetStaticMeshComponent();C->SetMobility(EComponentMobility::Movable);C->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Sphere")));C->SetWorldScale3D(FVector(.09,.06,.06));C->SetCollisionEnabled(ECollisionEnabled::NoCollision);Colorize(C,I%2?FLinearColor(1,.2,.03):FLinearColor(.4,.05,.6));Candy->AttachToActor(Bowl,FAttachmentTransformRules::KeepWorldTransform);PresentationCats.Add(Candy);}
  for(int I=0;I<3;I++){auto P=Spawn(20+I,FVector(160,80,20+I*33),FVector(.38,.38,.32),FLinearColor(1,.16,.01),TEXT("南瓜灯"),79,true);P->Body->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Game/Art/Party/SM_Pumpkin")));P->SetActorRotation(FRotator(0,90,0));if(I==2)P->ItemName=TEXT("藏猫南瓜灯");}
  // Ascending perches create a reliable high route for orange-cat landings.
- for(int I=0;I<3;I++){auto A=GetWorld()->SpawnActor<AStaticMeshActor>(FVector(-150+I*90,-165,20+I*35),FRotator::ZeroRotator);auto C=A->GetStaticMeshComponent();C->SetMobility(EComponentMobility::Movable);C->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Game/Art/Props/SM_RoundedBlock")));C->SetWorldScale3D(FVector(.7,.7,.15));C->SetCollisionProfileName(TEXT("BlockAll"));Colorize(C,FLinearColor(.46,.26,.16));PresentationCats.Add(A);}
  PetCamera=Spawn(30,FVector(310,-245,115),FVector(.3,.3,.30),FLinearColor(.9,.87,.8),TEXT("宠物摄像头"),399,true);PetCamera->Body->SetSimulatePhysics(false);
  CameraVision=NewObject<UStaticMeshComponent>(PetCamera);CameraVision->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Cone")));CameraVision->SetupAttachment(PetCamera->Body);CameraVision->RegisterComponent();CameraVision->SetAbsolute(false,false,true);CameraVision->SetRelativeLocation(FVector(1066,0,0));CameraVision->SetRelativeRotation(FRotationMatrix::MakeFromZ(-FVector::ForwardVector).Rotator());CameraVision->SetWorldScale3D(FVector(9.4,9.4,6));CameraVision->SetCollisionEnabled(ECollisionEnabled::NoCollision);CameraVision->SetCastShadow(false);CameraVision->SetMaterial(0,LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/Art/M_CameraVision")));
  auto Lens=NewObject<UStaticMeshComponent>(PetCamera);Lens->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Sphere")));Lens->SetupAttachment(PetCamera->Body);Lens->RegisterComponent();Lens->SetRelativeLocation(FVector(45,0,0));Lens->SetRelativeScale3D(FVector(.25,.55,.55));Lens->SetCollisionEnabled(ECollisionEnabled::NoCollision);Colorize(Lens,FLinearColor(.005,.015,.02));
@@ -103,8 +102,8 @@ bool ALabGameMode::CameraSees(FVector Position,const AActor* Target) const{
 }
 void ALabGameMode::CameraObservation(bool Bad,bool IsInnocent){
  if(CameraBroken)return;
- if(IsInnocent&&GoodCooldown<=0&&GoodCat<3){GoodCat++;Suspicion=FMath::Max(0,Suspicion-1);GoodCooldown=8;CameraCaption=TEXT("“嗯，真乖。是我错怪你啦。”  装乖成功。");Speak(TEXT("OwnerGood"));}
- else if(Bad&&!IsInnocent&&CaughtCooldown<=0){Suspicion=FMath::Min(5,Suspicion+1);CaughtCooldown=3;CameraFlash=.8f;if(!Practice)Remaining=FMath::Max(0.f,Remaining-3);CameraCaption=Practice?TEXT("“咪咪！爪子放下。我都看见了。”  嫌疑加一。"):TEXT("“咪咪！爪子放下。我都看见了。”  主人提前 3 秒回家。");Speak(TEXT("OwnerCaught"));}
+ if(IsInnocent&&GoodCooldown<=0&&GoodCat<3){GoodCat++;Suspicion=FMath::Max(0,Suspicion-1);GoodCooldown=8;CameraCaption=TEXT("装乖成功。");Speak(TEXT("OwnerGood"));}
+ else if(Bad&&!IsInnocent&&CaughtCooldown<=0){Suspicion=FMath::Min(5,Suspicion+1);CaughtCooldown=3;CameraFlash=.8f;if(!Practice)Remaining=FMath::Max(0.f,Remaining-3);CameraCaption=Practice?TEXT("爪子放下！嫌疑 +1"):TEXT("被拍到了！时间 −3 秒");Speak(TEXT("OwnerCaught"));}
 }
 void ALabGameMode::TickCamera(float Dt){
  CaughtCooldown=FMath::Max(0.f,CaughtCooldown-Dt);GoodCooldown=FMath::Max(0.f,GoodCooldown-Dt);CameraFlash=FMath::Max(0.f,CameraFlash-Dt);if(CameraBroken||!IsValid(PetCamera))return;CameraClock+=Dt;
@@ -141,3 +140,6 @@ void ALabGameMode::Speak(const TCHAR* Clip){
 }
 void ALabGameMode::SetPractice(){if(Stage==4)Practice=!Practice;}
 void ALabGameMode::Lab(){OpenSelection();}
+
+void ALabGameMode::WorldSound(const TCHAR* Name,float Volume){double Now=GetWorld()->GetTimeSeconds();if(Now<WorldSoundUntil)return;auto Sound=LoadObject<USoundBase>(nullptr,*FString::Printf(TEXT("/Game/Audio/World/%s"),Name));if(Sound){WorldSoundUntil=Now+.1;UGameplayStatics::PlaySound2D(this,Sound,Volume);}}
+void ALabGameMode::UpdateMusic(){if(!IsValid(Music)){if(auto Sound=LoadObject<USoundBase>(nullptr,TEXT("/Game/Audio/World/SneakySnitch")))Music=UGameplayStatics::SpawnSound2D(this,Sound,.27f,1,0,nullptr,true,false);}if(IsValid(Music))Music->SetVolumeMultiplier(MemeShowing?0.f:Playing()?.27f:.12f);}
