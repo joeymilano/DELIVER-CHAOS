@@ -176,6 +176,7 @@ public:
  UPROPERTY() UFont* ChineseFont = nullptr;
  UPROPERTY() UFont* ChineseBoldFont = nullptr;
  UPROPERTY() TArray<UTexture2D*> Portraits;
+ UPROPERTY() UTexture2D* TitleMark=nullptr;
  virtual void DrawHUD() override;
  virtual void NotifyHitBoxClick(FName BoxName) override;
  int32 LastStage=INDEX_NONE; double StageEnteredAt=0, CaptionVisibleUntil=0; FString LastCaption;

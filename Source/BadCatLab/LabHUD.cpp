@@ -145,8 +145,9 @@ void ALabHUD::DrawHUD() {
   // Editorial left panel gives the live cat vignette room to breathe.
   DrawRect(Paper,0,0,OX+536*S,H);
   Box(44,44,32,4,Orange);Text(TEXT("DELIVERY CHAOS"),88,36,16,Ink,true);
-  Text(TEXT("猫手"),40,111,110,Ink,true);
-  Text(TEXT("猫脚"),40,224,110,Ink,true);
+  if(!TitleMark)TitleMark=LoadObject<UTexture2D>(nullptr,TEXT("/Game/UI/Title/T_TitleMark"));
+  if(TitleMark){const float LogoW=470,LogoH=LogoW*TitleMark->GetSizeY()/FMath::Max(1,TitleMark->GetSizeX());DrawTexture(TitleMark,OX+24*S,OY+74*S,LogoW*S,LogoH*S,0,0,1,1,FLinearColor::White,BLEND_Translucent);}
+  else Text(TEXT("猫手猫脚"),44,177,62,Ink,true);
   Button(TEXT("TitleStart"),TEXT("开始捣蛋"),TEXT("Enter"),48,445,320,true);
   Button(TEXT("TitleFree"),TEXT("随便拆拆"),G->FocusedMenuAction()==TEXT("TitleFree")?TEXT("Enter"):TEXT("F"),48,510,320,false);
   Text(TEXT("方向键选择 · 回车开始"),50,576,14,Muted);
