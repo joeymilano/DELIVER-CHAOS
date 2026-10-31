@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Pumpkin_Fireplace",
+    "materials": 6,
+    "size": "<Struct 'Box' (0x4bfc17a17c0) {min: {x: -111.000008, y: -42.000015, z: 0.000000}, max: {x: 111.000008, y: 68.000015, z: 155.500000}, is_valid: True}>"
+  },
+  {
+    "name": "Candy_Hutch",
+    "materials": 6,
+    "size": "<Struct 'Box' (0x4bfc102a480) {min: {x: -96.500000, y: -42.000011, z: 0.000000}, max: {x: 96.500000, y: 39.500008, z: 235.500000}, is_valid: True}>"
+  },
+  {
+    "name": "Candy_Buffet",
+    "materials": 2,
+    "size": "<Struct 'Box' (0x4bfc1119dc0) {min: {x: -105.000000, y: -50.000015, z: 0.000000}, max: {x: 105.000000, y: 50.000015, z: 91.000000}, is_valid: True}>"
+  },
+  {
+    "name": "Ghost_Window_Garland",
+    "materials": 5,
+    "size": "<Struct 'Box' (0x4bfc1731f40) {min: {x: -130.146423, y: -7.661239, z: -47.960003}, max: {x: 130.146423, y: 11.661239, z: 0.888009}, is_valid: True}>"
+  },
+  {
+    "name": "Pumpkin_Fairy_Lights",
+    "materials": 3,
+    "size": "<Struct 'Box' (0x4bfc1739c00) {min: {x: -371.500031, y: -167.500046, z: 270.300018}, max: {x: 378.000031, y: 167.500046, z: 316.799988}, is_valid: True}>"
+  },
+  {
+    "name": "Broom_and_Hat_Stand",
+    "materials": 4,
+    "size": "<Struct 'Box' (0x4bfc17365c0) {min: {x: -42.000000, y: -42.000000, z: 0.000000}, max: {x: 45.485455, y: 42.000000, z: 207.000000}, is_valid: True}>"
+  },
+  {
+    "name": "Little_Happy_Ghost",
+    "materials": 3,
+    "size": "<Struct 'Box' (0x4bfc11002c0) {min: {x: -23.418814, y: -24.958160, z: 0.020000}, max: {x: 25.592051, y: 24.958160, z: 66.360001}, is_valid: True}>"
+  },
+  {
+    "name": "Ghost_Cookie_Tray",
+    "materials": 4,
+    "size": "<Struct 'Box' (0x4bfc1109ac0) {min: {x: -33.000004, y: -26.500004, z: 0.000000}, max: {x: 33.000004, y: 26.500004, z: 9.099999}, is_valid: True}>"
+  },
+  {
+    "name": "Candy_Jar_Set",
+    "materials": 5,
+    "size": "<Struct 'Box' (0x4bfbea01f40) {min: {x: -66.000000, y: -16.000008, z: 0.000000}, max: {x: 66.000000, y: 16.000008, z: 38.250000}, is_valid: True}>"
+  },
+  {
+    "name": "Pumpkin_Tea_Cake",
+    "materials": 3,
+    "size": "<Struct 'Box' (0x4bfcaf6a780) {min: {x: -31.000000, y: -31.000000, z: 0.000000}, max: {x: 31.000000, y: 31.000000, z: 32.814972}, is_valid: True}>"
+  },
+  {
+    "name": "Friendly_Cat_Plush",
+    "materials": 5,
+    "size": "<Struct 'Box' (0x4bf98cd3200) {min: {x: -24.000002, y: -40.151806, z: 0.000000}, max: {x: 41.898525, y: 26.000002, z: 83.000000}, is_valid: True}>"
+  },
+  {
+    "name": "Crystal_Ball",
+    "materials": 2,
+    "size": "<Struct 'Box' (0x4bfa5513880) {min: {x: -10.000000, y: -10.000000, z: 0.000000}, max: {x: 10.000000, y: 10.000000, z: 21.500000}, is_valid: True}>"
+  },
+  {
+    "name": "Plum_Teapot",
+    "materials": 2,
+    "size": "<Struct 'Box' (0x4bf990bd700) {min: {x: -11.900001, y: -7.800000, z: 0.000000}, max: {x: 13.073313, y: 7.800000, z: 13.799999}, is_valid: True}>"
+  },
+  {
+    "name": "Potion_Trio",
+    "materials": 6,
+    "size": "<Struct 'Box' (0x4bfb8d4dac0) {min: {x: -11.000000, y: -6.500000, z: 0.000000}, max: {x: 11.000000, y: 6.500000, z: 18.799999}, is_valid: True}>"
+  },
+  {
+    "name": "Moon_Cookies",
+    "materials": 2,
+    "size": "<Struct 'Box' (0x4bfb876fe40) {min: {x: -6.500000, y: -6.500000, z: 0.000000}, max: {x: 6.500000, y: 6.500000, z: 2.200000}, is_valid: True}>"
+  },
+  {
+    "name": "Moon_Phase_Board",
+    "materials": 4,
+    "size": "<Struct 'Box' (0x4bfa985d380) {min: {x: -47.000000, y: -0.000007, z: -11.000000}, max: {x: 47.000000, y: 3.850005, z: 11.000000}, is_valid: True}>"
+  }
+]

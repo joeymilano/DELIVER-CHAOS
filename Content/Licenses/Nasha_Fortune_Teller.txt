@@ -1,0 +1,25 @@
+NASHA'S COZY 3D: FORTUNE TELLER - LICENSE
+
+By purchasing or downloading this pack you receive a non-exclusive,
+worldwide, perpetual license to use the included assets under the
+following terms.
+
+YOU MAY
+- Use the models in any number of personal and commercial projects,
+  including games, apps, videos, renders and printed materials.
+- Modify, retexture, recolour, split, combine and scale the models.
+- Use the models in projects you sell, as long as the models are part
+  of a larger work (for example a game), and not the product itself.
+- Use and change the Godot demo code in your own projects.
+
+YOU MAY NOT
+- Resell, share, sublicense or redistribute the models, modified or
+  not, as assets - on their own, as part of another asset pack or
+  template, or on any marketplace, asset store or free model site.
+- Claim the models as your own original work.
+- Use the models to train machine-learning or AI models, or offer them
+  as input data for such training.
+
+Credit is not required but always appreciated.
+
+The assets are provided "as is", without warranty of any kind.

@@ -88,7 +88,7 @@ void ALabCat::Release(){
  const int32 Chain=G->NewChain(Pounce);G->Swipes++;if(Super){G->Pounces--;G->UsedPounces++;}
  FVector Dir=AttackDirection();auto Target=FindTarget(Pounce?235:150,.10f);
  if(Target){Dir=(Target->GetActorLocation()-GetActorLocation()).GetSafeNormal2D();}
- SetActorRotation(Dir.Rotation());ActionPounce=Pounce;ActionTime=Pounce?.43f:.36f;ActiveAnimation=INDEX_NONE;Idle=0;
+ G->WorldSound(TEXT("Swipe"),.3f);SetActorRotation(Dir.Rotation());ActionPounce=Pounce;ActionTime=Pounce?.43f:.36f;ActiveAnimation=INDEX_NONE;Idle=0;
  const float Power=(Super?1500.f:Pounce?FMath::Lerp(620.f,1000.f,FMath::Clamp(Charge,0.f,1.f)):LabCatalog::Cat(G->SelectedCat).Swipe)*(Traits&CatTrait::Giant?1.65f:1.f);
  if(Target){Target->Strike(Chain,Dir*Power+FVector(0,0,Pounce?200:110));Impact(Target->Heavy);}
  if(Pounce)LaunchCharacter(Dir*(Super?1050:FMath::Lerp(480.f,780.f,FMath::Clamp(Charge,0.f,1.f)))+FVector(0,0,Super?260:180),true,true);
@@ -158,6 +158,10 @@ void ALabGameMode::BeginPlay(){Super::BeginPlay();LoadProgress();BuildRoom();Ope
  if(NoSave&&FParse::Value(FCommandLine::Get(),TEXT("UIReview="),Review)){
   if(Review!=TEXT("title"))OpenSelection();
   if(Review!=TEXT("locked"))Progress->UnlockedMask=15;
+  if(Review==TEXT("cozy")){
+   StartRound(false);Practice=true;
+   if(auto Cat=Cast<ALabCat>(UGameplayStatics::GetPlayerPawn(GetWorld(),0))){Cat->SetActorLocation(FVector(-260,290,40));Cat->Controller->SetControlRotation(FRotator(-22,90,0));Cat->Arm->TargetArmLength=420;}
+  }
   if(Review==TEXT("residents")||Review==TEXT("caught")){
    StartRound(false);Practice=Review==TEXT("residents");
    if(auto Cat=Cast<ALabCat>(UGameplayStatics::GetPlayerPawn(GetWorld(),0))){
@@ -202,7 +206,7 @@ void ALabGameMode::SelectCat(int32 Index){
 void ALabGameMode::ConfirmSelection(){
  if(Stage==6){StartFromTitle();return;}
  if(Stage==4){if(Progress&&FMath::CountBits((uint32)Progress->UnlockedMask)>1)BeginFusionChoice();else StartRound(false);}
- else if(Stage==5){const int R=LabCatalog::RecipeFor(SelectedCat,PartnerCat);if(!Unlocked(PartnerCat)||!RecipeUnlocked(R))return;RecipeId=R;Progress->RecipesMask|=1<<R;SaveProgress();Stage=1;Remaining=4;SetMenuInput(false);UpdatePresentation();}
+ else if(Stage==5){const int R=LabCatalog::RecipeFor(SelectedCat,PartnerCat);if(!Unlocked(PartnerCat)||!RecipeUnlocked(R))return;RecipeId=R;Progress->RecipesMask|=1<<R;SaveProgress();Stage=1;Remaining=4;WorldSound(TEXT("Fusion"),.5f);SetMenuInput(false);UpdatePresentation();}
  else if(Stage==3)Lab();
 }
 void ALabGameMode::BeginFusionChoice(){Stage=5;Remaining=0;PartnerCat=INDEX_NONE;for(int I=0;I<LabCatalog::CatCount;I++)if(I!=SelectedCat&&Unlocked(I)){PartnerCat=I;break;}SetMenuInput(true);if(auto Cat=Cast<ALabCat>(UGameplayStatics::GetPlayerPawn(GetWorld(),0))){Cat->Charging=false;Cat->Pushing=false;Cat->ZoomTime=0;Cat->GetCharacterMovement()->StopMovementImmediately();}}
@@ -258,6 +262,7 @@ void ALabGameMode::BuildRoom(){
  auto L=W->SpawnActor<ADirectionalLight>(FVector(0,0,300),FRotator(-55,-35,0));L->GetLightComponent()->SetIntensity(6);L->GetLightComponent()->SetLightColor(FLinearColor(1,.94,.86));
  auto Fill=W->SpawnActor<ADirectionalLight>(FVector(0,0,300),FRotator(-35,145,0));Fill->GetLightComponent()->SetIntensity(4);Fill->GetLightComponent()->SetCastShadows(false);
  auto Sky=W->SpawnActor<ASkyLight>();Sky->GetLightComponent()->SetMobility(EComponentMobility::Movable);Sky->GetLightComponent()->SetIntensity(1.5);Sky->GetLightComponent()->RecaptureSky();
+ BuildCozyCorner();
  for(int I=0;I<2;I++){auto R=W->SpawnActor<ALabResident>(FVector(I?550:-550,400,92),FRotator::ZeroRotator);R->Configure(I==1);Residents.Add(R);}
 }
 void ALabGameMode::SpawnProps(bool Bounce){
@@ -270,7 +275,7 @@ void ALabGameMode::StartRound(bool Fused){
  ClearMeme();
  UGameplayStatics::SetGlobalTimeDilation(GetWorld(),1);SlowUntil=0;ClearDiscoveries();for(auto P:Props)if(IsValid(P))P->Destroy();Props.Empty();Chains.Empty();Current=0;NextChain=1;
  Stage=Fused?2:0;Remaining=180;Score=Best=Swipes=UsedPounces=0;Pounces=3;Challenge=false;Quip.Empty();QuipUntil=0;PopUntil=0;Recorded=false;
- for(auto A:PresentationCats)if(IsValid(A))A->Destroy();PresentationCats.Empty();ResetParty();for(auto R:Residents)if(IsValid(R))R->ResetResident();SpawnProps(false);SpawnPartyProps();for(int I=0;I<12;I++){FVector Pos=I<6?FVector(150+I*90,-555,305):FVector(620,-350+(I-6)*90,142);auto P=GetWorld()->SpawnActor<ALabProp>(Pos,FRotator::ZeroRotator);P->Configure(200+I,FVector(.3,.3,.36),I%2?Cream:Orange,false,false,false);if(auto M=I<6?LoadObject<UStaticMesh>(nullptr,TEXT("/Game/FabLocal/Decor/SM_SD_CeramicVase_01")):ArtShape(TEXT("SM_Cup"))){P->Body->SetSimulatePhysics(false);P->Body->SetStaticMesh(M);if(I<6){P->Body->SetMaterial(0,M->GetMaterial(0));P->Body->SetWorldScale3D(FVector(36.f/FMath::Max(1.f,M->GetBoundingBox().GetSize().Z)));P->SetActorLocation(FVector(Pos.X,Pos.Y,282));}else P->Body->SetWorldScale3D(FVector(.22,.22,.28));P->Body->SetSimulatePhysics(true);P->Body->SetMassOverrideInKg(NAME_None,1.5f);P->InitialPosition=P->GetActorLocation();}P->ItemName=I<6?TEXT("高台花瓶"):TEXT("厨房瓷杯");P->BaseScore=I<6?129:69;Props.Add(P);}SetMenuInput(false);
+ for(auto A:PresentationCats)if(IsValid(A))A->Destroy();PresentationCats.Empty();EndKeyPlayed=false;ChaseMusicUntil=0;ResetParty();for(auto R:Residents)if(IsValid(R))R->ResetResident();SpawnProps(false);SpawnPartyProps();SpawnCozyProps();for(int I=0;I<12;I++){FVector Pos=I<6?FVector(150+I*90,-555,305):FVector(620,-350+(I-6)*90,142);auto P=GetWorld()->SpawnActor<ALabProp>(Pos,FRotator::ZeroRotator);P->Configure(200+I,FVector(.3,.3,.36),I%2?Cream:Orange,false,false,false);if(auto M=I<6?LoadObject<UStaticMesh>(nullptr,TEXT("/Game/FabLocal/Decor/SM_SD_CeramicVase_01")):ArtShape(TEXT("SM_Cup"))){P->Body->SetSimulatePhysics(false);P->Body->SetStaticMesh(M);if(I<6){P->Body->SetMaterial(0,M->GetMaterial(0));P->Body->SetWorldScale3D(FVector(36.f/FMath::Max(1.f,M->GetBoundingBox().GetSize().Z)));P->SetActorLocation(FVector(Pos.X,Pos.Y,282));}else P->Body->SetWorldScale3D(FVector(.22,.22,.28));P->Body->SetSimulatePhysics(true);P->Body->SetMassOverrideInKg(NAME_None,1.5f);P->InitialPosition=P->GetActorLocation();}P->ItemName=I<6?TEXT("高台花瓶"):TEXT("厨房瓷杯");P->BaseScore=I<6?129:69;Props.Add(P);}SetMenuInput(false);
  if(auto Cat=Cast<ALabCat>(UGameplayStatics::GetPlayerPawn(GetWorld(),0))){Cat->ResetCat();Cat->SetMutation(Fused);Cat->SetActorLocation(FVector(-190,0,35*Cat->BodyScale),false,nullptr,ETeleportType::TeleportPhysics);}
 }
 void ALabGameMode::Retry(bool Full){if(Stage==4||Stage==6)return;if(Full)RecipeId=INDEX_NONE;StartRound(RecipeId!=INDEX_NONE);}
@@ -299,6 +304,7 @@ void ALabGameMode::Tick(float Dt){
  if(Playing()){
   if(!Practice&&!FParse::Param(FCommandLine::Get(),TEXT("CatArtReview")))Remaining=FMath::Max(0.f,Remaining-Dt);
   Current=0;for(auto& Pair:Chains)if(Active(Pair.Key))Current=FMath::Max(Current,Pair.Value.Members.Num());
+  if(!Practice&&Remaining<5&&!EndKeyPlayed){EndKeyPlayed=true;WorldSound(TEXT("Key"),.65f);}
   TickCamera(Dt);CollectDiscoveries();if(!Practice&&Remaining<=0)FinishRound();
  }else if(Stage==1){Remaining-=Dt;auto Cat=UGameplayStatics::GetPlayerPawn(GetWorld(),0);if(Cat)for(int I=0;I<PresentationCats.Num();I++){auto A=PresentationCats[I];A->SetActorLocation(Cat->GetActorLocation()+FVector(90,(I?1.f:-1.f)*FMath::Max(0.f,Remaining-1)*28,40));A->SetActorRotation(FRotator(0,Remaining*90,0));}if(Remaining<=0)StartRound(true);}
 }

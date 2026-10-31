@@ -28,11 +28,13 @@ void ALabGameMode::ToggleMemeGif(){
 }
 
 void ALabGameMode::StopMeme() {
+ const bool Receipt=MemeShowing&&Stage==3;
  const bool Greet=MemeShowing&&ReceiptGreetingPending&&Stage==3;ReceiptGreetingPending=false;
  MemeShowing=false;
  if(IsValid(MemeAudio)){MemeAudio->Stop();MemeAudio->DestroyComponent();}MemeAudio=nullptr;
  if(auto PC=GetWorld()->GetFirstPlayerController())if(auto Pawn=PC->GetPawn())PC->SetViewTarget(Pawn);
  if(Greet)Speak(TEXT("OwnerHome"));
+ if(Receipt)WorldSound(Score>0?TEXT("Win"):TEXT("Cash"),.55f);
 }
 void ALabGameMode::ClearMeme() {
  ReceiptGreetingPending=false;StopMeme();

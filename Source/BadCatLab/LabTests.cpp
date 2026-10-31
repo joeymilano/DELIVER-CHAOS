@@ -78,11 +78,11 @@ bool FLabSaveTest::RunTest(const FString&){
 }
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabResetTest,"BadCatLab.Party.TwentyRoundReset",Flags)
 bool FLabResetTest::RunTest(const FString&){
- FPartyWorld F;auto G=F.G;
+ FPartyWorld F;auto G=F.G;int InitialCount=-1;
  for(int Round=0;Round<20;Round++){
-  G->RecipeId=Round%2?2:1;G->StartRound(true);TestEqual(TEXT("Each round starts with 37 props"),G->Props.Num(),37);
+  G->RecipeId=Round%2?2:1;G->StartRound(true);if(InitialCount<0)InitialCount=G->Props.Num();TestEqual(TEXT("Each round restores the same prop count"),G->Props.Num(),InitialCount);
   ALabProp* Bowl=nullptr;for(auto P:G->Props)if(P->PropId==19)Bowl=P;
-  TestNotNull(TEXT("Candy bowl exists"),Bowl);if(!Bowl)return false;int C=G->NewChain(true);G->Affect(Bowl,C);TestEqual(TEXT("Bowl releases exactly 24 candies"),G->Props.Num(),61);G->Affect(Bowl,G->NewChain(false));TestEqual(TEXT("Bowl cannot duplicate candies"),G->Props.Num(),61);
+  TestNotNull(TEXT("Candy bowl exists"),Bowl);if(!Bowl)return false;int C=G->NewChain(true);G->Affect(Bowl,C);TestEqual(TEXT("Bowl releases exactly 24 candies"),G->Props.Num(),InitialCount+24);G->Affect(Bowl,G->NewChain(false));TestEqual(TEXT("Bowl cannot duplicate candies"),G->Props.Num(),InitialCount+24);
   G->DisableCamera();G->Suspicion=4;G->OpenSelection();TestEqual(TEXT("Reset clears all props"),G->Props.Num(),0);TestEqual(TEXT("Reset clears all presentation actors"),G->PresentationCats.Num(),0);TestEqual(TEXT("Reset clears money"),G->Score,0);TestEqual(TEXT("Reset clears chains"),G->Chains.Num(),0);TestEqual(TEXT("Reset clears suspicion"),G->Suspicion,0);TestFalse(TEXT("Reset restores camera"),G->CameraBroken);TestFalse(TEXT("Reset clears candy rule"),G->CandySpilled);TestEqual(TEXT("Reset restores time scale"),UGameplayStatics::GetGlobalTimeDilation(F.W),1.f);
  }
  return true;
@@ -181,5 +181,14 @@ bool FLabCameraSafetyTest::RunTest(const FString&){
  TestTrue(TEXT("Compressed camera finds a distant view"),FVector::Dist(View.Location,Cat->GetActorLocation())>150);TestTrue(TEXT("Recovery view stays inside walls"),FMath::Abs(View.Location.X)<=840&&FMath::Abs(View.Location.Y)<=640);
  auto R=F.G->Residents[0];F.G->Stage=6;R->Tick(.016f);TestEqual(TEXT("Menu disables NPC falling"),R->GetCharacterMovement()->MovementMode,MOVE_None);
  F.G->Stage=0;R->Tick(.016f);TestEqual(TEXT("Play resumes NPC movement"),R->GetCharacterMovement()->MovementMode,MOVE_Walking);return true;
+}
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabCozyTest,"BadCatLab.World.CozyPropsAndReset",Flags)
+bool FLabCozyTest::RunTest(const FString&){
+ if(!LoadObject<UStaticMesh>(nullptr,TEXT("/Game/CozyLocal/Crystal_Ball"),nullptr,LOAD_Quiet|LOAD_NoWarn)){AddWarning(TEXT("Nasha licensed local models required for full integration test"));return true;}
+ FPartyWorld F;auto G=F.G;G->StartRound(false);int Count=0;TSet<int> Ids;
+ for(auto P:G->Props)if(P->PropId>=400&&P->PropId<=408){Count++;Ids.Add(P->PropId);TestTrue(TEXT("New prop has physics collision"),P->Body->IsSimulatingPhysics());TestTrue(TEXT("Price is readable"),P->BaseScore>0);}
+ TestEqual(TEXT("Nine interactive tea party props"),Count,9);TestEqual(TEXT("Unique prop IDs"),Ids.Num(),9);
+ auto P=*G->Props.FindByPredicate([](auto A){return A->PropId==400;});G->Affect(P,G->NewChain(false));G->Affect(P,G->NewChain(false));TestEqual(TEXT("Crystal billed once"),G->Score,699);
+ G->StartRound(false);Count=0;for(auto A:G->Props)if(A->PropId>=400&&A->PropId<=408)Count++;TestEqual(TEXT("Retry rebuilds without duplication"),Count,9);TestEqual(TEXT("Retry clears bill"),G->Score,0);return true;
 }
 #endif

@@ -132,10 +132,12 @@ public:
  UPROPERTY() ACameraActor* TitleCamera=nullptr;
  FRotator TitleHeadRest,TitleTailRest;
  float TitleTime=0; bool MusicMuted=false,MusicGameplay=false;
+ int MusicVariant=-1; double ChaseMusicUntil=0; bool EndKeyPlayed=false;
  void OpenTitle(); void ClearTitle(); void TickTitle(float Dt); void StartFromTitle(bool FreePlay=false);
 
  double WorldSoundUntil=0;
  void WorldSound(const TCHAR* Name,float Volume);void UpdateMusic();
+ void BuildCozyCorner();void SpawnCozyProps();
  void BuildRoom(); void SpawnProps(bool Bounce);
  UPROPERTY() AActor* MemeCat = nullptr;
  UPROPERTY() ACameraActor* MemeCamera = nullptr;
