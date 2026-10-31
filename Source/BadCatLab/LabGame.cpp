@@ -74,7 +74,7 @@ ALabCat::ALabCat(){
  Tail=Part(TEXT("Tail"),TEXT("Cylinder"),FVector(-36,0,28),FVector(.11,.11,.48));Tail->SetRelativeRotation(FRotator(-30,0,0));
 }
 void ALabCat::BeginPlay(){Super::BeginPlay();TArray<UStaticMeshComponent*> Parts;GetComponents(Parts);for(auto C:Parts){if(C==HeroMesh)continue;FString N=C->GetName();Paint(C,N==TEXT("Patch")||N==TEXT("Tail")||N==TEXT("Nose")||N==TEXT("EyeR")||N.StartsWith(TEXT("Ear"))?Ink:Cream);}if(Controller)Controller->SetControlRotation(FRotator(-32,0,0));}
-void ALabCat::SetupPlayerInputComponent(UInputComponent* I){Super::SetupPlayerInputComponent(I);I->BindAxis("Forward",this,&ALabCat::Forward);I->BindAxis("Right",this,&ALabCat::Right);I->BindAxis("Turn",this,&ALabCat::Turn);I->BindAxis("Look",this,&ALabCat::Look);I->BindAction("Attack",IE_Pressed,this,&ALabCat::Press);I->BindAction("Attack",IE_Released,this,&ALabCat::Release);I->BindAction("Jump",IE_Pressed,this,&ALabCat::Hop);I->BindAction("Retry",IE_Pressed,this,&ALabCat::Retry).bExecuteWhenPaused=true;I->BindAction("Pause",IE_Pressed,this,&ALabCat::Pause).bExecuteWhenPaused=true;I->BindAction("HUD",IE_Pressed,this,&ALabCat::ToggleHUD);I->BindAction("Camera",IE_Pressed,this,&ALabCat::ToggleCamera);I->BindAction("Tutorial",IE_Pressed,this,&ALabCat::Tutorial).bExecuteWhenPaused=true;I->BindAction("One",IE_Pressed,this,&ALabCat::PickOne);I->BindAction("Two",IE_Pressed,this,&ALabCat::PickTwo);I->BindAction("Three",IE_Pressed,this,&ALabCat::PickThree);I->BindAction("Four",IE_Pressed,this,&ALabCat::PickFour);I->BindAction("Push",IE_Pressed,this,&ALabCat::PushStart);I->BindAction("Push",IE_Released,this,&ALabCat::PushStop);I->BindAction("Zoom",IE_Pressed,this,&ALabCat::ZoomStart);I->BindAction("Zoom",IE_Released,this,&ALabCat::ZoomStop);I->BindAction("Meow",IE_Pressed,this,&ALabCat::Meow);I->BindAction("Shake",IE_Pressed,this,&ALabCat::ToggleShake).bExecuteWhenPaused=true;I->BindAction("Practice",IE_Pressed,this,&ALabCat::TogglePractice);I->BindAction("Confirm",IE_Pressed,this,&ALabCat::ConfirmSelection);I->BindAction("Select",IE_Pressed,this,&ALabCat::OpenSelection).bExecuteWhenPaused=true;}
+void ALabCat::SetupPlayerInputComponent(UInputComponent* I){Super::SetupPlayerInputComponent(I);I->BindKey(EKeys::M,IE_Pressed,this,&ALabCat::ToggleMusic).bExecuteWhenPaused=true;I->BindKey(EKeys::I,IE_Pressed,this,&ALabCat::ToggleCredits);I->BindAxis("Forward",this,&ALabCat::Forward);I->BindAxis("Right",this,&ALabCat::Right);I->BindAxis("Turn",this,&ALabCat::Turn);I->BindAxis("Look",this,&ALabCat::Look);I->BindAction("Attack",IE_Pressed,this,&ALabCat::Press);I->BindAction("Attack",IE_Released,this,&ALabCat::Release);I->BindAction("Jump",IE_Pressed,this,&ALabCat::Hop);I->BindAction("Retry",IE_Pressed,this,&ALabCat::Retry).bExecuteWhenPaused=true;I->BindAction("Pause",IE_Pressed,this,&ALabCat::Pause).bExecuteWhenPaused=true;I->BindAction("HUD",IE_Pressed,this,&ALabCat::ToggleHUD);I->BindAction("Camera",IE_Pressed,this,&ALabCat::ToggleCamera);I->BindAction("Tutorial",IE_Pressed,this,&ALabCat::Tutorial).bExecuteWhenPaused=true;I->BindAction("One",IE_Pressed,this,&ALabCat::PickOne);I->BindAction("Two",IE_Pressed,this,&ALabCat::PickTwo);I->BindAction("Three",IE_Pressed,this,&ALabCat::PickThree);I->BindAction("Four",IE_Pressed,this,&ALabCat::PickFour);I->BindAction("Push",IE_Pressed,this,&ALabCat::PushStart);I->BindAction("Push",IE_Released,this,&ALabCat::PushStop);I->BindAction("Zoom",IE_Pressed,this,&ALabCat::ZoomStart);I->BindAction("Zoom",IE_Released,this,&ALabCat::ZoomStop);I->BindAction("Meow",IE_Pressed,this,&ALabCat::Meow);I->BindAction("Shake",IE_Pressed,this,&ALabCat::ToggleShake).bExecuteWhenPaused=true;I->BindAction("Practice",IE_Pressed,this,&ALabCat::TogglePractice);I->BindAction("Confirm",IE_Pressed,this,&ALabCat::ConfirmSelection);I->BindAction("Select",IE_Pressed,this,&ALabCat::OpenSelection).bExecuteWhenPaused=true;}
 void ALabCat::Forward(float V){auto G=GM(GetWorld());if(G&&G->Playing()){if(ZoomTime<=0)AddMovementInput(FRotator(0,GetControlRotation().Yaw,0).Vector(),V);if(V!=0)Idle=0;}}
 void ALabCat::Right(float V){auto G=GM(GetWorld());if(G&&G->Playing()){if(ZoomTime<=0)AddMovementInput(FRotationMatrix(FRotator(0,GetControlRotation().Yaw,0)).GetUnitAxis(EAxis::Y),V);if(V!=0)Idle=0;}}
 void ALabCat::Turn(float V){if(!FixedCamera&&GM(GetWorld())&&GM(GetWorld())->Playing())AddControllerYawInput(FMath::Clamp(V,-3.f,3.f));}
@@ -95,7 +95,7 @@ void ALabCat::Release(){
 void ALabCat::Hop(){if(auto G=GM(GetWorld())){if(G->Stage==3){G->ToggleMemeGif();}else if(G->Stage==5){G->RecipeId=INDEX_NONE;G->StartRound(false);}else if(G->Playing()){Jump();Innocent=false;Idle=0;}}}
 void ALabCat::Retry(){UGameplayStatics::SetGamePaused(GetWorld(),false);if(auto G=GM(GetWorld()))G->Retry();}
 void ALabCat::Tutorial(){UGameplayStatics::SetGamePaused(GetWorld(),false);if(auto G=GM(GetWorld()))G->Retry(true);}
-void ALabCat::Pause(){auto G=GM(GetWorld());if(!G||G->Stage==4||G->Stage==5)return;Charging=false;Pushing=false;ZoomTime=0;Charge=0;const bool Paused=!UGameplayStatics::IsGamePaused(GetWorld());UGameplayStatics::SetGamePaused(GetWorld(),Paused);G->SetMenuInput(Paused||G->Stage==3);if(IsValid(G->MemeAudio))G->MemeAudio->SetPaused(Paused);G->PauseVoices(Paused);}
+void ALabCat::Pause(){auto G=GM(GetWorld());if(!G)return;if(G->Stage==6){G->TitleCredits=false;return;}if(G->Stage==4||G->Stage==5){G->OpenTitle();return;}Charging=false;Pushing=false;ZoomTime=0;Charge=0;const bool Paused=!UGameplayStatics::IsGamePaused(GetWorld());UGameplayStatics::SetGamePaused(GetWorld(),Paused);G->SetMenuInput(Paused||G->Stage==3);if(IsValid(G->MemeAudio))G->MemeAudio->SetPaused(Paused);G->PauseVoices(Paused);}
 void ALabCat::ToggleHUD(){if(auto G=GM(GetWorld()))G->HideHUD=!G->HideHUD;}
 void ALabCat::ToggleCamera(){FixedCamera=!FixedCamera;Arm->bUsePawnControlRotation=!FixedCamera;Arm->SetRelativeRotation(FRotator(-40,-30,0));Arm->TargetArmLength=FixedCamera?650:430;}
 void ALabCat::ResetCat(){if(auto PC=Cast<APlayerController>(Controller)){PC->PlayerCameraManager->ViewPitchMin=-65;PC->PlayerCameraManager->ViewPitchMax=-10;PC->FlushPressedKeys();}SetActorLocation(FVector(-220,0,35),false,nullptr,ETeleportType::TeleportPhysics);GetCharacterMovement()->StopMovementImmediately();Charging=false;Pushing=false;ZoomTime=0;ZoomCooldown=0;MeowCooldown=0;AutoMeowCooldown=0;PushClock=0;FallSpeed=0;Charge=0;Idle=0;ActionTime=0;ImpactTime=0;Innocent=false;ActionPounce=false;Arm->SocketOffset=FVector::ZeroVector;SetActorRotation(FRotator::ZeroRotator);if(Controller)Controller->SetControlRotation(FRotator(-32,0,0));}
@@ -146,12 +146,13 @@ void ALabCat::Tick(float Dt){
  if(GetActorLocation().Z< -100)ResetCat();
 }
 ALabGameMode::ALabGameMode(){PrimaryActorTick.bCanEverTick=true;DefaultPawnClass=ALabCat::StaticClass();HUDClass=ALabHUD::StaticClass();}
-void ALabGameMode::BeginPlay(){Super::BeginPlay();LoadProgress();BuildRoom();OpenSelection();
+void ALabGameMode::BeginPlay(){Super::BeginPlay();LoadProgress();BuildRoom();OpenTitle();
 #if !UE_BUILD_SHIPPING
  if(FParse::Param(FCommandLine::Get(),TEXT("CatArtReview"))){int32 ReviewCat=0,ReviewRecipe=-1;FParse::Value(FCommandLine::Get(),TEXT("ReviewCat="),ReviewCat);FParse::Value(FCommandLine::Get(),TEXT("ReviewRecipe="),ReviewRecipe);SelectedCat=FMath::Clamp(ReviewCat,0,3);RecipeId=FMath::Clamp(ReviewRecipe,-1,5);StartRound(RecipeId>=0);if(auto Cat=Cast<ALabCat>(UGameplayStatics::GetPlayerPawn(GetWorld(),0))){Cat->FixedCamera=true;Cat->Arm->bUsePawnControlRotation=false;Cat->Arm->SetRelativeRotation(FRotator(-25,-25,0));Cat->Arm->TargetArmLength=260;Cat->SetActorRotation(FRotator(0,155,0));}}
  // Deterministic screen review is opt-in, Development-only and never touches player saves.
  FString Review;
  if(NoSave&&FParse::Value(FCommandLine::Get(),TEXT("UIReview="),Review)){
+  if(Review!=TEXT("title"))OpenSelection();
   if(Review!=TEXT("locked"))Progress->UnlockedMask=15;
   if(Review==TEXT("collection"))SelectCat(3);
   if(Review==TEXT("lab")||Review==TEXT("fusion")||Review==TEXT("hidden")){
@@ -172,6 +173,7 @@ void ALabGameMode::SetMenuInput(bool Enabled){if(auto PC=GetWorld()->GetFirstPla
 bool ALabGameMode::BounceRule() const{return Playing()&&CandySpilled;}
 bool ALabGameMode::ResonanceRule() const{return Playing()&&(CurrentTraits()&CatTrait::Loud);}
 void ALabGameMode::OpenSelection(){
+ ClearTitle();
  ClearMeme();
  UGameplayStatics::SetGlobalTimeDilation(GetWorld(),1);SlowUntil=0;ClearDiscoveries();
  for(auto A:PresentationCats)if(IsValid(A))A->Destroy();PresentationCats.Empty();for(auto P:Props)if(IsValid(P))P->Destroy();Props.Empty();PetCamera=nullptr;
@@ -185,6 +187,7 @@ void ALabGameMode::SelectCat(int32 Index){
  else if(Stage==5&&Index!=SelectedCat)PartnerCat=Index;
 }
 void ALabGameMode::ConfirmSelection(){
+ if(Stage==6){StartFromTitle();return;}
  if(Stage==4){if(Progress&&FMath::CountBits((uint32)Progress->UnlockedMask)>1)BeginFusionChoice();else StartRound(false);}
  else if(Stage==5){const int R=LabCatalog::RecipeFor(SelectedCat,PartnerCat);if(!Unlocked(PartnerCat)||!RecipeUnlocked(R))return;RecipeId=R;Progress->RecipesMask|=1<<R;SaveProgress();Stage=1;Remaining=4;SetMenuInput(false);UpdatePresentation();}
  else if(Stage==3)Lab();
@@ -244,13 +247,14 @@ void ALabGameMode::SpawnProps(bool Bounce){
  for(int i=0;i<18;i++){auto P=GetWorld()->SpawnActor<ALabProp>(Positions[i],FRotator::ZeroRotator);P->Configure(i,Scales[i],i%3==0?Orange:i%3==1?Cream:Blue,i==6||i==11,i==15,Bounce);Props.Add(P);}
 }
 void ALabGameMode::StartRound(bool Fused){
+ ClearTitle();
  ClearMeme();
  UGameplayStatics::SetGlobalTimeDilation(GetWorld(),1);SlowUntil=0;ClearDiscoveries();for(auto P:Props)if(IsValid(P))P->Destroy();Props.Empty();Chains.Empty();Current=0;NextChain=1;
  Stage=Fused?2:0;Remaining=180;Score=Best=Swipes=UsedPounces=0;Pounces=3;Challenge=false;Quip.Empty();QuipUntil=0;PopUntil=0;Recorded=false;
  for(auto A:PresentationCats)if(IsValid(A))A->Destroy();PresentationCats.Empty();ResetParty();for(auto R:Residents)if(IsValid(R))R->ResetResident();SpawnProps(false);SpawnPartyProps();for(int I=0;I<12;I++){FVector Pos=I<6?FVector(150+I*90,-555,305):FVector(620,-350+(I-6)*90,142);auto P=GetWorld()->SpawnActor<ALabProp>(Pos,FRotator::ZeroRotator);P->Configure(200+I,FVector(.3,.3,.36),I%2?Cream:Orange,false,false,false);if(auto M=I<6?LoadObject<UStaticMesh>(nullptr,TEXT("/Game/FabLocal/Decor/SM_SD_CeramicVase_01")):ArtShape(TEXT("SM_Cup"))){P->Body->SetSimulatePhysics(false);P->Body->SetStaticMesh(M);if(I<6){P->Body->SetMaterial(0,M->GetMaterial(0));P->Body->SetWorldScale3D(FVector(36.f/FMath::Max(1.f,M->GetBoundingBox().GetSize().Z)));P->SetActorLocation(FVector(Pos.X,Pos.Y,282));}else P->Body->SetWorldScale3D(FVector(.22,.22,.28));P->Body->SetSimulatePhysics(true);P->Body->SetMassOverrideInKg(NAME_None,1.5f);P->InitialPosition=P->GetActorLocation();}P->ItemName=I<6?TEXT("高台花瓶"):TEXT("厨房瓷杯");P->BaseScore=I<6?129:69;Props.Add(P);}SetMenuInput(false);
  if(auto Cat=Cast<ALabCat>(UGameplayStatics::GetPlayerPawn(GetWorld(),0))){Cat->ResetCat();Cat->SetMutation(Fused);Cat->SetActorLocation(FVector(-190,0,35*Cat->BodyScale),false,nullptr,ETeleportType::TeleportPhysics);}
 }
-void ALabGameMode::Retry(bool Full){if(Stage==4)return;if(Full)RecipeId=INDEX_NONE;StartRound(RecipeId!=INDEX_NONE);}
+void ALabGameMode::Retry(bool Full){if(Stage==4||Stage==6)return;if(Full)RecipeId=INDEX_NONE;StartRound(RecipeId!=INDEX_NONE);}
 int32 ALabGameMode::NewChain(bool Big){FLabChain C;C.Id=NextChain++;C.Pounce=Big;C.Last=GetWorld()->GetTimeSeconds();Chains.Add(C.Id,C);return C.Id;}
 bool ALabGameMode::Active(int32 Id) const {const auto C=Chains.Find(Id);return C&&GetWorld()->GetTimeSeconds()-C->Last<=2.5;}
 void ALabGameMode::Affect(ALabProp* P,int32 Id){
@@ -271,7 +275,7 @@ void ALabGameMode::FinishRound(){
 }
 void ALabGameMode::Tick(float Dt){
  Super::Tick(Dt);
- TickMeme(Dt);UpdateMusic();
+ TickTitle(Dt);TickMeme(Dt);UpdateMusic();
  if(SlowUntil>0&&FPlatformTime::Seconds()>=SlowUntil){SlowUntil=0;UGameplayStatics::SetGlobalTimeDilation(GetWorld(),1);}
  if(Playing()){
   if(!Practice&&!FParse::Param(FCommandLine::Get(),TEXT("CatArtReview")))Remaining=FMath::Max(0.f,Remaining-Dt);
@@ -279,3 +283,6 @@ void ALabGameMode::Tick(float Dt){
   TickCamera(Dt);CollectDiscoveries();if(!Practice&&Remaining<=0)FinishRound();
  }else if(Stage==1){Remaining-=Dt;auto Cat=UGameplayStatics::GetPlayerPawn(GetWorld(),0);if(Cat)for(int I=0;I<PresentationCats.Num();I++){auto A=PresentationCats[I];A->SetActorLocation(Cat->GetActorLocation()+FVector(90,(I?1.f:-1.f)*FMath::Max(0.f,Remaining-1)*28,40));A->SetActorRotation(FRotator(0,Remaining*90,0));}if(Remaining<=0)StartRound(true);}
 }
+
+void ALabCat::ToggleMusic(){if(auto G=GM(GetWorld())){G->MusicMuted=!G->MusicMuted;G->UpdateMusic();UE_LOG(LogTemp,Display,TEXT("Menu music: %s, component: %s"),G->MusicMuted?TEXT("muted"):TEXT("on"),IsValid(G->Music)&&G->Music->IsPlaying()?TEXT("playing"):TEXT("unavailable"));}}
+void ALabCat::ToggleCredits(){if(auto G=GM(GetWorld());G&&G->Stage==6)G->TitleCredits=!G->TitleCredits;}

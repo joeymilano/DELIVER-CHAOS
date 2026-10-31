@@ -26,6 +26,10 @@ void ALabHUD::NotifyHitBoxClick(FName Name) {
  Super::NotifyHitBoxClick(Name);
  auto G=Cast<ALabGameMode>(GetWorld()->GetAuthGameMode());if(!G)return;
  auto Cat=Cast<ALabCat>(UGameplayStatics::GetPlayerPawn(GetWorld(),0));
+ if(Name==TEXT("TitleStart")){G->StartFromTitle();return;}
+ if(Name==TEXT("TitleFree")){G->StartFromTitle(true);return;}
+ if(Name==TEXT("TitleMusic")){G->MusicMuted=!G->MusicMuted;G->UpdateMusic();return;}
+ if(Name==TEXT("TitleCredits")){G->TitleCredits=!G->TitleCredits;return;}
  if(Name==TEXT("Meme")){G->ToggleMemeGif();return;}
  if(Name==TEXT("Resume")){if(Cat)Cat->Pause();return;}
  if(Name==TEXT("Shake")){if(Cat)Cat->ToggleShake();return;}
@@ -95,6 +99,31 @@ void ALabHUD::DrawHUD() {
 #endif
  };
 
+ if(G->Stage==6){
+  // Editorial left panel gives the live cat vignette room to breathe.
+  DrawRect(Paper,0,0,OX+536*S,H);
+  Box(44,44,32,4,Orange);Text(TEXT("DELIVERY CHAOS"),88,36,16,Ink,true);
+  Text(TEXT("猫手"),40,111,110,Ink,true);
+  Text(TEXT("猫脚"),40,224,110,Ink,true);
+  Text(TEXT("主人不在。轮到你了。"),48,365,21,Muted);
+  Button(TEXT("TitleStart"),TEXT("开始捣蛋"),TEXT("Enter"),48,445,320,true);
+  Button(TEXT("TitleFree"),TEXT("随便拆拆"),TEXT("F"),48,510,320,false);
+  Text(TEXT("不限时，自由探索"),50,576,14,Muted);
+  Box(48,636,440,1,Line);
+  const bool Hot=Hover(48,653,150,30);
+  Text(G->MusicMuted?TEXT("音乐  /  关  M"):TEXT("音乐  /  开  M"),48,655,16,Hot?Orange:Ink,true);Hit(TEXT("TitleMusic"),48,648,150,40);
+  Text(TEXT("制作与音乐  I"),345,655,15,Muted);Hit(TEXT("TitleCredits"),337,648,151,40);
+  Pill(TEXT("一爪小事。满屋大事。"),925,48,Paper,Ink);
+  if(G->TitleCredits){
+   Round(590,450,630,212,16,Ink);
+   Text(TEXT("猫手猫脚  /  Delivery Chaos"),616,474,23,Paper,true);
+   Text(TEXT("音乐：Sneaky Snitch — Kevin MacLeod"),616,520,18,Paper);
+   Text(TEXT("incompetech.com  ·  CC BY 4.0"),616,551,16,Paper);
+   Text(TEXT("音量标准化、首尾淡化；完整授权见随包 Licenses。"),616,584,15,Paper);
+   Text(TEXT("个人 + AI 制作  /  Unreal Engine"),616,620,14,Paper);
+  }
+  return;
+ }
  // Selection and fusion share a collection grid, with a distinct primary action.
  if(G->Stage==4||G->Stage==5){
   Background();Brand();const bool Lab=G->Stage==5;const int Count=G->Progress?FMath::CountBits((uint32)G->Progress->UnlockedMask):1;

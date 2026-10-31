@@ -133,4 +133,15 @@ bool FLabWorldUpgradeTest::RunTest(const FString&){
  bool Catwalk=F.W->LineTraceSingleByChannel(Hit,FVector(400,-555,400),FVector(400,-555,200),ECC_Visibility);TestTrue(TEXT("Elevated route supports the cat"),Catwalk);if(Catwalk)TestTrue(TEXT("Catwalk at intended height"),Hit.Location.Z>260);
  F.G->StartRound(false);TestEqual(TEXT("Challenge lasts three minutes"),F.G->Remaining,180.f);TestTrue(TEXT("New upper and kitchen targets spawned"),F.G->Props.Num()>=37);return true;
 }
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabTitleTest,"BadCatLab.UI.TitleNavigation",Flags)
+bool FLabTitleTest::RunTest(const FString&){
+ FPartyWorld F;auto G=F.G;
+ G->OpenTitle();TestEqual(TEXT("Title is not a running round"),G->Stage,6);TestFalse(TEXT("Timer inactive"),G->Playing());
+ const int Count=G->TitleSet.Num();TestTrue(TEXT("Title scenery exists"),Count>0);
+ G->Retry();TestEqual(TEXT("Retry cannot skip title"),G->Stage,6);
+ G->StartFromTitle(true);TestTrue(TEXT("Free play selected"),G->Practice);TestEqual(TEXT("Select cat first"),G->Stage,4);TestEqual(TEXT("Title actors removed"),G->TitleSet.Num(),0);
+ G->OpenTitle();TestEqual(TEXT("Reopening does not duplicate scenery"),G->TitleSet.Num(),Count);
+ G->ConfirmSelection();TestFalse(TEXT("Normal play resets free mode"),G->Practice);TestEqual(TEXT("Enter opens collection"),G->Stage,4);
+ return true;
+}
 #endif

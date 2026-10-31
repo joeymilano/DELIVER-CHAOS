@@ -1,0 +1,15 @@
+{
+  "package": "BUILD SUCCESSFUL",
+  "sha256": "2d1f0a536a80d647af19f2f6440b8fce318d8100799a0dd16a8b1580017267e8",
+  "tests_passed": 12,
+  "tests_failed": 0,
+  "visual": "packaged 1920x1080 title and real game inspected",
+  "keyboard_verified": [
+    "Enter title > selection > game",
+    "F free play",
+    "Esc selection > title",
+    "M mute and restore",
+    "I music credits"
+  ],
+  "mouse_verification": "CUA did not supply a stable viewport mouse position; manual physical mouse acceptance remains open"
+}
