@@ -97,3 +97,7 @@
 ## Keyboard controls (2026-10-31)
 
 Gameplay and menus now work with keyboard only. Camera yaw stays fixed during movement and obstruction recovery. 21 tests passed; actual keyboard input checked title, selection, fusion, pause, retry, jumping, attacking and pouncing. Editor standalone at 1080p averaged 119.93 FPS. See [KEYBOARD.md](../Docs/KEYBOARD.md). Game and collaborator exports remain deferred.
+
+## 开始页艺术字（2026-10-31）
+
+使用用户提供的艺术字参考制作透明标题贴图，替换开始页原有大字标题。纹理保留 Alpha，使用 UI 纹理组、无 Mip、常驻加载，并加入最终烹制目录。Editor Mac Development 编译成功；工程独立运行检查了 1920×1080 与 1280×720 两种尺寸，没有裁切或底色边框；方向键与回车仍能进入选猫页。截图与资产记录见 `brush-title`，来源与最终编辑提示词见 [标题素材记录](../ArtSource/UI/Title/README.md)。本轮未更新 Mac 包和协作者工程 ZIP。

@@ -1,0 +1,22 @@
+{
+  "editor_build": "Succeeded",
+  "asset": "/Game/UI/Title/T_TitleMark",
+  "source_png": "ArtSource/UI/Title/TitleMark.png",
+  "size": [
+    1438,
+    1093
+  ],
+  "mode": "RGBA",
+  "alpha_range": [
+    0,
+    255
+  ],
+  "sha256": "0ddff3d11010cd192da8e9fde0912dc8589d0eb4d9d8b8078d237ae922cca58e",
+  "always_cook_directory": "/Game/UI/Title",
+  "visual_checks": [
+    "1920x1080",
+    "1280x720"
+  ],
+  "keyboard_start_checked": true,
+  "game_and_collaborator_exports_updated": false
+}
