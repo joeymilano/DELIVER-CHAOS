@@ -1,0 +1,19 @@
+{
+  "build_success": true,
+  "build_seconds": 88.66,
+  "tests_passed": 11,
+  "tests_failed": 0,
+  "meow_seconds": 2.2,
+  "gif_frames": 32,
+  "gif_fps": 12,
+  "gif_loops": 2,
+  "model_spins": false,
+  "oiia_audio_played": false,
+  "runtime_verified": [
+    "front-facing meow pose",
+    "skip to receipt",
+    "transparent GIF popup",
+    "Space closes popup"
+  ],
+  "executable_sha256": "871cec4d31472aafd4e07c25ead2a79f79b5d984080a53988bf2d6a5539c9050"
+}

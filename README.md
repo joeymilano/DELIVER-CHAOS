@@ -66,7 +66,7 @@ bash Tools/build_mac.sh
 | Q | 音波（拥有“吵”本能时） |
 | 1–4 / Enter | 选猫或搭档 / 确认下一步 |
 | Space（合成页） | 单猫出门 |
-| Space（结算时） | 跳过 / 重播 OIIA 转圈 |
+| Space（结算时） | 跳过喵叫 / 展开或收起猫猫彩蛋 |
 | R / Tab / Esc | 重试当前组合 / 返回选猫 / 暂停与操作说明 |
 | V / H / C | 镜头震动开关 / 隐藏 HUD / 固定拍摄镜头 |
 
@@ -87,6 +87,10 @@ bash Tools/build_mac.sh
 
 界面已改为主角展示、双猫合成预览、轻量 HUD 与实际物品账单。文案和页面规则见 [UI_COPY.md](Docs/UI_COPY.md)。暂停页支持鼠标按钮与 V 震动开关。
 
-每局结算前，本局的猫会表演约 4.8 秒的 OIIA 转圈。镜头固定，三阵旋转之间停下来装无辜；Space 随时看账单，也可再次重播。详情与本地参考音频边界见 [OIIA.md](Docs/OIIA.md)。
+每局结算前，本局的猫只抬头喵一声，约 2.2 秒后显示账单。Space 跳过；账单页的猫猫彩蛋单独展开动图，不播放 OIIA 音频。详情见 [OIIA.md](Docs/OIIA.md)。
 
 声音更新：两段 CC0 真实猫叫替代机器念“喵”，使用短叫和技能叫声；主人改用 ElevenLabs 中文自然对话音色。当前 ElevenLabs 免费套餐素材仅在本机，公开源码无旧机械人声回退。商用前需付费套餐重新生成，详情见 [声音说明](ArtSource/Audio/README.md)。
+
+### 结算小动作与彩蛋
+
+结算只播放约 2.2 秒的抬头、张嘴和一声真实猫叫，Space 可立即跳过。账单页按 Space 展开猫梗动图小卡片，两遍后自动收起，再按 Space 可提前关闭。用户提供的 OIIA 视频提取帧仅在本地演示，位于 ArtSource/MemesLocal 和 Content/UI/MemesLocal，不进入公开源码。

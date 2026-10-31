@@ -26,7 +26,7 @@ void ALabHUD::NotifyHitBoxClick(FName Name) {
  Super::NotifyHitBoxClick(Name);
  auto G=Cast<ALabGameMode>(GetWorld()->GetAuthGameMode());if(!G)return;
  auto Cat=Cast<ALabCat>(UGameplayStatics::GetPlayerPawn(GetWorld(),0));
- if(Name==TEXT("Meme")){if(G->MemeShowing)G->StopMeme();else G->StartMeme();return;}
+ if(Name==TEXT("Meme")){G->ToggleMemeGif();return;}
  if(Name==TEXT("Resume")){if(Cat)Cat->Pause();return;}
  if(Name==TEXT("Shake")){if(Cat)Cat->ToggleShake();return;}
  if(Name==TEXT("Retry")){UGameplayStatics::SetGamePaused(GetWorld(),false);G->Retry();return;}
@@ -176,11 +176,11 @@ void ALabHUD::DrawHUD() {
 
  if(G->Stage==3&&G->MemeShowing&&!Paused){
   Box(0,0,1280,143,Ink);Box(0,586,1280,134,Ink);
-  Center(G->Score>0?TEXT("本场拆家 MVP"):TEXT("本场摸鱼 MVP"),640,28,38,Paper,true);
+  Center(TEXT("喵。"),640,28,38,Paper,true);
   Center(Identity,640,86,22,Orange,true);
-  Text(TEXT("OIIA"),76,269,42,Orange,true);Text(TEXT("OIIA"),76,325,42,Paper,true);
+
   Text(TEXT("本次损失"),1030,272,18,Paper);Fit(Money(G->Score),1030,308,32,198,Orange,true);
-  Center(TEXT("本场最坏"),640,604,23,Paper);
+  Center(TEXT("就当没看见。"),640,604,23,Paper);
   Button(TEXT("Meme"),TEXT("好了，看账单"),TEXT("Space"),446,650,388,true);
   Fixture();return;
  }
@@ -212,7 +212,13 @@ void ALabHUD::DrawHUD() {
    Fit(Row.Cat,824,Y,17,192,Paper);const FString Price=Money(Row.Money);Text(Price,1190-Width(Price,20),Y,20,I==0?Orange:Paper,true);
   }else Wrap(TEXT("还没有人上榜。玩一局限时拆家，把名字留在这里。"),780,367,19,392,Paper);
   Button(TEXT("Select"),G->Progress&&FMath::CountBits((uint32)G->Progress->UnlockedMask)>1?TEXT("换个组合再来"):TEXT("回去选猫"),TEXT("Enter"),64,638,400,true);Button(TEXT("Retry"),TEXT("原样再拆一局"),TEXT("R"),484,638,330,false);
-  Button(TEXT("Meme"),TEXT("再转一圈"),TEXT("Space"),834,638,382,false);Fixture();return;
+  Button(TEXT("Meme"),TEXT("猫猫彩蛋"),TEXT("Space"),834,638,382,false);
+  if(G->MemeGifShowing&&G->MemeGifTexture){
+   DrawRect(FLinearColor(0,0,0,.7f),0,0,W,H);Round(420,94,440,530,20,Paper);Center(TEXT("与本猫无关。"),640,120,26,Ink,true);
+   int Frame=FMath::FloorToInt(G->MemeGifElapsed*12)%32;
+   DrawTexture(G->MemeGifTexture,OX+480*S,OY+180*S,320*S,320*S,(Frame%8)/8.f,(Frame/8)/4.f,1.f/8,1.f/4,FLinearColor::White,BLEND_Translucent);
+   Button(TEXT("Meme"),TEXT("收起"),TEXT("Space"),470,548,340,true);
+  }Fixture();return;
  }
 
  if(G->Playing()&&!G->HideHUD&&!Paused){

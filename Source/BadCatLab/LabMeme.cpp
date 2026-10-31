@@ -1,5 +1,9 @@
 #include "LabGame.h"
 #include "LabCatalog.h"
+#include "Components/PoseableMeshComponent.h"
+#include "Components/SkeletalMeshComponent.h"
+#include "Engine/Texture2D.h"
+#include "Engine/SkeletalMesh.h"
 #include "Camera/CameraActor.h"
 #include "Camera/CameraComponent.h"
 #include "Components/StaticMeshComponent.h"
@@ -14,16 +18,13 @@
 #include "Misc/CommandLine.h"
 #include "Misc/Parse.h"
 
-// Rigid, deliberately deadpan spins. The camera and collision never spin.
-// Three complete-turn bursts separated by motionless, front-facing beats.
-FRotator ALabGameMode::MemePose(float Time) {
- const float T=FMath::Clamp(Time,0.f,MemeDuration);
- auto Burst=[](float Value,float Start,float Length,int Turns){
-  const float P=FMath::Clamp((Value-Start)/Length,0.f,1.f);
-  return 360.f*Turns*P*P*(3-2*P);
- };
- const float Yaw=Burst(T,.50f,.80f,3)+Burst(T,1.65f,.95f,4)+Burst(T,3.f,1.15f,5);
- return FRotator(0,FMath::Fmod(Yaw,360.f),0);
+// A quiet meow, with no whole-body spin or camera motion.
+FRotator ALabGameMode::MemePose(float Time) { return FRotator::ZeroRotator; }
+void ALabGameMode::ToggleMemeGif(){
+ if(Stage!=3)return;
+ if(MemeShowing){StopMeme();return;}
+ if(!MemeGifTexture)MemeGifTexture=LoadObject<UTexture2D>(nullptr,TEXT("/Game/UI/MemesLocal/OiiaAtlas"),nullptr,LOAD_Quiet|LOAD_NoWarn);
+ MemeGifShowing=MemeGifTexture&&!MemeGifShowing;MemeGifElapsed=0;
 }
 
 void ALabGameMode::StopMeme() {
@@ -35,7 +36,7 @@ void ALabGameMode::StopMeme() {
 }
 void ALabGameMode::ClearMeme() {
  ReceiptGreetingPending=false;StopMeme();
- for(auto A:MemeSet)if(IsValid(A))A->Destroy();MemeSet.Empty();MemeCat=nullptr;MemeCamera=nullptr;MemeElapsed=0;
+ for(auto A:MemeSet)if(IsValid(A))A->Destroy();MemeSet.Empty();MemeCat=nullptr;MemeCamera=nullptr;MemeElapsed=0;MeowBody=nullptr;MeowPlayed=false;MemeGifShowing=false;MemeGifElapsed=0;
 }
 
 void ALabGameMode::StartMeme() {
@@ -48,6 +49,12 @@ void ALabGameMode::StartMeme() {
  auto Body=NewObject<UStaticMeshComponent>(MemeCat);Body->SetupAttachment(Root);Body->SetStaticMesh(Mesh);Body->SetCollisionEnabled(ECollisionEnabled::NoCollision);Body->RegisterComponent();
  const FBox Bounds=Mesh->GetBoundingBox();const float Scale=90.f/FMath::Max(1.f,Bounds.GetSize().Z);
  Body->SetRelativeScale3D(FVector(Scale));Body->SetRelativeLocation(FVector(0,0,-Bounds.Min.Z*Scale));Body->SetRelativeRotation(FRotator(0,-90,0));
+ if(auto Cat=Cast<ALabCat>(UGameplayStatics::GetPlayerPawn(GetWorld(),0));Cat&&Cat->GetMesh()->GetSkeletalMeshAsset()){
+  MeowBody=NewObject<UPoseableMeshComponent>(MemeCat);MeowBody->SetupAttachment(Root);MeowBody->SetSkeletalMesh(Cat->GetMesh()->GetSkeletalMeshAsset());MeowBody->SetCollisionEnabled(ECollisionEnabled::NoCollision);MeowBody->RegisterComponent();
+  const auto B=Cat->GetMesh()->GetSkeletalMeshAsset()->GetImportedBounds().GetBox();const float K=90.f/FMath::Max(1.f,B.GetSize().Z);
+  MeowBody->SetRelativeScale3D(FVector(K));MeowBody->SetRelativeLocation(FVector(0,0,-B.Min.Z*K));MeowBody->SetRelativeRotation(FRotator(0,-90,0));
+  MeowHeadRest=MeowBody->GetBoneRotationByName(TEXT("Head"),EBoneSpaces::ComponentSpace);MeowJawRest=MeowBody->GetBoneRotationByName(TEXT("Jaw"),EBoneSpaces::ComponentSpace);Body->SetVisibility(false);
+ }
  // Keep actual fusion accessories so this is the run's cat, not a generic meme.
  if(auto Cat=Cast<ALabCat>(UGameplayStatics::GetPlayerPawn(GetWorld(),0))){
   for(auto Source:Cat->FusionParts)if(IsValid(Source)&&Source->GetStaticMesh()){
@@ -70,10 +77,10 @@ void ALabGameMode::StartMeme() {
  const FVector CameraPos=Origin+FVector(340,0,66);MemeCamera->SetActorLocation(CameraPos);MemeCamera->SetActorRotation((Origin+FVector(0,0,42)-CameraPos).Rotation());MemeCamera->GetCameraComponent()->FieldOfView=50;
  if(auto PC=GetWorld()->GetFirstPlayerController())PC->SetViewTarget(MemeCamera);
  MemeShowing=true;MemeElapsed=0;
- // Optional audio cut from the user's reference. Local demo only, with a portable fallback.
- if(auto Sound=LoadObject<USoundBase>(nullptr,TEXT("/Game/Audio/LocalReference/OiiaReference"),nullptr,LOAD_Quiet|LOAD_NoWarn))MemeAudio=UGameplayStatics::SpawnSound2D(GetWorld(),Sound,.65f);
+
 }
 void ALabGameMode::TickMeme(float Dt) {
+ if(MemeGifShowing&&Stage==3){MemeGifElapsed+=FMath::Max(0.f,Dt);if(MemeGifElapsed>=5.34f)MemeGifShowing=false;}
  if(!MemeShowing||Stage!=3)return;
  MemeElapsed+=FMath::Max(0.f,Dt);
  if(MemeElapsed>=MemeDuration){
@@ -82,6 +89,13 @@ void ALabGameMode::TickMeme(float Dt) {
   else
 #endif
   {StopMeme();return;}
+ }
+ if(!MeowPlayed&&MemeElapsed>=.35f){MeowPlayed=true;if(auto Sound=LoadObject<USoundBase>(nullptr,TEXT("/Game/Audio/MeowSoft")))MemeAudio=UGameplayStatics::SpawnSound2D(GetWorld(),Sound,.65f);}
+ if(IsValid(MeowBody)){
+  const float Lift=FMath::Sin(FMath::Clamp((MemeElapsed-.1f)/1.8f,0.f,1.f)*PI);
+  const float Mouth=FMath::Sin(FMath::Clamp((MemeElapsed-.35f)/.75f,0.f,1.f)*PI);
+  MeowBody->SetBoneRotationByName(TEXT("Head"),MeowHeadRest+FRotator(0,0,-7*Lift),EBoneSpaces::ComponentSpace);
+  MeowBody->SetBoneRotationByName(TEXT("Jaw"),MeowJawRest+FRotator(0,0,9*Mouth),EBoneSpaces::ComponentSpace);
  }
  if(IsValid(MemeCat))MemeCat->SetActorRotation(MemePose(MemeElapsed));
 }

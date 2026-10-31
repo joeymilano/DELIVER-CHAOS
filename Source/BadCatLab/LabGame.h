@@ -16,6 +16,7 @@ class AStaticMeshActor;
 class ACameraActor;
 class UAudioComponent;
 class ALabResident;
+class UPoseableMeshComponent;
 USTRUCT()
 struct FLabScoreRow {
  GENERATED_BODY()
@@ -127,8 +128,12 @@ public:
  UPROPERTY() ACameraActor* MemeCamera = nullptr;
  UPROPERTY() UAudioComponent* MemeAudio = nullptr;
  UPROPERTY() TArray<AActor*> MemeSet;
- float MemeElapsed=0; bool MemeShowing=false;
- static constexpr float MemeDuration=4.8f;
+ UPROPERTY() UPoseableMeshComponent* MeowBody=nullptr;
+ UPROPERTY() UTexture2D* MemeGifTexture=nullptr;
+ FRotator MeowHeadRest,MeowJawRest;
+ float MemeElapsed=0,MemeGifElapsed=0; bool MemeShowing=false,MemeGifShowing=false,MeowPlayed=false;
+ void ToggleMemeGif();
+ static constexpr float MemeDuration=2.2f;
  void StartMeme(); void StopMeme(); void ClearMeme(); void TickMeme(float Dt);
  static FRotator MemePose(float Time);
 };

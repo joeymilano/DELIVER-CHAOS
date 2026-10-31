@@ -31,3 +31,7 @@ Content/Audio/ElevenLabsLocal/
 # Fab Standard License assets remain local; collaborators acquire from Fab.
 ArtSource/FabLocal/
 Content/FabLocal/
+
+# User-supplied meme frames remain local, like the reference audio.
+ArtSource/MemesLocal/
+Content/UI/MemesLocal/
