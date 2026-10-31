@@ -34,4 +34,4 @@
 - 猫吃东西 8.28 秒，单次进食裁成 1 到 3 秒；持续进食动画可直接循环。
 - 与现有 `Audio/README.md` 中的猫叫（Freesound CC0）、Clink / Thud 占位音效有重叠，由负责声音的人决定替换哪些。
 
-Integration: Menu, Chase, Win, Swipe, Landing, Glass, Fusion, Key, Cash, MeowLoud imported; ordinary MeowNice withheld because source ID is unresolved, eating reserved until a feeding mechanic exists. Normalized and decoded to 44.1kHz; loud meow trimmed to 1.8s. Source records supplied in PR #2; individual source pages have not been independently revalidated this pass.
+Integration: Menu, Chase, Win, Swipe, Landing, Glass, Fusion, Key, Cash, MeowLoud imported; ordinary MeowNice withheld because source ID is unresolved, eating reserved until a feeding mechanic exists. Normalized and decoded to 44.1kHz; loud meow trimmed to 1.2s after removing 0.55s leading silence. Source records supplied in PR #2; individual source pages have not been independently revalidated this pass.

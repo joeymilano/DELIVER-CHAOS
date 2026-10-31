@@ -2,7 +2,7 @@
 
 PR #2 已由仓库合并。本轮从 main 新建 feature/cozy-party-integration 接入素材。
 
-声音：CanCan 仍是拆家主曲。Pixabay Menu 用于首页/选猫；Chase 用于主人追赶和最后 20 秒，脱离追赶保持 3 秒再恢复；Win 用于有损失的结算。Swipe、Landing、Glass、Fusion、Key 分别对应攻击、落地、破坏、合成和最后 5 秒开门；Cash 用于零损失结算；MeowLoud 裁为 1.8 秒，用于音波技能。普通 MeowNice 来源编号不一致，未使用；CatEating 暂留候选。M 可关闭 BGM。
+声音：CanCan 仍是拆家主曲。Pixabay Menu 用于首页/选猫；Chase 用于主人追赶和最后 20 秒，脱离追赶保持 3 秒再恢复；Win 用于有损失的结算。Swipe、Landing、Glass、Fusion、Key 分别对应攻击、落地、破坏、合成和最后 5 秒开门；Cash 用于零损失结算；MeowLoud 去掉开头静音后裁为 1.2 秒，用于音波技能。普通 MeowNice 来源编号不一致，未使用；CatEating 暂留候选。M 可关闭 BGM。
 
 Nasha 模型：7 件静态装饰（南瓜壁炉、糖果柜、糖果餐台、女巫帽架、幽灵挂饰、南瓜灯串、月相板），9 件物理摆件（水晶球、茶壶、月亮饼干、糖果罐、幽灵饼干、南瓜茶点、幽灵、黑猫玩偶、魔药瓶）。放置于房间北侧，保留原高台及中央通道；小物件使用简化碰撞，沿用一次性计价和重试销毁重建。
 

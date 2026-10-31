@@ -143,8 +143,9 @@ void ALabGameMode::SetPractice(){if(Stage==6){StartFromTitle(true);return;}if(St
 void ALabGameMode::Lab(){OpenSelection();}
 
 void ALabGameMode::WorldSound(const TCHAR* Name,float Volume){
- double Now=GetWorld()->GetTimeSeconds();if(Now<WorldSoundUntil)return;
- const FString N(Name);const bool Added=N==TEXT("Swipe")||N==TEXT("Landing")||N==TEXT("Glass")||N==TEXT("Fusion")||N==TEXT("Key")||N==TEXT("Cash")||N==TEXT("Win");
+ double Now=GetWorld()->GetTimeSeconds();const FString N(Name);
+ const bool Important=N==TEXT("Fusion")||N==TEXT("Key")||N==TEXT("Cash")||N==TEXT("Win");if(Now<WorldSoundUntil&&!Important)return;
+ const bool Added=N==TEXT("Swipe")||N==TEXT("Landing")||N==TEXT("Glass")||N==TEXT("Fusion")||N==TEXT("Key")||N==TEXT("Cash")||N==TEXT("Win");
  auto Sound=LoadObject<USoundBase>(nullptr,*FString::Printf(TEXT("/Game/Audio/%s/%s"),Added?TEXT("Pixabay"):TEXT("World"),Name));
  if(Sound){WorldSoundUntil=Now+.1;UGameplayStatics::PlaySound2D(this,Sound,Volume);}
 }

@@ -160,7 +160,7 @@ void ALabGameMode::BeginPlay(){Super::BeginPlay();LoadProgress();BuildRoom();Ope
   if(Review!=TEXT("locked"))Progress->UnlockedMask=15;
   if(Review==TEXT("cozy")){
    StartRound(false);Practice=true;
-   if(auto Cat=Cast<ALabCat>(UGameplayStatics::GetPlayerPawn(GetWorld(),0))){Cat->SetActorLocation(FVector(-260,290,40));Cat->Controller->SetControlRotation(FRotator(-22,90,0));Cat->Arm->TargetArmLength=420;}
+   if(auto Cat=Cast<ALabCat>(UGameplayStatics::GetPlayerPawn(GetWorld(),0))){Cat->SetActorLocation(FVector(-260,290,40));Cat->FixedCamera=true;Cat->Arm->bUsePawnControlRotation=false;Cat->Arm->SetRelativeRotation(FRotator(-18,90,0));Cat->Arm->TargetArmLength=420;}
   }
   if(Review==TEXT("residents")||Review==TEXT("caught")){
    StartRound(false);Practice=Review==TEXT("residents");

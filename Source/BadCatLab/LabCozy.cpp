@@ -24,11 +24,11 @@ void ALabGameMode::SpawnCozyProps(){
  }};
  Prop(400,TEXT("Crystal_Ball"),TEXT("占卜水晶球"),FVector(-350,560,87),25,699);
  Prop(401,TEXT("Plum_Teapot"),TEXT("紫梅茶壶"),FVector(-270,550,87),22,259);
- Prop(402,TEXT("Moon_Cookies"),TEXT("月亮饼干"),FVector(-320,515,87),7,49);
- Prop(403,TEXT("Candy_Jar_Set"),TEXT("糖果罐"),FVector(230,585,172),28,159);
- Prop(404,TEXT("Ghost_Cookie_Tray"),TEXT("幽灵饼干"),FVector(300,585,172),8,89);
+ Prop(402,TEXT("Moon_Cookies"),TEXT("月亮饼干"),FVector(-300,585,87),7,49);
+ Prop(403,TEXT("Candy_Jar_Set"),TEXT("糖果罐"),FVector(230,625,172),28,159);
+ Prop(404,TEXT("Ghost_Cookie_Tray"),TEXT("幽灵饼干"),FVector(300,625,172),8,89);
  Prop(405,TEXT("Pumpkin_Tea_Cake"),TEXT("南瓜茶点"),FVector(-10,615,152),22,129);
  Prop(406,TEXT("Little_Happy_Ghost"),TEXT("开心幽灵"),FVector(80,600,0),38,99);
  Prop(407,TEXT("Friendly_Cat_Plush"),TEXT("黑猫玩偶"),FVector(-130,575,0),35,169);
- Prop(408,TEXT("Potion_Trio"),TEXT("魔药瓶"),FVector(-410,530,87),24,299);
+ Prop(408,TEXT("Potion_Trio"),TEXT("魔药瓶"),FVector(-370,590,87),24,299);
 }
