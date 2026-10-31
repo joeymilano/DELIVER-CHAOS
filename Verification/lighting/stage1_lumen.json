@@ -1,0 +1,19 @@
+{
+  "label": "stage1_lumen",
+  "stage": 1,
+  "lumen_quality": 2,
+  "width": 1920,
+  "height": 1080,
+  "sample_seconds": 30.008,
+  "frames": 3579,
+  "average_fps": 119.27,
+  "p99_frame_ms": 9.52,
+  "minimum_5s_fps": 115.61,
+  "foreground_only": true,
+  "vsync": 0,
+  "screen_percentage": 100,
+  "gi_method": 1,
+  "reflection_method": 1,
+  "mesh_distance_fields": 1,
+  "hardware_ray_tracing": 0
+}

@@ -150,7 +150,7 @@ void ALabCat::Tick(float Dt){
 
 }
 ALabGameMode::ALabGameMode(){PrimaryActorTick.bCanEverTick=true;DefaultPawnClass=ALabCat::StaticClass();HUDClass=ALabHUD::StaticClass();}
-void ALabGameMode::BeginPlay(){Super::BeginPlay();LoadProgress();BuildRoom();OpenTitle();
+void ALabGameMode::BeginPlay(){Super::BeginPlay();ConfigureLighting();LoadProgress();BuildRoom();OpenTitle();
 #if !UE_BUILD_SHIPPING
  if(FParse::Param(FCommandLine::Get(),TEXT("CatArtReview"))){int32 ReviewCat=0,ReviewRecipe=-1;FParse::Value(FCommandLine::Get(),TEXT("ReviewCat="),ReviewCat);FParse::Value(FCommandLine::Get(),TEXT("ReviewRecipe="),ReviewRecipe);SelectedCat=FMath::Clamp(ReviewCat,0,3);RecipeId=FMath::Clamp(ReviewRecipe,-1,5);StartRound(RecipeId>=0);if(auto Cat=Cast<ALabCat>(UGameplayStatics::GetPlayerPawn(GetWorld(),0))){Cat->FixedCamera=true;Cat->Arm->bUsePawnControlRotation=false;Cat->Arm->SetRelativeRotation(FRotator(-25,-25,0));Cat->Arm->TargetArmLength=260;Cat->SetActorRotation(FRotator(0,155,0));}}
  // Deterministic screen review is opt-in, Development-only and never touches player saves.
@@ -258,17 +258,17 @@ void ALabGameMode::BuildRoom(){
  for(int I=0;I<3;I++){FabPiece(W,TEXT("Decor"),TEXT("SM_SD_PictureFrame_01"),FVector(880,-350+I*190,175),1.5f,90);FabPiece(W,TEXT("Decor"),TEXT("SM_SD_BookStack_01"),FVector(620,-300+I*110,115));}
  FabPiece(W,TEXT("Decor"),TEXT("SM_SD_TableLamp_01"),FVector(-650,550,235));
  FabPiece(W,TEXT("Decor"),TEXT("SM_SD_WallClock_01"),FVector(0,680,280),2,180);
- for(int I=0;I<4;I++){auto Fill=W->SpawnActor<APointLight>(FVector(I%2?500:-500,I<2?-350:350,310),FRotator::ZeroRotator);auto Light=Cast<UPointLightComponent>(Fill->GetLightComponent());Light->SetIntensity(95000);Light->SetAttenuationRadius(1600);Light->SetLightColor(FLinearColor(1,.91,.76));Light->SetCastShadows(false);}
+ for(int I=0;I<4;I++){auto Fill=W->SpawnActor<APointLight>(FVector(I%2?500:-500,I<2?-350:350,310),FRotator::ZeroRotator);auto Light=Cast<UPointLightComponent>(Fill->GetLightComponent());Light->SetIntensity(LightingStage>=2?18000:95000);Light->SetAttenuationRadius(LightingStage>=2?850:1600);Light->SetLightColor(FLinearColor(1,.91,.76));Light->SetCastShadows(false);}
  auto L=W->SpawnActor<ADirectionalLight>(FVector(0,0,300),FRotator(-55,-35,0));L->GetLightComponent()->SetIntensity(6);L->GetLightComponent()->SetLightColor(FLinearColor(1,.94,.86));
- auto Fill=W->SpawnActor<ADirectionalLight>(FVector(0,0,300),FRotator(-35,145,0));Fill->GetLightComponent()->SetIntensity(4);Fill->GetLightComponent()->SetCastShadows(false);
+ if(LightingStage<2){auto Fill=W->SpawnActor<ADirectionalLight>(FVector(0,0,300),FRotator(-35,145,0));Fill->GetLightComponent()->SetIntensity(4);Fill->GetLightComponent()->SetCastShadows(false);}
  auto Sky=W->SpawnActor<ASkyLight>();Sky->GetLightComponent()->SetMobility(EComponentMobility::Movable);Sky->GetLightComponent()->SetIntensity(1.5);Sky->GetLightComponent()->RecaptureSky();
- BuildCozyCorner();
+ BuildCozyCorner();BuildLightingFinish();
  for(int I=0;I<2;I++){auto R=W->SpawnActor<ALabResident>(FVector(I?550:-550,400,92),FRotator::ZeroRotator);R->Configure(I==1);Residents.Add(R);}
 }
 void ALabGameMode::SpawnProps(bool Bounce){
  const FVector Positions[]={ {-55,0,57},{-10,0,52},{35,0,57},{35,0,82},{35,0,107},{-40,43,51},{130,-220,65},{190,-220,68},{220,-220,68},{250,-220,68},{290,-220,63},{330,-220,65},{165,235,61},{215,235,80},{265,235,68},{280,235,105},{330,235,64},{360,235,64}};
  const FVector Scales[]={ {.22,.22,.28},{.45,.42,.12},{.25,.25,.25},{.25,.25,.25},{.25,.25,.25},{.3,.12,.08},{.3,.3,.3},{.15,.35,.42},{.15,.35,.42},{.15,.35,.42},{.28,.28,.3},{.3,.3,.35},{.42,.3,.22},{.18,.18,.65},{.18,.42,.38},{.12,.85,.65},{.12,.25,.3},{.22,.22,.28}};
- for(int i=0;i<18;i++){auto P=GetWorld()->SpawnActor<ALabProp>(Positions[i],FRotator::ZeroRotator);P->Configure(i,Scales[i],i%3==0?Orange:i%3==1?Cream:Blue,i==6||i==11,i==15,Bounce);Props.Add(P);}
+ for(int i=0;i<18;i++){auto P=GetWorld()->SpawnActor<ALabProp>(Positions[i],FRotator::ZeroRotator);P->Configure(i,Scales[i],i%3==0?Orange:i%3==1?Cream:Blue,i==6||i==11,i==15,Bounce);if(i==13)AddWarmPropLight(P);Props.Add(P);}
 }
 void ALabGameMode::StartRound(bool Fused){
  ClearTitle();
@@ -299,7 +299,7 @@ void ALabGameMode::FinishRound(){
 }
 void ALabGameMode::Tick(float Dt){
  Super::Tick(Dt);
- TickTitle(Dt);TickMeme(Dt);UpdateMusic();
+ TickVisualBenchmark();TickTitle(Dt);TickMeme(Dt);UpdateMusic();
  if(SlowUntil>0&&FPlatformTime::Seconds()>=SlowUntil){SlowUntil=0;UGameplayStatics::SetGlobalTimeDilation(GetWorld(),1);}
  if(Playing()){
   if(!Practice&&!FParse::Param(FCommandLine::Get(),TEXT("CatArtReview")))Remaining=FMath::Max(0.f,Remaining-Dt);

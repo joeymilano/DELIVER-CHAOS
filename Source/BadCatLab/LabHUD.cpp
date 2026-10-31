@@ -92,11 +92,7 @@ void ALabHUD::DrawHUD() {
  auto Background=[&](){DrawRect(Paper,0,0,W,H);Box(0,0,1280,8,Orange);};
  auto Brand=[&](){Text(TEXT("Delivery Chaos"),44,28,13,Muted,true);};
  auto Footer=[&](const FString& T){Box(44,690,1192,1,Line);Text(T,44,701,12,Muted);};
- auto Fixture=[&](){
-#if !UE_BUILD_SHIPPING
-  FString Review;if(G->NoSave&&FParse::Value(FCommandLine::Get(),TEXT("UIReview="),Review))Text(TEXT("界面测试预览 · 不写入存档"),1010,701,12,Muted);
-#endif
- };
+
 
  if(G->Stage==6){
   // Editorial left panel gives the live cat vignette room to breathe.
@@ -176,7 +172,7 @@ void ALabHUD::DrawHUD() {
    Text(G->Practice?TEXT("慢慢逛，不限时 · 不计榜"):TEXT("180 秒挑战 · 计入排行榜"),300,646,16,Muted);
    Button(TEXT("Confirm"),Count>1?TEXT("选搭档"):TEXT("开始拆家"),TEXT("Enter"),918,628,318,true);
   }
-  Footer(Lab?TEXT("数字键选搭档    Space 单猫出门    Tab 重选主猫"):TEXT("1–4 选猫    F 切换模式"));Fixture();return;
+  Footer(Lab?TEXT("数字键选搭档    Space 单猫出门    Tab 重选主猫"):TEXT("1–4 选猫    F 切换模式"));return;
  }
 
  const FString Identity=G->RecipeId>=0?LabCatalog::Recipe(G->RecipeId).Name:LabCatalog::Cat(G->SelectedCat).Name;
@@ -190,7 +186,7 @@ void ALabHUD::DrawHUD() {
   Center(TEXT("＋"),640,279,52,Orange,true);
   Center(Identity,640,484,48,Orange,true);Center(LabCatalog::Recipe(G->RecipeId).Description,640,552,20,Paper);
   Round(440,622,400,6,3,Hex(TEXT("4B4A43")));if(T>0)Round(440,622,400*T,6,3,Orange);
-  Center(TEXT("两种本领都带上。马上进屋。"),640,649,15,Paper);Fixture();
+  Center(TEXT("两种本领都带上。马上进屋。"),640,649,15,Paper);
   if(!Paused)return;
  }
 
@@ -202,7 +198,7 @@ void ALabHUD::DrawHUD() {
   Text(TEXT("本次损失"),1030,272,18,Paper);Fit(Money(G->Score),1030,308,32,198,Orange,true);
   Center(TEXT("就当没看见。"),640,604,23,Paper);
   Button(TEXT("Meme"),TEXT("好了，看账单"),TEXT("Space"),446,650,388,true);
-  Fixture();return;
+  return;
  }
 
  if(G->Stage==3&&!Paused){
@@ -238,7 +234,7 @@ void ALabHUD::DrawHUD() {
    int Frame=FMath::FloorToInt(G->MemeGifElapsed*12)%32;
    DrawTexture(G->MemeGifTexture,OX+480*S,OY+180*S,320*S,320*S,(Frame%8)/8.f,(Frame/8)/4.f,1.f/8,1.f/4,FLinearColor::White,BLEND_Translucent);
    Button(TEXT("Meme"),TEXT("收起"),TEXT("Space"),470,548,340,true);
-  }Fixture();return;
+  }return;
  }
 
  if(G->Playing()&&!G->HideHUD&&!Paused){
@@ -267,7 +263,7 @@ void ALabHUD::DrawHUD() {
   }
   if(Now-StageEnteredAt<12){Round(24,668,960,34,9,Ink);Text(TEXT("WASD 移动   左键 挥爪   长按左键 扑击   E 慢推   Shift 暴冲   Space 跳跃"),40,677,14,Paper);
   if(G->CurrentTraits()&CatTrait::Loud)Text(TEXT("Q 喵一声"),858,677,14,Orange);}
-  Round(1064,668,192,34,9,Ink);Text(TEXT("Esc 暂停与操作说明"),1080,677,14,Paper);Fixture();
+  Round(1064,668,192,34,9,Ink);Text(TEXT("Esc 暂停与操作说明"),1080,677,14,Paper);
  }
  if(Paused){
   DrawRect(FLinearColor(0,0,0,.82f),0,0,W,H);Round(160,111,960,498,22,Paper);

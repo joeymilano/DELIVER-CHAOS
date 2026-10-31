@@ -98,3 +98,5 @@ bash Tools/build_mac.sh
 新增茶会与占卜角：接入 16 件 Nasha 模型，包含 9 件可拍落计价的小物件；PR #2 的 10 个音频已导入并接入事件。素材准备、具体用途和保留候选见 [COZY_PARTY.md](Docs/COZY_PARTY.md)。Nasha 模型与 Fab 一样，源文件留在本地，协作者需持有素材包自行导入。
 
 本机完整工程已迁移至 `~/Documents/Deliver Chaos`；旧路径保留跳转以兼容历史链接。
+
+灯光更新：默认软件 Lumen、暖色局部阴影灯、1.15 饱和度 / 1.1 对比度 / 5800K 调色与淡暖雾。测试预览文案已移除。逐步截图与本机 1080p 帧率记录见 [灯光说明](Docs/LIGHTING.md) 与 `Verification/lighting/comparison.html`。
