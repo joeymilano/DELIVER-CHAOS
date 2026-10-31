@@ -191,4 +191,15 @@ bool FLabCozyTest::RunTest(const FString&){
  auto P=*G->Props.FindByPredicate([](auto A){return A->PropId==400;});G->Affect(P,G->NewChain(false));G->Affect(P,G->NewChain(false));TestEqual(TEXT("Crystal billed once"),G->Score,699);
  G->StartRound(false);Count=0;for(auto A:G->Props)if(A->PropId>=400&&A->PropId<=408)Count++;TestEqual(TEXT("Retry rebuilds without duplication"),Count,9);TestEqual(TEXT("Retry clears bill"),G->Score,0);return true;
 }
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabMoneyFeedbackTest,"BadCatLab.Party.MoneyFeedbackAndReset",Flags)
+bool FLabMoneyFeedbackTest::RunTest(const FString&){
+ FPartyWorld F;auto G=F.G;auto Cup=F.Prop(600,89);int Chain=G->NewChain(true);G->Affect(Cup,Chain);G->Affect(Cup,Chain);
+ TestEqual(TEXT("One paid object produces one burst"),G->MoneyBursts.Num(),1);TestEqual(TEXT("Burst matches actual bill"),G->MoneyBursts[0].Amount,89);TestEqual(TEXT("Visual feedback cannot duplicate money"),G->Score,89);
+ for(int I=0;I<24;I++){auto Candy=F.Prop(700+I,2);G->Affect(Candy,Chain);}
+ TestEqual(TEXT("Dense candy feedback merges"),G->MoneyBursts.Num(),2);TestEqual(TEXT("Merged popup retains every candy's value"),G->MoneyBursts[1].Amount,48);TestEqual(TEXT("Actual bill stays exact"),G->Score,137);
+ for(int I=0;I<40;I++)G->Affect(F.Prop(800+I,300),Chain);
+ TestTrue(TEXT("Screen burst count is bounded"),G->MoneyBursts.Num()<=12);for(auto& B:G->MoneyBursts){TestTrue(TEXT("Coin particles are bounded per burst"),B.CoinCount()<=8);B.Born-=10;}
+ G->TickMoneyFeedback();TestEqual(TEXT("Old effects expire"),G->MoneyBursts.Num(),0);TestTrue(TEXT("Animated counter cannot overrun actual bill"),G->DisplayBill<=G->Score);
+ G->OpenSelection();TestEqual(TEXT("Returning to menu clears feedback"),G->MoneyBursts.Num(),0);TestEqual(TEXT("Returning to menu clears animated bill"),G->DisplayBill,0.f);TestEqual(TEXT("Returning to menu clears pulse"),G->BillPulse,0.f);return true;
+}
 #endif

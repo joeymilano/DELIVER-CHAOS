@@ -70,7 +70,7 @@ void ALabGameMode::CollectDiscoveries(){auto Cat=UGameplayStatics::GetPlayerPawn
  if(FVector::Dist(A->GetActorLocation(),Cat->GetActorLocation())<125){Progress->UnlockedMask|=1<<Pair.Key;Quip=FString::Printf(TEXT("%s 跟你走了。下次可以选它，也可以合成。"),LabCatalog::Cat(Pair.Key).Name);QuipUntil=GetWorld()->GetTimeSeconds()+4;A->Destroy();Done.Add(Pair.Key);}}
  if(Done.Num()){for(int I:Done)Discoveries.Remove(I);SaveProgress();}
 }
-void ALabGameMode::ResetParty(){TimesCaught=0;ClearVoices();Suspicion=GoodCat=0;CameraBroken=PerfectCrime=CandySpilled=false;Exposure=CaughtCooldown=GoodCooldown=CameraFlash=CameraClock=0;CameraCaption=TEXT("");PetCamera=nullptr;CameraVision=nullptr;}
+void ALabGameMode::ResetParty(){ClearMoneyFeedback();TimesCaught=0;ClearVoices();Suspicion=GoodCat=0;CameraBroken=PerfectCrime=CandySpilled=false;Exposure=CaughtCooldown=GoodCooldown=CameraFlash=CameraClock=0;CameraCaption=TEXT("");PetCamera=nullptr;CameraVision=nullptr;}
 void ALabGameMode::SpawnPartyProps(){
  auto Spawn=[&](int Id,FVector Pos,FVector Scale,FLinearColor Color,const TCHAR* Name,int Price,bool Ball=false){auto P=GetWorld()->SpawnActor<ALabProp>(Pos,FRotator::ZeroRotator);P->Configure(Id,Scale,Color,Ball,false,false);P->ItemName=Name;P->BaseScore=Price;Props.Add(P);return P;};
  auto Box=Spawn(18,FVector(-140,150,23),FVector(.6,.55,.45),FLinearColor(.48,.28,.1),TEXT("快递纸箱"),12);Box->Body->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Game/Art/Party/SM_Parcel")));
@@ -121,7 +121,7 @@ void ALabGameMode::ClearVoices(){
  for(auto C:{OwnerVoice,CatVoice})if(IsValid(C)){C->Stop();C->DestroyComponent();}
  OwnerVoice=CatVoice=nullptr;OwnerVoiceUntil=CatVoiceUntil=SoftMeowUntil=0;ReceiptGreetingPending=false;
 }
-void ALabGameMode::PauseVoices(bool Paused){for(auto C:{OwnerVoice,CatVoice})if(IsValid(C))C->SetPaused(Paused);}
+void ALabGameMode::PauseVoices(bool Paused){for(auto C:{OwnerVoice,CatVoice,CoinAudio})if(IsValid(C))C->SetPaused(Paused);}
 void ALabGameMode::Speak(const TCHAR* Clip){
  const FString Name(Clip);const double Now=GetWorld()->GetTimeSeconds();
  const bool Owner=Name.StartsWith(TEXT("Owner")),Meow=Name.StartsWith(TEXT("Meow")),Soft=Name==TEXT("MeowSoft");
