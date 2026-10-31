@@ -137,6 +137,9 @@ public:
 
  double WorldSoundUntil=0;
  void WorldSound(const TCHAR* Name,float Volume);void UpdateMusic();
+ int LightingStage=4,LightingQuality=2;
+ void ConfigureLighting();void BuildLightingFinish();void AddWarmPropLight(ALabProp* Prop);void TickVisualBenchmark();
+ double VisualLastTime=0,VisualWarmup=0,VisualSampleSeconds=0;TArray<double> VisualFrameTimes;FString VisualLabel;bool VisualComplete=false;
  void BuildCozyCorner();void SpawnCozyProps();
  void BuildRoom(); void SpawnProps(bool Bounce);
  UPROPERTY() AActor* MemeCat = nullptr;

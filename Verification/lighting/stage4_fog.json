@@ -1,0 +1,19 @@
+{
+  "label": "stage4_fog",
+  "stage": 4,
+  "lumen_quality": 2,
+  "width": 1920,
+  "height": 1080,
+  "sample_seconds": 30.001,
+  "frames": 3535,
+  "average_fps": 117.83,
+  "p99_frame_ms": 16.64,
+  "minimum_5s_fps": 107.63,
+  "foreground_only": true,
+  "vsync": 0,
+  "screen_percentage": 100,
+  "gi_method": 1,
+  "reflection_method": 1,
+  "mesh_distance_fields": 1,
+  "hardware_ray_tracing": 0
+}

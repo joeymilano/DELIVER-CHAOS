@@ -1,0 +1,19 @@
+{
+  "label": "stage3_grade",
+  "stage": 3,
+  "lumen_quality": 2,
+  "width": 1920,
+  "height": 1080,
+  "sample_seconds": 30.000,
+  "frames": 3594,
+  "average_fps": 119.80,
+  "p99_frame_ms": 8.68,
+  "minimum_5s_fps": 118.79,
+  "foreground_only": true,
+  "vsync": 0,
+  "screen_percentage": 100,
+  "gi_method": 1,
+  "reflection_method": 1,
+  "mesh_distance_fields": 1,
+  "hardware_ray_tracing": 0
+}
