@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Menu",
+    "source": "BGM_MainLoop_cyberwave-orchestra-248804.mp3",
+    "loop": true,
+    "trim_seconds": null,
+    "duration": 76.82612609863281
+  },
+  {
+    "name": "Chase",
+    "source": "BGM_Tension_crazy-chase-126687.mp3",
+    "loop": true,
+    "trim_seconds": null,
+    "duration": 127.26856994628906
+  },
+  {
+    "name": "Win",
+    "source": "Jingle_Win_gewonnen2-7000.mp3",
+    "loop": false,
+    "trim_seconds": 5.2,
+    "duration": 5.124489784240723
+  },
+  {
+    "name": "Swipe",
+    "source": "SFX_Swipe_quick-whoosh-405448.mp3",
+    "loop": false,
+    "trim_seconds": 1.03,
+    "duration": 1.0299999713897705
+  },
+  {
+    "name": "Landing",
+    "source": "SFX_PounceLanding_jumplanding-398256.mp3",
+    "loop": false,
+    "trim_seconds": 0.73,
+    "duration": 0.7300000190734863
+  },
+  {
+    "name": "Glass",
+    "source": "SFX_Shatter_bottle-shatter-229205.mp3",
+    "loop": false,
+    "trim_seconds": 1.94,
+    "duration": 1.940000057220459
+  },
+  {
+    "name": "Fusion",
+    "source": "SFX_Fusion_magic-spell-02-250240.mp3",
+    "loop": false,
+    "trim_seconds": 3.07,
+    "duration": 3.0419955253601074
+  },
+  {
+    "name": "Key",
+    "source": "SFX_KeyUnlock_key-twist-in-lock-47832.mp3",
+    "loop": false,
+    "trim_seconds": 1.1,
+    "duration": 1.100000023841858
+  },
+  {
+    "name": "Cash",
+    "source": "SFX_CashRegister_cash-register-open-567194.mp3",
+    "loop": false,
+    "trim_seconds": 2.09,
+    "duration": 2.0897958278656006
+  },
+  {
+    "name": "MeowLoud",
+    "source": "SFX_MeowEvil_cat-meow-361882.mp3",
+    "loop": false,
+    "trim_seconds": 1.2,
+    "duration": 1.2000000476837158
+  }
+]

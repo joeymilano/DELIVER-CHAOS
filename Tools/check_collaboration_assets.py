@@ -1,7 +1,7 @@
 """Check local content needed for the full scene; no downloads or account access."""
 from pathlib import Path
 root = Path(__file__).resolve().parents[1]
-required = ['Content/Audio/Gameplay/CanCanGameplay.uasset', 'Content/FabLocal/Furniture', 'Content/FabLocal/Decor', 'Content/FabLocal/Characters/Owner_Idle.uasset', 'Content/FabLocal/Characters/Guest_Idle.uasset']
+required = ['Content/Audio/Gameplay/CanCanGameplay.uasset', 'Content/FabLocal/Furniture', 'Content/FabLocal/Decor', 'Content/CozyLocal/Crystal_Ball.uasset', 'Content/CozyLocal/Pumpkin_Fireplace.uasset', 'Content/FabLocal/Characters/Owner_Idle.uasset', 'Content/FabLocal/Characters/Guest_Idle.uasset']
 missing = []
 for name in required:
     p = root / name

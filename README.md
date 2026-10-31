@@ -31,7 +31,7 @@ bash Tools/build_mac.sh
 - 房间扩大为 18 × 14 米，包含客厅、厨房、床与衣柜角落；沿墙八级台阶接到 2.8 米高的猫道，可以连续跳上去，再从高处扑回房间。
 - 两个实际骨骼人物在房间里巡逻；看见拆家后追赶，停下装乖会让他们疑惑，被抓到会被赶开并损失挑战时间。当前使用轻量避障，拥挤家具处仍需继续调优。
 - Mac 包开启原生 Retina 显示；界面保留金额、时间、嫌疑和超级扑，完整操作说明放在暂停页。
-- 进入游戏后播放用户提供的 CanCan；首页与选猫页使用 Kevin MacLeod《Sneaky Snitch》，CC BY 4.0；脚步、落地、玻璃和提示声来自 Kenney CC0。完整归属与改动说明位于 Content/Licenses/WorldAudio.txt。
+- 进入游戏后播放用户提供的 CanCan；首页/选猫页使用 Pixabay 冒险曲；脚步保留 Kenney CC0，落地和玻璃等事件改用 PR #2 音效。完整归属与改动说明位于 Content/Licenses/WorldAudio.txt。
 
 ## 收集与合成
 
@@ -94,3 +94,5 @@ bash Tools/build_mac.sh
 ### 结算小动作与彩蛋
 
 结算只播放约 2.2 秒的抬头、张嘴和一声真实猫叫，Space 可立即跳过。账单页按 Space 展开猫梗动图小卡片，两遍后自动收起，再按 Space 可提前关闭。用户提供的 OIIA 视频提取帧仅在本地演示，位于 ArtSource/MemesLocal 和 Content/UI/MemesLocal，不进入公开源码。
+
+新增茶会与占卜角：接入 16 件 Nasha 模型，包含 9 件可拍落计价的小物件；PR #2 的 10 个音频已导入并接入事件。素材准备、具体用途和保留候选见 [COZY_PARTY.md](Docs/COZY_PARTY.md)。Nasha 模型与 Fab 一样，源文件留在本地，协作者需持有素材包自行导入。

@@ -1,5 +1,6 @@
 #include "LabGame.h"
 #include "LabCatalog.h"
+#include "LabResident.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/AudioComponent.h"
 #include "Components/SkeletalMeshComponent.h"
@@ -126,7 +127,7 @@ void ALabGameMode::Speak(const TCHAR* Clip){
  const bool Owner=Name.StartsWith(TEXT("Owner")),Meow=Name.StartsWith(TEXT("Meow")),Soft=Name==TEXT("MeowSoft");
  if(Owner&&Name!=TEXT("OwnerHome")&&Now<OwnerVoiceUntil)return;
  if(Meow&&(Now<CatVoiceUntil||(Soft&&Now<SoftMeowUntil)))return;
- const FString Path=Owner?FString::Printf(TEXT("/Game/Audio/ElevenLabsLocal/%s"),Clip):FString::Printf(TEXT("/Game/Audio/%s"),Clip);
+ const FString Path=Name==TEXT("Meow")?FString(TEXT("/Game/Audio/Pixabay/MeowLoud")):Owner?FString::Printf(TEXT("/Game/Audio/ElevenLabsLocal/%s"),Clip):FString::Printf(TEXT("/Game/Audio/%s"),Clip);
  auto Sound=LoadObject<USoundBase>(nullptr,*Path,nullptr,LOAD_Quiet|LOAD_NoWarn);if(!Sound)return;
  if(Owner){
   if(IsValid(OwnerVoice)){OwnerVoice->Stop();OwnerVoice->DestroyComponent();}
@@ -141,15 +142,25 @@ void ALabGameMode::Speak(const TCHAR* Clip){
 void ALabGameMode::SetPractice(){if(Stage==6){StartFromTitle(true);return;}if(Stage==4)Practice=!Practice;}
 void ALabGameMode::Lab(){OpenSelection();}
 
-void ALabGameMode::WorldSound(const TCHAR* Name,float Volume){double Now=GetWorld()->GetTimeSeconds();if(Now<WorldSoundUntil)return;auto Sound=LoadObject<USoundBase>(nullptr,*FString::Printf(TEXT("/Game/Audio/World/%s"),Name));if(Sound){WorldSoundUntil=Now+.1;UGameplayStatics::PlaySound2D(this,Sound,Volume);}}
+void ALabGameMode::WorldSound(const TCHAR* Name,float Volume){
+ double Now=GetWorld()->GetTimeSeconds();const FString N(Name);
+ const bool Important=N==TEXT("Fusion")||N==TEXT("Key")||N==TEXT("Cash")||N==TEXT("Win");if(Now<WorldSoundUntil&&!Important)return;
+ const bool Added=N==TEXT("Swipe")||N==TEXT("Landing")||N==TEXT("Glass")||N==TEXT("Fusion")||N==TEXT("Key")||N==TEXT("Cash")||N==TEXT("Win");
+ auto Sound=LoadObject<USoundBase>(nullptr,*FString::Printf(TEXT("/Game/Audio/%s/%s"),Added?TEXT("Pixabay"):TEXT("World"),Name));
+ if(Sound){WorldSoundUntil=Now+.1;UGameplayStatics::PlaySound2D(this,Sound,Volume);}
+}
 void ALabGameMode::UpdateMusic(){
+ const double Now=GetWorld()->GetTimeSeconds();
+ if(Playing())for(auto R:Residents)if(IsValid(R)&&R->Alert>0)ChaseMusicUntil=Now+3;
  const bool Gameplay=Playing()||Stage==1||Stage==3;
- if(IsValid(Music)&&MusicGameplay!=Gameplay){Music->Stop();Music->DestroyComponent();Music=nullptr;}
+ const bool Tense=Playing()&&((!Practice&&Remaining<=20)||ChaseMusicUntil>Now);
+ const int Variant=Gameplay?(Tense?2:1):0;
+ if(IsValid(Music)&&MusicVariant!=Variant){Music->FadeOut(.3f,0);Music=nullptr;}
  if(!IsValid(Music)){
-  const TCHAR* Path=Gameplay?TEXT("/Game/Audio/Gameplay/CanCanGameplay"):TEXT("/Game/Audio/World/SneakySnitch");
-  if(auto Sound=LoadObject<USoundBase>(nullptr,Path)){MusicGameplay=Gameplay;Music=UGameplayStatics::SpawnSound2D(this,Sound,0.f,1,0,nullptr,true,false);UE_LOG(LogTemp,Display,TEXT("BGM selected: %s"),Path);}
+  const TCHAR* Path=Variant==0?TEXT("/Game/Audio/Pixabay/Menu"):Variant==2?TEXT("/Game/Audio/Pixabay/Chase"):TEXT("/Game/Audio/Gameplay/CanCanGameplay");
+  if(auto Sound=LoadObject<USoundBase>(nullptr,Path)){MusicGameplay=Gameplay;MusicVariant=Variant;Music=UGameplayStatics::SpawnSound2D(this,Sound,0.f,1,0,nullptr,true,true);if(Music)Music->FadeIn(.35f,MusicMuted||MemeShowing?0.f:.32f);UE_LOG(LogTemp,Display,TEXT("BGM selected: %s"),Path);}
  }
- if(IsValid(Music))Music->SetVolumeMultiplier(MusicMuted||MemeShowing?0.f:Gameplay?.42f:Stage==6?.42f:.18f);
+ if(IsValid(Music))Music->SetVolumeMultiplier(MusicMuted||MemeShowing?0.f:Stage==3?.1f:Gameplay?.32f:Stage==6?.32f:.18f);
 }
 
 bool ALabGameMode::CatchCat(ALabCat* Cat){

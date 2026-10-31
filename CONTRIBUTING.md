@@ -52,3 +52,7 @@ git push -u origin feature/short-description
 用 Blender 后台运行 `Tools/prepare_fab.py`，再在完整 Unreal 编辑器中执行 `Tools/import_fab.py`（FBX 导入不要使用无界面的 commandlet）。它会建立 `/Game/FabLocal`。执行 `python3 Tools/check_collaboration_assets.py` 可检查主要资源是否存在，再构建游戏。
 
 ElevenLabs 本地试听配音与猫梗动图不在公共仓库，需要团队另行处理使用许可和交付；缺少这些可选内容时不影响代码编译。CanCan 是项目拥有者提供的录音，未独立核验录音授权，详见 `Content/Licenses/CanCanGameplay.txt`。菜单音乐归属保留于 `Content/Licenses/WorldAudio.txt`，打包时随附，不在游戏界面显示。
+
+## 新增 Nasha 场景素材
+
+16 件模型的清单、导入步骤与 PR #2 音频用途见 [COZY_PARTY.md](Docs/COZY_PARTY.md)。协作者需自行持有两套 Nasha 素材包，按说明生成 Content/CozyLocal；公开仓库不包含可提取的模型。完整 Mac 试玩包包含这些已编入游戏的场景资产。

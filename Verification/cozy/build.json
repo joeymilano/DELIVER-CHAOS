@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-31",
+  "source_commit": "85d5852f97ec63bf3b71119896d06be7f13eff3f",
+  "package_success": true,
+  "binary_sha256": "dfe18862a18c2716e43197cf5e6bb3ecfa4a497f7cb5b77e43ce400f77fe052f",
+  "models_imported": 16,
+  "interactive_models": 9,
+  "audio_imported": 10,
+  "runtime_checks": [
+    "Native packaged scene inspected; wall decor and table props render with colour materials",
+    "Camera follows movement near the new furniture",
+    "CanCan -> Chase -> CanCan observed in runtime during player actions",
+    "Return to menu selects Pixabay Menu; mute/unmute component playing"
+  ],
+  "limitations": [
+    "Asset licensing requires Nasha model sources remain local; collaborators must own and import packs",
+    "Normal meow source ID unresolved, withheld; eating reserved",
+    "Full level difficulty and subjective audio mix still need player feedback"
+  ]
+}

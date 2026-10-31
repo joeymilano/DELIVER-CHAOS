@@ -1,0 +1,37 @@
+# Pixabay 音乐与音效（候选，尚未导入 Unreal）
+
+下载日期：2026-10-31。下载时均标示为 [Pixabay Content License](https://pixabay.com/service/license-summary/)：可用于游戏，无需署名，不可单独转售或分发原文件。正式提交前按原页面再复核一次。
+
+文件名已改为 ASCII，便于 Unreal 导入；末尾数字是 Pixabay 作品编号。
+
+## 背景音乐
+
+| 用途 | 文件 | 原始作品 / 作者 | 来源 | 时长 |
+|---|---|---|---|---:|
+| 主循环 | `BGM_MainLoop_cyberwave-orchestra-248804.mp3` | Game Background Loop, Uplifting Adventure Music Loop / Cyberwave-Orchestra | Pixabay 作品 248804 | 76.8 秒 |
+| 紧张段（最后 10 秒 / 合成后） | `BGM_Tension_crazy-chase-126687.mp3` | Crazy chase / Grand_Project | [Pixabay](https://pixabay.com/music/chase-scene-crazy-chase-126687/) | 127.3 秒 |
+| 胜利结算 | `Jingle_Win_gewonnen2-7000.mp3` | gewonnen2 / freesound_community | Pixabay 作品 7000 | 5.2 秒 |
+
+导入后主循环与紧张段需勾选 Looping。
+
+## 音效
+
+| 用途 | 文件 | 原始作品 / 作者 | 来源 | 时长 |
+|---|---|---|---|---:|
+| 挥爪 | `SFX_Swipe_quick-whoosh-405448.mp3` | Quick Whoosh / DRAGON-STUDIO | [Pixabay](https://pixabay.com/sound-effects/film-special-effects-quick-whoosh-405448/) | 1.03 秒 |
+| 扑击落地 | `SFX_PounceLanding_jumplanding-398256.mp3` | JumpLanding / u_qqkrn9bn55 | [Pixabay](https://pixabay.com/sound-effects/film-special-effects-jumplanding-398256/) | 0.73 秒 |
+| 东西摔碎 | `SFX_Shatter_bottle-shatter-229205.mp3` | Bottle Shatter / Universfield | Pixabay 作品 229205 | 1.94 秒 |
+| 普通猫叫 | `SFX_MeowNice_cat-meow-fx.mp3` | Cat Meow FX / SOUND_GARAGE | Pixabay 作品 306186 或 306184（下载记录不一致，待确认） | 0.86 秒 |
+| 大声猫叫 | `SFX_MeowEvil_cat-meow-361882.mp3` | Cat Meow / SoundZee | [Pixabay](https://pixabay.com/sound-effects/nature-cat-meow-361882/) | 6.56 秒 |
+| 猫吃东西 | `SFX_CatEating_cat-eating-81278.mp3` | Cat eating / freesound_community | [Pixabay](https://pixabay.com/sound-effects/nature-cat-eating-81278/) | 8.28 秒 |
+| 合成 | `SFX_Fusion_magic-spell-02-250240.mp3` | Magic Spell 02 / Universfield | Pixabay 作品 250240 | 3.07 秒 |
+| 钥匙开门 | `SFX_KeyUnlock_key-twist-in-lock-47832.mp3` | Key Twist in Lock / freesound_community | Pixabay 作品 47832 | 1.10 秒 |
+| 账单 / 收银机 | `SFX_CashRegister_cash-register-open-567194.mp3` | Cash Register Open / Universfield | Pixabay 作品 567194 | 2.09 秒 |
+
+## 待处理
+
+- 大声猫叫 6.56 秒，做单次反馈建议裁成 1 到 2 秒。
+- 猫吃东西 8.28 秒，单次进食裁成 1 到 3 秒；持续进食动画可直接循环。
+- 与现有 `Audio/README.md` 中的猫叫（Freesound CC0）、Clink / Thud 占位音效有重叠，由负责声音的人决定替换哪些。
+
+Integration: Menu, Chase, Win, Swipe, Landing, Glass, Fusion, Key, Cash, MeowLoud imported; ordinary MeowNice withheld because source ID is unresolved, eating reserved until a feeding mechanic exists. Normalized and decoded to 44.1kHz; loud meow trimmed to 1.2s after removing 0.55s leading silence. Source records supplied in PR #2; individual source pages have not been independently revalidated this pass.

@@ -35,3 +35,7 @@ Content/FabLocal/
 # User-supplied meme frames remain local, like the reference audio.
 ArtSource/MemesLocal/
 Content/UI/MemesLocal/
+
+# Nasha packs permit compiled game use, not standalone source redistribution.
+ArtSource/CozyLocal/
+Content/CozyLocal/

@@ -1,0 +1,6 @@
+[2026.10.31-04.00.20:106][  1]LogTemp: Display: BGM selected: /Game/Audio/Gameplay/CanCanGameplay
+[2026.10.31-04.01.23:763][820]LogTemp: Display: BGM selected: /Game/Audio/Pixabay/Chase
+[2026.10.31-04.01.30:747][239]LogTemp: Display: BGM selected: /Game/Audio/Gameplay/CanCanGameplay
+[2026.10.31-04.02.01:786][101]LogTemp: Display: BGM selected: /Game/Audio/Pixabay/Menu
+[2026.10.31-04.02.02:936][170]LogTemp: Display: Menu music: muted, component: playing
+[2026.10.31-04.02.02:936][170]LogTemp: Display: Menu music: on, component: playing
