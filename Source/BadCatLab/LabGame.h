@@ -73,6 +73,9 @@ public:
  int32 ActiveAnimation=INDEX_NONE;
  float StepClock=0;
  float Charge=0, ActionTime=0, Idle=0; bool Charging=false, Innocent=false, FixedCamera=false;
+ FVector AimDirection=FVector::ForwardVector;
+ void ConfigureKeyboardCamera();FVector ScreenForward() const;
+ void MenuUp();void MenuDown();void MenuLeft();void MenuRight();
  void Forward(float V); void Right(float V); void Turn(float V); void Look(float V);
  void Press(); void Release(); void Hop(); void Retry(); void Pause(); void ToggleHUD(); void ToggleCamera(); void Tutorial();
  float CaughtTime=0,CatchGrace=0; FVector LastSafePosition=FVector(-220,0,80);
@@ -128,6 +131,8 @@ public:
  uint8 CurrentTraits() const;
 
  bool BounceRule() const; bool ResonanceRule() const;
+ int MenuCursor=0;
+ FName FocusedMenuAction() const;void NavigateMenu(int DX,int DY);void ActivateMenu();
  void SelectCat(int32 Index); void ConfirmSelection(); void OpenSelection();
  void BeginFusionChoice(); void UpdatePresentation(); void SetMenuInput(bool Enabled);
  void TryResonate(ALabProp* Source,int32 Chain,FVector Direction);

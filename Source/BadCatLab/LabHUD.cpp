@@ -83,7 +83,8 @@ void ALabHUD::DrawHUD() {
  auto Hover=[&](float X,float Y,float BW,float BH){return MX>=X&&MX<X+BW&&MY>=Y&&MY<Y+BH;};
  auto Hit=[&](FName Id,float X,float Y,float BW,float BH){AddHitBox(FVector2D(OX+X*S,OY+Y*S),FVector2D(BW*S,BH*S),Id,true);};
  auto Button=[&](FName Id,const FString& Label,const FString& Shortcut,float X,float Y,float BW,bool Primary,bool Enabled=true){
-  bool Hot=Enabled&&Hover(X,Y,BW,52);FLinearColor BG=Enabled?(Primary?(Hot?Hex(TEXT("FF844D")):Orange):(Hot?Hex(TEXT("41423E")):Hex(TEXT("333530")))):Line;
+  const bool Focused=Enabled&&G->FocusedMenuAction()==Id;
+  bool Hot=Enabled&&Hover(X,Y,BW,52);if(Focused)Round(X-4,Y-4,BW+8,60,15,Orange);FLinearColor BG=Enabled?(Primary?(Hot?Hex(TEXT("FF844D")):Orange):(Hot?Hex(TEXT("41423E")):Hex(TEXT("333530")))):Line;
   Round(X,Y,BW,52,12,BG);Fit(Label,X+18,Y+15,20,BW-(Shortcut.IsEmpty()?36:102),Enabled?(Primary?Ink:Paper):Muted,true);
   if(!Shortcut.IsEmpty())Key(Shortcut,X+BW-70,Y+13,54,!Primary&&Enabled);
   if(Enabled)Hit(Id,X,Y,BW,52);
@@ -147,8 +148,8 @@ void ALabHUD::DrawHUD() {
   Text(TEXT("猫手"),40,111,110,Ink,true);
   Text(TEXT("猫脚"),40,224,110,Ink,true);
   Button(TEXT("TitleStart"),TEXT("开始捣蛋"),TEXT("Enter"),48,445,320,true);
-  Button(TEXT("TitleFree"),TEXT("随便拆拆"),TEXT("F"),48,510,320,false);
-  Text(TEXT("不限时"),50,576,14,Muted);
+  Button(TEXT("TitleFree"),TEXT("随便拆拆"),G->FocusedMenuAction()==TEXT("TitleFree")?TEXT("Enter"):TEXT("F"),48,510,320,false);
+  Text(TEXT("方向键选择 · 回车开始"),50,576,14,Muted);
   Box(48,636,440,1,Line);
   const bool Hot=Hover(48,653,150,30);
   Text(G->MusicMuted?TEXT("音乐  /  关  M"):TEXT("音乐  /  开  M"),48,655,16,Hot?Orange:Ink,true);Hit(TEXT("TitleMusic"),48,648,150,40);
@@ -211,7 +212,7 @@ void ALabHUD::DrawHUD() {
    Text(G->Practice?TEXT("慢慢逛，不限时 · 不计榜"):TEXT("180 秒挑战 · 计入排行榜"),300,646,16,Muted);
    Button(TEXT("Confirm"),Count>1?TEXT("选搭档"):TEXT("开始拆家"),TEXT("Enter"),918,628,318,true);
   }
-  Footer(Lab?TEXT("数字键选搭档    Space 单猫出门    Tab 重选主猫"):TEXT("1–4 选猫    F 切换模式"));return;
+  Footer(Lab?TEXT("方向键选搭档    Space 单猫出门    Tab 重选主猫"):TEXT("方向键选猫    Enter 确认    F 切换模式"));return;
  }
 
  const FString Identity=G->RecipeId>=0?LabCatalog::Recipe(G->RecipeId).Name:LabCatalog::Cat(G->SelectedCat).Name;
@@ -261,8 +262,8 @@ void ALabHUD::DrawHUD() {
    const auto& Row=G->Progress->Board[I];float Y=354+I*45;Text(FString::Printf(TEXT("%02d"),I+1),780,Y,18,I==0?Orange:Paper,true);
    Fit(Row.Cat,824,Y,17,192,Paper);const FString Price=Money(Row.Money);Text(Price,1190-Width(Price,20),Y,20,I==0?Orange:Paper,true);
   }else Wrap(TEXT("暂无记录"),780,367,19,392,Paper);
-  Button(TEXT("Select"),G->Progress&&FMath::CountBits((uint32)G->Progress->UnlockedMask)>1?TEXT("换个组合再来"):TEXT("回去选猫"),TEXT("Enter"),64,638,400,true);Button(TEXT("Retry"),TEXT("原样再拆一局"),TEXT("R"),484,638,330,false);
-  Button(TEXT("Meme"),TEXT("猫猫彩蛋"),TEXT("Space"),834,638,382,false);
+  Button(TEXT("Select"),G->Progress&&FMath::CountBits((uint32)G->Progress->UnlockedMask)>1?TEXT("换个组合再来"):TEXT("回去选猫"),TEXT("Enter"),64,638,400,true);Button(TEXT("Retry"),TEXT("原样再拆一局"),G->FocusedMenuAction()==TEXT("Retry")?TEXT("Enter"):TEXT("R"),484,638,330,false);
+  Button(TEXT("Meme"),TEXT("猫猫彩蛋"),G->FocusedMenuAction()==TEXT("Meme")?TEXT("Enter"):TEXT("Space"),834,638,382,false);
   if(G->MemeGifShowing&&G->MemeGifTexture){
    DrawRect(FLinearColor(0,0,0,.7f),0,0,W,H);Round(420,94,440,530,20,Paper);Center(TEXT("猫猫彩蛋"),640,120,26,Ink,true);
    int Frame=FMath::FloorToInt(G->MemeGifElapsed*12)%32;
@@ -287,15 +288,18 @@ void ALabHUD::DrawHUD() {
   for(int I=0;I<3;I++)CatMark(147+I*36,141,9,I<G->Pounces?Orange:Line);
 
   const FString Toast=Now<G->QuipUntil?G->Quip:Now<CaptionVisibleUntil?G->CameraCaption:
-   Now-StageEnteredAt<8&&G->Swipes==0?TEXT("左键，拍杯子。"):TEXT("");
+   Now-StageEnteredAt<8&&G->Swipes==0?TEXT("靠近杯子，按 J。"):TEXT("");
   if(!Toast.IsEmpty()){Round(370,117,540,68,12,Paper);Wrap(Toast,392,132,18,496,Ink);}
 
   if(Cat){
    if(Cat->Charging){Round(470,526,340,67,12,Ink);Text(Cat->Charge>=1.05&&G->Pounces>0?TEXT("超级扑就绪，松开释放"):TEXT("松开扑击"),490,538,19,Paper);Round(490,574,300,5,2,Muted);if(Cat->Charge>0)Round(490,574,300*Cat->Charge/1.25f,5,2,Orange);}
    else if(Cat->Innocent){Pill(TEXT("装乖中"),512,539,Paper,Ink);}
-   if(auto P=Cat->FindTarget(200,.1f);P){FString Label=P->ItemName+TEXT("  ")+Money(P->BaseScore)+(P->Scored?TEXT("  已计入账单"):TEXT(""));float BW=FMath::Max(320.f,Width(Label,17)+140);float X=(1280-BW)*.5f;Round(X,607,BW,40,10,Paper);Text(Label,X+16,618,17,Ink);Key(TEXT("E"),X+BW-98,614,26);Text(TEXT("慢推"),X+BW-62,619,15,Ink);}
+   if(auto P=Cat->FindTarget(170,.1f);P){
+    const FVector Mark=Project(P->GetActorLocation()+FVector(0,0,35));if(Mark.Z>0){FVector2D At((Mark.X-OX)/S,(Mark.Y-OY)/S);Tri(At+FVector2D(-7,-15),At+FVector2D(7,-15),At+FVector2D(0,-5),Orange);}
+    FString Label=P->ItemName+TEXT("  ")+Money(P->BaseScore);float BW=FMath::Max(390.f,Width(Label,17)+210);float X=(1280-BW)*.5f;Round(X,607,BW,40,10,Paper);Text(Label,X+16,618,17,Ink);Key(TEXT("J"),X+BW-170,614,26);Text(TEXT("拍"),X+BW-138,619,15,Ink);Key(TEXT("E"),X+BW-91,614,26);Text(TEXT("推"),X+BW-59,619,15,Ink);
+   }
   }
-  if(Now-StageEnteredAt<12){Round(24,668,960,34,9,Ink);Text(TEXT("WASD 移动   左键 挥爪   长按左键 扑击   E 慢推   Shift 暴冲   Space 跳跃"),40,677,14,Paper);
+  if(Now-StageEnteredAt<12){Round(24,668,960,34,9,Ink);Text(TEXT("方向键 / WASD 移动    J 拍 · 长按扑    Space 跳    E 推"),40,677,14,Paper);
   if(G->CurrentTraits()&CatTrait::Loud)Text(TEXT("Q 喵一声"),858,677,14,Orange);}
   Round(1064,668,192,34,9,Ink);Text(TEXT("Esc 暂停与操作说明"),1080,677,14,Paper);
   MoneyFeedback();
@@ -303,15 +307,15 @@ void ALabHUD::DrawHUD() {
  if(Paused){
   DrawRect(FLinearColor(0,0,0,.82f),0,0,W,H);Round(160,111,960,498,22,Paper);
   Text(TEXT("暂停"),192,141,36,Ink,true);
-  const TCHAR* Keys[]={TEXT("WASD"),TEXT("左键"),TEXT("长按左键"),TEXT("E"),TEXT("Shift"),TEXT("Space"),TEXT("Q")};
-  const TCHAR* Help[]={TEXT("移动，鼠标转动视角"),TEXT("挥爪"),TEXT("蓄力后松开扑击"),TEXT("慢推面前的物件"),TEXT("暴冲"),TEXT("跳跃"),TEXT("音波，需要乌梅的能力")};
+  const TCHAR* Keys[]={TEXT("方向键"),TEXT("J"),TEXT("长按 J"),TEXT("E"),TEXT("Shift"),TEXT("Space"),TEXT("Q")};
+  const TCHAR* Help[]={TEXT("移动，也可用 WASD"),TEXT("挥爪"),TEXT("蓄力后松开扑击"),TEXT("慢推面前的物件"),TEXT("暴冲"),TEXT("跳跃"),TEXT("音波，需要乌梅的能力")};
   for(int I=0;I<7;I++){Key(Keys[I],194,245+I*39,86);Text(Help[I],294,249+I*39,17,Ink);}
   Text(TEXT("停下会自动装乖，能骗过摄像头。"),194,537,16,Muted);
-  Text(TEXT("H 隐藏界面    C 拍摄机位"),194,571,14,Muted);
-  Button(TEXT("Resume"),TEXT("继续拆家"),TEXT("Esc"),742,245,344,true);
+  Text(TEXT("H 隐藏界面    C 切换远近"),194,571,14,Muted);
+  Button(TEXT("Resume"),TEXT("继续拆家"),TEXT("Enter"),742,245,344,true);
   Button(TEXT("Retry"),TEXT("重新开始这局"),TEXT("R"),742,311,344,false);
   Button(TEXT("Select"),TEXT("返回选猫"),TEXT("Tab"),742,377,344,false);
-  Text(TEXT("重开或选猫会结束当前这局。"),744,447,15,Muted);
+  Text(TEXT("方向键选择 · 回车确认"),744,447,15,Muted);
   Button(TEXT("Shake"),Cat&&Cat->Shake?TEXT("镜头震动已开启"):TEXT("镜头震动已关闭"),TEXT("V"),742,493,344,false);
  }
 }

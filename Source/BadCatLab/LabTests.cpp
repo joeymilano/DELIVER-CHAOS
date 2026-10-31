@@ -10,6 +10,8 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/BoxComponent.h"
+#include "GameFramework/SpringArmComponent.h"
+#include "GameFramework/InputSettings.h"
 #include "Misc/AutomationTest.h"
 #include "Engine/World.h"
 #include "Engine/Engine.h"
@@ -180,6 +182,7 @@ bool FLabCameraSafetyTest::RunTest(const FString&){
  FPartyWorld F;F.G->BuildRoom();auto Cat=F.W->SpawnActor<ALabCat>();auto PC=F.W->SpawnActor<APlayerController>();PC->Possess(Cat);
  Cat->SetActorLocation(FVector(820,600,40));Cat->Camera->SetWorldLocation(Cat->GetActorLocation());FMinimalViewInfo View;Cat->CalcCamera(.016f,View);
  TestTrue(TEXT("Compressed camera finds a distant view"),FVector::Dist(View.Location,Cat->GetActorLocation())>150);TestTrue(TEXT("Recovery view stays inside walls"),FMath::Abs(View.Location.X)<=840&&FMath::Abs(View.Location.Y)<=640);
+ TestTrue(TEXT("Obstruction recovery preserves keyboard screen direction"),FMath::Abs(FRotator::NormalizeAxis(View.Rotation.Yaw-Cat->ScreenForward().Rotation().Yaw))<.1f);
  auto R=F.G->Residents[0];F.G->Stage=6;R->Tick(.016f);TestEqual(TEXT("Menu disables NPC falling"),R->GetCharacterMovement()->MovementMode,MOVE_None);
  F.G->Stage=0;R->Tick(.016f);TestEqual(TEXT("Play resumes NPC movement"),R->GetCharacterMovement()->MovementMode,MOVE_Walking);return true;
 }
@@ -245,6 +248,34 @@ bool FLabResidentRoomRouteTest::RunTest(const FString&){
    TestTrue(TEXT("Human stays on floor around real furniture"),Highest<100);TestTrue(TEXT("Human reaches reachable edge of target"),FVector::Dist2D(R->GetActorLocation(),Goal)<50);TestTrue(TEXT("No alternating collision steering jitter"),Reversals<3);
   }
  }
+ return true;
+}
+
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabKeyboardAimTest,"BadCatLab.Controls.KeyboardCameraAndAttack",Flags)
+bool FLabKeyboardAimTest::RunTest(const FString&){
+ FPartyWorld F;auto Cat=F.W->SpawnActor<ALabCat>();auto PC=F.W->SpawnActor<APlayerController>();PC->Possess(Cat);Cat->SetActorLocation(FVector(0,0,35));Cat->ConfigureKeyboardCamera();
+ const float Yaw=Cat->Arm->GetTargetRotation().Yaw;Cat->SetActorRotation(FRotator(0,135,0));PC->SetControlRotation(FRotator(-65,170,0));
+ TestTrue(TEXT("Turning cat does not spin automatic camera"),FMath::Abs(FRotator::NormalizeAxis(Cat->Arm->GetTargetRotation().Yaw-Yaw))<.01f);
+ Cat->Forward(1);FVector Up=Cat->ConsumeMovementInputVector();Cat->Tick(.016f);TestTrue(TEXT("Aim follows consumed movement input"),FVector::DotProduct(Cat->AttackDirection(),Up.GetSafeNormal())>.99f);
+ Cat->Right(1);FVector Right=Cat->ConsumeMovementInputVector();Cat->Tick(.016f);TestTrue(TEXT("Changing travel direction updates keyboard aim"),FVector::DotProduct(Cat->AttackDirection(),Right.GetSafeNormal())>.99f);
+ TestTrue(TEXT("Up follows screen-forward instead of controller yaw"),FVector::DotProduct(Up.GetSafeNormal(),Cat->ScreenForward())>.99f);TestTrue(TEXT("Screen movement axes stay perpendicular"),FMath::Abs(FVector::DotProduct(Up,Right))<.01f);
+ Cat->AimDirection=Up;const FRotator Before=PC->GetControlRotation();Cat->Turn(3);Cat->Look(-3);TestTrue(TEXT("Mouse motion cannot turn keyboard camera"),PC->GetControlRotation().Equals(Before,.01f));
+ auto P=F.Prop(950,89,Cat->GetActorLocation()+Up*90+Right*35);P->Body->SetWorldScale3D(FVector(.2));P->Body->SetSimulatePhysics(true);
+ TestEqual(TEXT("Nearby object selected without mouse aiming"),Cat->FindTarget(170,.1f),P);Cat->Press();Cat->Release();TestEqual(TEXT("Keyboard attack bills selected object"),F.G->Score,89);TestEqual(TEXT("Keyboard tap attacks once"),F.G->Swipes,1);
+ Cat->AimDirection=Up;Cat->Press();Cat->Charge=.5f;Cat->Release();TestEqual(TEXT("Ordinary keyboard pounce stays unlimited"),F.G->Pounces,3);
+ Cat->ToggleCamera();TestTrue(TEXT("Wide view keeps screen directions"),FMath::Abs(FRotator::NormalizeAxis(Cat->Arm->GetTargetRotation().Yaw-Yaw))<.01f);
+ const auto Settings=GetDefault<UInputSettings>();TestTrue(TEXT("J reaches the existing attack action"),Settings->GetActionMappings().ContainsByPredicate([](const FInputActionKeyMapping& M){return M.ActionName==TEXT("Attack")&&M.Key==EKeys::J;}));
+ return true;
+}
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabKeyboardMenuTest,"BadCatLab.Controls.KeyboardMenuFlow",Flags)
+bool FLabKeyboardMenuTest::RunTest(const FString&){
+ FPartyWorld F;auto G=F.G;auto Cat=F.W->SpawnActor<ALabCat>();auto PC=F.W->SpawnActor<APlayerController>();PC->Possess(Cat);G->Progress->UnlockedMask=15;
+ G->OpenTitle();G->NavigateMenu(0,1);TestEqual(TEXT("Title down focuses free mode"),G->FocusedMenuAction(),FName(TEXT("TitleFree")));Cat->ConfirmSelection();TestEqual(TEXT("Enter reaches collection"),G->Stage,4);TestTrue(TEXT("Title focus starts requested mode"),G->Practice);
+ G->NavigateMenu(1,0);TestEqual(TEXT("Arrow selects next cat"),G->SelectedCat,1);Cat->ConfirmSelection();TestEqual(TEXT("Enter opens partner choice"),G->Stage,5);
+ G->NavigateMenu(1,0);TestEqual(TEXT("Partner navigation skips main cat"),G->PartnerCat,2);Cat->ConfirmSelection();TestEqual(TEXT("Enter starts valid fusion"),G->Stage,1);
+ G->StartRound(true);G->FinishRound();Cat->ConfirmSelection();TestFalse(TEXT("Enter skips brief ending"),G->MemeShowing);G->NavigateMenu(1,0);TestEqual(TEXT("Result arrow reaches retry"),G->FocusedMenuAction(),FName(TEXT("Retry")));Cat->ConfirmSelection();TestTrue(TEXT("Enter replays without a pointer"),G->Playing());
+ G->OpenSelection();G->Progress->UnlockedMask=5;G->SelectedCat=0;G->NavigateMenu(1,0);TestEqual(TEXT("Navigation skips locked cats"),G->SelectedCat,2);
+ G->Progress->UnlockedMask=1;G->SelectedCat=0;G->NavigateMenu(0,1);TestEqual(TEXT("One unlocked cat remains selectable"),G->SelectedCat,0);
  return true;
 }
 

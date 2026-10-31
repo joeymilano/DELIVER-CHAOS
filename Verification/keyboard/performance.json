@@ -1,0 +1,19 @@
+{
+  "label": "keyboard_final",
+  "stage": 4,
+  "lumen_quality": 2,
+  "width": 1920,
+  "height": 1080,
+  "sample_seconds": 30.000,
+  "frames": 3598,
+  "average_fps": 119.93,
+  "p99_frame_ms": 8.82,
+  "minimum_5s_fps": 119.80,
+  "foreground_only": true,
+  "vsync": 0,
+  "screen_percentage": 100,
+  "gi_method": 1,
+  "reflection_method": 1,
+  "mesh_distance_fields": 1,
+  "hardware_ray_tracing": 0
+}

@@ -93,3 +93,7 @@
 ## 人物地面移动与视野遮罩修复（2026-10-31）
 
 人物改为绕家具占地的地面路径，转弯减速，关闭对物理道具的踢推；移除宠物摄像头实体视野锥。19 项自动检查通过。工程独立运行观察了猫上桌、人物留在地面行走，1080p 平均 118.08 FPS。证据、适用边界及后续家具布局更新说明见 [RESIDENT_GROUND_ROUTES.md](../Docs/RESIDENT_GROUND_ROUTES.md)。本轮未更新 Mac 包与协作者工程 ZIP。
+
+## Keyboard controls (2026-10-31)
+
+Gameplay and menus now work with keyboard only. Camera yaw stays fixed during movement and obstruction recovery. 21 tests passed; actual keyboard input checked title, selection, fusion, pause, retry, jumping, attacking and pouncing. Editor standalone at 1080p averaged 119.93 FPS. See [KEYBOARD.md](../Docs/KEYBOARD.md). Game and collaborator exports remain deferred.

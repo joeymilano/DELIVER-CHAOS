@@ -16,12 +16,12 @@
 #include "Misc/Parse.h"
 static ALabGameMode* Party(UWorld* W){return Cast<ALabGameMode>(W->GetAuthGameMode());}
 static void Colorize(UStaticMeshComponent* C,FLinearColor Color){auto M=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/Art/M_Palette"));if(M){auto D=UMaterialInstanceDynamic::Create(M,C);D->SetVectorParameterValue(TEXT("Color"),Color);C->SetMaterial(0,D);}}
-FVector ALabCat::AttackDirection() const{return FRotator(0,GetControlRotation().Yaw,0).Vector();}
+FVector ALabCat::AttackDirection() const{return AimDirection.GetSafeNormal2D();}
 ALabProp* ALabCat::FindTarget(float Range,float Cone) const{
  auto G=Party(GetWorld());if(!G)return nullptr;ALabProp* Best=nullptr;float BestValue=MAX_flt;const FVector Origin=GetActorLocation()+FVector(0,0,18),Aim=AttackDirection();
- for(auto P:G->Props){if(!IsValid(P)||P->IsHidden()||(P==G->PetCamera&&G->CameraBroken))continue;FVector D=P->GetActorLocation()-Origin;float Dist=D.Size();if(Dist>Range*FMath::Sqrt(BodyScale)||FVector::DotProduct(D.GetSafeNormal2D(),Aim)<Cone)continue;
+ for(auto P:G->Props){if(!IsValid(P)||P->IsHidden()||(P==G->PetCamera&&G->CameraBroken))continue;FVector D=P->GetActorLocation()-Origin;float Dist=D.Size();if(Dist>Range*FMath::Sqrt(BodyScale)||FVector::DotProduct(D.GetSafeNormal2D(),Aim)<FMath::Min(Cone,-.2f))continue;
  FHitResult H;FCollisionQueryParams Q;Q.AddIgnoredActor(this);bool Blocked=GetWorld()->LineTraceSingleByChannel(H,Origin,P->GetActorLocation(),ECC_Visibility,Q);if(Blocked&&H.GetActor()!=P)continue;
- float Value=Dist*(P->Scored?1.3f:1.f);if(Value<BestValue){Best=P;BestValue=Value;}}
+ float Value=Dist*(P->Scored?1.3f:1.f)*(1+.2f*(1-FVector::DotProduct(D.GetSafeNormal2D(),Aim)));if(Value<BestValue){Best=P;BestValue=Value;}}
  return Best;
 }
 void ALabCat::PushStart(){if(auto G=Party(GetWorld());G&&G->Playing()&&CaughtTime<=0){Pushing=true;Innocent=false;Charging=false;PushClock=0;Idle=0;}}
@@ -42,7 +42,7 @@ void ALabCat::TickInstincts(float Dt){
  auto G=Party(GetWorld());if(!G||!G->Playing()||CaughtTime>0)return;
  ZoomCooldown=FMath::Max(0.f,ZoomCooldown-Dt);MeowCooldown=FMath::Max(0.f,MeowCooldown-Dt);AutoMeowCooldown=FMath::Max(0.f,AutoMeowCooldown-Dt);
  if(GetCharacterMovement()->IsFalling())FallSpeed=FMath::Max(FallSpeed,-GetVelocity().Z);
- if(Pushing){PushClock-=Dt;if(PushClock<=0){PushClock=.12f;if(auto P=FindTarget(140,.15f)){int Id=G->Active(P->ChainId)?P->ChainId:G->NewChain(false);P->ChainId=Id;G->Chains[Id].Last=GetWorld()->GetTimeSeconds();FVector V=P->Body->GetPhysicsLinearVelocity();const FVector D=AttackDirection();P->Body->SetPhysicsLinearVelocity(FVector(D.X*55,D.Y*55,V.Z));ActionTime=.1f;}}}
+ if(Pushing){PushClock-=Dt;if(PushClock<=0){PushClock=.12f;if(auto P=FindTarget(170,.15f)){int Id=G->Active(P->ChainId)?P->ChainId:G->NewChain(false);P->ChainId=Id;G->Chains[Id].Last=GetWorld()->GetTimeSeconds();FVector V=P->Body->GetPhysicsLinearVelocity();const FVector D=(P->GetActorLocation()-GetActorLocation()).GetSafeNormal2D();AimDirection=D;SetActorRotation(D.Rotation());P->Body->SetPhysicsLinearVelocity(FVector(D.X*55,D.Y*55,V.Z));ActionTime=.1f;}}}
  GetCharacterMovement()->MaxWalkSpeed=ZoomTime>0?950:LabCatalog::Cat(G->SelectedCat).Speed;
  GetCharacterMovement()->RotationRate=FRotator(0,ZoomTime>0?180:800,0);
  if(ZoomTime>0){ZoomTime-=Dt;AddMovementInput(ZoomDirection,1);SetActorRotation(ZoomDirection.Rotation());auto Copy=G->Props;
