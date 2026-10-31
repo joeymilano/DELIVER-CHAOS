@@ -1,0 +1,27 @@
+{
+  "scope": [
+    "title taglines",
+    "cat mottos",
+    "selection/fusion subtitles",
+    "receipt slogans",
+    "pause subtitle",
+    "persistent innocent quote"
+  ],
+  "retained": [
+    "ability and recipe descriptions",
+    "unlock conditions",
+    "controls",
+    "damage and camera states",
+    "cat animations and meows"
+  ],
+  "native_pages_inspected": [
+    "title",
+    "selection",
+    "fusion-choice",
+    "fusion",
+    "results",
+    "pause"
+  ],
+  "package_success": true,
+  "binary_sha256": "1ced13527967d1c155be2d0c27e93afef39171379ab05d5bff30639579b84d8b"
+}
