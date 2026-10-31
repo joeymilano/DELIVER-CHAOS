@@ -1,7 +1,7 @@
 {
-  "source_commit": "88d306db47f88030ac39f43f36538695f2a2022b",
+  "source_commit": "109370e2b55a3f0d3b992f0562bfbbd56bff148a",
   "engine": "5.8.4",
-  "created_utc": "2026-10-31T04:12:23.489894+00:00",
+  "created_utc": "2026-10-31T05:39:58.199122+00:00",
   "kind": "complete-project-source-not-a-playable-Windows-build",
   "includes_local_licensed_assets": true,
   "excluded": [
@@ -15,9 +15,9 @@
   ],
   "windows_build_verified": false,
   "archive": "Delivery-Chaos-Complete-Project-for-Windows.zip",
-  "files_verified": 794,
-  "size_bytes": 974211233,
-  "sha256": "ad6467a261df27a5cff7502c0b6a861163e1d4c970607690bac01300f1a4db95",
+  "files_verified": 816,
+  "size_bytes": 975640730,
+  "sha256": "5755626b81ee3899ac7f5eef72ad40ab4d499a1ebb6694e30b9d34eecc7d07ed",
   "crc_ok": true,
   "all_file_hashes_verified": true
 }

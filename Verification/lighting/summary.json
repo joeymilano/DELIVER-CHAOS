@@ -121,5 +121,8 @@
       "hardware_ray_tracing": 0
     }
   ],
-  "binary_sha256": "7ae8087adf6d430b900e33a3c9a9a683b399314bea2d8d56091c23771a76f95f"
+  "binary_sha256": "7ae8087adf6d430b900e33a3c9a9a683b399314bea2d8d56091c23771a76f95f",
+  "automation_passed": 16,
+  "automation_failed": 0,
+  "mac_package": "Builds/Delivery-Chaos-Warm-Mac-20261031.zip"
 }
