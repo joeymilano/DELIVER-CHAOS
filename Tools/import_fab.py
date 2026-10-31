@@ -35,7 +35,7 @@ for group in (['Characters'] if os.environ.get('FAB_CHARACTERS_ONLY') else ['Fur
   else:
    for i in range(mesh.get_num_sections(0)):mesh.set_material(i,mat)
   unreal.EditorAssetLibrary.save_loaded_asset(mesh);report.append(mesh.get_path_name())
-for file in (root/'ArtSource/Audio/World').glob('*.wav'):
+for file in ([] if os.environ.get('FAB_CHARACTERS_ONLY') else (root/'ArtSource/Audio/World').glob('*.wav')):
  sound=imp(file,'/Game/Audio/World',file.stem);sound.set_editor_property('looping',file.stem=='SneakySnitch');unreal.EditorAssetLibrary.save_loaded_asset(sound)
 unreal.EditorLoadingAndSavingUtils.save_dirty_packages(True,True)
 (root/'Verification/fab-import.json').write_text(json.dumps(report,indent=2))

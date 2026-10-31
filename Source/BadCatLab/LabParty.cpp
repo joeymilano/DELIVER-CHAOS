@@ -23,14 +23,14 @@ ALabProp* ALabCat::FindTarget(float Range,float Cone) const{
  float Value=Dist*(P->Scored?1.3f:1.f);if(Value<BestValue){Best=P;BestValue=Value;}}
  return Best;
 }
-void ALabCat::PushStart(){if(auto G=Party(GetWorld());G&&G->Playing()){Pushing=true;Innocent=false;Charging=false;PushClock=0;Idle=0;}}
+void ALabCat::PushStart(){if(auto G=Party(GetWorld());G&&G->Playing()&&CaughtTime<=0){Pushing=true;Innocent=false;Charging=false;PushClock=0;Idle=0;}}
 void ALabCat::PushStop(){Pushing=false;}
-void ALabCat::ZoomStart(){if(auto G=Party(GetWorld());G&&G->Playing()&&ZoomCooldown<=0){ZoomTime=(Traits&CatTrait::Giant)&&(Traits&CatTrait::Wild)?1.8f:1.1f;ZoomCooldown=2.1f;ZoomDirection=AttackDirection();ZoomHit.Empty();Innocent=false;Charging=Pushing=false;Idle=0;}}
+void ALabCat::ZoomStart(){if(auto G=Party(GetWorld());G&&G->Playing()&&CaughtTime<=0&&ZoomCooldown<=0){ZoomTime=(Traits&CatTrait::Giant)&&(Traits&CatTrait::Wild)?1.8f:1.1f;ZoomCooldown=2.1f;ZoomDirection=AttackDirection();ZoomHit.Empty();Innocent=false;Charging=Pushing=false;Idle=0;}}
 void ALabCat::ZoomStop(){if(!(Traits&CatTrait::Wild))ZoomTime=FMath::Min(ZoomTime,.15f);}
 void ALabCat::ToggleShake(){Shake=!Shake;}
 void ALabCat::Meow(){NoisePulse(false);}
 void ALabCat::NoisePulse(bool Automatic){
- auto G=Party(GetWorld());if(!G||!G->Playing()||!(Traits&CatTrait::Loud)||(Automatic?AutoMeowCooldown>0:MeowCooldown>0))return;MeowCooldown=1.4f;AutoMeowCooldown=.2f;Innocent=false;Idle=0;ActionTime=.2f;
+ auto G=Party(GetWorld());if(!G||!G->Playing()||CaughtTime>0||!(Traits&CatTrait::Loud)||(Automatic?AutoMeowCooldown>0:MeowCooldown>0))return;MeowCooldown=1.4f;AutoMeowCooldown=.2f;Innocent=false;Idle=0;ActionTime=.2f;
  const int Chain=G->NewChain(false);const FVector Origin=GetActorLocation(),Dir=Automatic?ZoomDirection:AttackDirection();auto Copy=G->Props;int Count=0;
  for(auto P:Copy){if(!IsValid(P)||(P->Heavy&&!(Traits&CatTrait::Giant)))continue;FVector D=P->GetActorLocation()-Origin;if(D.Size()>230*BodyScale||FVector::DotProduct(D.GetSafeNormal2D(),Dir)<.45f)continue;P->Strike(Chain,D.GetSafeNormal()*650+FVector(0,0,160));if(++Count>=8)break;}
  DrawDebugCone(GetWorld(),Origin,Dir,230*BodyScale,.8f,.5f,20,FColor(90,210,230),false,.35f,0,3);G->Quip=TEXT("听见了吧。");G->QuipUntil=GetWorld()->GetTimeSeconds()+1.5;G->Speak(TEXT("Meow"));
@@ -38,7 +38,7 @@ void ALabCat::NoisePulse(bool Automatic){
 void ALabCat::Landed(const FHitResult& Hit){Super::Landed(Hit);auto G=Party(GetWorld());if(G&&G->Playing())G->WorldSound(TEXT("Landing"),.3f);if(G&&G->Playing()&&(Traits&CatTrait::Heavy)&&FallSpeed>230){G->RadialSmash(GetActorLocation(),FMath::Clamp(FallSpeed,350.f,1000.f)*BodyScale,160*BodyScale);Impact(true);}FallSpeed=0;}
 void ALabCat::Impact(bool Heavy){auto G=Party(GetWorld());if(!G)return;ImpactTime=.13f;G->Speak(Heavy?TEXT("Thud"):TEXT("Clink"));G->SlowUntil=FPlatformTime::Seconds()+(Heavy?.18:.05);UGameplayStatics::SetGlobalTimeDilation(GetWorld(),Heavy?.35f:.08f);}
 void ALabCat::TickInstincts(float Dt){
- auto G=Party(GetWorld());if(!G||!G->Playing())return;
+ auto G=Party(GetWorld());if(!G||!G->Playing()||CaughtTime>0)return;
  ZoomCooldown=FMath::Max(0.f,ZoomCooldown-Dt);MeowCooldown=FMath::Max(0.f,MeowCooldown-Dt);AutoMeowCooldown=FMath::Max(0.f,AutoMeowCooldown-Dt);
  if(GetCharacterMovement()->IsFalling())FallSpeed=FMath::Max(FallSpeed,-GetVelocity().Z);
  if(Pushing){PushClock-=Dt;if(PushClock<=0){PushClock=.12f;if(auto P=FindTarget(140,.15f)){int Id=G->Active(P->ChainId)?P->ChainId:G->NewChain(false);P->ChainId=Id;G->Chains[Id].Last=GetWorld()->GetTimeSeconds();FVector V=P->Body->GetPhysicsLinearVelocity();const FVector D=AttackDirection();P->Body->SetPhysicsLinearVelocity(FVector(D.X*55,D.Y*55,V.Z));ActionTime=.1f;}}}
@@ -69,7 +69,7 @@ void ALabGameMode::CollectDiscoveries(){auto Cat=UGameplayStatics::GetPlayerPawn
  if(FVector::Dist(A->GetActorLocation(),Cat->GetActorLocation())<125){Progress->UnlockedMask|=1<<Pair.Key;Quip=FString::Printf(TEXT("%s 跟你走了。下次可以选它，也可以合成。"),LabCatalog::Cat(Pair.Key).Name);QuipUntil=GetWorld()->GetTimeSeconds()+4;A->Destroy();Done.Add(Pair.Key);}}
  if(Done.Num()){for(int I:Done)Discoveries.Remove(I);SaveProgress();}
 }
-void ALabGameMode::ResetParty(){ClearVoices();Suspicion=GoodCat=0;CameraBroken=PerfectCrime=CandySpilled=false;Exposure=CaughtCooldown=GoodCooldown=CameraFlash=CameraClock=0;CameraCaption=TEXT("");PetCamera=nullptr;CameraVision=nullptr;}
+void ALabGameMode::ResetParty(){TimesCaught=0;ClearVoices();Suspicion=GoodCat=0;CameraBroken=PerfectCrime=CandySpilled=false;Exposure=CaughtCooldown=GoodCooldown=CameraFlash=CameraClock=0;CameraCaption=TEXT("");PetCamera=nullptr;CameraVision=nullptr;}
 void ALabGameMode::SpawnPartyProps(){
  auto Spawn=[&](int Id,FVector Pos,FVector Scale,FLinearColor Color,const TCHAR* Name,int Price,bool Ball=false){auto P=GetWorld()->SpawnActor<ALabProp>(Pos,FRotator::ZeroRotator);P->Configure(Id,Scale,Color,Ball,false,false);P->ItemName=Name;P->BaseScore=Price;Props.Add(P);return P;};
  auto Box=Spawn(18,FVector(-140,150,23),FVector(.6,.55,.45),FLinearColor(.48,.28,.1),TEXT("快递纸箱"),12);Box->Body->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Game/Art/Party/SM_Parcel")));
@@ -143,3 +143,12 @@ void ALabGameMode::Lab(){OpenSelection();}
 
 void ALabGameMode::WorldSound(const TCHAR* Name,float Volume){double Now=GetWorld()->GetTimeSeconds();if(Now<WorldSoundUntil)return;auto Sound=LoadObject<USoundBase>(nullptr,*FString::Printf(TEXT("/Game/Audio/World/%s"),Name));if(Sound){WorldSoundUntil=Now+.1;UGameplayStatics::PlaySound2D(this,Sound,Volume);}}
 void ALabGameMode::UpdateMusic(){if(!IsValid(Music)){if(auto Sound=LoadObject<USoundBase>(nullptr,TEXT("/Game/Audio/World/SneakySnitch")))Music=UGameplayStatics::SpawnSound2D(this,Sound,.27f,1,0,nullptr,true,false);}if(IsValid(Music))Music->SetVolumeMultiplier(MusicMuted||MemeShowing?0.f:Playing()?.27f:Stage==6?.42f:.18f);}
+
+bool ALabGameMode::CatchCat(ALabCat* Cat){
+ if(!Playing()||!IsValid(Cat)||Cat->CatchGrace>0)return false;
+ UGameplayStatics::SetGlobalTimeDilation(GetWorld(),1);SlowUntil=0;TimesCaught++;
+ if(!Practice)Remaining=FMath::Max(0.f,Remaining-15);
+ Cat->ResetCat();Cat->CaughtTime=2;Cat->CatchGrace=6;Cat->Idle=2;
+ Quip=Practice?TEXT("被抱回猫窝 · 罚坐 2 秒"):TEXT("被抱回猫窝 · −15 秒 · 罚坐 2 秒");QuipUntil=GetWorld()->GetTimeSeconds()+4;
+ Speak(TEXT("OwnerCaught"));return true;
+}

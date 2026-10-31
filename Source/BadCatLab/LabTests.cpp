@@ -2,6 +2,11 @@
 #include "LabGame.h"
 #include "LabCatalog.h"
 #include "LabResident.h"
+#include "Animation/AnimSequence.h"
+#include "Camera/CameraComponent.h"
+#include "GameFramework/PlayerController.h"
+#include "Animation/Skeleton.h"
+#include "Engine/SkeletalMesh.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Misc/AutomationTest.h"
@@ -143,5 +148,38 @@ bool FLabTitleTest::RunTest(const FString&){
  G->OpenTitle();TestEqual(TEXT("Reopening does not duplicate scenery"),G->TitleSet.Num(),Count);
  G->ConfirmSelection();TestFalse(TEXT("Normal play resets free mode"),G->Practice);TestEqual(TEXT("Enter opens collection"),G->Stage,4);
  return true;
+}
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabSafetyTest,"BadCatLab.World.BoundsAndCapture",Flags)
+bool FLabSafetyTest::RunTest(const FString&){
+ FPartyWorld F;auto G=F.G;G->BuildRoom();auto Cat=F.W->SpawnActor<ALabCat>();Cat->ApplyIdentity(0,false);Cat->ResetCat();
+ TArray<FVector> Outside={FVector(920,0,100),FVector(-920,0,100),FVector(0,720,100),FVector(0,-720,100),FVector(0,0,-200),FVector(0,0,900)};
+ for(auto P:Outside){Cat->SetActorLocation(P);Cat->UpdateSafety();TestTrue(TEXT("Out of room returns to safe interior"),FMath::Abs(Cat->GetActorLocation().X)<820&&FMath::Abs(Cat->GetActorLocation().Y)<620&&Cat->GetActorLocation().Z>0);}
+ FCollisionQueryParams Q;Q.AddIgnoredActor(Cat);FHitResult H;TestTrue(TEXT("Solid floor catches downward trace"),F.W->LineTraceSingleByChannel(H,FVector(820,610,30),FVector(820,610,-100),ECC_WorldStatic,Q));
+ G->Remaining=100;TestTrue(TEXT("First capture accepted"),G->CatchCat(Cat));TestEqual(TEXT("Capture costs fifteen seconds"),G->Remaining,85.f);TestEqual(TEXT("Two second timeout"),Cat->CaughtTime,2.f);
+ TestFalse(TEXT("Second enemy cannot punish during grace"),G->CatchCat(Cat));TestEqual(TEXT("No double charge"),G->TimesCaught,1);
+ Cat->Press();Cat->ZoomStart();Cat->PushStart();TestFalse(TEXT("Timeout blocks attack"),Cat->Charging);TestFalse(TEXT("Timeout blocks push"),Cat->Pushing);TestEqual(TEXT("Timeout blocks dash"),Cat->ZoomTime,0.f);
+ Cat->ResetCat();TestEqual(TEXT("Retry clears timeout"),Cat->CaughtTime,0.f);TestEqual(TEXT("Retry clears grace"),Cat->CatchGrace,0.f);
+ G->Practice=true;TestTrue(TEXT("Free mode still catches"),G->CatchCat(Cat));TestEqual(TEXT("Free mode has no timer penalty"),G->Remaining,85.f);return true;
+}
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabResidentPoseTest,"BadCatLab.World.ResidentBoneMotion",Flags)
+bool FLabResidentPoseTest::RunTest(const FString&){
+ FPartyWorld F;for(bool Guest:{false,true}){auto R=F.W->SpawnActor<ALabResident>();R->Configure(Guest);
+  auto Walk=R->Clips[1];if(!TestNotNull(TEXT("Walk exists"),Walk))continue;
+  int Id=Walk->GetSkeleton()->GetReferenceSkeleton().FindBoneIndex(TEXT("thigh_L"));TestTrue(TEXT("Thigh bone exists"),Id>=0);if(Id<0)continue;
+  FTransform A,B;Walk->GetBoneTransform(A,FSkeletonPoseBoneIndex(Id),FAnimExtractContext(.05),false);Walk->GetBoneTransform(B,FSkeletonPoseBoneIndex(Id),FAnimExtractContext(.3),false);
+  TestTrue(TEXT("Walk actually rotates the thigh"),A.GetRotation().AngularDistance(B.GetRotation())>.08);
+  int Arm=Walk->GetSkeleton()->GetReferenceSkeleton().FindBoneIndex(TEXT("upper_arm_L"));
+  R->Clips[0]->GetBoneTransform(A,FSkeletonPoseBoneIndex(Arm),FAnimExtractContext(.1),false);
+  TestTrue(TEXT("Idle lowers arm away from T pose"),A.GetRotation().AngularDistance(Walk->GetSkeleton()->GetReferenceSkeleton().GetRefBonePose()[Arm].GetRotation())>.5);
+ }
+ return true;
+}
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabCameraSafetyTest,"BadCatLab.World.CloseCameraAndMenuResidents",Flags)
+bool FLabCameraSafetyTest::RunTest(const FString&){
+ FPartyWorld F;F.G->BuildRoom();auto Cat=F.W->SpawnActor<ALabCat>();auto PC=F.W->SpawnActor<APlayerController>();PC->Possess(Cat);
+ Cat->SetActorLocation(FVector(820,600,40));Cat->Camera->SetWorldLocation(Cat->GetActorLocation());FMinimalViewInfo View;Cat->CalcCamera(.016f,View);
+ TestTrue(TEXT("Compressed camera finds a distant view"),FVector::Dist(View.Location,Cat->GetActorLocation())>150);TestTrue(TEXT("Recovery view stays inside walls"),FMath::Abs(View.Location.X)<=840&&FMath::Abs(View.Location.Y)<=640);
+ auto R=F.G->Residents[0];F.G->Stage=6;R->Tick(.016f);TestEqual(TEXT("Menu disables NPC falling"),R->GetCharacterMovement()->MovementMode,MOVE_None);
+ F.G->Stage=0;R->Tick(.016f);TestEqual(TEXT("Play resumes NPC movement"),R->GetCharacterMovement()->MovementMode,MOVE_Walking);return true;
 }
 #endif

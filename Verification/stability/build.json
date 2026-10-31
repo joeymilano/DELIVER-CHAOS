@@ -1,0 +1,21 @@
+{
+  "package": "BUILD SUCCESSFUL",
+  "sha256": "10b0ddedd795f31fd8f676c6d3a2e82142e5b44a03aa4907db224a083648929f",
+  "tests_passed": 15,
+  "tests_failed": 0,
+  "verified": [
+    "independent packaged app",
+    "keyboard run / jump / dash / retry",
+    "corner viewport no longer black or missing floor",
+    "resident arms lowered and walking visible",
+    "capture function fixture returned cat to safe location; movement resumed"
+  ],
+  "limitations": [
+    "short manual traversal is not exhaustive stability acceptance",
+    "natural enemy catch timing has not yet had a full player study"
+  ],
+  "evidence": [
+    "corner-camera.png",
+    "residents-walking.png"
+  ]
+}

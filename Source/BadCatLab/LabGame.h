@@ -58,6 +58,8 @@ class BADCATLAB_API ALabCat : public ACharacter {
 public:
  ALabCat(); virtual void BeginPlay() override; virtual void Tick(float Dt) override;
  virtual void SetupPlayerInputComponent(UInputComponent* Input) override;
+ virtual void CalcCamera(float DeltaTime, FMinimalViewInfo& OutResult) override;
+ virtual void FellOutOfWorld(const UDamageType& DamageType) override;
  virtual void Landed(const FHitResult& Hit) override;
  UPROPERTY() USpringArmComponent* Arm;
  UPROPERTY() UCameraComponent* Camera;
@@ -72,6 +74,8 @@ public:
  float Charge=0, ActionTime=0, Idle=0; bool Charging=false, Innocent=false, FixedCamera=false;
  void Forward(float V); void Right(float V); void Turn(float V); void Look(float V);
  void Press(); void Release(); void Hop(); void Retry(); void Pause(); void ToggleHUD(); void ToggleCamera(); void Tutorial();
+ float CaughtTime=0,CatchGrace=0; FVector LastSafePosition=FVector(-220,0,80);
+ void RecoverToSafety(); void UpdateSafety();
  void ResetCat(); void SetMutation(bool On);
  void ApplyIdentity(int32 CatIndex,bool Fused);
  void ToggleMusic(); void ToggleCredits();
@@ -105,6 +109,7 @@ public:
  void Discover(int32 Id,FVector Position); void CollectDiscoveries(); void ResetParty(); void TickCamera(float Dt);
  bool CameraSees(FVector Position,const AActor* Target=nullptr) const; void CameraObservation(bool Bad,bool Innocent);
  void DisableCamera(); void SpillCandy(FVector Origin,int32 Chain); void SpawnPartyProps(); void RadialSmash(FVector Origin,float Strength,float Radius);
+ bool CatchCat(ALabCat* Cat); int32 TimesCaught=0;
  void RecordRun(); void SetPractice(); void Speak(const TCHAR* Clip); void Lab(); void ClearDiscoveries();
  UPROPERTY() UAudioComponent* OwnerVoice = nullptr;
  UPROPERTY() UAudioComponent* CatVoice = nullptr;
