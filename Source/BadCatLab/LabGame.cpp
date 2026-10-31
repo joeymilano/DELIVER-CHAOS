@@ -61,7 +61,7 @@ void ALabProp::Hit(UPrimitiveComponent*,AActor* Other,UPrimitiveComponent*,FVect
 void ALabProp::Tick(float Dt){Super::Tick(Dt);if(!Scored){auto G=GM(GetWorld());if(G&&G->Playing()&&G->Active(ChainId)&&(GetActorLocation().Z<InitialPosition.Z-10||FVector::Dist2D(GetActorLocation(),InitialPosition)>35))G->Affect(this,ChainId);}FVector V=Body->GetPhysicsLinearVelocity();if(V.Size()>1800)Body->SetPhysicsLinearVelocity(V.GetClampedToMaxSize(1800));if(GetActorLocation().Z< -150 || GetActorLocation().Size()>2500){Body->SetSimulatePhysics(false);SetActorHiddenInGame(true);SetActorEnableCollision(false);}}
 ALabCat::ALabCat(){
  PrimaryActorTick.bCanEverTick=true;GetCapsuleComponent()->InitCapsuleSize(20,30);GetCharacterMovement()->MaxWalkSpeed=290;GetCharacterMovement()->JumpZVelocity=390;GetCharacterMovement()->AirControl=.8f;GetCharacterMovement()->bOrientRotationToMovement=true;GetCharacterMovement()->RotationRate=FRotator(0,800,0);bUseControllerRotationYaw=false;
- Arm=CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraArm"));Arm->SetupAttachment(RootComponent);Arm->TargetArmLength=430;Arm->SocketOffset=FVector::ZeroVector;Arm->bUsePawnControlRotation=true;Arm->bEnableCameraLag=true;Arm->CameraLagSpeed=14;Arm->CameraLagMaxDistance=65;Arm->bUseCameraLagSubstepping=true;Arm->TargetOffset=FVector(0,0,40);Arm->ProbeSize=16;
+ Arm=CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraArm"));Arm->SetupAttachment(RootComponent);Arm->TargetArmLength=430;Arm->SocketOffset=FVector::ZeroVector;Arm->bUsePawnControlRotation=false;Arm->SetUsingAbsoluteRotation(true);Arm->SetWorldRotation(FRotator(-38,-35,0));Arm->TargetArmLength=620;Arm->bEnableCameraLag=true;Arm->CameraLagSpeed=14;Arm->CameraLagMaxDistance=65;Arm->bUseCameraLagSubstepping=true;Arm->TargetOffset=FVector(0,0,40);Arm->ProbeSize=16;
  HeroMesh=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("HeroMesh"));HeroMesh->SetupAttachment(RootComponent);HeroMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
  Camera=CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));Camera->SetupAttachment(Arm);Camera->FieldOfView=72;
  Visual=CreateDefaultSubobject<USceneComponent>(TEXT("Cat"));Visual->SetupAttachment(RootComponent);Visual->SetRelativeLocation(FVector(0,0,-23));
@@ -79,20 +79,24 @@ void ALabCat::SetupPlayerInputComponent(UInputComponent* I){Super::SetupPlayerIn
 #if !UE_BUILD_SHIPPING
  I->BindKey(EKeys::F9,IE_Pressed,this,&ALabCat::PreviewMoney);
 #endif
-I->BindKey(EKeys::M,IE_Pressed,this,&ALabCat::ToggleMusic).bExecuteWhenPaused=true;I->BindAxis("Forward",this,&ALabCat::Forward);I->BindAxis("Right",this,&ALabCat::Right);I->BindAxis("Turn",this,&ALabCat::Turn);I->BindAxis("Look",this,&ALabCat::Look);I->BindAction("Attack",IE_Pressed,this,&ALabCat::Press);I->BindAction("Attack",IE_Released,this,&ALabCat::Release);I->BindAction("Jump",IE_Pressed,this,&ALabCat::Hop);I->BindAction("Retry",IE_Pressed,this,&ALabCat::Retry).bExecuteWhenPaused=true;I->BindAction("Pause",IE_Pressed,this,&ALabCat::Pause).bExecuteWhenPaused=true;I->BindAction("HUD",IE_Pressed,this,&ALabCat::ToggleHUD);I->BindAction("Camera",IE_Pressed,this,&ALabCat::ToggleCamera);I->BindAction("Tutorial",IE_Pressed,this,&ALabCat::Tutorial).bExecuteWhenPaused=true;I->BindAction("One",IE_Pressed,this,&ALabCat::PickOne);I->BindAction("Two",IE_Pressed,this,&ALabCat::PickTwo);I->BindAction("Three",IE_Pressed,this,&ALabCat::PickThree);I->BindAction("Four",IE_Pressed,this,&ALabCat::PickFour);I->BindAction("Push",IE_Pressed,this,&ALabCat::PushStart);I->BindAction("Push",IE_Released,this,&ALabCat::PushStop);I->BindAction("Zoom",IE_Pressed,this,&ALabCat::ZoomStart);I->BindAction("Zoom",IE_Released,this,&ALabCat::ZoomStop);I->BindAction("Meow",IE_Pressed,this,&ALabCat::Meow);I->BindAction("Shake",IE_Pressed,this,&ALabCat::ToggleShake).bExecuteWhenPaused=true;I->BindAction("Practice",IE_Pressed,this,&ALabCat::TogglePractice);I->BindAction("Confirm",IE_Pressed,this,&ALabCat::ConfirmSelection);I->BindAction("Select",IE_Pressed,this,&ALabCat::OpenSelection).bExecuteWhenPaused=true;}
-void ALabCat::Forward(float V){auto G=GM(GetWorld());if(G&&G->Playing()&&CaughtTime<=0){if(ZoomTime<=0)AddMovementInput(FRotator(0,GetControlRotation().Yaw,0).Vector(),V);if(V!=0)Idle=0;}}
-void ALabCat::Right(float V){auto G=GM(GetWorld());if(G&&G->Playing()&&CaughtTime<=0){if(ZoomTime<=0)AddMovementInput(FRotationMatrix(FRotator(0,GetControlRotation().Yaw,0)).GetUnitAxis(EAxis::Y),V);if(V!=0)Idle=0;}}
-void ALabCat::Turn(float V){if(!FixedCamera&&GM(GetWorld())&&GM(GetWorld())->Playing())AddControllerYawInput(FMath::Clamp(V,-3.f,3.f));}
-void ALabCat::Look(float V){if(!FixedCamera&&GM(GetWorld())&&GM(GetWorld())->Playing())AddControllerPitchInput(FMath::Clamp(V,-3.f,3.f));}
+for(auto Key:{EKeys::W,EKeys::Up}){auto& B=I->BindKey(Key,IE_Pressed,this,&ALabCat::MenuUp);B.bExecuteWhenPaused=true;B.bConsumeInput=false;}
+for(auto Key:{EKeys::S,EKeys::Down}){auto& B=I->BindKey(Key,IE_Pressed,this,&ALabCat::MenuDown);B.bExecuteWhenPaused=true;B.bConsumeInput=false;}
+for(auto Key:{EKeys::A,EKeys::Left}){auto& B=I->BindKey(Key,IE_Pressed,this,&ALabCat::MenuLeft);B.bExecuteWhenPaused=true;B.bConsumeInput=false;}
+for(auto Key:{EKeys::D,EKeys::Right}){auto& B=I->BindKey(Key,IE_Pressed,this,&ALabCat::MenuRight);B.bExecuteWhenPaused=true;B.bConsumeInput=false;}
+I->BindKey(EKeys::M,IE_Pressed,this,&ALabCat::ToggleMusic).bExecuteWhenPaused=true;I->BindAxis("Forward",this,&ALabCat::Forward);I->BindAxis("Right",this,&ALabCat::Right);I->BindAction("Attack",IE_Pressed,this,&ALabCat::Press);I->BindAction("Attack",IE_Released,this,&ALabCat::Release);I->BindAction("Jump",IE_Pressed,this,&ALabCat::Hop);I->BindAction("Retry",IE_Pressed,this,&ALabCat::Retry).bExecuteWhenPaused=true;I->BindAction("Pause",IE_Pressed,this,&ALabCat::Pause).bExecuteWhenPaused=true;I->BindAction("HUD",IE_Pressed,this,&ALabCat::ToggleHUD);I->BindAction("Camera",IE_Pressed,this,&ALabCat::ToggleCamera);I->BindAction("Tutorial",IE_Pressed,this,&ALabCat::Tutorial).bExecuteWhenPaused=true;I->BindAction("One",IE_Pressed,this,&ALabCat::PickOne);I->BindAction("Two",IE_Pressed,this,&ALabCat::PickTwo);I->BindAction("Three",IE_Pressed,this,&ALabCat::PickThree);I->BindAction("Four",IE_Pressed,this,&ALabCat::PickFour);I->BindAction("Push",IE_Pressed,this,&ALabCat::PushStart);I->BindAction("Push",IE_Released,this,&ALabCat::PushStop);I->BindAction("Zoom",IE_Pressed,this,&ALabCat::ZoomStart);I->BindAction("Zoom",IE_Released,this,&ALabCat::ZoomStop);I->BindAction("Meow",IE_Pressed,this,&ALabCat::Meow);I->BindAction("Shake",IE_Pressed,this,&ALabCat::ToggleShake).bExecuteWhenPaused=true;I->BindAction("Practice",IE_Pressed,this,&ALabCat::TogglePractice);I->BindAction("Confirm",IE_Pressed,this,&ALabCat::ConfirmSelection).bExecuteWhenPaused=true;I->BindAction("Select",IE_Pressed,this,&ALabCat::OpenSelection).bExecuteWhenPaused=true;}
+void ALabCat::Forward(float V){auto G=GM(GetWorld());if(G&&G->Playing()&&CaughtTime<=0){if(ZoomTime<=0)AddMovementInput(ScreenForward(),V);if(V!=0)Idle=0;}}
+void ALabCat::Right(float V){auto G=GM(GetWorld());if(G&&G->Playing()&&CaughtTime<=0){if(ZoomTime<=0)AddMovementInput(FVector::CrossProduct(FVector::UpVector,ScreenForward()),V);if(V!=0)Idle=0;}}
+void ALabCat::Turn(float){}
+void ALabCat::Look(float){}
 void ALabCat::TogglePractice(){if(auto G=GM(GetWorld()))G->SetPractice();}
 void ALabCat::Press(){auto G=GM(GetWorld());if(G&&G->Playing()&&CaughtTime<=0&&!UGameplayStatics::IsGamePaused(GetWorld())){Charging=true;Innocent=false;Pushing=false;Charge=0;Idle=0;}}
 void ALabCat::Release(){
  auto G=GM(GetWorld());if(!Charging||!G||!G->Playing())return;Charging=false;
  const bool Pounce=Charge>=.25f;const bool Super=Pounce&&Charge>=1.05f&&G->Pounces>0;
  const int32 Chain=G->NewChain(Pounce);G->Swipes++;if(Super){G->Pounces--;G->UsedPounces++;}
- FVector Dir=AttackDirection();auto Target=FindTarget(Pounce?235:150,.10f);
+ FVector Dir=AttackDirection();auto Target=FindTarget(Pounce?235:170,.10f);
  if(Target){Dir=(Target->GetActorLocation()-GetActorLocation()).GetSafeNormal2D();}
- G->WorldSound(TEXT("Swipe"),.3f);SetActorRotation(Dir.Rotation());ActionPounce=Pounce;ActionTime=Pounce?.43f:.36f;ActiveAnimation=INDEX_NONE;Idle=0;
+ G->WorldSound(TEXT("Swipe"),.3f);AimDirection=Dir;SetActorRotation(Dir.Rotation());ActionPounce=Pounce;ActionTime=Pounce?.43f:.36f;ActiveAnimation=INDEX_NONE;Idle=0;
  const float Power=(Super?1500.f:Pounce?FMath::Lerp(620.f,1000.f,FMath::Clamp(Charge,0.f,1.f)):LabCatalog::Cat(G->SelectedCat).Swipe)*(Traits&CatTrait::Giant?1.65f:1.f);
  if(Target){Target->Strike(Chain,Dir*Power+FVector(0,0,Pounce?200:110));Impact(Target->Heavy);}
  if(Pounce)LaunchCharacter(Dir*(Super?1050:FMath::Lerp(480.f,780.f,FMath::Clamp(Charge,0.f,1.f)))+FVector(0,0,Super?260:180),true,true);
@@ -100,10 +104,10 @@ void ALabCat::Release(){
 void ALabCat::Hop(){if(auto G=GM(GetWorld())){if(G->Stage==3){G->ToggleMemeGif();}else if(G->Stage==5){G->RecipeId=INDEX_NONE;G->StartRound(false);}else if(G->Playing()&&CaughtTime<=0){Jump();Innocent=false;Idle=0;}}}
 void ALabCat::Retry(){UGameplayStatics::SetGamePaused(GetWorld(),false);if(auto G=GM(GetWorld()))G->Retry();}
 void ALabCat::Tutorial(){UGameplayStatics::SetGamePaused(GetWorld(),false);if(auto G=GM(GetWorld()))G->Retry(true);}
-void ALabCat::Pause(){auto G=GM(GetWorld());if(!G)return;if(G->Stage==6){return;}if(G->Stage==4||G->Stage==5){G->OpenTitle();return;}Charging=false;Pushing=false;ZoomTime=0;Charge=0;const bool Paused=!UGameplayStatics::IsGamePaused(GetWorld());UGameplayStatics::SetGamePaused(GetWorld(),Paused);G->SetMenuInput(Paused||G->Stage==3);if(IsValid(G->MemeAudio))G->MemeAudio->SetPaused(Paused);G->PauseVoices(Paused);}
+void ALabCat::Pause(){auto G=GM(GetWorld());if(!G)return;if(G->Stage==6){return;}if(G->Stage==4||G->Stage==5){G->OpenTitle();return;}Charging=false;Pushing=false;ZoomTime=0;Charge=0;const bool Paused=!UGameplayStatics::IsGamePaused(GetWorld());G->MenuCursor=0;UGameplayStatics::SetGamePaused(GetWorld(),Paused);G->SetMenuInput(Paused||G->Stage==3);if(IsValid(G->MemeAudio))G->MemeAudio->SetPaused(Paused);G->PauseVoices(Paused);}
 void ALabCat::ToggleHUD(){if(auto G=GM(GetWorld()))G->HideHUD=!G->HideHUD;}
-void ALabCat::ToggleCamera(){FixedCamera=!FixedCamera;Arm->bUsePawnControlRotation=!FixedCamera;Arm->SetRelativeRotation(FRotator(-40,-30,0));Arm->TargetArmLength=FixedCamera?650:430;}
-void ALabCat::ResetCat(){if(auto PC=Cast<APlayerController>(Controller)){PC->PlayerCameraManager->ViewPitchMin=-65;PC->PlayerCameraManager->ViewPitchMax=-10;PC->FlushPressedKeys();}CaughtTime=CatchGrace=0;GetCharacterMovement()->SetMovementMode(MOVE_Walking);SetActorLocation(FVector(-220,0,30*BodyScale+8),false,nullptr,ETeleportType::TeleportPhysics);GetCharacterMovement()->StopMovementImmediately();Charging=false;Pushing=false;ZoomTime=0;ZoomCooldown=0;MeowCooldown=0;AutoMeowCooldown=0;PushClock=0;FallSpeed=0;Charge=0;Idle=0;ActionTime=0;ImpactTime=0;Innocent=false;ActionPounce=false;GetCharacterMovement()->ClearAccumulatedForces();LastSafePosition=GetActorLocation();GetMesh()->SetVisibility(true);HeroMesh->SetVisibility(true);Arm->SocketOffset=FVector::ZeroVector;SetActorRotation(FRotator::ZeroRotator);if(Controller)Controller->SetControlRotation(FRotator(-32,0,0));}
+void ALabCat::ToggleCamera(){FixedCamera=!FixedCamera;ConfigureKeyboardCamera();}
+void ALabCat::ResetCat(){if(auto PC=Cast<APlayerController>(Controller)){PC->PlayerCameraManager->ViewPitchMin=-65;PC->PlayerCameraManager->ViewPitchMax=-10;PC->FlushPressedKeys();}CaughtTime=CatchGrace=0;GetCharacterMovement()->SetMovementMode(MOVE_Walking);SetActorLocation(FVector(-220,0,30*BodyScale+8),false,nullptr,ETeleportType::TeleportPhysics);GetCharacterMovement()->StopMovementImmediately();Charging=false;Pushing=false;ZoomTime=0;ZoomCooldown=0;MeowCooldown=0;AutoMeowCooldown=0;PushClock=0;FallSpeed=0;Charge=0;Idle=0;ActionTime=0;ImpactTime=0;Innocent=false;ActionPounce=false;AimDirection=FVector::ForwardVector;ConfigureKeyboardCamera();GetCharacterMovement()->ClearAccumulatedForces();LastSafePosition=GetActorLocation();GetMesh()->SetVisibility(true);HeroMesh->SetVisibility(true);Arm->SocketOffset=FVector::ZeroVector;SetActorRotation(FRotator::ZeroRotator);if(Controller)Controller->SetControlRotation(FRotator(-32,0,0));}
 void ALabCat::SetMutation(bool On){auto G=GM(GetWorld());ApplyIdentity(G?G->SelectedCat:0,On);}
 void ALabCat::ApplyIdentity(int32 Id,bool Fused){
  Traits=GM(GetWorld())?GM(GetWorld())->CurrentTraits():LabCatalog::Cat(Id).Traits;BodyScale=Traits&CatTrait::Giant?1.8f:1.f;GetCapsuleComponent()->SetCapsuleSize(20*BodyScale,30*BodyScale);
@@ -124,10 +128,11 @@ void ALabCat::PickOne(){if(auto G=GM(GetWorld()))G->SelectCat(0);}
 void ALabCat::PickTwo(){if(auto G=GM(GetWorld()))G->SelectCat(1);}
 void ALabCat::PickThree(){if(auto G=GM(GetWorld()))G->SelectCat(2);}
 void ALabCat::PickFour(){if(auto G=GM(GetWorld()))G->SelectCat(3);}
-void ALabCat::ConfirmSelection(){if(auto G=GM(GetWorld()))G->ConfirmSelection();}
+void ALabCat::ConfirmSelection(){if(auto G=GM(GetWorld()))G->ActivateMenu();}
 void ALabCat::OpenSelection(){UGameplayStatics::SetGamePaused(GetWorld(),false);if(auto G=GM(GetWorld()))G->OpenSelection();}
 void ALabCat::Tick(float Dt){
  Super::Tick(Dt);auto G=GM(GetWorld());if(!G)return;
+ if(G->Playing()&&!GetLastMovementInputVector().IsNearlyZero()&&ZoomTime<=0)AimDirection=GetLastMovementInputVector().GetSafeNormal2D();
  CatchGrace=FMath::Max(0.f,CatchGrace-Dt);CaughtTime=FMath::Max(0.f,CaughtTime-Dt);
  if(CaughtTime>0){GetCharacterMovement()->StopMovementImmediately();ConsumeMovementInputVector();}
  UpdateSafety();TickInstincts(Dt);Idle+=Dt;ActionTime=FMath::Max(0.f,ActionTime-Dt);
@@ -190,7 +195,7 @@ void ALabGameMode::BeginPlay(){Super::BeginPlay();ConfigureLighting();LoadProgre
  }
 #endif
 }
-void ALabGameMode::SetMenuInput(bool Enabled){if(auto PC=GetWorld()->GetFirstPlayerController()){PC->bShowMouseCursor=Enabled;PC->bEnableClickEvents=Enabled;if(Enabled){FInputModeGameAndUI Mode;Mode.SetHideCursorDuringCapture(false);PC->SetInputMode(Mode);}else PC->SetInputMode(FInputModeGameOnly());}}
+void ALabGameMode::SetMenuInput(bool Enabled){MenuCursor=0;if(auto PC=GetWorld()->GetFirstPlayerController()){PC->bShowMouseCursor=Enabled;PC->bEnableClickEvents=Enabled;if(Enabled){FInputModeGameAndUI Mode;Mode.SetHideCursorDuringCapture(false);PC->SetInputMode(Mode);}else PC->SetInputMode(FInputModeGameOnly());}}
 bool ALabGameMode::BounceRule() const{return Playing()&&CandySpilled;}
 bool ALabGameMode::ResonanceRule() const{return Playing()&&(CurrentTraits()&CatTrait::Loud);}
 void ALabGameMode::OpenSelection(){
@@ -337,9 +342,16 @@ void ALabCat::CalcCamera(float Dt,FMinimalViewInfo& Out){
  const FVector P=GetActorLocation(),Focus=P+FVector(0,0,30*BodyScale);
  if(FVector::Dist(Out.Location,P)>=150*BodyScale)return;
  FCollisionQueryParams Q;Q.AddIgnoredActor(this);FVector Best=Out.Location;float BestDistance=FVector::DistSquared(Best,Focus);
- const float SX=P.X>0?-1.f:1.f,SY=P.Y>0?-1.f:1.f;
- for(FVector Offset:{FVector(0,0,280),FVector(220*SX,0,210),FVector(0,220*SY,210),FVector(160*SX,160*SY,260)}){
-  FVector Candidate=Focus+Offset;Candidate.X=FMath::Clamp(Candidate.X,-840.f,840.f);Candidate.Y=FMath::Clamp(Candidate.Y,-640.f,640.f);
+ const FVector Heading=ScreenForward();
+ const float BoundX=FMath::Min(876.f,FMath::Max(840.f,float(FMath::Abs(Focus.X)+5))),BoundY=FMath::Min(676.f,FMath::Max(640.f,float(FMath::Abs(Focus.Y)+5)));
+ auto SafeReach=[&](float Reach){
+  if(FMath::Abs(Heading.X)>.001f)Reach=FMath::Min(Reach,float((BoundX+(Heading.X>0?Focus.X:-Focus.X))/FMath::Abs(Heading.X)));
+  if(FMath::Abs(Heading.Y)>.001f)Reach=FMath::Min(Reach,float((BoundY+(Heading.Y>0?Focus.Y:-Focus.Y))/FMath::Abs(Heading.Y)));
+  return FMath::Max(1.f,Reach);
+ };
+ // Keep yaw stable during obstruction recovery so keyboard directions never reverse.
+ for(FVector2D Frame:{FVector2D(350,360),FVector2D(180,360),FVector2D(70,320),FVector2D(20,280)}){
+  FVector Candidate=Focus-Heading*SafeReach(Frame.X)+FVector(0,0,Frame.Y);
   FHitResult Hit;FCollisionQueryParams Trace=Q;
   for(int Try=0;Try<5;Try++){
    if(!GetWorld()->SweepSingleByChannel(Hit,Focus,Candidate,FQuat::Identity,ECC_Camera,FCollisionShape::MakeSphere(12),Trace))break;
