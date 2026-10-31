@@ -1,0 +1,480 @@
+﻿{
+	"devices": [
+		{
+			"deviceName": "MacBook-Pro.local",
+			"instance": "9BF59CC951462847DDB68EAC2CC8A9A8",
+			"instanceName": "MacBook-Pro.local-83140",
+			"platform": "MacEditor",
+			"oSVersion": "macOS 26.7.1 25G241",
+			"model": "Default",
+			"gPU": "Apple M5 Max",
+			"cPUModel": "Apple M5 Max",
+			"rAMInGB": 48,
+			"renderMode": "SM6",
+			"rHI": "",
+			"appInstanceLog": ""
+		}
+	],
+	"reportCreatedOn": "2026.10.31-07.50.13",
+	"succeeded": 22,
+	"succeededWithWarnings": 0,
+	"failed": 0,
+	"notRun": 0,
+	"inProcess": 0,
+	"totalDuration": 0.55404984951019287,
+	"comparisonExported": false,
+	"comparisonExportDirectory": "",
+	"tests": [
+		{
+			"testDisplayName": "KeyboardCameraAndAttack",
+			"fullTestPath": "BadCatLab.Controls.KeyboardCameraAndAttack",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"9BF59CC951462847DDB68EAC2CC8A9A8"
+			],
+			"duration": 0.018797501921653748,
+			"dateTime": "2026.10.31-07.50.12",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "KeyboardMenuFlow",
+			"fullTestPath": "BadCatLab.Controls.KeyboardMenuFlow",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"9BF59CC951462847DDB68EAC2CC8A9A8"
+			],
+			"duration": 0.046506207436323166,
+			"dateTime": "2026.10.31-07.50.12",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "BoundedResonance",
+			"fullTestPath": "BadCatLab.Party.BoundedResonance",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"9BF59CC951462847DDB68EAC2CC8A9A8"
+			],
+			"duration": 0.018038123846054077,
+			"dateTime": "2026.10.31-07.50.12",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "BriefMeowAndOptionalGif",
+			"fullTestPath": "BadCatLab.Party.BriefMeowAndOptionalGif",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"9BF59CC951462847DDB68EAC2CC8A9A8"
+			],
+			"duration": 0.018127206712961197,
+			"dateTime": "2026.10.31-07.50.12",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "CameraConsequences",
+			"fullTestPath": "BadCatLab.Party.CameraConsequences",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"9BF59CC951462847DDB68EAC2CC8A9A8"
+			],
+			"duration": 0.017813373357057571,
+			"dateTime": "2026.10.31-07.50.12",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "CollectionAndRecipes",
+			"fullTestPath": "BadCatLab.Party.CollectionAndRecipes",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"9BF59CC951462847DDB68EAC2CC8A9A8"
+			],
+			"duration": 0.015209581702947617,
+			"dateTime": "2026.10.31-07.50.12",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "FairCaptureWarnings",
+			"fullTestPath": "BadCatLab.Party.FairCaptureWarnings",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"9BF59CC951462847DDB68EAC2CC8A9A8"
+			],
+			"duration": 0.017492122948169708,
+			"dateTime": "2026.10.31-07.50.12",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "LocalProgress",
+			"fullTestPath": "BadCatLab.Party.LocalProgress",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"9BF59CC951462847DDB68EAC2CC8A9A8"
+			],
+			"duration": 0.01694241538643837,
+			"dateTime": "2026.10.31-07.50.12",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "MoneyFeedbackAndReset",
+			"fullTestPath": "BadCatLab.Party.MoneyFeedbackAndReset",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"9BF59CC951462847DDB68EAC2CC8A9A8"
+			],
+			"duration": 0.017480913549661636,
+			"dateTime": "2026.10.31-07.50.12",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "SlowPushDelaysBill",
+			"fullTestPath": "BadCatLab.Party.SlowPushDelaysBill",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"9BF59CC951462847DDB68EAC2CC8A9A8"
+			],
+			"duration": 0.016932081431150436,
+			"dateTime": "2026.10.31-07.50.13",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "TwentyRoundReset",
+			"fullTestPath": "BadCatLab.Party.TwentyRoundReset",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"9BF59CC951462847DDB68EAC2CC8A9A8"
+			],
+			"duration": 0.084022581577301025,
+			"dateTime": "2026.10.31-07.50.13",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "UniqueBill",
+			"fullTestPath": "BadCatLab.Party.UniqueBill",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"9BF59CC951462847DDB68EAC2CC8A9A8"
+			],
+			"duration": 0.01745225116610527,
+			"dateTime": "2026.10.31-07.50.13",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "UnlimitedPounce",
+			"fullTestPath": "BadCatLab.Party.UnlimitedPounce",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"9BF59CC951462847DDB68EAC2CC8A9A8"
+			],
+			"duration": 0.017505627125501633,
+			"dateTime": "2026.10.31-07.50.13",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "VocalCooldownAndReset",
+			"fullTestPath": "BadCatLab.Party.VocalCooldownAndReset",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"9BF59CC951462847DDB68EAC2CC8A9A8"
+			],
+			"duration": 0.017358835786581039,
+			"dateTime": "2026.10.31-07.50.13",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "TitleNavigation",
+			"fullTestPath": "BadCatLab.UI.TitleNavigation",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"9BF59CC951462847DDB68EAC2CC8A9A8"
+			],
+			"duration": 0.017454333603382111,
+			"dateTime": "2026.10.31-07.50.13",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "BoundsAndCapture",
+			"fullTestPath": "BadCatLab.World.BoundsAndCapture",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"9BF59CC951462847DDB68EAC2CC8A9A8"
+			],
+			"duration": 0.080974996089935303,
+			"dateTime": "2026.10.31-07.50.13",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "CloseCameraAndMenuResidents",
+			"fullTestPath": "BadCatLab.World.CloseCameraAndMenuResidents",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"9BF59CC951462847DDB68EAC2CC8A9A8"
+			],
+			"duration": 0.018933538347482681,
+			"dateTime": "2026.10.31-07.50.13",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "CozyPropsAndReset",
+			"fullTestPath": "BadCatLab.World.CozyPropsAndReset",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"9BF59CC951462847DDB68EAC2CC8A9A8"
+			],
+			"duration": 0.019338499754667282,
+			"dateTime": "2026.10.31-07.50.13",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "FabResidentsAndRoute",
+			"fullTestPath": "BadCatLab.World.FabResidentsAndRoute",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"9BF59CC951462847DDB68EAC2CC8A9A8"
+			],
+			"duration": 0.022046498954296112,
+			"dateTime": "2026.10.31-07.50.13",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "ResidentBoneMotion",
+			"fullTestPath": "BadCatLab.World.ResidentBoneMotion",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"9BF59CC951462847DDB68EAC2CC8A9A8"
+			],
+			"duration": 0.017597373574972153,
+			"dateTime": "2026.10.31-07.50.13",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "ResidentFurnishedRoomRoutes",
+			"fullTestPath": "BadCatLab.World.ResidentFurnishedRoomRoutes",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"9BF59CC951462847DDB68EAC2CC8A9A8"
+			],
+			"duration": 0.0199570432305336,
+			"dateTime": "2026.10.31-07.50.13",
+			"entries": [
+				{
+					"event":
+					{
+						"type": "Info",
+						"message": "Resident route: from X=-520.000 Y=400.000 Z=92.000 to requested X=-500.000 Y=-40.000 Z=92.000, floor goal X=-520.000 Y=-40.000 Z=92.000, nodes 12",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "",
+					"lineNumber": -1,
+					"timestamp": "2026.10.31-07.50.13"
+				},
+				{
+					"event":
+					{
+						"type": "Info",
+						"message": "Resident route: from X=-520.000 Y=-20.462 Z=92.000 to requested X=-430.000 Y=300.000 Z=92.000, floor goal X=-440.000 Y=280.000 Z=92.000, nodes 9",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "",
+					"lineNumber": -1,
+					"timestamp": "2026.10.31-07.50.13"
+				},
+				{
+					"event":
+					{
+						"type": "Info",
+						"message": "Resident route: from X=-444.971 Y=261.331 Z=92.323 to requested X=430.000 Y=430.000 Z=92.000, floor goal X=440.000 Y=440.000 Z=92.000, nodes 23",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "",
+					"lineNumber": -1,
+					"timestamp": "2026.10.31-07.50.13"
+				},
+				{
+					"event":
+					{
+						"type": "Info",
+						"message": "Resident route: from X=420.630 Y=439.089 Z=92.150 to requested X=460.000 Y=-80.000 Z=92.000, floor goal X=440.000 Y=-80.000 Z=92.000, nodes 14",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "",
+					"lineNumber": -1,
+					"timestamp": "2026.10.31-07.50.13"
+				},
+				{
+					"event":
+					{
+						"type": "Info",
+						"message": "Resident route: from X=439.272 Y=-60.487 Z=92.150 to requested X=10.000 Y=0.000 Z=250.000, floor goal X=0.000 Y=-120.000 Z=92.000, nodes 12",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "",
+					"lineNumber": -1,
+					"timestamp": "2026.10.31-07.50.13"
+				},
+				{
+					"event":
+					{
+						"type": "Info",
+						"message": "Resident route: from X=560.000 Y=400.000 Z=92.000 to requested X=-500.000 Y=-40.000 Z=92.000, floor goal X=-520.000 Y=-40.000 Z=92.000, nodes 29",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "",
+					"lineNumber": -1,
+					"timestamp": "2026.10.31-07.50.13"
+				},
+				{
+					"event":
+					{
+						"type": "Info",
+						"message": "Resident route: from X=-501.473 Y=-33.909 Z=92.353 to requested X=-430.000 Y=300.000 Z=92.000, floor goal X=-440.000 Y=280.000 Z=92.000, nodes 9",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "",
+					"lineNumber": -1,
+					"timestamp": "2026.10.31-07.50.13"
+				},
+				{
+					"event":
+					{
+						"type": "Info",
+						"message": "Resident route: from X=-443.717 Y=261.017 Z=92.368 to requested X=430.000 Y=430.000 Z=92.000, floor goal X=440.000 Y=440.000 Z=92.000, nodes 23",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "",
+					"lineNumber": -1,
+					"timestamp": "2026.10.31-07.50.13"
+				},
+				{
+					"event":
+					{
+						"type": "Info",
+						"message": "Resident route: from X=420.986 Y=439.106 Z=92.150 to requested X=460.000 Y=-80.000 Z=92.000, floor goal X=440.000 Y=-80.000 Z=92.000, nodes 14",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "",
+					"lineNumber": -1,
+					"timestamp": "2026.10.31-07.50.13"
+				},
+				{
+					"event":
+					{
+						"type": "Info",
+						"message": "Resident route: from X=439.285 Y=-60.485 Z=92.150 to requested X=10.000 Y=0.000 Z=250.000, floor goal X=0.000 Y=-120.000 Z=92.000, nodes 12",
+						"context": "",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "",
+					"lineNumber": -1,
+					"timestamp": "2026.10.31-07.50.13"
+				}
+			],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "ResidentGroundRoutes",
+			"fullTestPath": "BadCatLab.World.ResidentGroundRoutes",
+			"tags": [],
+			"state": "Success",
+			"deviceInstance": [
+				"9BF59CC951462847DDB68EAC2CC8A9A8"
+			],
+			"duration": 0.018068790435791016,
+			"dateTime": "2026.10.31-07.50.13",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		}
+	]
+}

@@ -101,3 +101,7 @@ Gameplay and menus now work with keyboard only. Camera yaw stays fixed during mo
 ## 开始页艺术字（2026-10-31）
 
 使用用户提供的艺术字参考制作透明标题贴图，替换开始页原有大字标题。纹理保留 Alpha，使用 UI 纹理组、无 Mip、常驻加载，并加入最终烹制目录。Editor Mac Development 编译成功；工程独立运行检查了 1920×1080 与 1280×720 两种尺寸，没有裁切或底色边框；方向键与回车仍能进入选猫页。截图与资产记录见 `brush-title`，来源与最终编辑提示词见 [标题素材记录](../ArtSource/UI/Title/README.md)。本轮未更新 Mac 包和协作者工程 ZIP。
+
+## 最新源码：监控预警与人物适配
+
+本轮记录见 [surveillance/README.md](surveillance/README.md) 与 [Docs/SURVEILLANCE.md](../Docs/SURVEILLANCE.md)。贴地扫描范围替代实体光锥；主人连续近身 0.5 秒才抓，处罚 −5 秒/停留 1 秒/保护 8 秒；监控连续拍到捣乱 0.9 秒才处罚 −2 秒，离开或装乖清零。男主人本地模型已替换，女模型缺骨架未替换。22 项检查通过；1080p 源码实机平均 118.90 FPS。Mac 包与完整工程包仍等待最终更新。

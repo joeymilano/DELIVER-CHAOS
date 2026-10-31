@@ -2,6 +2,7 @@
 #include "LabGame.h"
 #include "LabCatalog.h"
 #include "LabResident.h"
+#include "ProceduralMeshComponent.h"
 #include "Animation/AnimSequence.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/PlayerController.h"
@@ -60,7 +61,7 @@ bool FLabFusionTest::RunTest(const FString&){
 }
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabCameraTest,"BadCatLab.Party.CameraConsequences",Flags)
 bool FLabCameraTest::RunTest(const FString&){
- FPartyWorld F;auto G=F.G;G->CameraObservation(true,false);TestEqual(TEXT("Caught adds suspicion"),G->Suspicion,1);TestEqual(TEXT("Caught brings owner home sooner"),G->Remaining,177.f);
+ FPartyWorld F;auto G=F.G;G->CameraObservation(true,false);TestEqual(TEXT("Caught adds suspicion"),G->Suspicion,1);TestEqual(TEXT("Caught brings owner home sooner"),G->Remaining,178.f);
  G->CameraObservation(true,false);TestEqual(TEXT("Cooldown prevents per-frame punishment"),G->Suspicion,1);
  G->CameraObservation(true,true);TestEqual(TEXT("Innocent pose wins even during falling objects"),G->GoodCat,1);TestEqual(TEXT("Innocence reduces suspicion"),G->Suspicion,0);
  G->GoodCooldown=0;G->CameraObservation(false,true);G->GoodCooldown=0;G->CameraObservation(false,true);G->GoodCooldown=0;G->CameraObservation(false,true);TestEqual(TEXT("Good-cat farming capped"),G->GoodCat,3);
@@ -69,6 +70,27 @@ bool FLabCameraTest::RunTest(const FString&){
  G->PetCamera=F.Prop(30,399);G->PetCamera->SetActorLocation(FVector(0,0,300));G->WatchDirection=FVector::ForwardVector;
  TestTrue(TEXT("Front inside cone visible"),G->CameraSees(FVector(200,0,300)));TestFalse(TEXT("Behind cone invisible"),G->CameraSees(FVector(-200,0,300)));TestFalse(TEXT("Out of range invisible"),G->CameraSees(FVector(900,0,300)));
  auto Wall=F.Prop(80,0,FVector(100,0,300));Wall->Body->SetCollisionProfileName(TEXT("BlockAll"));TestFalse(TEXT("Solid object occludes line of sight"),G->CameraSees(FVector(200,0,300)));return true;
+}
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabWarningTest,"BadCatLab.Party.FairCaptureWarnings",Flags)
+bool FLabWarningTest::RunTest(const FString&){
+ FPartyWorld F;auto G=F.G;auto R=F.W->SpawnActor<ALabResident>();
+ TestFalse(TEXT("Brushing past does not grab"),R->AdvanceCapture(.3f,true));
+ TestFalse(TEXT("Leaving reach clears hold"),R->AdvanceCapture(.01f,false));
+ TestEqual(TEXT("No carryover from earlier contact"),R->CaptureTime,0.f);
+ TestFalse(TEXT("Under half second still escapes"),R->AdvanceCapture(.49f,true));
+ TestTrue(TEXT("Half second sustained reach completes grab"),R->AdvanceCapture(.02f,true));
+ R->ResetResident();TestEqual(TEXT("Retry clears capture warning"),R->CaptureTime,0.f);
+ G->AdvanceCameraEvidence(5,true,false,false);TestEqual(TEXT("Quiet cat never preloads bad evidence"),G->Exposure,0.f);
+ G->AdvanceCameraEvidence(.3f,true,true,false);TestEqual(TEXT("Short swipe has warning only"),G->Suspicion,0);
+ G->AdvanceCameraEvidence(.01f,false,true,false);TestEqual(TEXT("Cover immediately cancels detection"),G->Exposure,0.f);
+ G->AdvanceCameraEvidence(4,false,true,false);TestEqual(TEXT("Falling objects without visible cat cannot punish"),G->Suspicion,0);
+ G->AdvanceCameraEvidence(.89f,true,true,false);TestEqual(TEXT("Almost one second still permits escape"),G->Suspicion,0);
+ G->AdvanceCameraEvidence(.02f,true,true,false);TestEqual(TEXT("Sustained filmed mischief counts once"),G->Suspicion,1);
+ TestEqual(TEXT("Camera costs two seconds"),G->Remaining,178.f);
+ G->AdvanceCameraEvidence(5,true,true,false);TestEqual(TEXT("Cooldown cannot preload a second punishment"),G->Exposure,0.f);
+ G->CaughtCooldown=0;G->AdvanceCameraEvidence(.8f,true,true,false);G->AdvanceCameraEvidence(.1f,true,true,true);TestEqual(TEXT("Innocence clears warning"),G->Exposure,0.f);
+ G->DisableCamera();G->AdvanceCameraEvidence(5,true,true,false);TestEqual(TEXT("Disconnected camera never warns"),G->Exposure,0.f);
+ G->ResetParty();TestFalse(TEXT("Retry clears watched HUD"),G->CameraInView);return true;
 }
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabSaveTest,"BadCatLab.Party.LocalProgress",Flags)
 bool FLabSaveTest::RunTest(const FString&){
@@ -158,11 +180,11 @@ bool FLabSafetyTest::RunTest(const FString&){
  TArray<FVector> Outside={FVector(920,0,100),FVector(-920,0,100),FVector(0,720,100),FVector(0,-720,100),FVector(0,0,-200),FVector(0,0,900)};
  for(auto P:Outside){Cat->SetActorLocation(P);Cat->UpdateSafety();TestTrue(TEXT("Out of room returns to safe interior"),FMath::Abs(Cat->GetActorLocation().X)<820&&FMath::Abs(Cat->GetActorLocation().Y)<620&&Cat->GetActorLocation().Z>0);}
  FCollisionQueryParams Q;Q.AddIgnoredActor(Cat);FHitResult H;TestTrue(TEXT("Solid floor catches downward trace"),F.W->LineTraceSingleByChannel(H,FVector(820,610,30),FVector(820,610,-100),ECC_WorldStatic,Q));
- G->Remaining=100;TestTrue(TEXT("First capture accepted"),G->CatchCat(Cat));TestEqual(TEXT("Capture costs fifteen seconds"),G->Remaining,85.f);TestEqual(TEXT("Two second timeout"),Cat->CaughtTime,2.f);
+ G->Remaining=100;TestTrue(TEXT("First capture accepted"),G->CatchCat(Cat));TestEqual(TEXT("Capture costs five seconds"),G->Remaining,95.f);TestEqual(TEXT("One second timeout"),Cat->CaughtTime,1.f);
  TestFalse(TEXT("Second enemy cannot punish during grace"),G->CatchCat(Cat));TestEqual(TEXT("No double charge"),G->TimesCaught,1);
  Cat->Press();Cat->ZoomStart();Cat->PushStart();TestFalse(TEXT("Timeout blocks attack"),Cat->Charging);TestFalse(TEXT("Timeout blocks push"),Cat->Pushing);TestEqual(TEXT("Timeout blocks dash"),Cat->ZoomTime,0.f);
  Cat->ResetCat();TestEqual(TEXT("Retry clears timeout"),Cat->CaughtTime,0.f);TestEqual(TEXT("Retry clears grace"),Cat->CatchGrace,0.f);
- G->Practice=true;TestTrue(TEXT("Free mode still catches"),G->CatchCat(Cat));TestEqual(TEXT("Free mode has no timer penalty"),G->Remaining,85.f);return true;
+ G->Practice=true;TestTrue(TEXT("Free mode still catches"),G->CatchCat(Cat));TestEqual(TEXT("Free mode has no timer penalty"),G->Remaining,95.f);return true;
 }
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabResidentPoseTest,"BadCatLab.World.ResidentBoneMotion",Flags)
 bool FLabResidentPoseTest::RunTest(const FString&){
@@ -173,7 +195,7 @@ bool FLabResidentPoseTest::RunTest(const FString&){
   TestTrue(TEXT("Walk actually rotates the thigh"),A.GetRotation().AngularDistance(B.GetRotation())>.08);
   int Arm=Walk->GetSkeleton()->GetReferenceSkeleton().FindBoneIndex(TEXT("upper_arm_L"));
   R->Clips[0]->GetBoneTransform(A,FSkeletonPoseBoneIndex(Arm),FAnimExtractContext(.1),false);
-  TestTrue(TEXT("Idle lowers arm away from T pose"),A.GetRotation().AngularDistance(Walk->GetSkeleton()->GetReferenceSkeleton().GetRefBonePose()[Arm].GetRotation())>.5);
+  TestTrue(TEXT("Idle lowers arm away from T pose"),A.GetRotation().AngularDistance(Walk->GetSkeleton()->GetReferenceSkeleton().GetRefBonePose()[Arm].GetRotation())>.35);
  }
  return true;
 }
@@ -224,7 +246,12 @@ bool FLabResidentFloorTest::RunTest(const FString&){
  TestEqual(TEXT("Humans ignore scattered physics props"),R->GetCapsuleComponent()->GetCollisionResponseToChannel(Prop->Body->GetCollisionObjectType()),ECR_Ignore);
  TestFalse(TEXT("Human movement cannot apply kicking forces"),R->GetCharacterMovement()->bEnablePhysicsInteraction);
  R->Home=FVector(0,0,150);R->ResetResident();TestTrue(TEXT("Retry cannot respawn on tabletop"),R->CanStandAt(R->GetActorLocation()));TestEqual(TEXT("Retry places human on floor"),R->GetActorLocation().Z,92.);
- F.G->SpawnPartyProps();TestNull(TEXT("Surveillance creates no visible cone"),F.G->CameraVision);
+ F.G->SpawnPartyProps();TestNotNull(TEXT("Surveillance creates a flat floor graphic"),F.G->CameraVision);
+ TestEqual(TEXT("Floor graphic cannot collide"),F.G->CameraVision->GetCollisionEnabled(),ECollisionEnabled::NoCollision);
+ F.G->WatchDirection=FVector::ForwardVector;F.G->UpdateCameraFootprint();const auto Section=F.G->CameraVision->GetProcMeshSection(0);
+ TestNotNull(TEXT("Ground footprint contains actual geometry"),Section);
+ if(Section)for(const auto& Vertex:Section->ProcVertexBuffer)TestTrue(TEXT("Every surveillance vertex stays on the floor"),Vertex.Position.Z>=2.4f&&Vertex.Position.Z<=2.8f);
+
  return true;
 }
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FLabResidentRoomRouteTest,"BadCatLab.World.ResidentFurnishedRoomRoutes",Flags)

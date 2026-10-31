@@ -1,1 +1,27 @@
-{"FileVersion":3,"EngineAssociation":"5.8","Category":"Games","Description":"合成大坏猫：一爪制造事故，合成改写物理","Modules":[{"Name":"BadCatLab","Type":"Runtime","LoadingPhase":"Default"}],"Plugins":[{"Name":"PythonScriptPlugin","Enabled":true},{"Name":"EditorScriptingUtilities","Enabled":true}]}
+{
+  "FileVersion": 3,
+  "EngineAssociation": "5.8",
+  "Category": "Games",
+  "Description": "合成大坏猫：一爪制造事故，合成改写物理",
+  "Modules": [
+    {
+      "Name": "BadCatLab",
+      "Type": "Runtime",
+      "LoadingPhase": "Default"
+    }
+  ],
+  "Plugins": [
+    {
+      "Name": "PythonScriptPlugin",
+      "Enabled": true
+    },
+    {
+      "Name": "EditorScriptingUtilities",
+      "Enabled": true
+    },
+    {
+      "Name": "ProceduralMeshComponent",
+      "Enabled": true
+    }
+  ]
+}
