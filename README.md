@@ -12,7 +12,7 @@ cd DELIVER-CHAOS
 bash Tools/build_mac.sh
 ```
 
-使用 Unreal 5.8.4；本机验证工具链为 Xcode 26.1.1。打开 `Builds/Mac/BadCatLab.app` 即可离线运行，不需要启动编辑器。构建缓存和 Mac 应用包不进入 Git；协作者克隆后需要构建。Fab 源模型及 uasset 不进入公开仓库；完整场景需要按 ArtSource/FAB_SELECTION.md 自行领取三套免费资源，并运行 prepare_fab.py / import_fab.py。Windows 尚未验证。
+使用 Unreal 5.8.4；本机验证工具链为 Xcode 26.1.1。打开 `Builds/Mac/BadCatLab.app` 即可离线运行，不需要启动编辑器。构建缓存和 Mac 应用包不进入 Git；协作者克隆后需要构建。Fab 源模型及 uasset 不进入公开仓库；完整场景需要按 ArtSource/FAB_SELECTION.md 自行领取三套免费资源，并运行 prepare_fab.py / import_fab.py。Windows 构建入口和完整工程交接说明见 [WINDOWS_README.md](WINDOWS_README.md)；Windows 构建与实机运行尚未验证。
 
 第一次参赛代码提交为 2026-10-30 18:46:16（北京时间）。协作方式见 [CONTRIBUTING.md](CONTRIBUTING.md)，当前验证和限制见 [Verification/STATUS.md](Verification/STATUS.md)。
 
@@ -96,3 +96,5 @@ bash Tools/build_mac.sh
 结算只播放约 2.2 秒的抬头、张嘴和一声真实猫叫，Space 可立即跳过。账单页按 Space 展开猫梗动图小卡片，两遍后自动收起，再按 Space 可提前关闭。用户提供的 OIIA 视频提取帧仅在本地演示，位于 ArtSource/MemesLocal 和 Content/UI/MemesLocal，不进入公开源码。
 
 新增茶会与占卜角：接入 16 件 Nasha 模型，包含 9 件可拍落计价的小物件；PR #2 的 10 个音频已导入并接入事件。素材准备、具体用途和保留候选见 [COZY_PARTY.md](Docs/COZY_PARTY.md)。Nasha 模型与 Fab 一样，源文件留在本地，协作者需持有素材包自行导入。
+
+本机完整工程已迁移至 `~/Documents/Deliver Chaos`；旧路径保留跳转以兼容历史链接。

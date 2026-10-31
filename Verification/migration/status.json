@@ -1,0 +1,10 @@
+{
+  "root": "/Users/joeyzhao/Documents/Deliver Chaos",
+  "editor_build_from_new_root": "succeeded",
+  "automation_passed": 16,
+  "automation_failed": 0,
+  "mac_package_signature": "verified",
+  "windows_status": "not built; user chose Windows collaborator handoff",
+  "windows_blocker": "Mac engine distribution does not support Win64",
+  "windows_build_script_status": "prepared; not executed on Windows"
+}

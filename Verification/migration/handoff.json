@@ -1,0 +1,23 @@
+{
+  "source_commit": "88d306db47f88030ac39f43f36538695f2a2022b",
+  "engine": "5.8.4",
+  "created_utc": "2026-10-31T04:12:23.489894+00:00",
+  "kind": "complete-project-source-not-a-playable-Windows-build",
+  "includes_local_licensed_assets": true,
+  "excluded": [
+    ".git",
+    "Binaries",
+    "Intermediate",
+    "Saved",
+    "DerivedDataCache",
+    "Builds",
+    "Unreal Engine"
+  ],
+  "windows_build_verified": false,
+  "archive": "Delivery-Chaos-Complete-Project-for-Windows.zip",
+  "files_verified": 794,
+  "size_bytes": 974211233,
+  "sha256": "ad6467a261df27a5cff7502c0b6a861163e1d4c970607690bac01300f1a4db95",
+  "crc_ok": true,
+  "all_file_hashes_verified": true
+}
