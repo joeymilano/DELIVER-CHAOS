@@ -1,0 +1,19 @@
+{
+  "label": "surveillance-final",
+  "stage": 4,
+  "lumen_quality": 2,
+  "width": 1920,
+  "height": 1080,
+  "sample_seconds": 30.008,
+  "frames": 3568,
+  "average_fps": 118.90,
+  "p99_frame_ms": 11.23,
+  "minimum_5s_fps": 115.49,
+  "foreground_only": true,
+  "vsync": 0,
+  "screen_percentage": 100,
+  "gi_method": 1,
+  "reflection_method": 1,
+  "mesh_distance_fields": 1,
+  "hardware_ray_tracing": 0
+}

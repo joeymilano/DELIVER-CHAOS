@@ -1,5 +1,6 @@
 #include "LabGame.h"
 #include "LabCatalog.h"
+#include "LabResident.h"
 #include "Engine/Canvas.h"
 #include "Engine/Font.h"
 #include "Engine/Texture2D.h"
@@ -282,8 +283,9 @@ void ALabHUD::DrawHUD() {
   Center(G->Practice?TEXT("不限时 · 不计榜"):TEXT("派对倒计时"),640,73,13,Paper);
   Round(956,22,300,78,15,G->CameraBroken?Hex(TEXT("283B2C")):Ink);
   Ellipse(976,46,4,4,G->CameraBroken?Green:G->CameraFlash>0?Red:Orange);
-  Text(G->CameraBroken?TEXT("监控已断线"):G->CameraFlash>0?TEXT("被拍到了！"):TEXT("摄像头正看着呢"),990,35,19,Paper,true);
-  for(int I=0;I<5;I++)Round(974+I*53,70,43,5,2,I<G->Suspicion?Orange:Hex(TEXT("62645E")));
+  Text(G->CameraBroken?TEXT("监控已断线"):G->CameraFlash>0?TEXT("被拍到了！"):G->Exposure>0?TEXT("快躲开"):G->CameraInView?TEXT("保持淡定"):TEXT("监控巡查"),990,35,19,Paper,true);
+  Round(974,70,264,5,2,Hex(TEXT("62645E")));
+  if(G->Exposure>0)Round(974,70,264*G->Exposure/G->CameraNoticeTime,5,2,Orange);
 
   Round(24,122,244,38,10,Paper);Text(TEXT("超级扑"),40,131,16,Ink,true);
   for(int I=0;I<3;I++)CatMark(147+I*36,141,9,I<G->Pounces?Orange:Line);
@@ -293,6 +295,8 @@ void ALabHUD::DrawHUD() {
   if(!Toast.IsEmpty()){Round(370,117,540,68,12,Paper);Wrap(Toast,392,132,18,496,Ink);}
 
   if(Cat){
+   float Grab=0;for(auto R:G->Residents)if(IsValid(R))Grab=FMath::Max(Grab,R->CaptureTime);
+   if(Grab>0){const FVector Mark=Project(Cat->GetActorLocation()+FVector(0,0,85));if(Mark.Z>0){const FVector2D At((Mark.X-OX)/S,(Mark.Y-OY)/S);Round(At.X-46,At.Y-28,92,35,10,Ink);Center(TEXT("快跑！"),At.X,At.Y-22,16,Paper,true);Round(At.X-34,At.Y+1,68*Grab/.5f,3,1,Orange);}}
    if(Cat->Charging){Round(470,526,340,67,12,Ink);Text(Cat->Charge>=1.05&&G->Pounces>0?TEXT("超级扑就绪，松开释放"):TEXT("松开扑击"),490,538,19,Paper);Round(490,574,300,5,2,Muted);if(Cat->Charge>0)Round(490,574,300*Cat->Charge/1.25f,5,2,Orange);}
    else if(Cat->Innocent){Pill(TEXT("装乖中"),512,539,Paper,Ink);}
    if(auto P=Cat->FindTarget(170,.1f);P){

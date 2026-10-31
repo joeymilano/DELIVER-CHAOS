@@ -39,3 +39,7 @@ Content/UI/MemesLocal/
 # Nasha packs permit compiled game use, not standalone source redistribution.
 ArtSource/CozyLocal/
 Content/CozyLocal/
+
+# User supplied human models and derived assets remain local.
+ArtSource/ResidentsLocal/
+Content/ResidentsLocal/

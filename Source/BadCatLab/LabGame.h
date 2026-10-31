@@ -18,6 +18,7 @@ class UAudioComponent;
 class USoundBase;
 class ALabResident;
 class UPoseableMeshComponent;
+class UProceduralMeshComponent;
 USTRUCT()
 struct FLabScoreRow {
  GENERATED_BODY()
@@ -108,10 +109,11 @@ public:
  FString Quip; double QuipUntil=0;
  UPROPERTY() ULabProgress* Progress;
  UPROPERTY() ALabProp* PetCamera;
- UPROPERTY() UStaticMeshComponent* CameraVision;
+ UPROPERTY() UProceduralMeshComponent* CameraVision;
  UPROPERTY() TMap<int32,AStaticMeshActor*> Discoveries;
  int32 Suspicion=0,GoodCat=0; bool CameraBroken=false,PerfectCrime=false,CandySpilled=false,Recorded=false,Practice=false,NoSave=false;
- float CameraClock=0,Exposure=0,CaughtCooldown=0,GoodCooldown=0,CameraFlash=0;
+ float CameraClock=0,Exposure=0,GoodExposure=0,CaughtCooldown=0,GoodCooldown=0,CameraFlash=0,VisionClock=0;bool CameraInView=false;
+ static constexpr float CameraRange=650,CameraHalfAngle=38,CameraNoticeTime=.9f;
  double SlowUntil=0; FVector WatchDirection; FString CameraCaption;
  TArray<FLabMoneyBurst> MoneyBursts;float DisplayBill=0,BillPulse=0;double MoneyLastReal=0,CoinSoundUntil=0;
  UPROPERTY() UAudioComponent* CoinAudio=nullptr;
@@ -120,6 +122,7 @@ public:
  void LoadProgress(); void SaveProgress(); bool Unlocked(int32 Id) const; bool RecipeUnlocked(int32 Id) const;
  void Discover(int32 Id,FVector Position); void CollectDiscoveries(); void ResetParty(); void TickCamera(float Dt);
  bool CameraSees(FVector Position,const AActor* Target=nullptr) const; void CameraObservation(bool Bad,bool Innocent);
+ void CreateCameraFootprint();void UpdateCameraFootprint();void AdvanceCameraEvidence(float Dt,bool CatSeen,bool Bad,bool Innocent);
  void DisableCamera(); void SpillCandy(FVector Origin,int32 Chain); void SpawnPartyProps(); void RadialSmash(FVector Origin,float Strength,float Radius);
  bool CatchCat(ALabCat* Cat); int32 TimesCaught=0;
  void RecordRun(); void SetPractice(); void Speak(const TCHAR* Clip); void Lab(); void ClearDiscoveries();
