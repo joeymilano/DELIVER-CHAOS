@@ -15,6 +15,7 @@ class UAnimSequence;
 class AStaticMeshActor;
 class ACameraActor;
 class UAudioComponent;
+class USoundBase;
 class ALabResident;
 class UPoseableMeshComponent;
 USTRUCT()
@@ -78,13 +79,17 @@ public:
  void RecoverToSafety(); void UpdateSafety();
  void ResetCat(); void SetMutation(bool On);
  void ApplyIdentity(int32 CatIndex,bool Fused);
- void ToggleMusic();
+ void ToggleMusic();void PreviewMoney();
  void PickOne(); void PickTwo(); void PickThree(); void PickFour();
  void PushStart(); void PushStop(); void ZoomStart(); void ZoomStop(); void Meow(); void ToggleShake(); void TogglePractice();
  uint8 Traits=0; float BodyScale=1,MeshScale=1,MeshFloor=-30,ZoomTime=0,ZoomCooldown=0,MeowCooldown=0,AutoMeowCooldown=0,PushClock=0,FallSpeed=0,ImpactTime=0;
  bool Pushing=false,Shake=true,ActionPounce=false; FVector ZoomDirection; TSet<int32> ZoomHit;
  FVector AttackDirection() const; ALabProp* FindTarget(float Range,float Cone) const;
  void Impact(bool Heavy); void TickInstincts(float Dt); void NoisePulse(bool Automatic=false); void ConfirmSelection(); void OpenSelection();
+};
+struct FLabMoneyBurst {
+ FVector Origin;int32 Amount=0,ChainCount=1,Seed=0;double Born=0;bool Tiny=false,Arrived=false;
+ int CoinCount() const{return FMath::Clamp((Amount<10?3:Amount<200?4:Amount<1000?6:8)+(ChainCount>=3?1:0),3,8);}
 };
 UCLASS()
 class BADCATLAB_API ALabGameMode : public AGameModeBase {
@@ -104,7 +109,11 @@ public:
  UPROPERTY() TMap<int32,AStaticMeshActor*> Discoveries;
  int32 Suspicion=0,GoodCat=0; bool CameraBroken=false,PerfectCrime=false,CandySpilled=false,Recorded=false,Practice=false,NoSave=false;
  float CameraClock=0,Exposure=0,CaughtCooldown=0,GoodCooldown=0,CameraFlash=0;
- double SlowUntil=0; FVector WatchDirection; FString CameraCaption; FString PopText; FVector PopLocation; double PopUntil=0;
+ double SlowUntil=0; FVector WatchDirection; FString CameraCaption;
+ TArray<FLabMoneyBurst> MoneyBursts;float DisplayBill=0,BillPulse=0;double MoneyLastReal=0,CoinSoundUntil=0;
+ UPROPERTY() UAudioComponent* CoinAudio=nullptr;
+ UPROPERTY() USoundBase* CoinSound=nullptr;
+ void QueueMoneyBurst(ALabProp* Prop,int32 ChainCount);void TickMoneyFeedback();void ClearMoneyFeedback();void PreviewMoneyBurst();
  void LoadProgress(); void SaveProgress(); bool Unlocked(int32 Id) const; bool RecipeUnlocked(int32 Id) const;
  void Discover(int32 Id,FVector Position); void CollectDiscoveries(); void ResetParty(); void TickCamera(float Dt);
  bool CameraSees(FVector Position,const AActor* Target=nullptr) const; void CameraObservation(bool Bad,bool Innocent);

@@ -94,6 +94,52 @@ void ALabHUD::DrawHUD() {
  auto Footer=[&](const FString& T){Box(44,690,1192,1,Line);Text(T,44,701,12,Muted);};
 
 
+ auto Coin=[&](FVector2D P,float Size,float Spin,float Alpha){
+  auto Tint=[&](const TCHAR* V){auto C=Hex(V);C.A=Alpha;return C;};
+  auto Oval=[&](FVector2D At,float RX,float RY,FLinearColor C){for(int I=0;I<16;I++){float A=2*PI*I/16,B=2*PI*(I+1)/16;Tri(At,At+FVector2D(FMath::Cos(A)*RX,FMath::Sin(A)*RY),At+FVector2D(FMath::Cos(B)*RX,FMath::Sin(B)*RY),C);}};
+  const float RX=(2.2f+FMath::Abs(FMath::Cos(Spin))*5.8f)*Size,RY=9*Size;
+  Oval(P+FVector2D(0,2*Size),RX+1.5f*Size,RY+1.5f*Size,Tint(TEXT("895016")));
+  Oval(P,RX,RY,Tint(TEXT("FFBF32")));
+  Oval(P+FVector2D(-Size,-Size),FMath::Max(Size,RX-2*Size),RY-2*Size,Tint(TEXT("FFE688")));
+  if(RX>4*Size)Box(P.X-Size*.7f,P.Y-4*Size,Size*1.4f,8*Size,Tint(TEXT("CE861C")));
+ };
+ auto MoneyFeedback=[&](){
+  const double RealNow=FPlatformTime::Seconds();TArray<FBox2D> Labels;
+  for(const auto& B:G->MoneyBursts){
+   const float Age=RealNow-B.Born;if(Age<0||Age>1.5f)continue;
+   const FVector Projected=Project(B.Origin);if(Projected.Z<=0)continue;
+   FVector2D Origin((Projected.X-OX)/S,(Projected.Y-OY)/S);Origin.X=FMath::Clamp(Origin.X,40.f,1240.f);Origin.Y=FMath::Clamp(Origin.Y,185.f,610.f);
+   const float Tier=B.Amount>=1000?1.3f:1.f;
+   if(Age<.3f){float T=Age/.3f;auto C=Hex(TEXT("FFD161"));C.A=(1-T)*.7f;
+    for(int I=0;I<5;I++){float A=I*2*PI/5;FVector2D D(FMath::Cos(A),FMath::Sin(A)),N(-D.Y,D.X),P=Origin+D*(18+T*30)*Tier;Tri(P-D*5*Tier,P+N*2*Tier,P+D*5*Tier,C);Tri(P-D*5*Tier,P-N*2*Tier,P+D*5*Tier,C);}
+   }
+   const int Count=B.CoinCount();
+   for(int I=0;I<Count;I++){
+    const float Start=.48f+I*.025f,Travel=.55f,T=FMath::Clamp((Age-Start)/Travel,0.f,1.f);if(T>=1)continue;
+    const float A=-PI*.9f+(PI*.8f*I/FMath::Max(1,Count-1));const FVector2D V=FVector2D(FMath::Cos(A),FMath::Sin(A))*(180+(B.Seed+I*17)%65);
+    auto BurstAt=[&](float Time){return Origin+V*Time+FVector2D(0,115*Time*Time);};
+    FVector2D P=BurstAt(FMath::Min(Age,Start));float Size=Tier;
+    if(Age>=Start){const FVector2D Target(150,80),Control((P.X+Target.X)*.5f,FMath::Min(P.Y,Target.Y)-100);P=(1-T)*(1-T)*P+2*(1-T)*T*Control+T*T*Target;Size*=1-T*.4f;}
+    Coin(P,Size,Age*14+I*1.7f,1-T*.35f);
+   }
+   if(Age<1.35f){
+    const float Fade=1-FMath::Clamp((Age-.9f)/.45f,0.f,1.f),Pop=Age<.16f?FMath::Lerp(.65f,1.18f,FMath::Sin(Age/.16f*HALF_PI)):FMath::Lerp(1.18f,1.f,FMath::Clamp((Age-.16f)/.16f,0.f,1.f));
+    const float Px=(B.Amount>=1000?32:25)*Pop;const FString Label=TEXT("+")+Money(B.Amount);const float LabelW=Width(Label,Px,true);
+    float X=FMath::Clamp(Origin.X-LabelW*.5f+(B.Seed%3-1)*14*Age,24.f,1256.f-LabelW),Y=FMath::Max(180.f,Origin.Y-30-Age*55);
+    // Separate simultaneous amounts without moving the physical burst origin.
+    for(int Attempt=0;Attempt<12;Attempt++){
+     FBox2D Bounds(FVector2D(X-5,Y-4),FVector2D(X+LabelW+5,Y+Px*1.35f));bool Overlap=false;
+     for(const auto& Other:Labels)if(Bounds.Intersect(Other)){Overlap=true;break;}
+     if(!Overlap)break;
+     if(Y-Px*1.5f>=180)Y-=Px*1.5f;else X=FMath::Clamp(X+LabelW+12,24.f,1256.f-LabelW);
+    }
+    Labels.Add(FBox2D(FVector2D(X-5,Y-4),FVector2D(X+LabelW+5,Y+Px*1.35f)));
+    auto Shadow=Ink;Shadow.A=Fade;for(FVector2D D:{FVector2D(-1.5f,0),FVector2D(1.5f,0),FVector2D(0,-1.5f),FVector2D(0,1.5f)})Text(Label,X+D.X,Y+D.Y,Px,Shadow,true);
+    auto Gold=Hex(TEXT("FFE49B"));Gold.A=Fade;Text(Label,X,Y,Px,Gold,true);
+   }
+  }
+ };
+
  if(G->Stage==6){
   // Editorial left panel gives the live cat vignette room to breathe.
   DrawRect(Paper,0,0,OX+536*S,H);
@@ -228,7 +274,7 @@ void ALabHUD::DrawHUD() {
  if(G->Playing()&&!G->HideHUD&&!Paused){
   // Leave the middle of the room open. Only actionable information stays on screen.
   Round(24,22,244,88,15,Ink);Text(TEXT("拆家账单"),42,36,15,Paper);
-  Fit(Money(G->Score),42,61,33,208,Orange,true);
+  Fit(Money(FMath::RoundToInt(G->DisplayBill)),42,61,33+G->BillPulse*3,208,FMath::Lerp(Orange,Hex(TEXT("FFD970")),G->BillPulse),true);
   Round(512,22,256,76,15,G->Remaining<=10&&!G->Practice?Red:Ink);
   Center(G->Practice?TEXT("自由模式"):FString::Printf(TEXT("%02d 秒"),FMath::CeilToInt(G->Remaining)),640,32,31,Paper,true);
   Center(G->Practice?TEXT("不限时 · 不计榜"):TEXT("派对倒计时"),640,73,13,Paper);
@@ -243,7 +289,7 @@ void ALabHUD::DrawHUD() {
   const FString Toast=Now<G->QuipUntil?G->Quip:Now<CaptionVisibleUntil?G->CameraCaption:
    Now-StageEnteredAt<8&&G->Swipes==0?TEXT("左键，拍杯子。"):TEXT("");
   if(!Toast.IsEmpty()){Round(370,117,540,68,12,Paper);Wrap(Toast,392,132,18,496,Ink);}
-  if(Now<G->PopUntil){FVector P=Project(G->PopLocation);if(P.Z>0){float PX=FMath::Clamp((P.X-OX)/S,32.f,1000.f),PY=FMath::Clamp((P.Y-OY)/S-34,225.f,555.f);float BW=Width(G->PopText,18)+28;Round(PX,PY,BW,34,8,Ink);Text(G->PopText,PX+14,PY+7,18,Orange,true);}}
+
   if(Cat){
    if(Cat->Charging){Round(470,526,340,67,12,Ink);Text(Cat->Charge>=1.05&&G->Pounces>0?TEXT("超级扑就绪，松开释放"):TEXT("松开扑击"),490,538,19,Paper);Round(490,574,300,5,2,Muted);if(Cat->Charge>0)Round(490,574,300*Cat->Charge/1.25f,5,2,Orange);}
    else if(Cat->Innocent){Pill(TEXT("装乖中"),512,539,Paper,Ink);}
@@ -252,6 +298,7 @@ void ALabHUD::DrawHUD() {
   if(Now-StageEnteredAt<12){Round(24,668,960,34,9,Ink);Text(TEXT("WASD 移动   左键 挥爪   长按左键 扑击   E 慢推   Shift 暴冲   Space 跳跃"),40,677,14,Paper);
   if(G->CurrentTraits()&CatTrait::Loud)Text(TEXT("Q 喵一声"),858,677,14,Orange);}
   Round(1064,668,192,34,9,Ink);Text(TEXT("Esc 暂停与操作说明"),1080,677,14,Paper);
+  MoneyFeedback();
  }
  if(Paused){
   DrawRect(FLinearColor(0,0,0,.82f),0,0,W,H);Round(160,111,960,498,22,Paper);
