@@ -8,7 +8,7 @@
 
 在万圣节派对开始前，把客厅拆出一张能吓到主人的账单。挥爪拍东西，轻轻推落一个杯子，或一头撞翻糖果碗。金币叮叮当当地飞进账单，你还有空收爪坐好，装作什么都没发生。
 
-[看 15 秒实机](https://joeyzhao.cc/delivery-chaos#play) · [查看试玩发布](https://github.com/joeymilano/DELIVER-CHAOS/releases) · [English overview](https://joeyzhao.cc/en/delivery-chaos)
+[看 15 秒实机](https://joeyzhao.cc/delivery-chaos#play) · [下载 Mac 试玩](https://github.com/joeymilano/DELIVER-CHAOS/releases/download/v0.1.0-mac-playtest/Delivery-Chaos-Mac-Apple-Silicon-v0.1.0.dmg) · [English overview](https://joeyzhao.cc/en/delivery-chaos)
 
 ## 怎么玩
 
@@ -31,7 +31,11 @@
 
 ## 试玩下载
 
-公开试玩包准备中。Mac 已有 Apple 芯片本地试玩版，Windows 正在等待可玩包。正式试玩文件会放在 [GitHub Releases](https://github.com/joeymilano/DELIVER-CHAOS/releases) 的 **Assets**，GitHub 自动生成的 Source code 是给开发者用的。
+**[下载 Mac 试玩包（DMG）](https://github.com/joeymilano/DELIVER-CHAOS/releases/download/v0.1.0-mac-playtest/Delivery-Chaos-Mac-Apple-Silicon-v0.1.0.dmg)** · Apple 芯片，macOS 14 或更新版本
+
+打开镜像，把 Delivery Chaos 拖进「应用程序」。这个试玩版采用临时签名，首次启动如有系统提示，可按 [发布页的安装说明](https://github.com/joeymilano/DELIVER-CHAOS/releases/tag/v0.1.0-mac-playtest) 操作。
+
+Windows 试玩包待构建和验证。
 
 试玩版可以用键盘游玩。**方向键或 WASD** 移动，**J** 挥爪或蓄力扑，**E** 慢推，**Shift** 暴冲，**空格** 跳跃，**Esc** 打开操作说明。
 
