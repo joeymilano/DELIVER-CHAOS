@@ -1,5 +1,6 @@
 #include "LabGame.h"
 #include "LabCatalog.h"
+#include "LabResident.h"
 #include "Animation/AnimSequence.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/StaticMeshComponent.h"
@@ -7,14 +8,14 @@
 #include "Kismet/GameplayStatics.h"
 
 void ALabCat::CancelContact(){
- AttackPending=false;AttackTarget.Reset();PushTarget.Reset();LastPushedProp.Reset();
+ AttackPending=false;AttackTarget.Reset();AttackResident.Reset();PushTarget.Reset();LastPushedProp.Reset();
  PendingChain=0;ActionElapsed=ActionDuration=ActionTime=0;PawReachAlpha=ReactionTime=0;
  PushCycle=INDEX_NONE;PushContactApplied=false;
 }
 
 bool ALabCat::PawContactPoint(ALabProp* Prop,FVector& Surface,float Slack) const {
  auto G=Cast<ALabGameMode>(GetWorld()->GetAuthGameMode());
- if(!IsValid(Prop)||Prop->IsHidden()||!Prop->Body->IsSimulatingPhysics()||
+ if(!IsValid(Prop)||Prop->IsHidden()||!Prop->CanTakeCatHit()||
     (Prop->Heavy&&!(Traits&CatTrait::Giant))||(G&&Prop==G->PetCamera&&G->CameraBroken))return false;
  const bool Rig=GetMesh()->GetSkeletalMeshAsset()&&GetMesh()->DoesSocketExist(TEXT("RightFrontFoot"));
  const FVector Shoulder=Rig?GetMesh()->GetSocketLocation(TEXT("RightArm")):GetActorLocation()+AttackDirection()*20;
@@ -48,11 +49,23 @@ void ALabCat::TickContact(float Dt){
     PawReachAlpha=FMath::SmoothStep(.02f,ContactAt,ActionElapsed)*(1-FMath::SmoothStep(ContactAt+.035f,ActionDuration,ActionElapsed));
    }
   }
+  if(auto Resident=AttackResident.Get()){
+   FVector Surface;if(RearPawContact(Resident,Surface)){
+    PawTargetWorld=Surface;
+    PawReachAlpha=FMath::SmoothStep(.02f,ContactAt,ActionElapsed)*(1-FMath::SmoothStep(ContactAt+.035f,ActionDuration,ActionElapsed));
+   }
+  }
   if(AttackPending&&ActionElapsed>=ContactAt){
    AttackPending=false;
+   if(auto Resident=AttackResident.Get()){
+    FVector Surface;if(RearPawContact(Resident,Surface)&&Resident->TakeRearPrank(this))Impact(false);
+#if !UE_BUILD_SHIPPING
+    if(G->NoSave&&GetMesh()->GetSkeletalMeshAsset())UE_LOG(LogTemp,Display,TEXT("REAR_PAW_CONTACT pending=%d cat=%s shoulder=%s target=%s"),G->PrankPending,*GetActorLocation().ToString(),*GetMesh()->GetSocketLocation(TEXT("RightArm")).ToString(),*Resident->RearPoint().ToString());
+#endif
+   }
    // Resolve the original target again at contact, never redirect a committed paw to another prop.
    auto Target=AttackTarget.Get();
-   if(IsValid(Target)&&!Target->IsHidden()&&Target->Body->IsSimulatingPhysics()&&
+   if(IsValid(Target)&&!Target->IsHidden()&&Target->CanTakeCatHit()&&
       (!Target->Heavy||(Traits&CatTrait::Giant))){
     const FVector Origin=GetActorLocation()+FVector(0,0,18),Delta=Target->GetActorLocation()-Origin;
     FHitResult Hit;FCollisionQueryParams Query;Query.AddIgnoredActor(this);
@@ -81,6 +94,10 @@ void ALabCat::TickContact(float Dt){
     PushContactApplied=true;
     const int32 Chain=G->Active(Target->ChainId)?Target->ChainId:G->NewChain(false);
     Target->ChainId=Chain;G->Chains[Chain].Last=GetWorld()->GetTimeSeconds();
+    if(Target==G->PetCamera){
+     Target->Strike(Chain,Direction*280+FVector(0,0,90));Pushing=false;PushTarget.Reset();LastPushedProp.Reset();
+     Impact(false);return;
+    }
     const float Speed=FVector::DotProduct(Target->Body->GetPhysicsLinearVelocity(),Direction);
     const float DeltaSpeed=FMath::Clamp(48.f-Speed,0.f,48.f);
     Target->Body->WakeAllRigidBodies();

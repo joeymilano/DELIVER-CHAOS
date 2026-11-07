@@ -20,11 +20,17 @@
 
 // A quiet meow, with no whole-body spin or camera motion.
 FRotator ALabGameMode::MemePose(float Time) { return FRotator::ZeroRotator; }
+bool ALabGameMode::HasMemeGif(){
+ if(!MemeGifChecked){
+  MemeGifChecked=true;
+  MemeGifTexture=LoadObject<UTexture2D>(nullptr,TEXT("/Game/UI/MemesLocal/OiiaAtlas"),nullptr,LOAD_Quiet|LOAD_NoWarn);
+ }
+ return IsValid(MemeGifTexture);
+}
 void ALabGameMode::ToggleMemeGif(){
  if(Stage!=3)return;
  if(MemeShowing){StopMeme();return;}
- if(!MemeGifTexture)MemeGifTexture=LoadObject<UTexture2D>(nullptr,TEXT("/Game/UI/MemesLocal/OiiaAtlas"),nullptr,LOAD_Quiet|LOAD_NoWarn);
- MemeGifShowing=MemeGifTexture&&!MemeGifShowing;MemeGifElapsed=0;
+ MemeGifShowing=HasMemeGif()&&!MemeGifShowing;MemeGifElapsed=0;
 }
 
 void ALabGameMode::StopMeme() {

@@ -380,7 +380,12 @@ bool FLabKeyboardMenuTest::RunTest(const FString&){
  G->OpenTitle();G->NavigateMenu(0,1);TestEqual(TEXT("Title down focuses free mode"),G->FocusedMenuAction(),FName(TEXT("TitleFree")));Cat->ConfirmSelection();TestEqual(TEXT("Enter reaches collection"),G->Stage,4);TestTrue(TEXT("Title focus starts requested mode"),G->Practice);
  G->NavigateMenu(1,0);TestEqual(TEXT("Arrow selects next cat"),G->SelectedCat,1);Cat->ConfirmSelection();TestEqual(TEXT("Enter opens partner choice"),G->Stage,5);
  G->NavigateMenu(1,0);TestEqual(TEXT("Partner navigation skips main cat"),G->PartnerCat,2);Cat->ConfirmSelection();TestEqual(TEXT("Enter starts valid fusion"),G->Stage,1);
- G->StartRound(true);G->FinishRound();Cat->ConfirmSelection();TestFalse(TEXT("Enter skips brief ending"),G->MemeShowing);G->NavigateMenu(1,0);TestEqual(TEXT("Result arrow reaches retry"),G->FocusedMenuAction(),FName(TEXT("Retry")));Cat->ConfirmSelection();TestTrue(TEXT("Enter replays without a pointer"),G->Playing());
+ G->StartRound(true);G->FinishRound();Cat->ConfirmSelection();TestFalse(TEXT("Enter skips brief ending"),G->MemeShowing);G->NavigateMenu(1,0);TestEqual(TEXT("Result arrow reaches retry"),G->FocusedMenuAction(),FName(TEXT("Retry")));
+ if(!G->HasMemeGif()){
+  G->NavigateMenu(1,0);TestEqual(TEXT("Result navigation skips an absent GIF"),G->FocusedMenuAction(),FName(TEXT("Select")));
+  G->NavigateMenu(1,0);
+ }
+ Cat->ConfirmSelection();TestTrue(TEXT("Enter replays without a pointer"),G->Playing());
  G->OpenSelection();G->Progress->UnlockedMask=5;G->SelectedCat=0;G->NavigateMenu(1,0);TestEqual(TEXT("Navigation skips locked cats"),G->SelectedCat,2);
  G->Progress->UnlockedMask=1;G->SelectedCat=0;G->NavigateMenu(0,1);TestEqual(TEXT("One unlocked cat remains selectable"),G->SelectedCat,0);
  return true;

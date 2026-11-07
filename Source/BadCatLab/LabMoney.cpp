@@ -7,11 +7,15 @@
 
 void ALabGameMode::QueueMoneyBurst(ALabProp* Prop,int32 ChainCount){
  if(!IsValid(Prop)||Prop->BaseScore<=0)return;
- const double Now=FPlatformTime::Seconds();const FVector Origin=Prop->GetActorLocation()+FVector(0,0,45);
+ QueueMoneyAt(Prop->GetActorLocation()+FVector(0,0,45),Prop->BaseScore,Prop->PropId,ChainCount);
+}
+void ALabGameMode::QueueMoneyAt(FVector Origin,int32 Amount,int32 Seed,int32 ChainCount){
+ if(Amount<=0)return;
+ const double Now=FPlatformTime::Seconds();
  bool Merged=false;
  // The candy spill remains readable instead of producing 24 overlapping price labels.
- if(Prop->BaseScore<10)for(auto& B:MoneyBursts)if(B.Tiny&&Now-B.Born<.16&&FVector::DistSquared(B.Origin,Origin)<62500){B.Amount+=Prop->BaseScore;B.ChainCount=FMath::Max(B.ChainCount,ChainCount);Merged=true;break;}
- if(!Merged){if(MoneyBursts.Num()>=12)MoneyBursts.RemoveAt(0);FLabMoneyBurst B;B.Origin=Origin;B.Amount=Prop->BaseScore;B.ChainCount=ChainCount;B.Seed=Prop->PropId;B.Born=Now;B.Tiny=Prop->BaseScore<10;MoneyBursts.Add(B);}
+ if(Amount<10)for(auto& B:MoneyBursts)if(B.Tiny&&Now-B.Born<.16&&FVector::DistSquared(B.Origin,Origin)<62500){B.Amount+=Amount;B.ChainCount=FMath::Max(B.ChainCount,ChainCount);Merged=true;break;}
+ if(!Merged){if(MoneyBursts.Num()>=12)MoneyBursts.RemoveAt(0);FLabMoneyBurst B;B.Origin=Origin;B.Amount=Amount;B.ChainCount=ChainCount;B.Seed=Seed;B.Born=Now;B.Tiny=Amount<10;MoneyBursts.Add(B);}
  BillPulse=FMath::Max(BillPulse,.35f);
  // A dedicated, bounded voice lets a glass impact and a coin cue play together.
  if(Now>=CoinSoundUntil){

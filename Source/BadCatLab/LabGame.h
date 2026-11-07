@@ -52,6 +52,7 @@ public:
  FString ItemName=TEXT("摆件"); FVector InitialPosition;
  void Configure(int32 Id,FVector Scale,FLinearColor Color,bool Ball,bool IsHeavy,bool Bounce);
  void Strike(int32 Chain,FVector Velocity);
+ bool CanTakeCatHit() const;
  UFUNCTION() void Hit(UPrimitiveComponent* HitComp,AActor* Other,UPrimitiveComponent* OtherComp,FVector Impulse,const FHitResult& Result);
 };
 UCLASS()
@@ -77,12 +78,15 @@ public:
  float PawReachAlpha=0,PushPhase=0,ReactionTime=0;
  FVector PawTargetWorld=FVector::ZeroVector,PendingImpulse=FVector::ZeroVector;
  TWeakObjectPtr<ALabProp> AttackTarget,PushTarget,LastPushedProp;
+ TWeakObjectPtr<ALabResident> AttackResident;
  int32 PendingChain=0,PushCycle=INDEX_NONE;
  bool AttackPending=false,PushContactApplied=false;
  static constexpr float PushDuration=.9f,PushContactTime=.30f,PushContactEnd=.50f;
  void CancelContact();void TickContact(float Dt);void TickCatAnimation(float Dt);
  bool PawContactPoint(ALabProp* Prop,FVector& Surface,float Slack=0) const;
  ALabProp* FindPushTarget() const;
+ ALabResident* FindRearPrankTarget() const;
+ bool RearPawContact(ALabResident* Resident,FVector& Surface) const;
  float StepClock=0;
  float Charge=0, ActionTime=0, Idle=0; bool Charging=false, Innocent=false, FixedCamera=false;
  FVector AimDirection=FVector::ForwardVector;
@@ -130,12 +134,19 @@ public:
  UPROPERTY() UAudioComponent* CoinAudio=nullptr;
  UPROPERTY() USoundBase* CoinSound=nullptr;
  void QueueMoneyBurst(ALabProp* Prop,int32 ChainCount);void TickMoneyFeedback();void ClearMoneyFeedback();void PreviewMoneyBurst();
+ void QueueMoneyAt(FVector Origin,int32 Amount,int32 Seed,int32 ChainCount=1);
  void LoadProgress(); void SaveProgress(); bool Unlocked(int32 Id) const; bool RecipeUnlocked(int32 Id) const;
  void Discover(int32 Id,FVector Position); void CollectDiscoveries(); void ResetParty(); void TickCamera(float Dt);
  bool CameraSees(FVector Position,const AActor* Target=nullptr) const; void CameraObservation(bool Bad,bool Innocent);
  void CreateCameraFootprint();void UpdateCameraFootprint();void AdvanceCameraEvidence(float Dt,bool CatSeen,bool Bad,bool Innocent);
  void DisableCamera(); void SpillCandy(FVector Origin,int32 Chain); void SpawnPartyProps(); void RadialSmash(FVector Origin,float Strength,float Radius);
  bool CatchCat(ALabCat* Cat); int32 TimesCaught=0;
+ TWeakObjectPtr<ALabResident> PrankTarget;
+ float EscapeProgress=0;int32 EscapedPranks=0,MischiefBonus=0;
+ static constexpr float EscapeHold=2.f;
+ static constexpr int32 EscapeBonus=500;
+ bool PrankPending=false;double PrankHitUntil=0;FVector PrankHitPoint=FVector::ZeroVector;
+ void BeginRearPrank(ALabResident* Resident);void TickRearPrank(float Dt);void CancelRearPrank();
  void RecordRun(); void SetPractice(); void Speak(const TCHAR* Clip); void Lab(); void ClearDiscoveries();
  UPROPERTY() UAudioComponent* OwnerVoice = nullptr;
  UPROPERTY() UAudioComponent* CatVoice = nullptr;
@@ -161,10 +172,18 @@ public:
  FRotator TitleHeadRest,TitleTailRest;
  float TitleTime=0; bool MusicMuted=false,MusicGameplay=false;
  int MusicVariant=-1; double ChaseMusicUntil=0; bool EndKeyPlayed=false;
+ bool ChaseMustFinish=false,MusicClockRunning=false;
+ double MusicClockReal=0;float MusicPlaybackSeconds=0,MusicTrackDuration=0;int32 FullChaseCompletions=0;
+ int32 ChooseMusicVariant(bool Tense) const;
+ void AdvanceMusicClock(double Now);void MusicFinished(UAudioComponent* Finished);
  void OpenTitle(); void ClearTitle(); void TickTitle(float Dt); void StartFromTitle(bool FreePlay=false);
  UPROPERTY() TArray<AActor*> HalloweenDecor;
  void BuildHalloweenDecor();
  void WriteSceneAudit();
+ void TickMusicAudit();
+ void TickFullChaseAudit();
+ double ChaseAuditStart=0,ChaseAuditNextSample=0;int32 ChaseAuditStep=0;FString ChaseAuditRows;
+ int32 MusicAuditPhase=-1;double MusicAuditNext=0;
 
  double WorldSoundUntil=0;
  void WorldSound(const TCHAR* Name,float Volume);void UpdateMusic();
@@ -175,6 +194,8 @@ public:
  void BuildRoom(); void SpawnProps(bool Bounce);
 #if !UE_BUILD_SHIPPING
  void SetupCupReview();void TickCupReview(float Dt);
+ void SetupPrankReview();void TickPrankReview(float Dt);
+ FString PrankReviewMode;float PrankReviewTime=0;int32 PrankReviewStep=0;
  float CupReviewTime=0;int32 CupReviewStep=0;TWeakObjectPtr<ALabProp> ReviewCup;
 #endif
  UPROPERTY() AActor* MemeCat = nullptr;
@@ -185,7 +206,9 @@ public:
  UPROPERTY() UTexture2D* MemeGifTexture=nullptr;
  FRotator MeowHeadRest,MeowJawRest;
  float MemeElapsed=0,MemeGifElapsed=0; bool MemeShowing=false,MemeGifShowing=false,MeowPlayed=false;
+ bool HasMemeGif();
  void ToggleMemeGif();
+ bool MemeGifChecked=false;
  static constexpr float MemeDuration=2.2f;
  void StartMeme(); void StopMeme(); void ClearMeme(); void TickMeme(float Dt);
  static FRotator MemePose(float Time);

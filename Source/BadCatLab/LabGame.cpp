@@ -98,11 +98,17 @@ void ALabCat::Release(){
  auto G=GM(GetWorld());if(!Charging||!G||!G->Playing())return;Charging=false;
  const bool Pounce=Charge>=.25f;const bool Super=Pounce&&Charge>=1.05f&&G->Pounces>0;
  const int32 Chain=G->NewChain(Pounce);G->Swipes++;if(Super){G->Pounces--;G->UsedPounces++;}
- FVector Dir=AttackDirection();auto Target=FindTarget(Pounce?235:170,.10f);
+ FVector Dir=AttackDirection();auto Resident=FindRearPrankTarget();auto Target=Resident?nullptr:FindTarget(Pounce?235:170,.10f);
+ if(Resident)Dir=(Resident->RearPoint()-GetActorLocation()).GetSafeNormal2D();
  if(Target){Dir=(Target->GetActorLocation()-GetActorLocation()).GetSafeNormal2D();}
  G->WorldSound(TEXT("Swipe"),.3f);AimDirection=Dir;SetActorRotation(Dir.Rotation());ActionPounce=Pounce;ActionTime=Pounce?.43f:.40f;ActionDuration=ActionTime;ActionElapsed=0;ContactAt=Pounce?.10f:.18f;AnimationSerial++;Idle=0;
  const float Power=(Super?1500.f:Pounce?FMath::Lerp(620.f,1000.f,FMath::Clamp(Charge,0.f,1.f)):LabCatalog::Cat(G->SelectedCat).Swipe)*(Traits&CatTrait::Giant?1.65f:1.f);
- AttackTarget=Target;PendingChain=Chain;PendingImpulse=Dir*Power+FVector(0,0,Pounce?200:110);AttackPending=true;
+ AttackTarget=Target;AttackResident=Resident;PendingChain=Chain;PendingImpulse=Dir*Power+FVector(0,0,Pounce?200:110);AttackPending=true;
+ // A short rear-up brings the actual front paw to hip height on a keyboard tap.
+ if(Resident&&!Pounce&&GetActorLocation().Z<Resident->RearPoint().Z-15*BodyScale&&!GetCharacterMovement()->IsFalling()){
+  const float ReachSpeed=FMath::Clamp((FVector::Dist2D(GetActorLocation(),Resident->GetActorLocation())-52.f)/ContactAt+FMath::Max(0.f,FVector::DotProduct(Resident->GetVelocity(),Dir)),0.f,420.f);
+  LaunchCharacter(Dir*ReachSpeed+FVector(0,0,400),true,true);
+ }
  if(Pounce)LaunchCharacter(Dir*(Super?1050:FMath::Lerp(480.f,780.f,FMath::Clamp(Charge,0.f,1.f)))+FVector(0,0,Super?260:180),true,true);
 }
 void ALabCat::Hop(){if(auto G=GM(GetWorld())){if(G->Stage==3){G->ToggleMemeGif();}else if(G->Stage==5){G->RecipeId=INDEX_NONE;G->StartRound(false);}else if(G->Playing()&&CaughtTime<=0){CancelContact();Pushing=false;Jump();Innocent=false;Idle=0;}}}
@@ -153,6 +159,7 @@ ALabGameMode::ALabGameMode(){PrimaryActorTick.bCanEverTick=true;DefaultPawnClass
 void ALabGameMode::BeginPlay(){Super::BeginPlay();ConfigureLighting();LoadProgress();BuildRoom();OpenTitle();
 #if !UE_BUILD_SHIPPING
  SetupCupReview();
+ SetupPrankReview();
  if(FParse::Param(FCommandLine::Get(),TEXT("CatArtReview"))){int32 ReviewCat=0,ReviewRecipe=-1;FParse::Value(FCommandLine::Get(),TEXT("ReviewCat="),ReviewCat);FParse::Value(FCommandLine::Get(),TEXT("ReviewRecipe="),ReviewRecipe);SelectedCat=FMath::Clamp(ReviewCat,0,3);RecipeId=FMath::Clamp(ReviewRecipe,-1,5);StartRound(RecipeId>=0);if(auto Cat=Cast<ALabCat>(UGameplayStatics::GetPlayerPawn(GetWorld(),0))){Cat->FixedCamera=true;Cat->Arm->bUsePawnControlRotation=false;Cat->Arm->SetRelativeRotation(FRotator(-25,-25,0));Cat->Arm->TargetArmLength=260;Cat->SetActorRotation(FRotator(0,155,0));}}
  // Deterministic screen review is opt-in, Development-only and never touches player saves.
  FString Review;
@@ -298,20 +305,22 @@ void ALabGameMode::Affect(ALabProp* P,int32 Id){
 }
 void ALabGameMode::FinishRound(){
  if(!Playing())return;
+ CancelRearPrank();
  ClearMoneyFeedback();UGameplayStatics::SetGlobalTimeDilation(GetWorld(),1);SlowUntil=0;Chains.Empty();Current=0;for(auto P:Props)if(IsValid(P))P->Body->SetSimulatePhysics(false);Stage=3;Remaining=0;Learned=true;SetMenuInput(true);RecordRun();CameraCaption=TEXT("派对结束。账单来了。");StartMeme();ReceiptGreetingPending=false;
 }
 void ALabGameMode::Tick(float Dt){
  Super::Tick(Dt);
 #if !UE_BUILD_SHIPPING
  TickCupReview(Dt);
+ TickPrankReview(Dt);
 #endif
- TickMoneyFeedback();TickVisualBenchmark();TickTitle(Dt);TickMeme(Dt);UpdateMusic();
+ TickMoneyFeedback();TickVisualBenchmark();TickTitle(Dt);TickMeme(Dt);TickMusicAudit();UpdateMusic();
  if(SlowUntil>0&&FPlatformTime::Seconds()>=SlowUntil){SlowUntil=0;UGameplayStatics::SetGlobalTimeDilation(GetWorld(),1);}
  if(Playing()){
   if(!Practice&&!FParse::Param(FCommandLine::Get(),TEXT("CatArtReview")))Remaining=FMath::Max(0.f,Remaining-Dt);
   Current=0;for(auto& Pair:Chains)if(Active(Pair.Key))Current=FMath::Max(Current,Pair.Value.Members.Num());
   if(!Practice&&Remaining<5&&!EndKeyPlayed){EndKeyPlayed=true;WorldSound(TEXT("Key"),.65f);}
-  TickCamera(Dt);CollectDiscoveries();if(!Practice&&Remaining<=0)FinishRound();
+  TickCamera(Dt);TickRearPrank(Dt);CollectDiscoveries();if(!Practice&&Remaining<=0)FinishRound();
  }else if(Stage==1){Remaining-=Dt;auto Cat=UGameplayStatics::GetPlayerPawn(GetWorld(),0);if(Cat)for(int I=0;I<PresentationCats.Num();I++){auto A=PresentationCats[I];A->SetActorLocation(Cat->GetActorLocation()+FVector(90,(I?1.f:-1.f)*FMath::Max(0.f,Remaining-1)*28,40));A->SetActorRotation(FRotator(0,Remaining*90,0));}if(Remaining<=0)StartRound(true);}
 }
 

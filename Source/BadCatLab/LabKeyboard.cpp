@@ -32,7 +32,7 @@ void ALabGameMode::NavigateMenu(int DX,int DY){
   for(int I=1;I<=4;I++){const int Candidate=(Start+Direction*I+8)%4;if(Allowed(Candidate)){SelectCat(Candidate);return;}}
   return;
  }
- const int Count=Paused?4:Stage==6?2:Stage==3&&!MemeShowing&&!MemeGifShowing?3:0;
+ const int Count=Paused?4:Stage==6?2:Stage==3&&!MemeShowing&&!MemeGifShowing?(HasMemeGif()?3:2):0;
  if(Count)MenuCursor=(MenuCursor+(DX?DX:DY)+Count)%Count;
 }
 void ALabGameMode::ActivateMenu(){

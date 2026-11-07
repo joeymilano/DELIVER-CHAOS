@@ -2,12 +2,16 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "LabResident.generated.h"
+class ALabCat;
 UCLASS()
 class BADCATLAB_API ALabResident : public ACharacter {
  GENERATED_BODY()
 public:
  ALabResident();virtual void Tick(float Dt) override;
  void Configure(bool Guest);void ResetResident();bool AdvanceCapture(float Dt,bool Eligible);
+ FVector RearPoint() const;bool SeesCat(const ALabCat* Cat) const;
+ bool CanBePranked(const ALabCat* Cat) const;bool TakeRearPrank(ALabCat* Cat);
+ float PrankCooldown=0,PrankAnger=0,PrankFlinch=0;
  void BuildGroundGrid();bool CanStandAt(FVector Position) const;bool GroundSegmentClear(FVector From,FVector To) const;
  bool PlanGroundRoute(FVector Target);void NavigateFloor(FVector Target,float Dt);
  TArray<FBox> FurnitureFootprints;TArray<uint8> GroundGrid;TArray<FVector> GroundPath;FVector RequestedGoal,FloorGoal,LastSafeFloor,ProgressOrigin;

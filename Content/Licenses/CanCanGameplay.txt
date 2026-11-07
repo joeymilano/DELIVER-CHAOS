@@ -1,4 +1,4 @@
-CanCan-BGM.mp3
-Source: supplied by the project owner on 2026-10-31 for gameplay music.
-The recording author and distribution license have not been independently verified; this file is not designated CC0 or CC BY. No project-wide license supersedes third-party recording rights.
-Processing: decoded to stereo 44.1 kHz PCM, loudness normalized to -20 LUFS, short fades, imported as looping Unreal SoundWave. Original supplied file: ArtSource/Audio/Gameplay/CanCan-BGM.mp3.
+Can Can section from the overture to Orpheus in the Underworld
+Composition by Jacques Offenbach. Recording from Musopen, public domain dedication.
+Source: https://commons.wikimedia.org/wiki/File:Offenbach_-_Orpheus_in_the_Underworld_-_Overture,_Can_Can_section.ogg
+Changes: converted to stereo 44.1 kHz PCM, loudness normalized and given a short fade-in, then looped in Unreal Engine.

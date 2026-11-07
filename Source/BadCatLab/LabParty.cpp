@@ -72,7 +72,7 @@ void ALabGameMode::CollectDiscoveries(){auto Cat=UGameplayStatics::GetPlayerPawn
  if(FVector::Dist(A->GetActorLocation(),Cat->GetActorLocation())<125){Progress->UnlockedMask|=1<<Pair.Key;Quip=FString::Printf(TEXT("%s 跟你走了。下次可以选它，也可以合成。"),LabCatalog::Cat(Pair.Key).Name);QuipUntil=GetWorld()->GetTimeSeconds()+4;A->Destroy();Done.Add(Pair.Key);}}
  if(Done.Num()){for(int I:Done)Discoveries.Remove(I);SaveProgress();}
 }
-void ALabGameMode::ResetParty(){ClearMoneyFeedback();TimesCaught=0;ClearVoices();Suspicion=GoodCat=0;CameraBroken=PerfectCrime=CandySpilled=false;Exposure=GoodExposure=CaughtCooldown=GoodCooldown=CameraFlash=CameraClock=VisionClock=0;CameraInView=false;CameraCaption=TEXT("");PetCamera=nullptr;CameraVision=nullptr;}
+void ALabGameMode::ResetParty(){ClearMoneyFeedback();CancelRearPrank();EscapedPranks=MischiefBonus=0;PrankHitUntil=0;TimesCaught=0;ClearVoices();Suspicion=GoodCat=0;CameraBroken=PerfectCrime=CandySpilled=false;Exposure=GoodExposure=CaughtCooldown=GoodCooldown=CameraFlash=CameraClock=VisionClock=0;CameraInView=false;CameraCaption=TEXT("");PetCamera=nullptr;CameraVision=nullptr;}
 void ALabGameMode::SpawnPartyProps(){
  auto Spawn=[&](int Id,FVector Pos,FVector Scale,FLinearColor Color,const TCHAR* Name,int Price,bool Ball=false){auto P=GetWorld()->SpawnActor<ALabProp>(Pos,FRotator::ZeroRotator);P->Configure(Id,Scale,Color,Ball,false,false);P->ItemName=Name;P->BaseScore=Price;Props.Add(P);return P;};
  auto Box=Spawn(18,FVector(-140,150,23),FVector(.6,.55,.45),FLinearColor(.48,.28,.1),TEXT("快递纸箱"),12);Box->Body->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Game/Art/Party/SM_Parcel")));
@@ -80,7 +80,7 @@ void ALabGameMode::SpawnPartyProps(){
  for(int I=0;I<6;I++){auto Candy=GetWorld()->SpawnActor<AStaticMeshActor>(FVector(65+(I%3)*12,105+(I/3)*14,35),FRotator::ZeroRotator);auto C=Candy->GetStaticMeshComponent();C->SetMobility(EComponentMobility::Movable);C->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Sphere")));C->SetWorldScale3D(FVector(.09,.06,.06));C->SetCollisionEnabled(ECollisionEnabled::NoCollision);Colorize(C,I%2?FLinearColor(1,.2,.03):FLinearColor(.4,.05,.6));Candy->AttachToActor(Bowl,FAttachmentTransformRules::KeepWorldTransform);PresentationCats.Add(Candy);}
  for(int I=0;I<3;I++){auto P=Spawn(20+I,FVector(160,80,20+I*33),FVector(.38,.38,.32),FLinearColor(1,.16,.01),TEXT("南瓜灯"),79,true);P->Body->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Game/Art/Party/SM_Pumpkin")));P->SetActorRotation(FRotator(0,90,0));if(I==1)AddWarmPropLight(P);if(I==2)P->ItemName=TEXT("藏猫南瓜灯");}
  // Ascending perches create a reliable high route for orange-cat landings.
- PetCamera=Spawn(30,FVector(310,-245,115),FVector(.3,.3,.30),FLinearColor(.9,.87,.8),TEXT("宠物摄像头"),399,true);PetCamera->Body->SetSimulatePhysics(false);
+ PetCamera=Spawn(30,FVector(355,-170,42),FVector(.3,.3,.30),FLinearColor(.9,.87,.8),TEXT("宠物摄像头"),399,true);PetCamera->Body->SetSimulatePhysics(false);
  CreateCameraFootprint();
 
  auto Lens=NewObject<UStaticMeshComponent>(PetCamera);Lens->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Sphere")));Lens->SetupAttachment(PetCamera->Body);Lens->RegisterComponent();Lens->SetRelativeLocation(FVector(45,0,0));Lens->SetRelativeScale3D(FVector(.25,.55,.55));Lens->SetCollisionEnabled(ECollisionEnabled::NoCollision);Colorize(Lens,FLinearColor(.005,.015,.02));
@@ -92,7 +92,7 @@ void ALabGameMode::SpawnPartyProps(){
  auto Cake=Spawn(23,FVector(65,-40,45),FVector(.22,.22,.22),FLinearColor(.9,.8,.6),TEXT("万圣节蛋糕"),329);
  if(auto CakeMesh=LoadObject<UStaticMesh>(nullptr,TEXT("/Game/Art/V2Fun/HalloweenCakeV2/SM_HalloweenCakeV2"))){Cake->Body->SetSimulatePhysics(false);Cake->Body->SetStaticMesh(CakeMesh);Cake->Body->EmptyOverrideMaterials();Cake->Body->SetSimulatePhysics(true);Cake->Body->SetMassOverrideInKg(NAME_None,1.5f);}
  // Camera mount on the shelf: static decoration, recycled with the round.
- auto Stand=GetWorld()->SpawnActor<AStaticMeshActor>(FVector(310,-245,80),FRotator::ZeroRotator);auto C=Stand->GetStaticMeshComponent();C->SetMobility(EComponentMobility::Movable);C->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Cylinder")));C->SetWorldScale3D(FVector(.10,.10,.45));C->SetCollisionProfileName(TEXT("NoCollision"));Colorize(C,FLinearColor(.05,.05,.05));PresentationCats.Add(Stand);
+ auto Stand=GetWorld()->SpawnActor<AStaticMeshActor>(FVector(355,-170,13.5),FRotator::ZeroRotator);auto C=Stand->GetStaticMeshComponent();C->SetMobility(EComponentMobility::Movable);C->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Cylinder")));C->SetWorldScale3D(FVector(.14,.14,.27));C->SetCollisionProfileName(TEXT("NoCollision"));Colorize(C,FLinearColor(.05,.05,.05));PresentationCats.Add(Stand);
 }
 void ALabGameMode::SpillCandy(FVector Origin,int32 Chain){
  if(CandySpilled)return;CandySpilled=true;for(auto P:Props)if(IsValid(P)&&P->PropId==19){TArray<AActor*> Attached;P->GetAttachedActors(Attached);for(auto A:Attached)if(IsValid(A))A->SetActorHiddenInGame(true);}Quip=TEXT("糖果撒了。小东西开始满屋乱弹！");QuipUntil=GetWorld()->GetTimeSeconds()+3;
@@ -127,7 +127,7 @@ void ALabGameMode::TickCamera(float Dt){
  AdvanceCameraEvidence(Dt,CatSeen,Bad,Cat->Innocent);
  VisionClock-=Dt;if(VisionClock<=0){VisionClock=1.f/30;UpdateCameraFootprint();}
 }
-void ALabGameMode::DisableCamera(){if(CameraBroken)return;CameraBroken=true;PerfectCrime=true;Exposure=GoodExposure=0;CameraInView=false;if(IsValid(CameraVision))CameraVision->SetVisibility(false);Speak(TEXT("CameraOff"));if(IsValid(PetCamera)){PetCamera->Body->SetSimulatePhysics(true);PetCamera->Body->AddImpulse(FVector(-300,150,80),NAME_None,true);}CameraCaption=TEXT("监控断了。刚才那段，应该没存下来。");Quip=TEXT("它看不见了。继续。");QuipUntil=GetWorld()->GetTimeSeconds()+4;}
+void ALabGameMode::DisableCamera(){if(CameraBroken)return;CameraBroken=true;PerfectCrime=true;Exposure=GoodExposure=0;CameraInView=false;if(IsValid(CameraVision))CameraVision->SetVisibility(false);Speak(TEXT("CameraOff"));if(IsValid(PetCamera)){PetCamera->Body->SetSimulatePhysics(true);PetCamera->Body->AddImpulse(FVector(-120,60,65),NAME_None,true);}CameraCaption=TEXT("监控已断线");Quip=TEXT("这下没证据了。");QuipUntil=GetWorld()->GetTimeSeconds()+3;}
 void ALabGameMode::RecordRun(){if(Recorded||Practice||!Progress)return;Recorded=true;FLabScoreRow R;R.Money=Score;R.Cat=RecipeId>=0?LabCatalog::Recipe(RecipeId).Name:LabCatalog::Cat(SelectedCat).Name;R.Perfect=PerfectCrime;Progress->Board.Add(R);Progress->Board.StableSort([](const FLabScoreRow& A,const FLabScoreRow& B){return A.Money>B.Money;});if(Progress->Board.Num()>5)Progress->Board.SetNum(5);SaveProgress();}
 void ALabGameMode::ClearVoices(){
  for(auto C:{OwnerVoice,CatVoice})if(IsValid(C)){C->Stop();C->DestroyComponent();}
@@ -162,21 +162,52 @@ void ALabGameMode::WorldSound(const TCHAR* Name,float Volume){
  if(Sound){WorldSoundUntil=Now+.1;UGameplayStatics::PlaySound2D(this,Sound,Volume);}
 }
 void ALabGameMode::UpdateMusic(){
+ AdvanceMusicClock(FPlatformTime::Seconds());
  const double Now=GetWorld()->GetTimeSeconds();
  if(Playing())for(auto R:Residents)if(IsValid(R)&&R->Alert>0)ChaseMusicUntil=Now+3;
  const bool Gameplay=Playing()||Stage==1||Stage==3;
  const bool Tense=Playing()&&((!Practice&&Remaining<=20)||ChaseMusicUntil>Now);
- const int Variant=Gameplay?(Tense?2:1):0;
- if(IsValid(Music)&&MusicVariant!=Variant){Music->FadeOut(.3f,0);Music=nullptr;}
+ const int Variant=ChooseMusicVariant(Tense);
+ if(IsValid(Music)&&MusicVariant!=Variant){
+  Music->OnAudioFinishedNative.RemoveAll(this);
+  if(Music->bIsPaused||!Music->IsPlaying()){Music->Stop();Music->DestroyComponent();}
+  else{Music->bAutoDestroy=true;Music->FadeOut(.3f,0);}
+  Music=nullptr;
+ }
+ const bool Muted=MusicMuted||(MemeShowing&&Variant!=2);
+ const float Volume=(Stage==3||MemeShowing)?.18f:Gameplay?.65f:.5f;
  if(!IsValid(Music)){
   const TCHAR* Path=Variant==0?TEXT("/Game/Audio/Pixabay/Menu"):Variant==2?TEXT("/Game/Audio/Pixabay/Chase"):TEXT("/Game/Audio/Gameplay/CanCanGameplay");
-  if(auto Sound=LoadObject<USoundBase>(nullptr,Path)){MusicGameplay=Gameplay;MusicVariant=Variant;Music=UGameplayStatics::SpawnSound2D(this,Sound,0.f,1,0,nullptr,true,true);if(Music)Music->FadeIn(.35f,MusicMuted||MemeShowing?0.f:.32f);UE_LOG(LogTemp,Display,TEXT("BGM selected: %s"),Path);}
+  if(auto Sound=LoadObject<USoundBase>(nullptr,Path)){
+   const float Resume=MusicVariant==Variant&&ChaseMustFinish?MusicPlaybackSeconds:0;
+   MusicGameplay=Gameplay;MusicVariant=Variant;
+   ChaseMustFinish=Variant==2;MusicPlaybackSeconds=Resume;MusicTrackDuration=Sound->GetDuration();MusicClockRunning=false;
+   // Create once, then start once. FadeIn is itself a Play request, and its
+   // gain multiplies VolumeMultiplier: fading to .32 used to attenuate twice.
+   Music=UGameplayStatics::CreateSound2D(this,Sound,Volume,1,0,nullptr,true,false);
+   if(Music){Music->bIsMusic=true;Music->bAlwaysPlay=true;Music->OnAudioFinishedNative.AddUObject(this,&ALabGameMode::MusicFinished);if(!Muted)Music->FadeIn(.35f,1.f,Resume);}
+   UE_LOG(LogTemp,Display,TEXT("BGM selected: %s, gain=%.2f"),Path,Volume);
+  }
  }
- if(IsValid(Music))Music->SetVolumeMultiplier(MusicMuted||MemeShowing?0.f:Stage==3?.1f:Gameplay?.32f:Stage==6?.32f:.18f);
+ if(IsValid(Music)){
+  Music->SetVolumeMultiplier(Volume);
+  // Pause rather than kill a silent looping voice. Also recover if the audio
+  // device or a channel limit stopped playback while the component survived.
+  if(Music->bIsPaused!=Muted)Music->SetPaused(Muted);
+  if(!Muted&&!Music->IsPlaying()){
+   if(Variant==2&&!ChaseMustFinish){ChaseMustFinish=true;MusicPlaybackSeconds=0;}
+   const float Resume=FMath::Clamp(MusicPlaybackSeconds,0.f,FMath::Max(0.f,MusicTrackDuration-.05f));
+   Music->FadeIn(.15f,1.f,Resume);
+  }
+  MusicClockRunning=Music->IsPlaying()&&!Music->bIsPaused;
+ }else{
+  MusicClockRunning=false;
+ }
 }
 
 bool ALabGameMode::CatchCat(ALabCat* Cat){
  if(!Playing()||!IsValid(Cat)||Cat->CatchGrace>0)return false;
+ CancelRearPrank();
  UGameplayStatics::SetGlobalTimeDilation(GetWorld(),1);SlowUntil=0;TimesCaught++;
  if(!Practice)Remaining=FMath::Max(0.f,Remaining-5);
  Cat->ResetCat();Cat->CaughtTime=1;Cat->CatchGrace=8;Cat->Idle=1;

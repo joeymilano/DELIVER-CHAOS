@@ -32,6 +32,7 @@ void ALabResident::Configure(bool IsGuest){
 }
 void ALabResident::ResetResident(){
  GetCharacterMovement()->SetMovementMode(MOVE_Walking);Anim=INDEX_NONE;Alert=Confused=CatchCooldown=CaptureTime=0;Point=0;
+ PrankCooldown=PrankAnger=PrankFlinch=0;GetMesh()->SetRelativeRotation(FRotator(0,-90,0));
  GroundPath.Empty();PathPoint=0;RouteCooldown=ProgressClock=BlockedPause=0;
  GetCharacterMovement()->StopMovementImmediately();ConsumeMovementInputVector();
  const int Cell=NearestGroundCell(Home);const FVector Safe=Cell==INDEX_NONE?FVector(Home.X,Home.Y,FloorCentre):GroundCell(Cell);
@@ -44,7 +45,10 @@ void ALabResident::Tick(float Dt){Super::Tick(Dt);auto G=Cast<ALabGameMode>(UGam
  if(FMath::Abs(GetActorLocation().Z-FloorCentre)<8&&CanStandAt(GetActorLocation()))LastSafeFloor=FVector(GetActorLocation().X,GetActorLocation().Y,FloorCentre);
  if(!Cat)return;
  CatchCooldown=FMath::Max(0.f,CatchCooldown-Dt);Confused=FMath::Max(0.f,Confused-Dt);FVector Delta=Cat->GetActorLocation()-GetActorLocation();float Dist=Delta.Size2D();FHitResult Hit;FCollisionQueryParams Q;Q.AddIgnoredActor(this);bool Block=GetWorld()->LineTraceSingleByChannel(Hit,GetActorLocation()+FVector(0,0,55),Cat->GetActorLocation(),ECC_Visibility,Q);bool Sees=Dist<650&&(!Block||Hit.GetActor()==Cat)&&FVector::DotProduct(GetActorForwardVector(),Delta.GetSafeNormal2D())>.1f;
- if(Sees&&Cat->Innocent&&Alert>0){Confused=2.5f;Alert=0;G->Quip=TEXT("咦，刚才不是你？");G->QuipUntil=GetWorld()->GetTimeSeconds()+2.5;G->Speak(TEXT("OwnerGood"));}
+ PrankCooldown=FMath::Max(0.f,PrankCooldown-Dt);PrankAnger=FMath::Max(0.f,PrankAnger-Dt);PrankFlinch=FMath::Max(0.f,PrankFlinch-Dt);
+ GetMesh()->SetRelativeRotation(FRotator(0,-90,FMath::Sin(PrankFlinch/.65f*PI)*-10));
+ if(PrankAnger>0)Alert=FMath::Max(Alert,PrankAnger);
+ else if(Sees&&Cat->Innocent&&Alert>0){Confused=2.5f;Alert=0;G->Quip=TEXT("咦，刚才不是你？");G->QuipUntil=GetWorld()->GetTimeSeconds()+2.5;G->Speak(TEXT("OwnerGood"));}
  else if(Sees&&!Cat->Innocent&&(Cat->Charging||Cat->ActionTime>0||Cat->ZoomTime>0||(G->CameraFlash>0&&G->CameraInView))){if(Alert<=0)G->WorldSound(TEXT("Alert"),.3f);Alert=4;}
  else Alert=FMath::Max(0.f,Alert-Dt);
  const FVector Route[]={FVector(-500,-40,92),FVector(-430,300,92),FVector(430,430,92),FVector(460,-80,92)};
@@ -54,7 +58,7 @@ void ALabResident::Tick(float Dt){Super::Tick(Dt);auto G=Cast<ALabGameMode>(UGam
  else {GetCharacterMovement()->StopMovementImmediately();ConsumeMovementInputVector();GroundPath.Empty();RouteCooldown=0;}
 
  // Contact must be sustained. Breaking reach, sight or alert cancels the grab.
- if(AdvanceCapture(Dt,Alert>0&&Confused<=0&&!Cat->Innocent&&Cat->CatchGrace<=0&&Dist<85&&FMath::Abs(Delta.Z)<80&&CatchCooldown<=0&&(!Block||Hit.GetActor()==Cat))&&G->CatchCat(Cat)){CaptureTime=0;CatchCooldown=8;Confused=2;Alert=0;}
+ if(AdvanceCapture(Dt,Alert>0&&Confused<=0&&(!Cat->Innocent||PrankAnger>0)&&Cat->CatchGrace<=0&&Dist<85&&FMath::Abs(Delta.Z)<80&&CatchCooldown<=0&&(!Block||Hit.GetActor()==Cat))&&G->CatchCat(Cat)){CaptureTime=0;CatchCooldown=8;Confused=2;Alert=PrankAnger=0;}
 
  int Desired=Confused>0?3:GetVelocity().Size2D()>150?2:GetVelocity().Size2D()>8?1:0;if((Desired!=Anim||!GetMesh()->IsPlaying())&&Clips.IsValidIndex(Desired)&&Clips[Desired]){GetMesh()->PlayAnimation(Clips[Desired],true);Anim=Desired;}if(Desired==1||Desired==2)GetMesh()->SetPlayRate(FMath::Clamp(GetVelocity().Size2D()/(Desired==2?255.f:110.f),.65f,1.4f));else GetMesh()->SetPlayRate(1);
  if(TraceResident&&(TraceClock-=Dt)<=0){TraceClock=.5f;UE_LOG(LogTemp,Display,TEXT("RESIDENT_TRACE t=%.2f who=%s state=%s pos=%s speed=%.1f anim=%d reach=%.2f catdist=%.1f"),GetWorld()->GetTimeSeconds(),Guest?TEXT("Guest"):TEXT("Owner"),Confused>0?TEXT("Confused"):Alert>0?TEXT("Chase"):TEXT("Patrol"),*GetActorLocation().ToCompactString(),GetVelocity().Size2D(),Anim,CaptureTime,Dist);}

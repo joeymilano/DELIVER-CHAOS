@@ -250,6 +250,7 @@ void ALabHUD::DrawHUD() {
   Fit(Money(G->Score),92,173,72,594,Ink,true);
   for(int I=0;I<30;I++)Box(92+I*20,307,10,1,Line);
   TMap<FString,int32> Totals;int Broken=0;for(auto P:G->Props)if(IsValid(P)&&P->Scored){Totals.FindOrAdd(P->ItemName)+=P->BaseScore;Broken++;}
+  if(G->MischiefBonus>0)Totals.Add(TEXT("恶作剧奖金"),G->MischiefBonus);
   TArray<FString> Names;Totals.GetKeys(Names);Names.Sort([&](const FString& A,const FString& B){return Totals[A]>Totals[B];});
   int Shown=0;for(int I=0;I<FMath::Min(3,Names.Num());I++){Text(Names[I],94,331+I*37,18,Ink);FString Price=Money(Totals[Names[I]]);Text(Price,694-Width(Price,20),331+I*37,20,Ink);Shown+=Totals[Names[I]];}
   if(Names.Num()>3){Text(TEXT("其余损失"),94,442,16,Muted);FString Price=Money(G->Score-Shown);Text(Price,694-Width(Price,18),442,18,Muted);}
@@ -265,7 +266,7 @@ void ALabHUD::DrawHUD() {
    Fit(Row.Cat,824,Y,17,192,Paper);const FString Price=Money(Row.Money);Text(Price,1190-Width(Price,20),Y,20,I==0?Orange:Paper,true);
   }else Wrap(TEXT("暂无记录"),780,367,19,392,Paper);
   Button(TEXT("Select"),G->Progress&&FMath::CountBits((uint32)G->Progress->UnlockedMask)>1?TEXT("换个组合再来"):TEXT("回去选猫"),TEXT("Enter"),64,638,400,true);Button(TEXT("Retry"),TEXT("原样再拆一局"),G->FocusedMenuAction()==TEXT("Retry")?TEXT("Enter"):TEXT("R"),484,638,330,false);
-  Button(TEXT("Meme"),TEXT("猫猫彩蛋"),G->FocusedMenuAction()==TEXT("Meme")?TEXT("Enter"):TEXT("Space"),834,638,382,false);
+  if(G->HasMemeGif())Button(TEXT("Meme"),TEXT("猫猫彩蛋"),G->FocusedMenuAction()==TEXT("Meme")?TEXT("Enter"):TEXT("Space"),834,638,382,false);
   if(G->MemeGifShowing&&G->MemeGifTexture){
    DrawRect(FLinearColor(0,0,0,.7f),0,0,W,H);Round(420,94,440,530,20,Paper);Center(TEXT("猫猫彩蛋"),640,120,26,Ink,true);
    int Frame=FMath::FloorToInt(G->MemeGifElapsed*12)%32;
@@ -280,7 +281,8 @@ void ALabHUD::DrawHUD() {
   Fit(Money(FMath::RoundToInt(G->DisplayBill)),42,61,33+G->BillPulse*3,208,FMath::Lerp(Orange,Hex(TEXT("FFD970")),G->BillPulse),true);
   Round(512,22,256,76,15,G->Remaining<=10&&!G->Practice?Red:Ink);
   Center(G->Practice?TEXT("自由模式"):FString::Printf(TEXT("%02d 秒"),FMath::CeilToInt(G->Remaining)),640,32,31,Paper,true);
-  Center(G->Practice?TEXT("不限时 · 不计榜"):TEXT("派对倒计时"),640,73,13,Paper);
+  Center(G->PrankPending?TEXT("甩掉主人领奖"):G->Practice?TEXT("不限时 · 不计榜"):TEXT("派对倒计时"),640,73,13,G->PrankPending?Orange:Paper);
+  if(G->PrankPending&&G->EscapeProgress>0)Round(536,92,208*G->EscapeProgress/G->EscapeHold,3,1,Orange);
   Round(956,22,300,78,15,G->CameraBroken?Hex(TEXT("283B2C")):Ink);
   Ellipse(976,46,4,4,G->CameraBroken?Green:G->CameraFlash>0?Red:Orange);
   Text(G->CameraBroken?TEXT("监控已断线"):G->CameraFlash>0?TEXT("被拍到了！"):G->Exposure>0?TEXT("快躲开"):G->CameraInView?TEXT("保持淡定"):TEXT("监控巡查"),990,35,19,Paper,true);
@@ -295,13 +297,18 @@ void ALabHUD::DrawHUD() {
   if(!Toast.IsEmpty()){Round(370,117,540,68,12,Paper);Wrap(Toast,392,132,18,496,Ink);}
 
   if(Cat){
+   if(Now<G->PrankHitUntil){const FVector Mark=Project(G->PrankHitPoint+FVector(0,0,30));if(Mark.Z>0)Center(TEXT("啪！"),(Mark.X-OX)/S,(Mark.Y-OY)/S-20,32,Orange,true);}
    float Grab=0;for(auto R:G->Residents)if(IsValid(R))Grab=FMath::Max(Grab,R->CaptureTime);
    if(Grab>0){const FVector Mark=Project(Cat->GetActorLocation()+FVector(0,0,85));if(Mark.Z>0){const FVector2D At((Mark.X-OX)/S,(Mark.Y-OY)/S);Round(At.X-46,At.Y-28,92,35,10,Ink);Center(TEXT("快跑！"),At.X,At.Y-22,16,Paper,true);Round(At.X-34,At.Y+1,68*Grab/.5f,3,1,Orange);}}
    if(Cat->Charging){Round(470,526,340,67,12,Ink);Text(Cat->Charge>=1.05&&G->Pounces>0?TEXT("超级扑就绪，松开释放"):TEXT("松开扑击"),490,538,19,Paper);Round(490,574,300,5,2,Muted);if(Cat->Charge>0)Round(490,574,300*Cat->Charge/1.25f,5,2,Orange);}
    else if(Cat->Innocent){Pill(TEXT("装乖中"),512,539,Paper,Ink);}
-   if(auto P=Cat->FindTarget(170,.1f);P){
+   if(auto R=Cat->FindRearPrankTarget();R){
+    const FVector Mark=Project(R->RearPoint()+FVector(0,0,28));if(Mark.Z>0){FVector2D At((Mark.X-OX)/S,(Mark.Y-OY)/S);Tri(At+FVector2D(-7,-15),At+FVector2D(7,-15),At+FVector2D(0,-5),Orange);}
+    Round(445,607,390,40,10,Paper);Text(TEXT("主人"),461,618,17,Ink);Key(TEXT("J"),661,614,26);Text(TEXT("拍屁股"),701,619,16,Ink,true);
+   }else if(auto P=Cat->FindTarget(170,.1f);P){
     const FVector Mark=Project(P->GetActorLocation()+FVector(0,0,35));if(Mark.Z>0){FVector2D At((Mark.X-OX)/S,(Mark.Y-OY)/S);Tri(At+FVector2D(-7,-15),At+FVector2D(7,-15),At+FVector2D(0,-5),Orange);}
-    FString Label=P->ItemName+TEXT("  ")+Money(P->BaseScore);float BW=FMath::Max(390.f,Width(Label,17)+210);float X=(1280-BW)*.5f;Round(X,607,BW,40,10,Paper);Text(Label,X+16,618,17,Ink);Key(TEXT("J"),X+BW-170,614,26);Text(TEXT("拍"),X+BW-138,619,15,Ink);Key(TEXT("E"),X+BW-91,614,26);Text(TEXT("推"),X+BW-59,619,15,Ink);
+    const bool Camera=P==G->PetCamera;
+    FString Label=P->ItemName+TEXT("  ")+Money(P->BaseScore);float BW=FMath::Max(390.f,Width(Label,17)+210);float X=(1280-BW)*.5f;Round(X,607,BW,40,10,Paper);Text(Label,X+16,618,17,Ink);Key(TEXT("J"),X+BW-170,614,26);Text(Camera?TEXT("拍掉"):TEXT("拍"),X+BW-138,619,15,Ink);Key(TEXT("E"),X+BW-91,614,26);Text(Camera?TEXT("拔线"):TEXT("推"),X+BW-59,619,15,Ink);
    }
   }
   if(Now-StageEnteredAt<12){Round(24,668,960,34,9,Ink);Text(TEXT("方向键 / WASD 移动    J 拍 · 长按扑    Space 跳    E 推"),40,677,14,Paper);
