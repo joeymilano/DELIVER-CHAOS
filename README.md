@@ -1,100 +1,42 @@
+<p align="center">
+  <img src="Docs/PlayerMedia/cover.jpg" width="900" alt="猫手猫脚 Delivery Chaos，奶牛猫阿坏站在桌边的杯子旁">
+</p>
+
 # 猫手猫脚 · Delivery Chaos
 
-中文 Unreal 5.8.4 拆家动作游戏。每只猫代表一种本能：疯、重、吵、大。拆开藏身处发现新猫，回实验室选择两只合成，再把两种本能带回同一个客厅。
+**杯子还差半爪就掉下去了。偏偏这时候，监控转过来了。**
 
-## 获取与启动
+在万圣节派对开始前，把客厅拆出一张能吓到主人的账单。挥爪拍东西，轻轻推落一个杯子，或一头撞翻糖果碗。金币叮叮当当地飞进账单，你还有空收爪坐好，装作什么都没发生。
 
-```bash
-git clone https://github.com/joeymilano/DELIVER-CHAOS.git
-cd DELIVER-CHAOS
-bash Tools/build_mac.sh
-```
+[看 15 秒实机](https://joeyzhao.cc/delivery-chaos#play) · [查看试玩发布](https://github.com/joeymilano/DELIVER-CHAOS/releases) · [English overview](https://joeyzhao.cc/en/delivery-chaos)
 
-使用 Unreal 5.8.4；本机验证工具链为 Xcode 26.1.1。打开 `Builds/Mac/BadCatLab.app` 即可离线运行，不需要启动编辑器。构建缓存和 Mac 应用包不进入 Git；协作者克隆后需要构建。Fab 源模型及 uasset 不进入公开仓库；完整场景需要按 ArtSource/FAB_SELECTION.md 自行领取三套免费资源，并运行 prepare_fab.py / import_fab.py。Windows 构建入口和完整工程交接说明见 [WINDOWS_README.md](WINDOWS_README.md)；Windows 构建与实机运行尚未验证。
+## 怎么玩
 
-第一次参赛代码提交为 2026-10-30 18:46:16（北京时间）。协作方式见 [CONTRIBUTING.md](CONTRIBUTING.md)，当前验证和限制见 [Verification/STATUS.md](Verification/STATUS.md)。
+- **拆家赚钱。** 轻拍、慢推、暴冲，或者扭着屁股蓄力扑出去。杯子、台灯和南瓜灯各有标价，碎了就上账单。
+- **被发现就跑。** 监控视野扫过地毯，来不及溜走就坐下装乖。也可以趁主人背对你拍他一爪。能甩掉追捕，这一爪值 ¥500。
+- **换只猫再来。** 纸箱里藏着橘团，最高的南瓜灯旁有大福的线索。找到新猫就能带回去合成。阿坏加乌梅，暴冲撞东西时还会放出一道音波。
+- **合出大坏猫。** 找齐四只猫、试完三种其他配方，再把阿坏和大福放在一起。变大之后，连电视也推得动。
 
-## 拆家与反侦察
+**180 秒挑战**看你能拆出多少钱，上本机排行榜。**自由拆家**不限时，适合摸路线、找藏起来的猫。
 
-- 挥爪、普通扑击不限次数。长按 J会扭屁股；蓄力超过 1.05 秒使用超级扑，每轮 3 次，耗尽后仍可普通扑。
-- 按住 E 慢推目标，轻微挪动不会立即记账；推落或明显移位后才计入损失。
-- Shift 暴冲；奶牛猫碰撞后反弹，巨型奶牛合成猫会继续向前推。
-- 书架上的宠物摄像头旋转扫描。被抓包积嫌疑，挑战时间减少 3 秒；停下约 0.85 秒自动装无辜，可降低嫌疑。乖猫认证每轮最多三次。
-- 打翻摄像头后断开监控，获得“完美犯罪”判定。隐藏在家具后的猫不会被射线隔墙拍到。
-- 账单直接累计物件标价，不使用金额倍率，每件每轮只收费一次。糖果碗打翻会散出 24 颗糖，轻物件开启有次数上限的弹跳。
-- 默认一轮 180 秒，结束后结算并写入本机前五名。选猫页可切换不限时的自由拆家模式；自由模式可收集猫，不参加排行榜。
+## 游戏截图
 
-## 扩大的房间与对手
+| 万圣节客厅 | 拍完这一下，赶紧跑 |
+| --- | --- |
+| ![猫站在万圣节客厅，地毯上可见监控范围](Docs/PlayerMedia/room.webp) | ![阿坏从身后跳起来拍主人的瞬间](Docs/PlayerMedia/rear-swat.webp) |
+| **合成噪音炸弹，一撞就喵** | **最后把账单留给主人** |
+| ![噪音炸弹暴冲后发出的扇形音波](Docs/PlayerMedia/noise-bomb.webp) | ![实机结算界面，显示本局拆坏物品及金额](Docs/PlayerMedia/bill.webp) |
 
-- 房间扩大为 18 × 14 米，包含客厅、厨房、床与衣柜角落；沿墙八级台阶接到 2.8 米高的猫道，可以连续跳上去，再从高处扑回房间。
-- 两个实际骨骼人物在房间里巡逻；看见拆家后追赶，停下装乖会让他们疑惑，被抓到会被赶开并损失挑战时间。当前使用轻量避障，拥挤家具处仍需继续调优。
-- Mac 包开启原生 Retina 显示；界面保留金额、时间、嫌疑和超级扑，完整操作说明放在暂停页。
-- 进入游戏后播放用户提供的 CanCan；首页/选猫页使用 Pixabay 冒险曲；脚步保留 Kenney CC0，落地和玻璃等事件改用 PR #2 音效。完整归属与改动说明位于 Content/Licenses/WorldAudio.txt。
+截图来自 Mac 试玩包和开发版实机。
 
-## 收集与合成
+## 试玩下载
 
-| 猫 | 藏身处 | 本能 |
-|---|---|---|
-| 阿坏 · 奶牛 | 初始拥有 | 暴冲碰撞反弹 |
-| 橘团 · 橘猫 | 快递纸箱 | 高处落地径向震荡 |
-| 乌梅 · 黑猫 | 书架上的杯子 | Q 扇形音波 |
-| 大福 · 缅因 | 最高的南瓜灯 | 体型 1.8 倍，能推动重物 |
+公开试玩包准备中。Mac 已有 Apple 芯片本地试玩版，Windows 正在等待可玩包。正式试玩文件会放在 [GitHub Releases](https://github.com/joeymilano/DELIVER-CHAOS/releases) 的 **Assets**，GitHub 自动生成的 Source code 是给开发者用的。
 
-保留用户已确认的阿坏、橘团、乌梅模型；大福新增独立银灰虎斑网格与头像，使用本地四足绑定并共享阿坏的骨架和动作。新摄像头外壳与万圣节蛋糕已加入场景，制作与积分记录见 ArtSource/V2Fun/README.md。
+试玩版可以用键盘游玩。**方向键或 WASD** 移动，**J** 挥爪或蓄力扑，**E** 慢推，**Shift** 暴冲，**空格** 跳跃，**Esc** 打开操作说明。
 
-| 两只猫（顺序不限） | 结果 | 条件 |
-|---|---|---|
-| 阿坏 + 橘团 | 弹跳炸弹 | 两只已发现 |
-| 阿坏 + 乌梅 | 噪音炸弹 | 两只已发现；暴冲撞击自动音波 |
-| 橘团 + 乌梅 | 低音炮 | 两只已发现 |
-| 橘团 + 大福 | 猫猫山 | 两只已发现 |
-| 乌梅 + 大福 | 巨型扩音器 | 完成两种普通配方 |
-| 阿坏 + 大福 | 大坏猫 | 收齐四猫，完成三种其他配方 |
+---
 
-收集物出现后走近带回。图鉴和配方保存在本机，重试保留收藏；每轮物件、账单、嫌疑、超级扑和弹跳状态重新开始。实验室也可选择单猫出门。
+Unreal Engine 5 游戏原型 · Vibe Hacks #06
 
-## 操作
-
-| 输入 | 动作 |
-|---|---|
-| 方向键 / WASD | 移动，镜头自动跟随 |
-| J 轻点 / 按住松开 | 自动选目标挥爪 / 蓄力扑击 |
-| E 按住 | 慢推附近面前的物件 |
-| Shift / Space | 暴冲 / 跳跃 |
-| Q | 音波（拥有“吵”本能时） |
-| 方向键 / Enter | 菜单选择 / 确认，1–4 也可选猫 |
-| Space（合成页） | 单猫出门 |
-| Space（结算时） | 跳过喵叫 / 展开或收起猫猫彩蛋 |
-| R / Tab / Esc | 重试当前组合 / 返回选猫 / 暂停与操作说明 |
-| V / H / C | 镜头震动开关 / 隐藏 HUD / 切换镜头远近 |
-
-## 制作源文件
-
-`Content` 包含可直接加载的角色、骨架动作、道具、材质和声音，常规开发无需重跑导入。`ArtSource` 保留模型、FBX、声音与参考来源。
-
-- `Tools/prepare_instinct_animations.py`：在已有三套骨架上制作坐姿、蓄力、挥爪、慢推、扑击五种动作。
-- `Tools/build_party_art.py`：原创南瓜灯、糖果碗、包装糖果、纸箱模型。
-- `Tools/import_instinct_animations.py`：在完整 Unreal 编辑器导入动作与派对道具。
-- `Tools/prepare_party_audio.py` / `import_party_assets.py`：离线占位中文台词、短音效和监控材质。
-- `Tools/build_mac.sh`：固定工具链、编译、打包。用 `UNREAL_ENGINE_ROOT` / `BAD_CAT_DEVELOPER_DIR` 可覆盖本机路径。
-- `Source/BadCatLab/LabTests.cpp`：Unreal Automation 测试组 `BadCatLab.Party`。
-
-当前仍是参赛开发版。动作需要继续调关节过渡；主人对白已在本地替换为 ElevenLabs 配音，免费套餐版本仅供试听，场景和第四只猫需要美术精修。自动测试不等于真人趣味性或商业发行质量验收。Python 只参与制作，运行游戏不依赖网络、生成平台或密钥。
-
-选猫页按 **F** 切换 180 秒挑战 / 自由拆家；方向键选猫，Enter 确认。完整菜单可使用键盘操作。
-
-界面已改为主角展示、双猫合成预览、轻量 HUD 与实际物品账单。文案和页面规则见 [UI_COPY.md](Docs/UI_COPY.md)。暂停页支持方向键、回车和 V 震动开关。
-
-每局结算前，本局的猫只抬头喵一声，约 2.2 秒后显示账单。Space 跳过；账单页的猫猫彩蛋单独展开动图，不播放 OIIA 音频。详情见 [OIIA.md](Docs/OIIA.md)。
-
-声音更新：两段 CC0 真实猫叫替代机器念“喵”，使用短叫和技能叫声；主人改用 ElevenLabs 中文自然对话音色。当前 ElevenLabs 免费套餐素材仅在本机，公开源码无旧机械人声回退。商用前需付费套餐重新生成，详情见 [声音说明](ArtSource/Audio/README.md)。
-
-### 结算小动作与彩蛋
-
-结算只播放约 2.2 秒的抬头、张嘴和一声真实猫叫，Space 可立即跳过。账单页按 Space 展开猫梗动图小卡片，两遍后自动收起，再按 Space 可提前关闭。用户提供的 OIIA 视频提取帧仅在本地演示，位于 ArtSource/MemesLocal 和 Content/UI/MemesLocal，不进入公开源码。
-
-新增茶会与占卜角：接入 16 件 Nasha 模型，包含 9 件可拍落计价的小物件；PR #2 的 10 个音频已导入并接入事件。素材准备、具体用途和保留候选见 [COZY_PARTY.md](Docs/COZY_PARTY.md)。Nasha 模型与 Fab 一样，源文件留在本地，协作者需持有素材包自行导入。
-
-本机完整工程已迁移至 `~/Documents/Deliver Chaos`；旧路径保留跳转以兼容历史链接。
-
-灯光更新：默认软件 Lumen、暖色局部阴影灯、1.15 饱和度 / 1.1 对比度 / 5800K 调色与淡暖雾。测试预览文案已移除。逐步截图与本机 1080p 帧率记录见 [灯光说明](Docs/LIGHTING.md) 与 `Verification/lighting/comparison.html`。
+[设计与制作案例](https://joeyzhao.cc/delivery-chaos) · [开发与协作](CONTRIBUTING.md) · [Windows 构建说明](WINDOWS_README.md)
